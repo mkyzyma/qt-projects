@@ -1,0 +1,4 @@
+#!/bin/bash
+
+odb -d pgsql -x -fPIC --generate-session --profile qt \
+-I/home/miha/tools/Qt/5.6/gcc_64/include -q --std c++14 $1

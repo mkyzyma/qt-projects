@@ -1,0 +1,36 @@
+<changelog xmlns="http://www.codesynthesis.com/xmlns/odb/changelog" database="pgsql" version="1">
+  <model version="1">
+    <table name="Person" kind="object">
+      <column name="id" type="BIGINT" null="false"/>
+      <column name="name_first" type="TEXT" null="true"/>
+      <column name="name_middle" type="TEXT" null="true"/>
+      <column name="name_last" type="TEXT" null="true"/>
+      <column name="name_full" type="TEXT" null="true"/>
+      <column name="pass_series" type="char(4)" null="true"/>
+      <column name="pass_number" type="char(6)" null="true"/>
+      <column name="pass_date" type="DATE" null="true"/>
+      <column name="pass_org" type="TEXT" null="true"/>
+      <column name="pass_orgCode" type="char(6)" null="true"/>
+      <column name="inn" type="char(12)" null="true"/>
+      <column name="snils" type="char(14)" null="true"/>
+      <primary-key auto="true">
+        <column name="id"/>
+      </primary-key>
+    </table>
+    <table name="Member" kind="object">
+      <column name="id" type="BIGINT" null="false"/>
+      <column name="inDate" type="DATE" null="true"/>
+      <column name="outDate" type="DATE" null="true"/>
+      <column name="idPerson" type="BIGINT" null="false"/>
+      <primary-key auto="true">
+        <column name="id"/>
+      </primary-key>
+      <foreign-key name="idPerson_fk" deferrable="DEFERRED">
+        <column name="idPerson"/>
+        <references table="Person">
+          <column name="id"/>
+        </references>
+      </foreign-key>
+    </table>
+  </model>
+</changelog>

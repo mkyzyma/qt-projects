@@ -1,0 +1,11 @@
+#!/bin/bash
+
+./createfile Name.h
+./createfile Passport.h
+./createfile Person.h
+./createfile Member.h
+
+odb --database pgsql --generate-schema-only --profile qt -x -fPIC \
+-I/home/miha/tools/Qt/5.6/gcc_64/include --at-once \
+--schema-format separate --input-name kpk \
+Name.h Passport.h Person.h Member.h

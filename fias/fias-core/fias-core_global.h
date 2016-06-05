@@ -1,0 +1,12 @@
+#ifndef FIASCORE_GLOBAL_H
+#define FIASCORE_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(FIASCORE_LIBRARY)
+#  define FIASCORESHARED_EXPORT Q_DECL_EXPORT
+#else
+#  define FIASCORESHARED_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // FIASCORE_GLOBAL_H
