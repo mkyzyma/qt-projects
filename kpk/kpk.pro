@@ -1,7 +1,6 @@
 TEMPLATE = subdirs
 
-SUBDIRS += \
-    kpk-lib \
+SUBDIRS += \    
     kpk-data \
     kpk-test-console \
     kpk-data-test

@@ -59,8 +59,8 @@ int main(int argc, char *argv[])
         miha->passport().org("отд. УФМС России по ХМАО-Югре в г. Урае");
         miha->passport().orgCode("860028");
 
-        qDebug() << miha->name().toString();
-        qDebug() << miha->passport().toString();
+        /*qDebug() << miha->name().toString();
+        qDebug() << miha->passport().toString();*/
 
         t.reset(db->begin());
 

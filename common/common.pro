@@ -1,22 +1,21 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2016-05-06T15:19:08
+# Project created by QtCreator 2016-06-09T11:32:45
 #
 #-------------------------------------------------
 
 QT       -= gui
 
-TARGET = kpk-lib
+TARGET = common
 TEMPLATE = lib
 
-DEFINES += KPKLIB_LIBRARY
+DEFINES += COMMON_LIBRARY
 
-SOURCES += \
-    Lib.cpp
+SOURCES +=
 
-HEADERS += ToString.h \
-    lib_global.h \
-    Lib.h
+HEADERS +=\
+        common_global.h \
+    ToString.h
 
 unix {
     target.path = /usr/lib

@@ -7,9 +7,9 @@
 #include <odb/core.hxx>
 
 #ifdef ODB_COMPILER
-#   include "../kpk-lib/ToString.h"
+#   include "../../common/ToString.h"
 #else
-#   include "kpk-lib/ToString.h"
+#   include "../../common/ToString.h"
 #endif
 
 #include "data_global.h"
@@ -19,7 +19,7 @@ namespace data
 {
 
 #pragma db value
-class DATASHARED_EXPORT Name : public QObject, ToString
+class DATASHARED_EXPORT Name : public QObject, common::ToString
 {
     Q_OBJECT
 public:
@@ -39,6 +39,7 @@ public:
     QString set(const QString &first, const QString &middle, const QString &last);
     QString full() const;
     QString toString();
+
 private:
     friend class odb::access;
 

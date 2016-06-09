@@ -8,9 +8,9 @@
 #include <odb/core.hxx>
 
 #ifdef ODB_COMPILER
-#   include "../kpk-lib/ToString.h"
+#   include "../../common/ToString.h"
 #else
-#   include "kpk-lib/ToString.h"
+#   include "../../common/ToString.h"
 #endif
 
 #include "data_global.h"
@@ -21,7 +21,7 @@ namespace data
 {
 
 #pragma db value
-class DATASHARED_EXPORT Passport : ToString
+class DATASHARED_EXPORT Passport : common::ToString
 {    
 public:
     explicit Passport();
@@ -45,6 +45,7 @@ public:
                 QString org, QString orgCode);
 
     QString full();
+
 private:
     friend class odb::access;
 

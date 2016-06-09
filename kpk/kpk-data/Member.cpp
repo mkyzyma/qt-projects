@@ -12,7 +12,7 @@ Member::Member(QSharedPointer<Person> person,
                QDate inDate,
                QSharedPointer<QDate> outDate,
                QObject *parent)
-    : _person(person), _inDate(inDate), _outDate(outDate), QObject(parent)
+    : QObject(parent), _inDate(inDate), _outDate(outDate), _person(person)
 {}
 
 ulong Member::id() const { return _id; }
