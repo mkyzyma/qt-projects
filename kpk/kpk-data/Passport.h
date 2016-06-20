@@ -1,17 +1,11 @@
 #ifndef PASSPORT_H
 #define PASSPORT_H
 
-#include <QtCore/QObject>
+
 #include <QtCore/QString>
 #include <QtCore/QDate>
 
 #include <odb/core.hxx>
-
-/*#ifdef ODB_COMPILER
-#   include "../../common/ToString.h"
-#else
-#   include "../../common/ToString.h"
-#endif*/
 
 #include "data_global.h"
 
@@ -21,10 +15,10 @@ namespace data
 {
 
 #pragma db value
-class DATASHARED_EXPORT Passport //: common::ToString
+class DATASHARED_EXPORT Passport
 {    
 public:
-    explicit Passport();
+    Passport();
 
     QString series() const;
     void series(const QString &series);

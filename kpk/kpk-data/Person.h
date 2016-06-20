@@ -17,11 +17,10 @@ namespace data
 {
 
 #pragma db object
-class  DATASHARED_EXPORT Person : public QObject
-{
-    Q_OBJECT
+class  DATASHARED_EXPORT Person
+{    
 public:    
-    explicit Person(QObject *parent = 0);
+    Person();
     ulong id() const;
 
     Name &name();

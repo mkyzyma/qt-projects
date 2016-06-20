@@ -3,8 +3,7 @@
 namespace kpk{
 namespace data{
 
-Person::Person(QObject *parent)
-    : QObject(parent)
+Person::Person()
 {}
 
 ulong Person::id() const

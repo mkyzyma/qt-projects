@@ -1,7 +1,6 @@
 #ifndef MEMBER_H
 #define MEMBER_H
 
-#include <QtCore/QObject>
 #include <QtCore/QSharedPointer>
 
 #include <odb/core.hxx>
@@ -14,15 +13,13 @@ namespace data{
 
 
 #pragma db object
-class DATASHARED_EXPORT Member : public QObject
+class DATASHARED_EXPORT Member
 {
-    Q_OBJECT
-public:
-    explicit Member(QObject *parent = 0);
-    explicit Member(QSharedPointer<Person> person,
-                    QDate inDate,
-                    QSharedPointer<QDate> outDate = QSharedPointer<QDate>(),
-                    QObject *parent = 0);
+public:    
+    Member();
+    Member(QSharedPointer<Person> person,
+           QDate inDate,
+           QSharedPointer<QDate> outDate = QSharedPointer<QDate>());
     ulong id() const;
 
     QDate inDate() const;

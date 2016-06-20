@@ -1,16 +1,10 @@
 #ifndef NAME_H
 #define NAME_H
 
-#include <QtCore/QObject>
 #include <QtCore/QString>
 
 #include <odb/core.hxx>
 
-/*#ifdef ODB_COMPILER
-#   include "../../common/ToString.h"
-#else
-#   include "../../common/ToString.h"
-#endif*/
 
 #include "data_global.h"
 namespace kpk
@@ -19,15 +13,13 @@ namespace data
 {
 
 #pragma db value
-class DATASHARED_EXPORT Name : public QObject//, common::ToString
-{
-    Q_OBJECT
+class DATASHARED_EXPORT Name
+{    
 public:
-    explicit Name(QObject *parent = 0)
-        : QObject(parent){}
+    explicit Name(){}
 
-    explicit Name(QString first, QString middle, QString last, QObject *parent = 0)
-        : QObject(parent), _first(first), _middle(middle), _last(last)
+    explicit Name(QString first, QString middle, QString last)
+        : _first(first), _middle(middle), _last(last)
     {}
 
     QString first() const;

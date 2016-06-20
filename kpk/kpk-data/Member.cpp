@@ -3,16 +3,13 @@
 namespace kpk{
 namespace data{
 
-Member::Member(QObject *parent) : QObject(parent)
-{
-
-}
+Member::Member()
+{}
 
 Member::Member(QSharedPointer<Person> person,
                QDate inDate,
-               QSharedPointer<QDate> outDate,
-               QObject *parent)
-    : QObject(parent), _inDate(inDate), _outDate(outDate), _person(person)
+               QSharedPointer<QDate> outDate)
+    : _inDate(inDate), _outDate(outDate), _person(person)
 {}
 
 ulong Member::id() const { return _id; }
