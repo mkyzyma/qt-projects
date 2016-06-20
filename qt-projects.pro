@@ -1,6 +1,5 @@
 TEMPLATE = subdirs
 
-SUBDIRS += common \
-           kpk \
+SUBDIRS += kpk \
            fias \
 

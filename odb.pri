@@ -15,7 +15,7 @@ libodb = $$odb-$$odb_ver
 libodb_pgsql = $$odb-pgsql-$$odb_ver
 libodb_qt = $$odb-qt-$$odb_ver
 
-qt_path = $${tools}/QT/5.6/msvc2013
+qt_path = $${tools}/QT/5.7/msvc2013
 qt_include = $$qt_path/include
 
 pg_path = $${tools}/PostgreSQL/9.5.

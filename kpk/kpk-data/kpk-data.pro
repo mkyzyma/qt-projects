@@ -13,8 +13,6 @@ DEFINES += KPKDATA_LIBRARY
 
 include("../../odb.pri")
 
-INCLUDEPATH += $$PWD/../../common
-DEPENDPATH += $$PWD/../../common
 
 SOURCES += \
     Person.cpp \
@@ -42,8 +40,5 @@ DISTFILES += \
 
 
 
-win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../../common/release/ -lcommon
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../../common/debug/ -lcommon
-else:unix: LIBS += -L$$OUT_PWD/../../common/ -lcommon
 
 

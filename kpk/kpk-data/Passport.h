@@ -7,11 +7,11 @@
 
 #include <odb/core.hxx>
 
-#ifdef ODB_COMPILER
+/*#ifdef ODB_COMPILER
 #   include "../../common/ToString.h"
 #else
 #   include "../../common/ToString.h"
-#endif
+#endif*/
 
 #include "data_global.h"
 
@@ -21,7 +21,7 @@ namespace data
 {
 
 #pragma db value
-class DATASHARED_EXPORT Passport : common::ToString
+class DATASHARED_EXPORT Passport //: common::ToString
 {    
 public:
     explicit Passport();

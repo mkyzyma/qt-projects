@@ -6,11 +6,11 @@
 
 #include <odb/core.hxx>
 
-#ifdef ODB_COMPILER
+/*#ifdef ODB_COMPILER
 #   include "../../common/ToString.h"
 #else
 #   include "../../common/ToString.h"
-#endif
+#endif*/
 
 #include "data_global.h"
 namespace kpk
@@ -19,7 +19,7 @@ namespace data
 {
 
 #pragma db value
-class DATASHARED_EXPORT Name : public QObject, common::ToString
+class DATASHARED_EXPORT Name : public QObject//, common::ToString
 {
     Q_OBJECT
 public:
