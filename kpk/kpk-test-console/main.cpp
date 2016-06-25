@@ -2,6 +2,8 @@
 #include <QTextStream>
 #include <QDebug>
 
+#include <iostream>
+
 #include <odb/database.hxx>
 #include <odb/pgsql/database.hxx>
 #include <odb/pgsql/exceptions.hxx>
@@ -13,17 +15,36 @@
 #include "kpk-data/Member.h"
 #include "kpk-data/Member-odb.hxx"
 
-QTextStream cout(stdout);
-QTextStream cerr(stderr);
+//#include "QDecNumber.hh"
+//static QTextStream cout(stdout);
+//static QTextStream cerr(stderr);
 
 using namespace kpk::data;
 
 int main(int argc, char *argv[])
 {
-    system("chcp 1251");
+
+    {
+        //QDecContext
+
+    }
+
+
+
     QCoreApplication a(argc, argv);
+    return a.exec();
+
+    system("chcp 1251");
+
 
     try{
+
+        qint64 a = 25000, b = 3000, c;
+
+        c = a / b;
+
+        qDebug() << c << "\r\n";
+
         QSharedPointer<odb::database> db (
                             new odb::pgsql::database (
                                 "postgres",

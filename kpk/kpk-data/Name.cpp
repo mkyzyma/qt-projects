@@ -1,11 +1,7 @@
 #include "Name.h"
 
-namespace kpk
-{
-namespace data
-{
-
-
+namespace kpk {
+namespace data {
 
 QString Name::first() const { return _first; }
 
@@ -57,8 +53,6 @@ QString Name::toString()
 {
     return full();
 }
-
-
 
 }
 }

@@ -18,14 +18,16 @@ SOURCES += \
     Person.cpp \
     Name.cpp \
     Passport.cpp \
-    Member.cpp
+    Member.cpp \
+    Loan.cpp
 
 HEADERS += \
     data_global.h \
     Person.h \
     Name.h \
     Passport.h \
-    Member.h
+    Member.h \
+    Loan.h
 
 unix {
     target.path = /usr/lib

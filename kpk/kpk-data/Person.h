@@ -11,21 +11,19 @@
 #include "Passport.h"
 
 
-namespace kpk
-{
-namespace data
-{
+namespace kpk{
+namespace data{
 
 #pragma db object
 class  DATASHARED_EXPORT Person
 {    
 public:    
     Person();
+
     ulong id() const;
 
     Name &name();
     Passport &passport();
-
 
     QString inn() const;
     void inn(const QString &inn);
@@ -36,7 +34,7 @@ public:
 private:
     friend class odb::access;
 
-#pragma db id auto
+    #pragma db id auto
     ulong _id;
 
     Name _name;
