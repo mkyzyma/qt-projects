@@ -1,12 +1,5 @@
-CONFIG += c++14
+include("cfg.pri")
 
-win32: tools = E:/tools
-else:unix{
-    QMAKE_CXXFLAGS_WARN_ON += -Wno-reorder
-    QMAKE_CXXFLAGS_WARN_ON += -Wno-unknown-pragmas
-
-    tools = ~/tools
-}
 odb_ver = 2.4.0
 odb_dll_suff = -2.4-vc12
 
@@ -81,4 +74,8 @@ unix{
 }
 #message($$PWD)
 #message($$QMAKE_POST_LINK)
+
+DISTFILES += \
+    $$PWD/qdecimal.pri \
+    $$PWD/cfg.pri
 

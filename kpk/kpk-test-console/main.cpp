@@ -2,8 +2,6 @@
 #include <QTextStream>
 #include <QDebug>
 
-#include <iostream>
-
 #include <odb/database.hxx>
 #include <odb/pgsql/database.hxx>
 #include <odb/pgsql/exceptions.hxx>
@@ -15,9 +13,13 @@
 #include "kpk-data/Member.h"
 #include "kpk-data/Member-odb.hxx"
 
-//#include "QDecNumber.hh"
+#include <QDecContext.hh>
+#include <QDecNumber.hh>
+//#include "stdio.h"
 //static QTextStream cout(stdout);
 //static QTextStream cerr(stderr);
+
+
 
 using namespace kpk::data;
 
@@ -25,8 +27,14 @@ int main(int argc, char *argv[])
 {
 
     {
-        //QDecContext
+        QDecContext ctx;
 
+        QDecNumber a, b;
+
+        a = 10;
+        b = 100;
+
+        qDebug() << (a / b).toString();
     }
 
 
