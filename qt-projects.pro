@@ -2,5 +2,5 @@ TEMPLATE = subdirs
 
 SUBDIRS += kpk \
            fias \
-    _pri_
+           _pri_
 

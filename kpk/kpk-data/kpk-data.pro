@@ -12,14 +12,16 @@ TEMPLATE = lib
 DEFINES += KPKDATA_LIBRARY
 
 include("../../odb.pri")
-
+include("../../qdecimal.pri")
 
 SOURCES += \
     Person.cpp \
     Name.cpp \
     Passport.cpp \
     Member.cpp \
-    Loan.cpp
+    Loan.cpp \
+    LoanOperValue.cpp \
+    LoanOper.cpp
 
 HEADERS += \
     data_global.h \
@@ -27,7 +29,9 @@ HEADERS += \
     Name.h \
     Passport.h \
     Member.h \
-    Loan.h
+    Loan.h \
+    LoanOperValue.h \
+    LoanOper.h
 
 unix {
     target.path = /usr/lib

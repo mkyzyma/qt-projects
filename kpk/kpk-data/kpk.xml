@@ -32,5 +32,75 @@
         </references>
       </foreign-key>
     </table>
+    <table name="Loan" kind="object">
+      <column name="id" type="BIGINT" null="false"/>
+      <column name="openDate" type="DATE" null="true"/>
+      <column name="closeDate" type="DATE" null="true"/>
+      <column name="isClosed" type="BOOLEAN" null="false"/>
+      <column name="rate" type="BIGINT" null="false"/>
+      <column name="limit" type="BIGINT" null="false"/>
+      <column name="length" type="BIGINT" null="false"/>
+      <column name="sum" type="BIGINT" null="false"/>
+      <column name="remains" type="BIGINT" null="false"/>
+      <column name="prc" type="BIGINT" null="false"/>
+      <column name="idMember" type="BIGINT" null="false"/>
+      <column name="idPerson" type="BIGINT" null="false"/>
+      <primary-key auto="true">
+        <column name="id"/>
+      </primary-key>
+      <foreign-key name="idMember_fk" deferrable="DEFERRED">
+        <column name="idMember"/>
+        <references table="Member">
+          <column name="id"/>
+        </references>
+      </foreign-key>
+      <foreign-key name="idPerson_fk" deferrable="DEFERRED">
+        <column name="idPerson"/>
+        <references table="Person">
+          <column name="id"/>
+        </references>
+      </foreign-key>
+    </table>
+    <table name="LoanOper" kind="object">
+      <column name="id" type="BIGINT" null="false"/>
+      <column name="plan_date" type="DATE" null="true"/>
+      <column name="plan_amount" type="BIGINT" null="false"/>
+      <column name="plan_loan" type="BIGINT" null="false"/>
+      <column name="plan_loanDept" type="BIGINT" null="false"/>
+      <column name="plan_prc" type="BIGINT" null="false"/>
+      <column name="plan_prcDept" type="BIGINT" null="false"/>
+      <column name="plan_peni" type="BIGINT" null="false"/>
+      <column name="fact_date" type="DATE" null="true"/>
+      <column name="fact_amount" type="BIGINT" null="false"/>
+      <column name="fact_loan" type="BIGINT" null="false"/>
+      <column name="fact_loanDept" type="BIGINT" null="false"/>
+      <column name="fact_prc" type="BIGINT" null="false"/>
+      <column name="fact_prcDept" type="BIGINT" null="false"/>
+      <column name="fact_peni" type="BIGINT" null="false"/>
+      <column name="idPerson" type="BIGINT" null="false"/>
+      <column name="idMember" type="BIGINT" null="false"/>
+      <column name="idLoan" type="BIGINT" null="false"/>
+      <primary-key auto="true">
+        <column name="id"/>
+      </primary-key>
+      <foreign-key name="idPerson_fk" deferrable="DEFERRED">
+        <column name="idPerson"/>
+        <references table="Person">
+          <column name="id"/>
+        </references>
+      </foreign-key>
+      <foreign-key name="idMember_fk" deferrable="DEFERRED">
+        <column name="idMember"/>
+        <references table="Member">
+          <column name="id"/>
+        </references>
+      </foreign-key>
+      <foreign-key name="idLoan_fk" deferrable="DEFERRED">
+        <column name="idLoan"/>
+        <references table="Loan">
+          <column name="id"/>
+        </references>
+      </foreign-key>
+    </table>
   </model>
 </changelog>

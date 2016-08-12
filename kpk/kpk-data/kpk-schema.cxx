@@ -28,6 +28,8 @@ namespace odb
         }
         case 2:
         {
+          db.execute ("DROP TABLE IF EXISTS \"LoanOper\" CASCADE");
+          db.execute ("DROP TABLE IF EXISTS \"Loan\" CASCADE");
           db.execute ("DROP TABLE IF EXISTS \"Member\" CASCADE");
           db.execute ("DROP TABLE IF EXISTS \"Person\" CASCADE");
           db.execute ("DROP TABLE IF EXISTS \"schema_version\"");
@@ -62,6 +64,58 @@ namespace odb
                       "  CONSTRAINT \"idPerson_fk\"\n"
                       "    FOREIGN KEY (\"idPerson\")\n"
                       "    REFERENCES \"Person\" (\"id\")\n"
+                      "    INITIALLY DEFERRED)");
+          db.execute ("CREATE TABLE \"Loan\" (\n"
+                      "  \"id\" BIGSERIAL NOT NULL PRIMARY KEY,\n"
+                      "  \"openDate\" DATE NULL,\n"
+                      "  \"closeDate\" DATE NULL,\n"
+                      "  \"isClosed\" BOOLEAN NOT NULL,\n"
+                      "  \"rate\" BIGINT NOT NULL,\n"
+                      "  \"limit\" BIGINT NOT NULL,\n"
+                      "  \"length\" BIGINT NOT NULL,\n"
+                      "  \"sum\" BIGINT NOT NULL,\n"
+                      "  \"remains\" BIGINT NOT NULL,\n"
+                      "  \"prc\" BIGINT NOT NULL,\n"
+                      "  \"idMember\" BIGINT NOT NULL,\n"
+                      "  \"idPerson\" BIGINT NOT NULL,\n"
+                      "  CONSTRAINT \"idMember_fk\"\n"
+                      "    FOREIGN KEY (\"idMember\")\n"
+                      "    REFERENCES \"Member\" (\"id\")\n"
+                      "    INITIALLY DEFERRED,\n"
+                      "  CONSTRAINT \"idPerson_fk\"\n"
+                      "    FOREIGN KEY (\"idPerson\")\n"
+                      "    REFERENCES \"Person\" (\"id\")\n"
+                      "    INITIALLY DEFERRED)");
+          db.execute ("CREATE TABLE \"LoanOper\" (\n"
+                      "  \"id\" BIGSERIAL NOT NULL PRIMARY KEY,\n"
+                      "  \"plan_date\" DATE NULL,\n"
+                      "  \"plan_amount\" BIGINT NOT NULL,\n"
+                      "  \"plan_loan\" BIGINT NOT NULL,\n"
+                      "  \"plan_loanDept\" BIGINT NOT NULL,\n"
+                      "  \"plan_prc\" BIGINT NOT NULL,\n"
+                      "  \"plan_prcDept\" BIGINT NOT NULL,\n"
+                      "  \"plan_peni\" BIGINT NOT NULL,\n"
+                      "  \"fact_date\" DATE NULL,\n"
+                      "  \"fact_amount\" BIGINT NOT NULL,\n"
+                      "  \"fact_loan\" BIGINT NOT NULL,\n"
+                      "  \"fact_loanDept\" BIGINT NOT NULL,\n"
+                      "  \"fact_prc\" BIGINT NOT NULL,\n"
+                      "  \"fact_prcDept\" BIGINT NOT NULL,\n"
+                      "  \"fact_peni\" BIGINT NOT NULL,\n"
+                      "  \"idPerson\" BIGINT NOT NULL,\n"
+                      "  \"idMember\" BIGINT NOT NULL,\n"
+                      "  \"idLoan\" BIGINT NOT NULL,\n"
+                      "  CONSTRAINT \"idPerson_fk\"\n"
+                      "    FOREIGN KEY (\"idPerson\")\n"
+                      "    REFERENCES \"Person\" (\"id\")\n"
+                      "    INITIALLY DEFERRED,\n"
+                      "  CONSTRAINT \"idMember_fk\"\n"
+                      "    FOREIGN KEY (\"idMember\")\n"
+                      "    REFERENCES \"Member\" (\"id\")\n"
+                      "    INITIALLY DEFERRED,\n"
+                      "  CONSTRAINT \"idLoan_fk\"\n"
+                      "    FOREIGN KEY (\"idLoan\")\n"
+                      "    REFERENCES \"Loan\" (\"id\")\n"
                       "    INITIALLY DEFERRED)");
           return true;
         }
