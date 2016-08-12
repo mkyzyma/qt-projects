@@ -5,3 +5,5 @@ INCLUDEPATH += $$tools/qdecimal/decnumber $$tools/qdecimal/src
 LIBS += -L$$tools/qdecimal/lib -lqdecimal -ldecnumber
 
 
+
+
