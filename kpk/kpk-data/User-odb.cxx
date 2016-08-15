@@ -4,7 +4,7 @@
 
 #include <odb/pre.hxx>
 
-#include "Member-odb.hxx"
+#include "User-odb.hxx"
 
 #include <cassert>
 #include <cstring>  // std::memcpy
@@ -23,68 +23,55 @@
 
 namespace odb
 {
-  // Member
+  // User
   //
 
-  const char access::object_traits_impl< ::kpk::data::Member, id_pgsql >::
-  persist_statement_name[] = "persist_kpk_data_Member";
+  const char access::object_traits_impl< ::kpk::data::User, id_pgsql >::
+  persist_statement_name[] = "persist_kpk_data_User";
 
-  const char access::object_traits_impl< ::kpk::data::Member, id_pgsql >::
-  find_statement_name[] = "find_kpk_data_Member";
+  const char access::object_traits_impl< ::kpk::data::User, id_pgsql >::
+  find_statement_name[] = "find_kpk_data_User";
 
-  const char access::object_traits_impl< ::kpk::data::Member, id_pgsql >::
-  update_statement_name[] = "update_kpk_data_Member";
+  const char access::object_traits_impl< ::kpk::data::User, id_pgsql >::
+  update_statement_name[] = "update_kpk_data_User";
 
-  const char access::object_traits_impl< ::kpk::data::Member, id_pgsql >::
-  erase_statement_name[] = "erase_kpk_data_Member";
+  const char access::object_traits_impl< ::kpk::data::User, id_pgsql >::
+  erase_statement_name[] = "erase_kpk_data_User";
 
-  const char access::object_traits_impl< ::kpk::data::Member, id_pgsql >::
-  query_statement_name[] = "query_kpk_data_Member";
+  const char access::object_traits_impl< ::kpk::data::User, id_pgsql >::
+  query_statement_name[] = "query_kpk_data_User";
 
-  const char access::object_traits_impl< ::kpk::data::Member, id_pgsql >::
-  erase_query_statement_name[] = "erase_query_kpk_data_Member";
+  const char access::object_traits_impl< ::kpk::data::User, id_pgsql >::
+  erase_query_statement_name[] = "erase_query_kpk_data_User";
 
-  const unsigned int access::object_traits_impl< ::kpk::data::Member, id_pgsql >::
+  const unsigned int access::object_traits_impl< ::kpk::data::User, id_pgsql >::
   persist_statement_types[] =
   {
     pgsql::bool_oid,
     pgsql::timestamp_oid,
     pgsql::int8_oid,
-    pgsql::timestamp_oid,
-    pgsql::int8_oid,
-    pgsql::date_oid,
-    pgsql::date_oid,
-    pgsql::int4_oid,
-    pgsql::int8_oid
+    pgsql::text_oid,
+    pgsql::text_oid
   };
 
-  const unsigned int access::object_traits_impl< ::kpk::data::Member, id_pgsql >::
+  const unsigned int access::object_traits_impl< ::kpk::data::User, id_pgsql >::
   find_statement_types[] =
   {
     pgsql::int8_oid
   };
 
-  const unsigned int access::object_traits_impl< ::kpk::data::Member, id_pgsql >::
+  const unsigned int access::object_traits_impl< ::kpk::data::User, id_pgsql >::
   update_statement_types[] =
   {
     pgsql::bool_oid,
     pgsql::timestamp_oid,
     pgsql::int8_oid,
-    pgsql::timestamp_oid,
-    pgsql::int8_oid,
-    pgsql::date_oid,
-    pgsql::date_oid,
-    pgsql::int4_oid,
-    pgsql::int8_oid,
+    pgsql::text_oid,
+    pgsql::text_oid,
     pgsql::int8_oid
   };
 
-  const char alias_traits<  ::kpk::data::Person,
-    id_pgsql,
-    access::object_traits_impl< ::kpk::data::Member, id_pgsql >::person_tag>::
-  table_name[] = "\"idPerson\"";
-
-  struct access::object_traits_impl< ::kpk::data::Member, id_pgsql >::extra_statement_cache_type
+  struct access::object_traits_impl< ::kpk::data::User, id_pgsql >::extra_statement_cache_type
   {
     extra_statement_cache_type (
       pgsql::connection&,
@@ -98,8 +85,8 @@ namespace odb
     }
   };
 
-  access::object_traits_impl< ::kpk::data::Member, id_pgsql >::id_type
-  access::object_traits_impl< ::kpk::data::Member, id_pgsql >::
+  access::object_traits_impl< ::kpk::data::User, id_pgsql >::id_type
+  access::object_traits_impl< ::kpk::data::User, id_pgsql >::
   id (const id_image_type& i)
   {
     pgsql::database* db (0);
@@ -118,8 +105,8 @@ namespace odb
     return id;
   }
 
-  access::object_traits_impl< ::kpk::data::Member, id_pgsql >::id_type
-  access::object_traits_impl< ::kpk::data::Member, id_pgsql >::
+  access::object_traits_impl< ::kpk::data::User, id_pgsql >::id_type
+  access::object_traits_impl< ::kpk::data::User, id_pgsql >::
   id (const image_type& i)
   {
     pgsql::database* db (0);
@@ -138,7 +125,7 @@ namespace odb
     return id;
   }
 
-  bool access::object_traits_impl< ::kpk::data::Member, id_pgsql >::
+  bool access::object_traits_impl< ::kpk::data::User, id_pgsql >::
   grow (image_type& i,
         bool* t)
   {
@@ -147,36 +134,36 @@ namespace odb
 
     bool grew (false);
 
-    // DbObject base
+    // IsDeleted base
     //
-    if (object_traits_impl< ::kpk::data::DbObject, id_pgsql >::grow (
+    if (object_traits_impl< ::kpk::data::IsDeleted, id_pgsql >::grow (
           i, t + 0UL))
       grew = true;
 
     // _id
     //
-    t[5UL] = 0;
+    t[3UL] = 0;
 
-    // _inDate
+    // _username
     //
-    t[6UL] = 0;
+    if (t[4UL])
+    {
+      i._username_value.capacity (i._username_size);
+      grew = true;
+    }
 
-    // _outDate
+    // _password
     //
-    t[7UL] = 0;
-
-    // _exitReason
-    //
-    t[8UL] = 0;
-
-    // _person
-    //
-    t[9UL] = 0;
+    if (t[5UL])
+    {
+      i._password_value.capacity (i._password_size);
+      grew = true;
+    }
 
     return grew;
   }
 
-  void access::object_traits_impl< ::kpk::data::Member, id_pgsql >::
+  void access::object_traits_impl< ::kpk::data::User, id_pgsql >::
   bind (pgsql::bind* b,
         image_type& i,
         pgsql::statement_kind sk)
@@ -187,10 +174,10 @@ namespace odb
 
     std::size_t n (0);
 
-    // DbObject base
+    // IsDeleted base
     //
-    object_traits_impl< ::kpk::data::DbObject, id_pgsql >::bind (b + n, i, sk);
-    n += 5UL;
+    object_traits_impl< ::kpk::data::IsDeleted, id_pgsql >::bind (b + n, i, sk);
+    n += 3UL;
 
     // _id
     //
@@ -202,36 +189,26 @@ namespace odb
       n++;
     }
 
-    // _inDate
+    // _username
     //
-    b[n].type = pgsql::bind::date;
-    b[n].buffer = &i._inDate_value;
-    b[n].is_null = &i._inDate_null;
+    b[n].type = pgsql::bind::text;
+    b[n].buffer = i._username_value.data ();
+    b[n].capacity = i._username_value.capacity ();
+    b[n].size = &i._username_size;
+    b[n].is_null = &i._username_null;
     n++;
 
-    // _outDate
+    // _password
     //
-    b[n].type = pgsql::bind::date;
-    b[n].buffer = &i._outDate_value;
-    b[n].is_null = &i._outDate_null;
-    n++;
-
-    // _exitReason
-    //
-    b[n].type = pgsql::bind::integer;
-    b[n].buffer = &i._exitReason_value;
-    b[n].is_null = &i._exitReason_null;
-    n++;
-
-    // _person
-    //
-    b[n].type = pgsql::bind::bigint;
-    b[n].buffer = &i._person_value;
-    b[n].is_null = &i._person_null;
+    b[n].type = pgsql::bind::text;
+    b[n].buffer = i._password_value.data ();
+    b[n].capacity = i._password_value.capacity ();
+    b[n].size = &i._password_size;
+    b[n].is_null = &i._password_null;
     n++;
   }
 
-  void access::object_traits_impl< ::kpk::data::Member, id_pgsql >::
+  void access::object_traits_impl< ::kpk::data::User, id_pgsql >::
   bind (pgsql::bind* b, id_image_type& i)
   {
     std::size_t n (0);
@@ -240,7 +217,7 @@ namespace odb
     b[n].is_null = &i.id_null;
   }
 
-  bool access::object_traits_impl< ::kpk::data::Member, id_pgsql >::
+  bool access::object_traits_impl< ::kpk::data::User, id_pgsql >::
   init (image_type& i,
         const object_type& o,
         pgsql::statement_kind sk)
@@ -253,82 +230,57 @@ namespace odb
 
     bool grew (false);
 
-    // DbObject base
+    // IsDeleted base
     //
-    if (object_traits_impl< ::kpk::data::DbObject, id_pgsql >::init (i, o, sk))
+    if (object_traits_impl< ::kpk::data::IsDeleted, id_pgsql >::init (i, o, sk))
       grew = true;
 
-    // _inDate
+    // _username
     //
     {
-      ::QDate const& v =
-        o._inDate;
+      ::QString const& v =
+        o._username;
 
       bool is_null (true);
+      std::size_t size (0);
+      std::size_t cap (i._username_value.capacity ());
       pgsql::value_traits<
-          ::QDate,
-          pgsql::id_date >::set_image (
-        i._inDate_value, is_null, v);
-      i._inDate_null = is_null;
+          ::QString,
+          pgsql::id_string >::set_image (
+        i._username_value,
+        size,
+        is_null,
+        v);
+      i._username_null = is_null;
+      i._username_size = size;
+      grew = grew || (cap != i._username_value.capacity ());
     }
 
-    // _outDate
+    // _password
     //
     {
-      ::std::shared_ptr< ::QDate > const& v =
-        o._outDate;
+      ::QString const& v =
+        o._password;
 
       bool is_null (true);
+      std::size_t size (0);
+      std::size_t cap (i._password_value.capacity ());
       pgsql::value_traits<
-          ::std::shared_ptr< ::QDate >,
-          pgsql::id_date >::set_image (
-        i._outDate_value, is_null, v);
-      i._outDate_null = is_null;
-    }
-
-    // _exitReason
-    //
-    {
-      ::kpk::data::ExitReason const& v =
-        o._exitReason;
-
-      bool is_null (false);
-      pgsql::value_traits<
-          ::kpk::data::ExitReason,
-          pgsql::id_integer >::set_image (
-        i._exitReason_value, is_null, v);
-      i._exitReason_null = is_null;
-    }
-
-    // _person
-    //
-    {
-      ::std::shared_ptr< ::kpk::data::Person > const& v =
-        o._person;
-
-      typedef object_traits< ::kpk::data::Person > obj_traits;
-      typedef odb::pointer_traits< ::std::shared_ptr< ::kpk::data::Person > > ptr_traits;
-
-      bool is_null (ptr_traits::null_ptr (v));
-      if (!is_null)
-      {
-        const obj_traits::id_type& id (
-          obj_traits::id (ptr_traits::get_ref (v)));
-
-        pgsql::value_traits<
-            obj_traits::id_type,
-            pgsql::id_bigint >::set_image (
-          i._person_value, is_null, id);
-        i._person_null = is_null;
-      }
-      else
-        throw null_pointer ();
+          ::QString,
+          pgsql::id_string >::set_image (
+        i._password_value,
+        size,
+        is_null,
+        v);
+      i._password_null = is_null;
+      i._password_size = size;
+      grew = grew || (cap != i._password_value.capacity ());
     }
 
     return grew;
   }
 
-  void access::object_traits_impl< ::kpk::data::Member, id_pgsql >::
+  void access::object_traits_impl< ::kpk::data::User, id_pgsql >::
   init (object_type& o,
         const image_type& i,
         database* db)
@@ -337,9 +289,9 @@ namespace odb
     ODB_POTENTIALLY_UNUSED (i);
     ODB_POTENTIALLY_UNUSED (db);
 
-    // DbObject base
+    // IsDeleted base
     //
-    object_traits_impl< ::kpk::data::DbObject, id_pgsql >::init (o, i, db);
+    object_traits_impl< ::kpk::data::IsDeleted, id_pgsql >::init (o, i, db);
 
     // _id
     //
@@ -355,81 +307,38 @@ namespace odb
         i._id_null);
     }
 
-    // _inDate
+    // _username
     //
     {
-      ::QDate& v =
-        o._inDate;
+      ::QString& v =
+        o._username;
 
       pgsql::value_traits<
-          ::QDate,
-          pgsql::id_date >::set_value (
+          ::QString,
+          pgsql::id_string >::set_value (
         v,
-        i._inDate_value,
-        i._inDate_null);
+        i._username_value,
+        i._username_size,
+        i._username_null);
     }
 
-    // _outDate
+    // _password
     //
     {
-      ::std::shared_ptr< ::QDate >& v =
-        o._outDate;
+      ::QString& v =
+        o._password;
 
       pgsql::value_traits<
-          ::std::shared_ptr< ::QDate >,
-          pgsql::id_date >::set_value (
+          ::QString,
+          pgsql::id_string >::set_value (
         v,
-        i._outDate_value,
-        i._outDate_null);
-    }
-
-    // _exitReason
-    //
-    {
-      ::kpk::data::ExitReason& v =
-        o._exitReason;
-
-      pgsql::value_traits<
-          ::kpk::data::ExitReason,
-          pgsql::id_integer >::set_value (
-        v,
-        i._exitReason_value,
-        i._exitReason_null);
-    }
-
-    // _person
-    //
-    {
-      ::std::shared_ptr< ::kpk::data::Person >& v =
-        o._person;
-
-      typedef object_traits< ::kpk::data::Person > obj_traits;
-      typedef odb::pointer_traits< ::std::shared_ptr< ::kpk::data::Person > > ptr_traits;
-
-      if (i._person_null)
-        v = ptr_traits::pointer_type ();
-      else
-      {
-        obj_traits::id_type id;
-        pgsql::value_traits<
-            obj_traits::id_type,
-            pgsql::id_bigint >::set_value (
-          id,
-          i._person_value,
-          i._person_null);
-
-        // If a compiler error points to the line below, then
-        // it most likely means that a pointer used in a member
-        // cannot be initialized from an object pointer.
-        //
-        v = ptr_traits::pointer_type (
-          static_cast<pgsql::database*> (db)->load<
-            obj_traits::object_type > (id));
-      }
+        i._password_value,
+        i._password_size,
+        i._password_null);
     }
   }
 
-  void access::object_traits_impl< ::kpk::data::Member, id_pgsql >::
+  void access::object_traits_impl< ::kpk::data::User, id_pgsql >::
   init (id_image_type& i, const id_type& id)
   {
     {
@@ -442,79 +351,61 @@ namespace odb
     }
   }
 
-  const char access::object_traits_impl< ::kpk::data::Member, id_pgsql >::persist_statement[] =
-  "INSERT INTO \"Member\" "
+  const char access::object_traits_impl< ::kpk::data::User, id_pgsql >::persist_statement[] =
+  "INSERT INTO \"User\" "
   "(\"isDeleted\", "
   "\"deleteTime\", "
   "\"deletedBy\", "
-  "\"createTime\", "
-  "\"idUser\", "
   "\"id\", "
-  "\"inDate\", "
-  "\"outDate\", "
-  "\"exitReason\", "
-  "\"idPerson\") "
+  "\"username\", "
+  "\"password\") "
   "VALUES "
-  "($1, $2, $3, $4, $5, DEFAULT, $6, $7, $8, $9) "
+  "($1, $2, $3, DEFAULT, $4, $5) "
   "RETURNING \"id\"";
 
-  const char access::object_traits_impl< ::kpk::data::Member, id_pgsql >::find_statement[] =
+  const char access::object_traits_impl< ::kpk::data::User, id_pgsql >::find_statement[] =
   "SELECT "
-  "\"Member\".\"isDeleted\", "
-  "\"Member\".\"deleteTime\", "
-  "\"Member\".\"deletedBy\", "
-  "\"Member\".\"createTime\", "
-  "\"Member\".\"idUser\", "
-  "\"Member\".\"id\", "
-  "\"Member\".\"inDate\", "
-  "\"Member\".\"outDate\", "
-  "\"Member\".\"exitReason\", "
-  "\"Member\".\"idPerson\" "
-  "FROM \"Member\" "
-  "WHERE \"Member\".\"id\"=$1";
+  "\"User\".\"isDeleted\", "
+  "\"User\".\"deleteTime\", "
+  "\"User\".\"deletedBy\", "
+  "\"User\".\"id\", "
+  "\"User\".\"username\", "
+  "\"User\".\"password\" "
+  "FROM \"User\" "
+  "WHERE \"User\".\"id\"=$1";
 
-  const char access::object_traits_impl< ::kpk::data::Member, id_pgsql >::update_statement[] =
-  "UPDATE \"Member\" "
+  const char access::object_traits_impl< ::kpk::data::User, id_pgsql >::update_statement[] =
+  "UPDATE \"User\" "
   "SET "
   "\"isDeleted\"=$1, "
   "\"deleteTime\"=$2, "
   "\"deletedBy\"=$3, "
-  "\"createTime\"=$4, "
-  "\"idUser\"=$5, "
-  "\"inDate\"=$6, "
-  "\"outDate\"=$7, "
-  "\"exitReason\"=$8, "
-  "\"idPerson\"=$9 "
-  "WHERE \"id\"=$10";
+  "\"username\"=$4, "
+  "\"password\"=$5 "
+  "WHERE \"id\"=$6";
 
-  const char access::object_traits_impl< ::kpk::data::Member, id_pgsql >::erase_statement[] =
-  "DELETE FROM \"Member\" "
+  const char access::object_traits_impl< ::kpk::data::User, id_pgsql >::erase_statement[] =
+  "DELETE FROM \"User\" "
   "WHERE \"id\"=$1";
 
-  const char access::object_traits_impl< ::kpk::data::Member, id_pgsql >::query_statement[] =
+  const char access::object_traits_impl< ::kpk::data::User, id_pgsql >::query_statement[] =
   "SELECT\n"
-  "\"Member\".\"isDeleted\",\n"
-  "\"Member\".\"deleteTime\",\n"
-  "\"Member\".\"deletedBy\",\n"
-  "\"Member\".\"createTime\",\n"
-  "\"Member\".\"idUser\",\n"
-  "\"Member\".\"id\",\n"
-  "\"Member\".\"inDate\",\n"
-  "\"Member\".\"outDate\",\n"
-  "\"Member\".\"exitReason\",\n"
-  "\"Member\".\"idPerson\"\n"
-  "FROM \"Member\"\n"
-  "LEFT JOIN \"User\" AS \"deletedBy\" ON \"deletedBy\".\"id\"=\"Member\".\"deletedBy\"\n"
-  "LEFT JOIN \"User\" AS \"idUser\" ON \"idUser\".\"id\"=\"Member\".\"idUser\"\n"
-  "LEFT JOIN \"Person\" AS \"idPerson\" ON \"idPerson\".\"id\"=\"Member\".\"idPerson\"";
+  "\"User\".\"isDeleted\",\n"
+  "\"User\".\"deleteTime\",\n"
+  "\"User\".\"deletedBy\",\n"
+  "\"User\".\"id\",\n"
+  "\"User\".\"username\",\n"
+  "\"User\".\"password\"\n"
+  "FROM \"User\"\n"
+  "LEFT JOIN \"User\" AS \"deletedBy\" ON \"deletedBy\".\"id\"=\"User\".\"deletedBy\"";
 
-  const char access::object_traits_impl< ::kpk::data::Member, id_pgsql >::erase_query_statement[] =
-  "DELETE FROM \"Member\"";
+  const char access::object_traits_impl< ::kpk::data::User, id_pgsql >::erase_query_statement[] =
+  "DELETE FROM \"User\"";
 
-  const char access::object_traits_impl< ::kpk::data::Member, id_pgsql >::table_name[] =
-  "\"Member\"";
+  const char access::object_traits_impl< ::kpk::data::User, id_pgsql >::table_name[] =
+  "\"User\"";
 
-  void access::object_traits_impl< ::kpk::data::Member, id_pgsql >::
+  void access::object_traits_impl< ::kpk::data::User, id_pgsql >::
   persist (database& db, object_type& obj)
   {
     ODB_POTENTIALLY_UNUSED (db);
@@ -566,7 +457,7 @@ namespace odb
               callback_event::post_persist);
   }
 
-  void access::object_traits_impl< ::kpk::data::Member, id_pgsql >::
+  void access::object_traits_impl< ::kpk::data::User, id_pgsql >::
   update (database& db, const object_type& obj)
   {
     ODB_POTENTIALLY_UNUSED (db);
@@ -627,7 +518,7 @@ namespace odb
     pointer_cache_traits::update (db, obj);
   }
 
-  void access::object_traits_impl< ::kpk::data::Member, id_pgsql >::
+  void access::object_traits_impl< ::kpk::data::User, id_pgsql >::
   erase (database& db, const id_type& id)
   {
     using namespace pgsql;
@@ -656,8 +547,8 @@ namespace odb
     pointer_cache_traits::erase (db, id);
   }
 
-  access::object_traits_impl< ::kpk::data::Member, id_pgsql >::pointer_type
-  access::object_traits_impl< ::kpk::data::Member, id_pgsql >::
+  access::object_traits_impl< ::kpk::data::User, id_pgsql >::pointer_type
+  access::object_traits_impl< ::kpk::data::User, id_pgsql >::
   find (database& db, const id_type& id)
   {
     using namespace pgsql;
@@ -712,7 +603,7 @@ namespace odb
     return p;
   }
 
-  bool access::object_traits_impl< ::kpk::data::Member, id_pgsql >::
+  bool access::object_traits_impl< ::kpk::data::User, id_pgsql >::
   find (database& db, const id_type& id, object_type& obj)
   {
     using namespace pgsql;
@@ -745,7 +636,7 @@ namespace odb
     return true;
   }
 
-  bool access::object_traits_impl< ::kpk::data::Member, id_pgsql >::
+  bool access::object_traits_impl< ::kpk::data::User, id_pgsql >::
   reload (database& db, object_type& obj)
   {
     using namespace pgsql;
@@ -775,7 +666,7 @@ namespace odb
     return true;
   }
 
-  bool access::object_traits_impl< ::kpk::data::Member, id_pgsql >::
+  bool access::object_traits_impl< ::kpk::data::User, id_pgsql >::
   find_ (statements_type& sts,
          const id_type* id)
   {
@@ -809,11 +700,25 @@ namespace odb
     auto_result ar (st);
     select_statement::result r (st.fetch ());
 
+    if (r == select_statement::truncated)
+    {
+      if (grow (im, sts.select_image_truncated ()))
+        im.version++;
+
+      if (im.version != sts.select_image_version ())
+      {
+        bind (imb.bind, im, statement_select);
+        sts.select_image_version (im.version);
+        imb.version++;
+        st.refetch ();
+      }
+    }
+
     return r != select_statement::no_data;
   }
 
-  result< access::object_traits_impl< ::kpk::data::Member, id_pgsql >::object_type >
-  access::object_traits_impl< ::kpk::data::Member, id_pgsql >::
+  result< access::object_traits_impl< ::kpk::data::User, id_pgsql >::object_type >
+  access::object_traits_impl< ::kpk::data::User, id_pgsql >::
   query (database&, const query_base_type& q)
   {
     using namespace pgsql;
@@ -867,7 +772,7 @@ namespace odb
     return result<object_type> (r);
   }
 
-  unsigned long long access::object_traits_impl< ::kpk::data::Member, id_pgsql >::
+  unsigned long long access::object_traits_impl< ::kpk::data::User, id_pgsql >::
   erase_query (database&, const query_base_type& q)
   {
     using namespace pgsql;

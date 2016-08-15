@@ -1,8 +1,10 @@
 #!/bin/bash
 ./createfile IsDeleted.h
+./createfile DbObject.h
 ./createfile Name.h
 ./createfile Passport.h
 ./createfile Person.h
+./createfile User.h
 ./createfile Member.h
 ./createfile LoanType.h
 ./createfile Loan.h
@@ -12,4 +14,5 @@
 odb --database pgsql --generate-schema-only --profile qt/date-time -x -fPIC \
 -I/home/miha/tools/Qt/5.6/gcc_64/include --at-once \
 --schema-format separate --input-name kpk \
-IsDeleted.h Name.h Passport.h Person.h Member.h LoanType.h Loan.h LoanOperValue.h LoanOper.h
+IsDeleted.h DbObject.h Name.h Passport.h Person.h User.h \
+Member.h LoanType.h Loan.h LoanOperValue.h LoanOper.h

@@ -5,6 +5,7 @@
 
 #include "core_global.h"
 #include "DbService.h"
+#include "AuthService.h"
 #include "PersonService.h"
 #include "DateService.h"
 
@@ -26,6 +27,11 @@ public:
      * \return Указатель на службу
      */
     std::shared_ptr<DbService> dbService() const;
+    /*!
+     * \brief Получить службу авторизации
+     * \return Служба авторизации
+     */
+    std::shared_ptr<AuthService> auth() const;
     /*!
      * \brief Основная база данных
      * \return Указатель на базу данных
@@ -58,12 +64,15 @@ public:
      * \return Экземпляр объекта
      */
     static CoreClass* instance();
+
+
 protected:
     CoreClass();
     virtual ~CoreClass();
 private:
-    std::shared_ptr<PersonService> _person;
     std::shared_ptr<DbService> _dbService;
+    std::shared_ptr<AuthService> _auth;
+    std::shared_ptr<PersonService> _person;        
     std::shared_ptr<DateService> _date;
 };
 

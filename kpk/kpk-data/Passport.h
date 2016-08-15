@@ -75,7 +75,7 @@ public:
 
     /*!
      * \brief Установить код отделения
-     * \param Код отделения
+     * \param orgCode - Код отделения
      */
     void orgCode(const QString &orgCode);
 

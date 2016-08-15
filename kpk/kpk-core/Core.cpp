@@ -6,12 +6,18 @@ namespace core{
 CoreClass::CoreClass()
     : _person(std::make_shared<PersonService>()),
       _dbService(std::make_shared<DbService>()),
+      _auth(std::make_shared<AuthService>()),
       _date(std::make_shared<DateService>(QDate::currentDate()))
 {    
 }
 
 CoreClass::~CoreClass()
 {}
+
+std::shared_ptr<AuthService> CoreClass::auth() const
+{
+    return _auth;
+}
 
 std::shared_ptr<DbService> CoreClass::dbService() const
 {

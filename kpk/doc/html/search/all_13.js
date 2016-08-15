@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7ecoreclass',['~CoreClass',['../classkpk_1_1core_1_1_core_class.html#af6ec66f11421c4e09f0d0bad2326abbd',1,'kpk::core::CoreClass']]]
+  ['working',['working',['../classkpk_1_1core_1_1_date_service.html#a743cde998267460424a0c4971774fe33',1,'kpk::core::DateService::working() const '],['../classkpk_1_1core_1_1_date_service.html#a93e1f8d04a12c025f583610e5037965a',1,'kpk::core::DateService::working(const QDate &amp;working)']]]
 ];

@@ -30,12 +30,14 @@
 
 #include "Loan.h"
 
+#include "DbObject-odb.hxx"
 #include "IsDeleted-odb.hxx"
 #include "LoanType-odb.hxx"
 #include "Member-odb.hxx"
 #include "Name-odb.hxx"
 #include "Passport-odb.hxx"
 #include "Person-odb.hxx"
+#include "User-odb.hxx"
 
 #include <memory>
 #include <cstddef>
@@ -118,11 +120,11 @@ namespace odb
   //
   template <typename A>
   struct pointer_query_columns< ::kpk::data::Loan, id_pgsql, A >:
-    pointer_query_columns< ::kpk::data::IsDeleted, id_pgsql, A >
+    pointer_query_columns< ::kpk::data::DbObject, id_pgsql, A >
   {
-    // IsDeleted
+    // DbObject
     //
-    typedef pointer_query_columns< ::kpk::data::IsDeleted, id_pgsql, A > IsDeleted;
+    typedef pointer_query_columns< ::kpk::data::DbObject, id_pgsql, A > DbObject;
 
     // id
     //
@@ -359,7 +361,7 @@ namespace odb
       std::size_t version;
     };
 
-    struct image_type: object_traits_impl< ::kpk::data::IsDeleted, id_pgsql >::image_type
+    struct image_type: object_traits_impl< ::kpk::data::DbObject, id_pgsql >::image_type
     {
       // _id
       //
@@ -472,7 +474,7 @@ namespace odb
 
     typedef pgsql::query_base query_base_type;
 
-    static const std::size_t column_count = 15UL;
+    static const std::size_t column_count = 18UL;
     static const std::size_t id_column_count = 1UL;
     static const std::size_t inverse_column_count = 0UL;
     static const std::size_t readonly_column_count = 0UL;
@@ -610,11 +612,11 @@ namespace odb
   template <typename A>
   struct query_columns< ::kpk::data::Loan, id_pgsql, A >:
     query_columns_base< ::kpk::data::Loan, id_pgsql >,
-    query_columns< ::kpk::data::IsDeleted, id_pgsql, A >
+    query_columns< ::kpk::data::DbObject, id_pgsql, A >
   {
-    // IsDeleted
+    // DbObject
     //
-    typedef query_columns< ::kpk::data::IsDeleted, id_pgsql, A > IsDeleted;
+    typedef query_columns< ::kpk::data::DbObject, id_pgsql, A > DbObject;
 
     // id
     //

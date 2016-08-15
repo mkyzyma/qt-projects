@@ -8,26 +8,26 @@
 
 #include "data_global.h"
 #include "Person.h"
-
+#include "DbObject.h"
 namespace kpk{
 namespace data{
 
 /*!
  * \brief Причина выхода
  */
-enum ExitReason
+enum class ExitReason
 {
-    ER_NONE, ///<\brief Не вышел
-    ER_EXIT, ///<\brief Вышел добровольно
-    ER_KICK, ///<\brief Исключен
-    ER_DEATH ///<\brief Умер
+    none, ///<\brief Не вышел
+    exit, ///<\brief Вышел добровольно
+    kick, ///<\brief Исключен
+    death ///<\brief Умер
 };
 
 /*!
  * \brief Пайщик
  */
 #pragma db object
-class DATASHARED_EXPORT Member
+class DATASHARED_EXPORT Member : public DbObject
 {
 public:    
     Member();
@@ -99,7 +99,7 @@ public:
 private:
     friend class odb::access;
 
-#pragma db id auto
+    #pragma db id auto
     ulong _id;
 
     QDate _inDate;

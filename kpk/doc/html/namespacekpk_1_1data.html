@@ -96,6 +96,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Классы</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkpk_1_1data_1_1_db_object.html">DbObject</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Базовый класс для объектов БД  <a href="classkpk_1_1data_1_1_db_object.html#details">Подробнее...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkpk_1_1data_1_1_is_deleted.html">IsDeleted</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Признак удаления  <a href="classkpk_1_1data_1_1_is_deleted.html#details">Подробнее...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -123,13 +126,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkpk_1_1data_1_1_person.html">Person</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Человек  <a href="classkpk_1_1data_1_1_person.html#details">Подробнее...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkpk_1_1data_1_1_user.html">User</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Пользователь  <a href="classkpk_1_1data_1_1_user.html#details">Подробнее...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Перечисления</h2></td></tr>
-<tr class="memitem:a16790bc647a6788cab282e185ee28998"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekpk_1_1data.html#a16790bc647a6788cab282e185ee28998">ExitReason</a> { <a class="el" href="namespacekpk_1_1data.html#a16790bc647a6788cab282e185ee28998aa134c23d38704d99db23ef993830c24a">ER_NONE</a>, 
-<a class="el" href="namespacekpk_1_1data.html#a16790bc647a6788cab282e185ee28998a72cce9ef1a1a013bca99ece41bc13431">ER_EXIT</a>, 
-<a class="el" href="namespacekpk_1_1data.html#a16790bc647a6788cab282e185ee28998a8cfb19daa38668796673a2ce7ce15f24">ER_KICK</a>, 
-<a class="el" href="namespacekpk_1_1data.html#a16790bc647a6788cab282e185ee28998a2063b2e237a0013b06ed6eedc4b8bc48">ER_DEATH</a>
+<tr class="memitem:a16790bc647a6788cab282e185ee28998"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekpk_1_1data.html#a16790bc647a6788cab282e185ee28998">ExitReason</a> { <a class="el" href="namespacekpk_1_1data.html#a16790bc647a6788cab282e185ee28998a334c4a4c42fdb79d7ebc3e73b517e6f8">ExitReason::none</a>, 
+<a class="el" href="namespacekpk_1_1data.html#a16790bc647a6788cab282e185ee28998af24f62eeb789199b9b2e467df3b1876b">ExitReason::exit</a>, 
+<a class="el" href="namespacekpk_1_1data.html#a16790bc647a6788cab282e185ee28998af175e09ccd29c70d6cfd9181256da4a7">ExitReason::kick</a>, 
+<a class="el" href="namespacekpk_1_1data.html#a16790bc647a6788cab282e185ee28998a2e8d6dbf9112a879d4ceb15403d10a78">ExitReason::death</a>
  }<tr class="memdesc:a16790bc647a6788cab282e185ee28998"><td class="mdescLeft">&#160;</td><td class="mdescRight">Причина выхода  <a href="namespacekpk_1_1data.html#a16790bc647a6788cab282e185ee28998">Подробнее...</a><br /></td></tr>
 </td></tr>
 <tr class="separator:a16790bc647a6788cab282e185ee28998"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -138,30 +144,38 @@ var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
 <a class="anchor" id="a16790bc647a6788cab282e185ee28998"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">enum <a class="el" href="namespacekpk_1_1data.html#a16790bc647a6788cab282e185ee28998">kpk::data::ExitReason</a></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Причина выхода </p>
 <table class="fieldtable">
-<tr><th colspan="2">Элементы перечислений</th></tr><tr><td class="fieldname"><a class="anchor" id="a16790bc647a6788cab282e185ee28998aa134c23d38704d99db23ef993830c24a"></a>ER_NONE&#160;</td><td class="fielddoc">
+<tr><th colspan="2">Элементы перечислений</th></tr><tr><td class="fieldname"><a class="anchor" id="a16790bc647a6788cab282e185ee28998a334c4a4c42fdb79d7ebc3e73b517e6f8"></a>none&#160;</td><td class="fielddoc">
 <p>Не вышел </p>
 </td></tr>
-<tr><td class="fieldname"><a class="anchor" id="a16790bc647a6788cab282e185ee28998a72cce9ef1a1a013bca99ece41bc13431"></a>ER_EXIT&#160;</td><td class="fielddoc">
+<tr><td class="fieldname"><a class="anchor" id="a16790bc647a6788cab282e185ee28998af24f62eeb789199b9b2e467df3b1876b"></a>exit&#160;</td><td class="fielddoc">
 <p>Вышел добровольно </p>
 </td></tr>
-<tr><td class="fieldname"><a class="anchor" id="a16790bc647a6788cab282e185ee28998a8cfb19daa38668796673a2ce7ce15f24"></a>ER_KICK&#160;</td><td class="fielddoc">
+<tr><td class="fieldname"><a class="anchor" id="a16790bc647a6788cab282e185ee28998af175e09ccd29c70d6cfd9181256da4a7"></a>kick&#160;</td><td class="fielddoc">
 <p>Исключен </p>
 </td></tr>
-<tr><td class="fieldname"><a class="anchor" id="a16790bc647a6788cab282e185ee28998a2063b2e237a0013b06ed6eedc4b8bc48"></a>ER_DEATH&#160;</td><td class="fielddoc">
+<tr><td class="fieldname"><a class="anchor" id="a16790bc647a6788cab282e185ee28998a2e8d6dbf9112a879d4ceb15403d10a78"></a>death&#160;</td><td class="fielddoc">
 <p>Умер </p>
 </td></tr>
 </table>
 
-<p>См. определение в файле <a class="el" href="_member_8h_source.html">Member.h</a> строка <a class="el" href="_member_8h_source.html#l00017">17</a></p>
+<p>См. определение в файле <a class="el" href="_member_8h_source.html">Member.h</a> строка <a class="el" href="_member_8h_source.html#l00018">18</a></p>
 
 </div>
 </div>

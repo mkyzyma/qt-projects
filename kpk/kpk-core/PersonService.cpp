@@ -20,8 +20,16 @@ typedef odb::query<Member> MemberQuery;
 PersonService::PersonService()
 {}
 
+PersonPtr PersonService::create()
+{
+    auto p(std::make_shared<Person>());
+    return p;
+}
+
 void PersonService::add(PersonPtr person)
 {
+    person->setCreateInfo(Core()->date()->currentTime(),
+                          Core()->auth()->user());
     Core()->db()->persist(person);
 }
 
@@ -30,9 +38,11 @@ void PersonService::update(PersonPtr person)
     Core()->db()->update(person);
 }
 
-void PersonService::remove(ulong id)
+void PersonService::remove(PersonPtr person)
 {
-    Core()->db()->erase<Person>(id);
+    person->setDeleted(Core()->date()->currentTime(),
+                       Core()->auth()->user());
+    update(person);
 }
 
 PersonPtr PersonService::get(ulong id)
@@ -50,6 +60,9 @@ void PersonService::enter(PersonPtr person, QDate date)
             throw exception::AlreadyMemberException();
 
     auto member(std::make_shared<Member>(Member(person, date)));
+
+    member->setCreateInfo(Core()->date()->currentTime(),
+                          Core()->auth()->user());
 
     Core()->db()->persist(member);
 

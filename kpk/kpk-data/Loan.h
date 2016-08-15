@@ -10,7 +10,7 @@
 
 #include "data_global.h"
 
-#include "IsDeleted.h"
+#include "DbObject.h"
 #include "Member.h"
 #include "Person.h"
 #include "LoanType.h"
@@ -23,7 +23,7 @@ namespace data {
  * \brief Займ
  */
 #pragma db object
-class DATASHARED_EXPORT Loan : public IsDeleted
+class DATASHARED_EXPORT Loan : public DbObject
 {
 public:
     Loan();
@@ -31,6 +31,7 @@ public:
     /*!
      * \brief Конструктор
      * \param member - пайщик
+     * \param loanType - вид займа
      * \param openDate - дата открытия
      * \param closeDate - дата завершения
      * \param limit - лимит кредитования

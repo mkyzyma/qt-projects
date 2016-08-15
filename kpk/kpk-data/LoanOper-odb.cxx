@@ -48,7 +48,10 @@ namespace odb
   persist_statement_types[] =
   {
     pgsql::bool_oid,
-    pgsql::date_oid,
+    pgsql::timestamp_oid,
+    pgsql::int8_oid,
+    pgsql::timestamp_oid,
+    pgsql::int8_oid,
     pgsql::date_oid,
     pgsql::int8_oid,
     pgsql::int8_oid,
@@ -78,7 +81,10 @@ namespace odb
   update_statement_types[] =
   {
     pgsql::bool_oid,
-    pgsql::date_oid,
+    pgsql::timestamp_oid,
+    pgsql::int8_oid,
+    pgsql::timestamp_oid,
+    pgsql::int8_oid,
     pgsql::date_oid,
     pgsql::int8_oid,
     pgsql::int8_oid,
@@ -177,39 +183,39 @@ namespace odb
 
     bool grew (false);
 
-    // IsDeleted base
+    // DbObject base
     //
-    if (object_traits_impl< ::kpk::data::IsDeleted, id_pgsql >::grow (
+    if (object_traits_impl< ::kpk::data::DbObject, id_pgsql >::grow (
           i, t + 0UL))
       grew = true;
 
     // _id
     //
-    t[2UL] = 0;
+    t[5UL] = 0;
 
     // _plan
     //
     if (composite_value_traits< ::kpk::data::LoanOperValue, id_pgsql >::grow (
-          i._plan_value, t + 3UL))
+          i._plan_value, t + 6UL))
       grew = true;
 
     // _fact
     //
     if (composite_value_traits< ::kpk::data::LoanOperValue, id_pgsql >::grow (
-          i._fact_value, t + 10UL))
+          i._fact_value, t + 13UL))
       grew = true;
 
     // _person
     //
-    t[17UL] = 0;
+    t[20UL] = 0;
 
     // _member
     //
-    t[18UL] = 0;
+    t[21UL] = 0;
 
     // _loan
     //
-    t[19UL] = 0;
+    t[22UL] = 0;
 
     return grew;
   }
@@ -225,10 +231,10 @@ namespace odb
 
     std::size_t n (0);
 
-    // IsDeleted base
+    // DbObject base
     //
-    object_traits_impl< ::kpk::data::IsDeleted, id_pgsql >::bind (b + n, i, sk);
-    n += 2UL;
+    object_traits_impl< ::kpk::data::DbObject, id_pgsql >::bind (b + n, i, sk);
+    n += 5UL;
 
     // _id
     //
@@ -296,9 +302,9 @@ namespace odb
 
     bool grew (false);
 
-    // IsDeleted base
+    // DbObject base
     //
-    if (object_traits_impl< ::kpk::data::IsDeleted, id_pgsql >::init (i, o, sk))
+    if (object_traits_impl< ::kpk::data::DbObject, id_pgsql >::init (i, o, sk))
       grew = true;
 
     // _plan
@@ -412,9 +418,9 @@ namespace odb
     ODB_POTENTIALLY_UNUSED (i);
     ODB_POTENTIALLY_UNUSED (db);
 
-    // IsDeleted base
+    // DbObject base
     //
-    object_traits_impl< ::kpk::data::IsDeleted, id_pgsql >::init (o, i, db);
+    object_traits_impl< ::kpk::data::DbObject, id_pgsql >::init (o, i, db);
 
     // _id
     //
@@ -564,7 +570,10 @@ namespace odb
   const char access::object_traits_impl< ::kpk::data::LoanOper, id_pgsql >::persist_statement[] =
   "INSERT INTO \"LoanOper\" "
   "(\"isDeleted\", "
-  "\"deleteDate\", "
+  "\"deleteTime\", "
+  "\"deletedBy\", "
+  "\"createTime\", "
+  "\"idUser\", "
   "\"id\", "
   "\"plan_date\", "
   "\"plan_amount\", "
@@ -584,13 +593,16 @@ namespace odb
   "\"idMember\", "
   "\"idLoan\") "
   "VALUES "
-  "($1, $2, DEFAULT, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19) "
+  "($1, $2, $3, $4, $5, DEFAULT, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22) "
   "RETURNING \"id\"";
 
   const char access::object_traits_impl< ::kpk::data::LoanOper, id_pgsql >::find_statement[] =
   "SELECT "
   "\"LoanOper\".\"isDeleted\", "
-  "\"LoanOper\".\"deleteDate\", "
+  "\"LoanOper\".\"deleteTime\", "
+  "\"LoanOper\".\"deletedBy\", "
+  "\"LoanOper\".\"createTime\", "
+  "\"LoanOper\".\"idUser\", "
   "\"LoanOper\".\"id\", "
   "\"LoanOper\".\"plan_date\", "
   "\"LoanOper\".\"plan_amount\", "
@@ -616,25 +628,28 @@ namespace odb
   "UPDATE \"LoanOper\" "
   "SET "
   "\"isDeleted\"=$1, "
-  "\"deleteDate\"=$2, "
-  "\"plan_date\"=$3, "
-  "\"plan_amount\"=$4, "
-  "\"plan_loan\"=$5, "
-  "\"plan_loanDept\"=$6, "
-  "\"plan_prc\"=$7, "
-  "\"plan_prcDept\"=$8, "
-  "\"plan_peni\"=$9, "
-  "\"fact_date\"=$10, "
-  "\"fact_amount\"=$11, "
-  "\"fact_loan\"=$12, "
-  "\"fact_loanDept\"=$13, "
-  "\"fact_prc\"=$14, "
-  "\"fact_prcDept\"=$15, "
-  "\"fact_peni\"=$16, "
-  "\"idPerson\"=$17, "
-  "\"idMember\"=$18, "
-  "\"idLoan\"=$19 "
-  "WHERE \"id\"=$20";
+  "\"deleteTime\"=$2, "
+  "\"deletedBy\"=$3, "
+  "\"createTime\"=$4, "
+  "\"idUser\"=$5, "
+  "\"plan_date\"=$6, "
+  "\"plan_amount\"=$7, "
+  "\"plan_loan\"=$8, "
+  "\"plan_loanDept\"=$9, "
+  "\"plan_prc\"=$10, "
+  "\"plan_prcDept\"=$11, "
+  "\"plan_peni\"=$12, "
+  "\"fact_date\"=$13, "
+  "\"fact_amount\"=$14, "
+  "\"fact_loan\"=$15, "
+  "\"fact_loanDept\"=$16, "
+  "\"fact_prc\"=$17, "
+  "\"fact_prcDept\"=$18, "
+  "\"fact_peni\"=$19, "
+  "\"idPerson\"=$20, "
+  "\"idMember\"=$21, "
+  "\"idLoan\"=$22 "
+  "WHERE \"id\"=$23";
 
   const char access::object_traits_impl< ::kpk::data::LoanOper, id_pgsql >::erase_statement[] =
   "DELETE FROM \"LoanOper\" "
@@ -643,7 +658,10 @@ namespace odb
   const char access::object_traits_impl< ::kpk::data::LoanOper, id_pgsql >::query_statement[] =
   "SELECT\n"
   "\"LoanOper\".\"isDeleted\",\n"
-  "\"LoanOper\".\"deleteDate\",\n"
+  "\"LoanOper\".\"deleteTime\",\n"
+  "\"LoanOper\".\"deletedBy\",\n"
+  "\"LoanOper\".\"createTime\",\n"
+  "\"LoanOper\".\"idUser\",\n"
   "\"LoanOper\".\"id\",\n"
   "\"LoanOper\".\"plan_date\",\n"
   "\"LoanOper\".\"plan_amount\",\n"
@@ -663,6 +681,8 @@ namespace odb
   "\"LoanOper\".\"idMember\",\n"
   "\"LoanOper\".\"idLoan\"\n"
   "FROM \"LoanOper\"\n"
+  "LEFT JOIN \"User\" AS \"deletedBy\" ON \"deletedBy\".\"id\"=\"LoanOper\".\"deletedBy\"\n"
+  "LEFT JOIN \"User\" AS \"idUser\" ON \"idUser\".\"id\"=\"LoanOper\".\"idUser\"\n"
   "LEFT JOIN \"Person\" AS \"idPerson\" ON \"idPerson\".\"id\"=\"LoanOper\".\"idPerson\"\n"
   "LEFT JOIN \"Member\" AS \"idMember\" ON \"idMember\".\"id\"=\"LoanOper\".\"idMember\"\n"
   "LEFT JOIN \"Loan\" AS \"idLoan\" ON \"idLoan\".\"id\"=\"LoanOper\".\"idLoan\"";

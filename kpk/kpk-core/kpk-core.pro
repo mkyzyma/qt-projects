@@ -18,7 +18,8 @@ SOURCES += \
     DbService.cpp \
     PersonService.cpp \
     Core.cpp \
-    DateService.cpp
+    DateService.cpp \
+    AuthService.cpp
 
 HEADERS += \
     core_global.h \    
@@ -26,7 +27,8 @@ HEADERS += \
     PersonService.h \
     Core.h \
     Exceptions.h \
-    DateService.h
+    DateService.h \
+    AuthService.h
 
 unix {
     target.path = /usr/lib

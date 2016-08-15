@@ -62,7 +62,7 @@ bool Person::isMember()
             member()->exitReason() == ER_NONE;*/
 
     if(auto m = member().lock()){
-        return m->exitReason() == ER_NONE;
+        return m->exitReason() == ExitReason::none;
     }
     return false;
 }

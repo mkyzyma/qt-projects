@@ -1,24 +1,40 @@
 #ifndef DATESERVICE_H
 #define DATESERVICE_H
 
+#include <QObject>
 #include <QDate>
+#include <QDateTime>
+
 #include "core_global.h"
 namespace kpk{
 namespace core{
 /*!
- * \brief Служба управления текущей датой
+ * \brief Служба управления рабочей датой
  *
  * Устанавливает рабочую дату для всей системы
  */
-class CORESHARED_EXPORT DateService
+class CORESHARED_EXPORT DateService : public QObject
 {    
+    Q_OBJECT
 public:
-    DateService();
+    explicit DateService(QObject *parent = 0);
     /*!
      * \brief Конструктор
-     * \param current - текущая дата
+     * \param working - рабочая дата
      */
-    DateService(const QDate &current);
+    DateService(const QDate &working);
+
+    /*!
+     * \brief Получить рабочую дату
+     * \return Рабочая дата
+     */
+    QDate working() const;
+
+    /*!
+     * \brief Установить рабочую дату
+     * \param working - рабочая дата
+     */
+    void working(const QDate &working);
 
     /*!
      * \brief Получить текущую дату
@@ -26,19 +42,9 @@ public:
      */
     QDate current() const;
 
-    /*!
-     * \brief Установить текущую дату
-     * \param current - текущая дата
-     */
-    void current(const QDate &current);
-
-    /*!
-     * \brief Получить системную дату
-     * \return Системная дата
-     */
-    QDate system() const;
+    QDateTime currentTime() const;
 private:
-    QDate _current;
+    QDate _working;
 };
 
 }

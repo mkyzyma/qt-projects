@@ -6,13 +6,14 @@
 
 #include "data_global.h"
 
+#include "DbObject.h"
 namespace kpk{
 namespace data{
 /*!
  * \brief Вид займа
  */
 #pragma db object
-class DATASHARED_EXPORT LoanType
+class DATASHARED_EXPORT LoanType : public DbObject
 {
 public:
     LoanType();

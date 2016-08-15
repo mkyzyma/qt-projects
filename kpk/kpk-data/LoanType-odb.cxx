@@ -47,6 +47,11 @@ namespace odb
   const unsigned int access::object_traits_impl< ::kpk::data::LoanType, id_pgsql >::
   persist_statement_types[] =
   {
+    pgsql::bool_oid,
+    pgsql::timestamp_oid,
+    pgsql::int8_oid,
+    pgsql::timestamp_oid,
+    pgsql::int8_oid,
     pgsql::text_oid,
     pgsql::int8_oid
   };
@@ -60,6 +65,11 @@ namespace odb
   const unsigned int access::object_traits_impl< ::kpk::data::LoanType, id_pgsql >::
   update_statement_types[] =
   {
+    pgsql::bool_oid,
+    pgsql::timestamp_oid,
+    pgsql::int8_oid,
+    pgsql::timestamp_oid,
+    pgsql::int8_oid,
     pgsql::text_oid,
     pgsql::int8_oid,
     pgsql::int8_oid
@@ -128,13 +138,19 @@ namespace odb
 
     bool grew (false);
 
+    // DbObject base
+    //
+    if (object_traits_impl< ::kpk::data::DbObject, id_pgsql >::grow (
+          i, t + 0UL))
+      grew = true;
+
     // _id
     //
-    t[0UL] = 0;
+    t[5UL] = 0;
 
     // _caption
     //
-    if (t[1UL])
+    if (t[6UL])
     {
       i._caption_value.capacity (i._caption_size);
       grew = true;
@@ -142,7 +158,7 @@ namespace odb
 
     // _rate
     //
-    t[2UL] = 0;
+    t[7UL] = 0;
 
     return grew;
   }
@@ -157,6 +173,11 @@ namespace odb
     using namespace pgsql;
 
     std::size_t n (0);
+
+    // DbObject base
+    //
+    object_traits_impl< ::kpk::data::DbObject, id_pgsql >::bind (b + n, i, sk);
+    n += 5UL;
 
     // _id
     //
@@ -207,6 +228,11 @@ namespace odb
 
     bool grew (false);
 
+    // DbObject base
+    //
+    if (object_traits_impl< ::kpk::data::DbObject, id_pgsql >::init (i, o, sk))
+      grew = true;
+
     // _caption
     //
     {
@@ -253,6 +279,10 @@ namespace odb
     ODB_POTENTIALLY_UNUSED (o);
     ODB_POTENTIALLY_UNUSED (i);
     ODB_POTENTIALLY_UNUSED (db);
+
+    // DbObject base
+    //
+    object_traits_impl< ::kpk::data::DbObject, id_pgsql >::init (o, i, db);
 
     // _id
     //
@@ -313,15 +343,25 @@ namespace odb
 
   const char access::object_traits_impl< ::kpk::data::LoanType, id_pgsql >::persist_statement[] =
   "INSERT INTO \"LoanType\" "
-  "(\"id\", "
+  "(\"isDeleted\", "
+  "\"deleteTime\", "
+  "\"deletedBy\", "
+  "\"createTime\", "
+  "\"idUser\", "
+  "\"id\", "
   "\"caption\", "
   "\"rate\") "
   "VALUES "
-  "(DEFAULT, $1, $2) "
+  "($1, $2, $3, $4, $5, DEFAULT, $6, $7) "
   "RETURNING \"id\"";
 
   const char access::object_traits_impl< ::kpk::data::LoanType, id_pgsql >::find_statement[] =
   "SELECT "
+  "\"LoanType\".\"isDeleted\", "
+  "\"LoanType\".\"deleteTime\", "
+  "\"LoanType\".\"deletedBy\", "
+  "\"LoanType\".\"createTime\", "
+  "\"LoanType\".\"idUser\", "
   "\"LoanType\".\"id\", "
   "\"LoanType\".\"caption\", "
   "\"LoanType\".\"rate\" "
@@ -331,20 +371,32 @@ namespace odb
   const char access::object_traits_impl< ::kpk::data::LoanType, id_pgsql >::update_statement[] =
   "UPDATE \"LoanType\" "
   "SET "
-  "\"caption\"=$1, "
-  "\"rate\"=$2 "
-  "WHERE \"id\"=$3";
+  "\"isDeleted\"=$1, "
+  "\"deleteTime\"=$2, "
+  "\"deletedBy\"=$3, "
+  "\"createTime\"=$4, "
+  "\"idUser\"=$5, "
+  "\"caption\"=$6, "
+  "\"rate\"=$7 "
+  "WHERE \"id\"=$8";
 
   const char access::object_traits_impl< ::kpk::data::LoanType, id_pgsql >::erase_statement[] =
   "DELETE FROM \"LoanType\" "
   "WHERE \"id\"=$1";
 
   const char access::object_traits_impl< ::kpk::data::LoanType, id_pgsql >::query_statement[] =
-  "SELECT "
-  "\"LoanType\".\"id\", "
-  "\"LoanType\".\"caption\", "
-  "\"LoanType\".\"rate\" "
-  "FROM \"LoanType\"";
+  "SELECT\n"
+  "\"LoanType\".\"isDeleted\",\n"
+  "\"LoanType\".\"deleteTime\",\n"
+  "\"LoanType\".\"deletedBy\",\n"
+  "\"LoanType\".\"createTime\",\n"
+  "\"LoanType\".\"idUser\",\n"
+  "\"LoanType\".\"id\",\n"
+  "\"LoanType\".\"caption\",\n"
+  "\"LoanType\".\"rate\"\n"
+  "FROM \"LoanType\"\n"
+  "LEFT JOIN \"User\" AS \"deletedBy\" ON \"deletedBy\".\"id\"=\"LoanType\".\"deletedBy\"\n"
+  "LEFT JOIN \"User\" AS \"idUser\" ON \"idUser\".\"id\"=\"LoanType\".\"idUser\"";
 
   const char access::object_traits_impl< ::kpk::data::LoanType, id_pgsql >::erase_query_statement[] =
   "DELETE FROM \"LoanType\"";
@@ -692,7 +744,7 @@ namespace odb
     std::string text (query_statement);
     if (!q.empty ())
     {
-      text += " ";
+      text += "\n";
       text += q.clause ();
     }
 
@@ -702,7 +754,7 @@ namespace odb
         sts.connection (),
         query_statement_name,
         text,
-        false,
+        true,
         true,
         q.parameter_types (),
         q.parameter_count (),

@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['core_2ecpp',['Core.cpp',['../_core_8cpp.html',1,'']]],
-  ['core_2eh',['Core.h',['../_core_8h.html',1,'']]],
-  ['core_5fglobal_2eh',['core_global.h',['../core__global_8h.html',1,'']]]
+  ['authservice_2ecpp',['AuthService.cpp',['../_auth_service_8cpp.html',1,'']]],
+  ['authservice_2eh',['AuthService.h',['../_auth_service_8h.html',1,'']]]
 ];

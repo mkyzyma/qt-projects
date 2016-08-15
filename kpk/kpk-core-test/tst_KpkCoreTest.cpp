@@ -36,15 +36,7 @@ private Q_SLOTS:
 
 KpkCoreTest::KpkCoreTest()
 {
-    _p = std::make_shared<Person>(Person());
-    _p->name().set("Иван", "Иванович", "Пупкин");
-    _p->passport().series("6714");
-    _p->passport().number("370364");
-    _p->passport().date(QDate(2014,05,20));
-    _p->passport().org("отд. УФМС России по ХМАО-Югре в г. Урае");
-    _p->passport().orgCode("860028");
-    _p->inn("123456789010");
-    _p->snils("123-456-789 01");
+
 
 }
 void KpkCoreTest::verifyPerson(Person& p)
@@ -59,7 +51,7 @@ void KpkCoreTest::verifyPerson(Person& p)
 
 std::shared_ptr<Person> KpkCoreTest::createPerson()
 {
-    std::shared_ptr<Person> p(new Person());
+   auto p(Core()->person()->create());
 
     p->name().set(_p->name().first(), _p->name().middle(), _p->name().last());
     p->passport().series(_p->passport().series());
@@ -90,11 +82,23 @@ void KpkCoreTest::canCreateSchema()
     catch(const std::exception e){
         QVERIFY2(false, e.what());
     }
+
+
 }
 
 void KpkCoreTest::canAddPerson()
 {
     try{
+        _p = Core()->person()->create();
+        _p->name().set("Иван", "Иванович", "Пупкин");
+        _p->passport().series("6714");
+        _p->passport().number("370364");
+        _p->passport().date(QDate(2014,05,20));
+        _p->passport().org("отд. УФМС России по ХМАО-Югре в г. Урае");
+        _p->passport().orgCode("860028");
+        _p->inn("123456789010");
+        _p->snils("123-456-789 01");
+
         Core()->begin();
         Core()->person()->add(_p);
         Core()->commit();
@@ -115,14 +119,14 @@ void KpkCoreTest::canEnter()
 {
     try{
         Core()->begin();
-        Core()->person()->enter(_p, Core()->date()->current().addYears(-1));
+        Core()->person()->enter(_p, Core()->date()->working().addYears(-1));
         Core()->commit();
 
         bool throws(false);
 
         try{
             Core()->begin();
-            Core()->person()->enter(_p, Core()->date()->current());
+            Core()->person()->enter(_p, Core()->date()->working());
             Core()->commit();
         }catch(const exception::AlreadyMemberException e){
             Core()->rollback();
@@ -142,8 +146,8 @@ void KpkCoreTest::canExit()
 {
     try{
         Core()->begin();
-        QDate date = Core()->date()->current().addMonths(-6);
-        Core()->person()->exit(_p, date, ER_EXIT);
+        QDate date = Core()->date()->working().addMonths(-6);
+        Core()->person()->exit(_p, date, ExitReason::exit);
         Core()->commit();
 
         Core()->begin();
@@ -151,7 +155,7 @@ void KpkCoreTest::canExit()
         Core()->commit();
 
         QVERIFY2(!p->isMember(), "Must be not member, but stil a member");
-        QVERIFY2(p->member().lock()->exitReason() == ER_EXIT, "Wrong exit reason");
+        QVERIFY2(p->member().lock()->exitReason() == ExitReason::exit, "Wrong exit reason");
     }
 
     catch(const odb::pgsql::database_exception e){
@@ -164,7 +168,7 @@ void KpkCoreTest::canEnterAgain()
 {
     try{
         Core()->begin();
-        Core()->person()->enter(_p, Core()->date()->current());
+        Core()->person()->enter(_p, Core()->date()->working());
         Core()->commit();
 
         Core()->begin();

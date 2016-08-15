@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['trptr',['TrPtr',['../namespacekpk_1_1core.html#a3bd2bbeaff3894d4ee696d6fae548f3f',1,'kpk::core']]]
+  ['userptr',['UserPtr',['../namespacekpk_1_1core.html#adf2e33567354a9407a9c13f18b5edc65',1,'kpk::core']]]
 ];

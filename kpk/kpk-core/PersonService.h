@@ -36,51 +36,53 @@ class CORESHARED_EXPORT PersonService
 {
 public:
     PersonService();
+    PersonPtr create();
     /*!
      * \brief Добавить личные данные
-     * \param [in] person - личные данные
+     * \param person - личные данные
      */
     void add(PersonPtr person);
 
     /*!
      * \brief Изменить личные данные
-     * \param [in] person - личные данные
+     * \param person - личные данные
      */
     void update(PersonPtr person);
 
     /*!
      * \brief Удалить личные данные
-     * \param [in] id - идентификатор
+     * \param person - личные данные
      */
-    void remove(ulong id);
+    void remove(PersonPtr person);
 
     /*!
      * \brief Получить личные данные
-     * \param [in] id - идентификатор
+     * \param id - идентификатор
      * \return  Личные данные
      */
     std::shared_ptr<data::Person> get(ulong id);
 
     /*!
      * \brief Вступить в кооператив
-     * \param [in] person - Личные данные
-     * \param [in] date - Дата вступления
+     * \param person - Личные данные
+     * \param date - Дата вступления
      * \throw kpk::exception::AlreadyMemberException если person уже пайщик
      */
     void enter(PersonPtr person, QDate date);
 
     /*!
      * \brief Выйти из кооператива
-     * \param [in] person - Личные данные
-     * \param [in] date - Дата выхода
+     * \param person - Личные данные
+     * \param date - Дата выхода
+     * \param reason - Причина
      * \throw kpk::exception::NotAMemberException если person не пайщик
      */
     void exit(PersonPtr person, QDate date, data::ExitReason reason);
 
     /*!
-     * \brief Получить список членства
+     * \brief Получить историю членства
      * \param idPerson - идентификатор личных данных
-     * \return Список членства
+     * \return История членства
      */
     MemberResult membership(ulong idPerson) const;
 };

@@ -58,7 +58,7 @@ private Q_SLOTS:
 
 kpkDataTest::kpkDataTest()
 {
-    _p = std::shared_ptr<Person>(new Person());
+    _p = std::make_shared<Person>();
     _p->name().set("Иван", "Иванович", "Пупкин");
     _p->passport().series("6714");
     _p->passport().number("370364");
@@ -81,7 +81,7 @@ void kpkDataTest::verifyPerson(Person& p)
 
 std::shared_ptr<Person> kpkDataTest::createPerson()
 {
-    std::shared_ptr<Person> p(new Person());
+    auto p(std::make_shared<Person>());
 
     p->name().set(_p->name().first(), _p->name().middle(), _p->name().last());
     p->passport().series(_p->passport().series());

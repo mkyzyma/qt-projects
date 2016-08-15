@@ -13,21 +13,27 @@ bool IsDeleted::isDeleted() const
     return _isDeleted;
 }
 
-std::shared_ptr<QDate> IsDeleted::deleteDate() const
+std::shared_ptr<QDateTime> IsDeleted::deleteTime() const
 {
-    return _deleteDate;
+    return _deleteTime;
 }
 
-void IsDeleted::setDeleted(QDate deleteDate)
+void IsDeleted::setDeleted(QDateTime deleteDate, std::shared_ptr<User> user)
 {
     _isDeleted = true;
-    _deleteDate = std::make_shared<QDate>(deleteDate);
+    _deleteTime = std::make_shared<QDateTime>(deleteDate);
+    _deletedBy = user;
 }
 
 void IsDeleted::resetDeleted()
 {
     _isDeleted = false;
-    _deleteDate = nullptr;
+    _deleteTime = nullptr;
+}
+
+std::shared_ptr<User> IsDeleted::deletedBy() const
+{
+    return _deletedBy;
 }
 
 

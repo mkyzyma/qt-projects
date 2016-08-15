@@ -48,6 +48,11 @@ namespace odb
   const unsigned int access::object_traits_impl< ::kpk::data::Person, id_pgsql >::
   persist_statement_types[] =
   {
+    pgsql::bool_oid,
+    pgsql::timestamp_oid,
+    pgsql::int8_oid,
+    pgsql::timestamp_oid,
+    pgsql::int8_oid,
     pgsql::text_oid,
     pgsql::text_oid,
     pgsql::text_oid,
@@ -71,6 +76,11 @@ namespace odb
   const unsigned int access::object_traits_impl< ::kpk::data::Person, id_pgsql >::
   update_statement_types[] =
   {
+    pgsql::bool_oid,
+    pgsql::timestamp_oid,
+    pgsql::int8_oid,
+    pgsql::timestamp_oid,
+    pgsql::int8_oid,
     pgsql::text_oid,
     pgsql::text_oid,
     pgsql::text_oid,
@@ -154,25 +164,31 @@ namespace odb
 
     bool grew (false);
 
+    // DbObject base
+    //
+    if (object_traits_impl< ::kpk::data::DbObject, id_pgsql >::grow (
+          i, t + 0UL))
+      grew = true;
+
     // _id
     //
-    t[0UL] = 0;
+    t[5UL] = 0;
 
     // _name
     //
     if (composite_value_traits< ::kpk::data::Name, id_pgsql >::grow (
-          i._name_value, t + 1UL))
+          i._name_value, t + 6UL))
       grew = true;
 
     // _passport
     //
     if (composite_value_traits< ::kpk::data::Passport, id_pgsql >::grow (
-          i._passport_value, t + 5UL))
+          i._passport_value, t + 10UL))
       grew = true;
 
     // _inn
     //
-    if (t[10UL])
+    if (t[15UL])
     {
       i._inn_value.capacity (i._inn_size);
       grew = true;
@@ -180,7 +196,7 @@ namespace odb
 
     // _snils
     //
-    if (t[11UL])
+    if (t[16UL])
     {
       i._snils_value.capacity (i._snils_size);
       grew = true;
@@ -188,7 +204,7 @@ namespace odb
 
     // _member
     //
-    t[12UL] = 0;
+    t[17UL] = 0;
 
     return grew;
   }
@@ -203,6 +219,11 @@ namespace odb
     using namespace pgsql;
 
     std::size_t n (0);
+
+    // DbObject base
+    //
+    object_traits_impl< ::kpk::data::DbObject, id_pgsql >::bind (b + n, i, sk);
+    n += 5UL;
 
     // _id
     //
@@ -273,6 +294,11 @@ namespace odb
     using namespace pgsql;
 
     bool grew (false);
+
+    // DbObject base
+    //
+    if (object_traits_impl< ::kpk::data::DbObject, id_pgsql >::init (i, o, sk))
+      grew = true;
 
     // _name
     //
@@ -380,6 +406,10 @@ namespace odb
     ODB_POTENTIALLY_UNUSED (o);
     ODB_POTENTIALLY_UNUSED (i);
     ODB_POTENTIALLY_UNUSED (db);
+
+    // DbObject base
+    //
+    object_traits_impl< ::kpk::data::DbObject, id_pgsql >::init (o, i, db);
 
     // _id
     //
@@ -500,7 +530,12 @@ namespace odb
 
   const char access::object_traits_impl< ::kpk::data::Person, id_pgsql >::persist_statement[] =
   "INSERT INTO \"Person\" "
-  "(\"id\", "
+  "(\"isDeleted\", "
+  "\"deleteTime\", "
+  "\"deletedBy\", "
+  "\"createTime\", "
+  "\"idUser\", "
+  "\"id\", "
   "\"name_first\", "
   "\"name_middle\", "
   "\"name_last\", "
@@ -514,11 +549,16 @@ namespace odb
   "\"snils\", "
   "\"idMember\") "
   "VALUES "
-  "(DEFAULT, $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) "
+  "($1, $2, $3, $4, $5, DEFAULT, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17) "
   "RETURNING \"id\"";
 
   const char access::object_traits_impl< ::kpk::data::Person, id_pgsql >::find_statement[] =
   "SELECT "
+  "\"Person\".\"isDeleted\", "
+  "\"Person\".\"deleteTime\", "
+  "\"Person\".\"deletedBy\", "
+  "\"Person\".\"createTime\", "
+  "\"Person\".\"idUser\", "
   "\"Person\".\"id\", "
   "\"Person\".\"name_first\", "
   "\"Person\".\"name_middle\", "
@@ -538,19 +578,24 @@ namespace odb
   const char access::object_traits_impl< ::kpk::data::Person, id_pgsql >::update_statement[] =
   "UPDATE \"Person\" "
   "SET "
-  "\"name_first\"=$1, "
-  "\"name_middle\"=$2, "
-  "\"name_last\"=$3, "
-  "\"name_full\"=$4, "
-  "\"pass_series\"=$5, "
-  "\"pass_number\"=$6, "
-  "\"pass_date\"=$7, "
-  "\"pass_org\"=$8, "
-  "\"pass_orgCode\"=$9, "
-  "\"inn\"=$10, "
-  "\"snils\"=$11, "
-  "\"idMember\"=$12 "
-  "WHERE \"id\"=$13";
+  "\"isDeleted\"=$1, "
+  "\"deleteTime\"=$2, "
+  "\"deletedBy\"=$3, "
+  "\"createTime\"=$4, "
+  "\"idUser\"=$5, "
+  "\"name_first\"=$6, "
+  "\"name_middle\"=$7, "
+  "\"name_last\"=$8, "
+  "\"name_full\"=$9, "
+  "\"pass_series\"=$10, "
+  "\"pass_number\"=$11, "
+  "\"pass_date\"=$12, "
+  "\"pass_org\"=$13, "
+  "\"pass_orgCode\"=$14, "
+  "\"inn\"=$15, "
+  "\"snils\"=$16, "
+  "\"idMember\"=$17 "
+  "WHERE \"id\"=$18";
 
   const char access::object_traits_impl< ::kpk::data::Person, id_pgsql >::erase_statement[] =
   "DELETE FROM \"Person\" "
@@ -558,6 +603,11 @@ namespace odb
 
   const char access::object_traits_impl< ::kpk::data::Person, id_pgsql >::query_statement[] =
   "SELECT\n"
+  "\"Person\".\"isDeleted\",\n"
+  "\"Person\".\"deleteTime\",\n"
+  "\"Person\".\"deletedBy\",\n"
+  "\"Person\".\"createTime\",\n"
+  "\"Person\".\"idUser\",\n"
   "\"Person\".\"id\",\n"
   "\"Person\".\"name_first\",\n"
   "\"Person\".\"name_middle\",\n"
@@ -572,6 +622,8 @@ namespace odb
   "\"Person\".\"snils\",\n"
   "\"Person\".\"idMember\"\n"
   "FROM \"Person\"\n"
+  "LEFT JOIN \"User\" AS \"deletedBy\" ON \"deletedBy\".\"id\"=\"Person\".\"deletedBy\"\n"
+  "LEFT JOIN \"User\" AS \"idUser\" ON \"idUser\".\"id\"=\"Person\".\"idUser\"\n"
   "LEFT JOIN \"Member\" AS \"idMember\" ON \"idMember\".\"id\"=\"Person\".\"idMember\"";
 
   const char access::object_traits_impl< ::kpk::data::Person, id_pgsql >::erase_query_statement[] =

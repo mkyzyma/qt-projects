@@ -4,8 +4,7 @@
 
 #include <odb/pre.hxx>
 
-#include "IsDeleted-odb.hxx"
-#include "User-odb.hxx"
+#include "DbObject-odb.hxx"
 
 #include <cassert>
 #include <cstring>  // std::memcpy
@@ -24,15 +23,15 @@
 
 namespace odb
 {
-  // IsDeleted
+  // DbObject
   //
 
   const char alias_traits<  ::kpk::data::User,
     id_pgsql,
-    access::object_traits_impl< ::kpk::data::IsDeleted, id_pgsql >::deletedBy_tag>::
-  table_name[] = "\"deletedBy\"";
+    access::object_traits_impl< ::kpk::data::DbObject, id_pgsql >::createdBy_tag>::
+  table_name[] = "\"idUser\"";
 
-  bool access::object_traits_impl< ::kpk::data::IsDeleted, id_pgsql >::
+  bool access::object_traits_impl< ::kpk::data::DbObject, id_pgsql >::
   grow (image_type& i,
         bool* t)
   {
@@ -41,22 +40,24 @@ namespace odb
 
     bool grew (false);
 
-    // _isDeleted
+    // IsDeleted base
     //
-    t[0UL] = 0;
+    if (object_traits_impl< ::kpk::data::IsDeleted, id_pgsql >::grow (
+          i, t + 0UL))
+      grew = true;
 
-    // _deleteTime
+    // _createTime
     //
-    t[1UL] = 0;
+    t[3UL] = 0;
 
-    // _deletedBy
+    // _createdBy
     //
-    t[2UL] = 0;
+    t[4UL] = 0;
 
     return grew;
   }
 
-  void access::object_traits_impl< ::kpk::data::IsDeleted, id_pgsql >::
+  void access::object_traits_impl< ::kpk::data::DbObject, id_pgsql >::
   bind (pgsql::bind* b,
         image_type& i,
         pgsql::statement_kind sk)
@@ -67,29 +68,27 @@ namespace odb
 
     std::size_t n (0);
 
-    // _isDeleted
+    // IsDeleted base
     //
-    b[n].type = pgsql::bind::boolean_;
-    b[n].buffer = &i._isDeleted_value;
-    b[n].is_null = &i._isDeleted_null;
-    n++;
+    object_traits_impl< ::kpk::data::IsDeleted, id_pgsql >::bind (b + n, i, sk);
+    n += 3UL;
 
-    // _deleteTime
+    // _createTime
     //
     b[n].type = pgsql::bind::timestamp;
-    b[n].buffer = &i._deleteTime_value;
-    b[n].is_null = &i._deleteTime_null;
+    b[n].buffer = &i._createTime_value;
+    b[n].is_null = &i._createTime_null;
     n++;
 
-    // _deletedBy
+    // _createdBy
     //
     b[n].type = pgsql::bind::bigint;
-    b[n].buffer = &i._deletedBy_value;
-    b[n].is_null = &i._deletedBy_null;
+    b[n].buffer = &i._createdBy_value;
+    b[n].is_null = &i._createdBy_null;
     n++;
   }
 
-  bool access::object_traits_impl< ::kpk::data::IsDeleted, id_pgsql >::
+  bool access::object_traits_impl< ::kpk::data::DbObject, id_pgsql >::
   init (image_type& i,
         const object_type& o,
         pgsql::statement_kind sk)
@@ -102,39 +101,30 @@ namespace odb
 
     bool grew (false);
 
-    // _isDeleted
+    // IsDeleted base
+    //
+    if (object_traits_impl< ::kpk::data::IsDeleted, id_pgsql >::init (i, o, sk))
+      grew = true;
+
+    // _createTime
     //
     {
-      bool const& v =
-        o._isDeleted;
-
-      bool is_null (false);
-      pgsql::value_traits<
-          bool,
-          pgsql::id_boolean >::set_image (
-        i._isDeleted_value, is_null, v);
-      i._isDeleted_null = is_null;
-    }
-
-    // _deleteTime
-    //
-    {
-      ::std::shared_ptr< ::QDateTime > const& v =
-        o._deleteTime;
+      ::QDateTime const& v =
+        o._createTime;
 
       bool is_null (true);
       pgsql::value_traits<
-          ::std::shared_ptr< ::QDateTime >,
+          ::QDateTime,
           pgsql::id_timestamp >::set_image (
-        i._deleteTime_value, is_null, v);
-      i._deleteTime_null = is_null;
+        i._createTime_value, is_null, v);
+      i._createTime_null = is_null;
     }
 
-    // _deletedBy
+    // _createdBy
     //
     {
       ::std::shared_ptr< ::kpk::data::User > const& v =
-        o._deletedBy;
+        o._createdBy;
 
       typedef object_traits< ::kpk::data::User > obj_traits;
       typedef odb::pointer_traits< ::std::shared_ptr< ::kpk::data::User > > ptr_traits;
@@ -148,17 +138,17 @@ namespace odb
         pgsql::value_traits<
             obj_traits::id_type,
             pgsql::id_bigint >::set_image (
-          i._deletedBy_value, is_null, id);
-        i._deletedBy_null = is_null;
+          i._createdBy_value, is_null, id);
+        i._createdBy_null = is_null;
       }
       else
-        i._deletedBy_null = true;
+        throw null_pointer ();
     }
 
     return grew;
   }
 
-  void access::object_traits_impl< ::kpk::data::IsDeleted, id_pgsql >::
+  void access::object_traits_impl< ::kpk::data::DbObject, id_pgsql >::
   init (object_type& o,
         const image_type& i,
         database* db)
@@ -167,44 +157,34 @@ namespace odb
     ODB_POTENTIALLY_UNUSED (i);
     ODB_POTENTIALLY_UNUSED (db);
 
-    // _isDeleted
+    // IsDeleted base
+    //
+    object_traits_impl< ::kpk::data::IsDeleted, id_pgsql >::init (o, i, db);
+
+    // _createTime
     //
     {
-      bool& v =
-        o._isDeleted;
+      ::QDateTime& v =
+        o._createTime;
 
       pgsql::value_traits<
-          bool,
-          pgsql::id_boolean >::set_value (
-        v,
-        i._isDeleted_value,
-        i._isDeleted_null);
-    }
-
-    // _deleteTime
-    //
-    {
-      ::std::shared_ptr< ::QDateTime >& v =
-        o._deleteTime;
-
-      pgsql::value_traits<
-          ::std::shared_ptr< ::QDateTime >,
+          ::QDateTime,
           pgsql::id_timestamp >::set_value (
         v,
-        i._deleteTime_value,
-        i._deleteTime_null);
+        i._createTime_value,
+        i._createTime_null);
     }
 
-    // _deletedBy
+    // _createdBy
     //
     {
       ::std::shared_ptr< ::kpk::data::User >& v =
-        o._deletedBy;
+        o._createdBy;
 
       typedef object_traits< ::kpk::data::User > obj_traits;
       typedef odb::pointer_traits< ::std::shared_ptr< ::kpk::data::User > > ptr_traits;
 
-      if (i._deletedBy_null)
+      if (i._createdBy_null)
         v = ptr_traits::pointer_type ();
       else
       {
@@ -213,8 +193,8 @@ namespace odb
             obj_traits::id_type,
             pgsql::id_bigint >::set_value (
           id,
-          i._deletedBy_value,
-          i._deletedBy_null);
+          i._createdBy_value,
+          i._createdBy_null);
 
         // If a compiler error points to the line below, then
         // it most likely means that a pointer used in a member

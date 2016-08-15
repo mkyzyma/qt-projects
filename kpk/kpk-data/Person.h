@@ -8,6 +8,7 @@
 
 #include "data_global.h"
 
+#include "DbObject.h"
 #include "Name.h"
 #include "Passport.h"
 
@@ -20,11 +21,10 @@ class Member;
  * \brief Человек
  */
 #pragma db object
-class  DATASHARED_EXPORT Person
+class  DATASHARED_EXPORT Person : public DbObject
 {    
-public:    
+public:
     Person();
-
     /*!
      * \brief Получить идентификатор
      * \return Идентификатор
@@ -92,7 +92,7 @@ public:
      * \return true - является, false - не является
      */
     bool isMember();
-private:
+private:   
     friend class odb::access;
 
     #pragma db id auto

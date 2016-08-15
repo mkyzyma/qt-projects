@@ -35,7 +35,7 @@ QTextStream cerr(stderr);
 int main(int argc, char *argv[])
 {
 
-    auto p = std::make_shared<Person>(Person());
+    auto p = std::make_shared<Person>();
     p->name().set("Иван", "Иванович", "Пупкин");
     p->passport().series("6714");
     p->passport().number("370364");

@@ -2,7 +2,7 @@
 #define ISDELETED_H
 
 #include <memory>
-#include <QtCore/QDate>
+#include <QtCore/QDateTime>
 
 #include <odb/core.hxx>
 
@@ -11,13 +11,14 @@
 namespace kpk{
 namespace data{
 
-#pragma db object abstract
+class User;
 /*!
  * \brief Признак удаления
  * \details Базовый класс для объектов БД с признаком удаления.
  *          То есть для объектов, которые не желательно физически удалять
  *          из БД, а можно установить признак удаления. *
  */
+#pragma db object abstract
 class DATASHARED_EXPORT IsDeleted
 {
 public:
@@ -32,31 +33,45 @@ public:
     bool isDeleted() const;
 
     /*!
-     * \brief Получить дату удаления
-     * \return Дата удаления
-     * \retval "Дата удаления" если удален
+     * \brief Получить время удаления
+     * \return Время удаления
+     * \retval "Время удаления" если удален
      * \retval nullptr если не удален
      */
-    std::shared_ptr<QDate> deleteDate() const;
+    std::shared_ptr<QDateTime> deleteTime() const;
 
     /*!
-     * \brief Установить признак удаления
-     * \param deleteDate - дата удаления
+     * \brief Получить удалившего пользователя
+     * \return Удаливший пользователь
+     * \retval "Удаливший пользователь" если удален
+     * \retval nullptr если не удален
      */
-    void setDeleted(QDate deleteDate);
+    std::shared_ptr<User> deletedBy() const;
+    /*!
+     * \brief Установить признак удаления
+     * \param time - время удаления
+     * \param user - удаляющий пользователь
+     */
+    void setDeleted(QDateTime time, std::shared_ptr<User> user);
 
     /*!
      * \brief снять признак удаления
      */
     void resetDeleted();
+
+
 protected:
     friend class odb::access;
-    bool _isDeleted;
+    bool _isDeleted = false;
 
     #pragma db null
-    std::shared_ptr<QDate> _deleteDate;
+    std::shared_ptr<QDateTime> _deleteTime;
+
+    #pragma db null
+    std::shared_ptr<User> _deletedBy;
 };
 
 }
 }
+#include "User.h"
 #endif // ISDELETED_H

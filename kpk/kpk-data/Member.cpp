@@ -9,7 +9,8 @@ Member::Member()
 Member::Member(std::shared_ptr<Person> person,
                QDate inDate,
                std::shared_ptr<QDate> outDate)
-    : _inDate(inDate), _outDate(outDate), _person(person), _exitReason(ER_NONE)
+    : _inDate(inDate), _outDate(outDate), _person(person),
+      _exitReason(ExitReason::none)
 {}
 
 ulong Member::id() const { return _id; }

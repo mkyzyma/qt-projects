@@ -26,7 +26,7 @@ public:
 
     /*!
      * \brief Установить дату
-     * \param дата
+     * \param date дата
      */
     void date(const QDate &date);
 
