@@ -4,7 +4,11 @@ SOURCES += \
     ../kpk-data/Passport-odb.cxx \
     ../kpk-data/Member-odb.cxx \
     ../kpk-data/Loan-odb.cxx \
-    ../kpk-data/kpk-schema.cxx \
+    ../kpk-data/LoanOperValue-odb.cxx \
+    ../kpk-data/LoanOper-odb.cxx \
+    ../kpk-data/kpk-schema.cxx
+
+
 
     
 

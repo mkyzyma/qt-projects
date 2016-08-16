@@ -16,6 +16,9 @@
 #include "kpk-data/Loan.h"
 #include "kpk-data/Loan-odb.hxx"
 
+#include "kpk-data/LoanOper.h"
+#include "kpk-data/LoanOper-odb.hxx"
+
 namespace kpk {
 namespace test {
 
@@ -33,14 +36,21 @@ private:
     const QString PERSON_NAME = "";
     void verifyPerson(Person& p);
     QSharedPointer<Person> createPerson();
+    QSharedPointer<Person> getPerson();
+    QSharedPointer<Member> getMember();
+    QSharedPointer<Loan> getLoan();
 private Q_SLOTS:
     void initTestCase();
+
     void personCanPersist();
     void personPersisted();
     void memberCanPersist();
     void memberPersisted();
+
     void loanCanPersist();
     void loanPersisted();
+    void loanOperCanPersist();
+    void loanOperPersisted();
 };
 
 kpkDataTest::kpkDataTest()
@@ -80,6 +90,23 @@ QSharedPointer<Person> kpkDataTest::createPerson()
     p->snils(_p->snils());
 
     return p;
+}
+
+QSharedPointer<Person> kpkDataTest::getPerson()
+{
+   return _db->load<Person>(_id);
+}
+
+QSharedPointer<Member> kpkDataTest::getMember()
+{
+    odb::result<Member> r (_db->query<Member> (odb::query<Member>::person == _id));
+    return r.begin().load();
+}
+
+QSharedPointer<Loan> kpkDataTest::getLoan()
+{
+    odb::result<Loan> r (_db->query<Loan> (odb::query<Loan>::person == _id));
+    return r.begin().load();
 }
 
 void kpkDataTest::initTestCase()
@@ -128,7 +155,7 @@ void kpkDataTest::personPersisted()
     try{
        odb::transaction t (_db->begin ());
 
-       QSharedPointer<Person> p(_db->load<Person>(_id));
+       QSharedPointer<Person> p(getPerson());
 
        verifyPerson(*p);
 
@@ -171,7 +198,7 @@ void kpkDataTest::memberPersisted()
     try{
        odb::transaction t (_db->begin ());
 
-       QSharedPointer<Member> m(_db->load<Member>(_id));
+       QSharedPointer<Member> m(getMember());
 
        QVERIFY2(m->id() == _id, "Wrong id");
        QVERIFY2(!m->person().isNull(), "Person is null");
@@ -189,21 +216,11 @@ void kpkDataTest::loanCanPersist()
     try{
        odb::transaction t (_db->begin ());
 
-       QSharedPointer<Person> p (_db->load<Person>(_id));
-
-       typedef odb::query<Member> MemberQuery;
-       typedef odb::result<Member> MemberResult;
-
-       MemberResult r (_db->query<Member> (MemberQuery::person.equal(p->id())));
-
-       QSharedPointer<Member> m(r.begin().load());
+       auto p (getPerson());
+       auto m (getMember());
 
        QSharedPointer<Loan> l(new Loan(m, QDate::currentDate(), QDate::currentDate().addMonths(12),
                                        100000, 21, 12));
-
-
-       l->person(p);
-       l->member(r.begin().load());
 
        _db->persist(l);
 
@@ -218,16 +235,50 @@ void kpkDataTest::loanPersisted()
     try{
        odb::transaction t (_db->begin ());
 
-
-
-       typedef odb::query<Loan> Query;
-       typedef odb::result<Loan> Result;
-
-       Result r (_db->query<Loan> (Query::person.equal(_id)));
-
-       QSharedPointer<Loan> l(r.begin().load());
+       auto l(getLoan());
 
        QVERIFY2(l->person()->id() == _id, "Wrong person id");
+
+       t.commit();
+    }catch(const std::exception& e){
+       QVERIFY2(false, e.what());
+    }
+}
+
+void kpkDataTest::loanOperCanPersist()
+{
+    try{
+       odb::transaction t (_db->begin ());
+
+       auto p (getPerson());
+
+       QSharedPointer<LoanOper> o(new LoanOper);
+
+       o->fact().date(QDate::currentDate());
+       o->plan().date(QDate::currentDate().addDays(10));
+       o->person(p);
+       o->member(getMember());
+       o->loan(getLoan());
+
+       _db->persist(o);
+
+       t.commit();
+    }catch(const std::exception& e){
+       QVERIFY2(false, e.what());
+    }
+}
+
+void kpkDataTest::loanOperPersisted()
+{
+    try{
+       odb::transaction t (_db->begin ());
+
+       odb::result<LoanOper>
+       r (_db->query<LoanOper> (odb::query<LoanOper>::loan == getLoan()->id()));
+
+       auto o(r.begin().load());
+
+       QVERIFY2(o->person()->id() == _id, "Wrong person id");
 
        t.commit();
     }catch(const std::exception& e){

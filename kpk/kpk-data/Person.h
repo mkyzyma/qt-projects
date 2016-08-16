@@ -14,6 +14,7 @@
 namespace kpk{
 namespace data{
 
+
 #pragma db object
 class  DATASHARED_EXPORT Person
 {    

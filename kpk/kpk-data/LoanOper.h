@@ -25,10 +25,19 @@ public:
     LoanOperValue& plan();
     LoanOperValue& fact();
 
+    QSharedPointer<Person> person() const;
+    void person(const QSharedPointer<Person> &person);
+
+    QSharedPointer<Member> member() const;
+    void member(const QSharedPointer<Member> &member);
+
+    QSharedPointer<Loan> loan() const;
+    void loan(const QSharedPointer<Loan> &loan);
+
 private:
     friend class odb::access;
 
-    #pragma db id auto
+#pragma db id auto
     ulong _id;
 
     LoanOperValue _plan;
