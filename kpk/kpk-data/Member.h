@@ -12,6 +12,14 @@ namespace kpk{
 namespace data{
 
 
+enum ExitReason
+{
+    ER_NONE,
+    ER_EXIT,
+    ER_KICK,
+    ER_DEATH
+};
+
 #pragma db object
 class DATASHARED_EXPORT Member
 {
@@ -30,16 +38,21 @@ public:
 
     QSharedPointer<Person> person() const;
     void person(const QSharedPointer<Person> &person);
+
+    ExitReason exitReason() const;
+    void exitReason(const ExitReason &exitReason);
 private:
     friend class odb::access;
 
-    #pragma db id auto
+#pragma db id auto
     ulong _id;
 
     QDate _inDate;
 
     #pragma db null
     QSharedPointer<QDate> _outDate;
+
+    ExitReason _exitReason;
 
     #pragma db not_null
     #pragma db column("idPerson")

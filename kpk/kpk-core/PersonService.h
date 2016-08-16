@@ -2,16 +2,22 @@
 #define PERSONSERVICE_H
 
 #include <QSharedPointer>
+#include <QDate>
 
 #include "core_global.h"
 
 #include "kpk-data/Person.h"
+#include "kpk-data/Member.h"
 namespace kpk{
 namespace core{
 /*!
  * \brief PersonPtr Указатель на личные данные
  */
 typedef QSharedPointer<data::Person> PersonPtr;
+/*!
+ * \brief Указатель на запись членства
+ */
+typedef QSharedPointer<data::Member> MemberPtr;
 /*!
  * \brief Служба по управлению личными данными
  *
@@ -46,6 +52,20 @@ public:
      * \return  Личные данные
      */
     PersonPtr get(ulong id);
+
+    /*!
+     * \brief Вступитль в кооператив
+     * \param [in] person - Личные данные
+     * \param [in] date - Дата вступления
+     */
+    void enter(PersonPtr person, QDate date);
+
+    /*!
+     * \brief Выйти из кооператива
+     * \param [in] person - Личные данные
+     * \param [in] date - Дата выхода
+     */
+    void exit(PersonPtr person, QDate date, data::ExitReason reason);
 };
 
 }

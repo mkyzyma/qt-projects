@@ -9,7 +9,7 @@ Member::Member()
 Member::Member(QSharedPointer<Person> person,
                QDate inDate,
                QSharedPointer<QDate> outDate)
-    : _inDate(inDate), _outDate(outDate), _person(person)
+    : _inDate(inDate), _outDate(outDate), _person(person), _exitReason(ER_NONE)
 {}
 
 ulong Member::id() const { return _id; }
@@ -25,6 +25,9 @@ Member::person() const { return _person; }
 
 void Member::person(const QSharedPointer<Person> &person){ _person = person; }
 
+ExitReason Member::exitReason() const { return _exitReason; }
+
+void Member::exitReason(const ExitReason &exitReason) { _exitReason = exitReason; }
 
 }
 }

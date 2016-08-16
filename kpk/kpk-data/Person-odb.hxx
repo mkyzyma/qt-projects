@@ -122,7 +122,7 @@ namespace odb
   // Person
   //
   template <typename A>
-  struct query_columns< ::kpk::data::Person, id_pgsql, A >
+  struct pointer_query_columns< ::kpk::data::Person, id_pgsql, A >
   {
     // id
     //
@@ -289,81 +289,92 @@ namespace odb
     snils_type_;
 
     static const snils_type_ snils;
+
+    // member
+    //
+    typedef
+    pgsql::query_column<
+      pgsql::value_traits<
+        ::ulong,
+        pgsql::id_bigint >::query_type,
+      pgsql::id_bigint >
+    member_type_;
+
+    static const member_type_ member;
   };
 
   template <typename A>
-  const typename query_columns< ::kpk::data::Person, id_pgsql, A >::id_type_
-  query_columns< ::kpk::data::Person, id_pgsql, A >::
+  const typename pointer_query_columns< ::kpk::data::Person, id_pgsql, A >::id_type_
+  pointer_query_columns< ::kpk::data::Person, id_pgsql, A >::
   id (A::table_name, "\"id\"", 0);
 
   template <typename A>
-  const typename query_columns< ::kpk::data::Person, id_pgsql, A >::name_class_::first_type_
-  query_columns< ::kpk::data::Person, id_pgsql, A >::name_class_::
+  const typename pointer_query_columns< ::kpk::data::Person, id_pgsql, A >::name_class_::first_type_
+  pointer_query_columns< ::kpk::data::Person, id_pgsql, A >::name_class_::
   first (A::table_name, "\"name_first\"", 0);
 
   template <typename A>
-  const typename query_columns< ::kpk::data::Person, id_pgsql, A >::name_class_::middle_type_
-  query_columns< ::kpk::data::Person, id_pgsql, A >::name_class_::
+  const typename pointer_query_columns< ::kpk::data::Person, id_pgsql, A >::name_class_::middle_type_
+  pointer_query_columns< ::kpk::data::Person, id_pgsql, A >::name_class_::
   middle (A::table_name, "\"name_middle\"", 0);
 
   template <typename A>
-  const typename query_columns< ::kpk::data::Person, id_pgsql, A >::name_class_::last_type_
-  query_columns< ::kpk::data::Person, id_pgsql, A >::name_class_::
+  const typename pointer_query_columns< ::kpk::data::Person, id_pgsql, A >::name_class_::last_type_
+  pointer_query_columns< ::kpk::data::Person, id_pgsql, A >::name_class_::
   last (A::table_name, "\"name_last\"", 0);
 
   template <typename A>
-  const typename query_columns< ::kpk::data::Person, id_pgsql, A >::name_class_::full_type_
-  query_columns< ::kpk::data::Person, id_pgsql, A >::name_class_::
+  const typename pointer_query_columns< ::kpk::data::Person, id_pgsql, A >::name_class_::full_type_
+  pointer_query_columns< ::kpk::data::Person, id_pgsql, A >::name_class_::
   full (A::table_name, "\"name_full\"", 0);
 
   template <typename A>
-  const typename query_columns< ::kpk::data::Person, id_pgsql, A >::name_class_
-  query_columns< ::kpk::data::Person, id_pgsql, A >::name;
+  const typename pointer_query_columns< ::kpk::data::Person, id_pgsql, A >::name_class_
+  pointer_query_columns< ::kpk::data::Person, id_pgsql, A >::name;
 
   template <typename A>
-  const typename query_columns< ::kpk::data::Person, id_pgsql, A >::passport_class_::series_type_
-  query_columns< ::kpk::data::Person, id_pgsql, A >::passport_class_::
+  const typename pointer_query_columns< ::kpk::data::Person, id_pgsql, A >::passport_class_::series_type_
+  pointer_query_columns< ::kpk::data::Person, id_pgsql, A >::passport_class_::
   series (A::table_name, "\"pass_series\"", 0);
 
   template <typename A>
-  const typename query_columns< ::kpk::data::Person, id_pgsql, A >::passport_class_::number_type_
-  query_columns< ::kpk::data::Person, id_pgsql, A >::passport_class_::
+  const typename pointer_query_columns< ::kpk::data::Person, id_pgsql, A >::passport_class_::number_type_
+  pointer_query_columns< ::kpk::data::Person, id_pgsql, A >::passport_class_::
   number (A::table_name, "\"pass_number\"", 0);
 
   template <typename A>
-  const typename query_columns< ::kpk::data::Person, id_pgsql, A >::passport_class_::date_type_
-  query_columns< ::kpk::data::Person, id_pgsql, A >::passport_class_::
+  const typename pointer_query_columns< ::kpk::data::Person, id_pgsql, A >::passport_class_::date_type_
+  pointer_query_columns< ::kpk::data::Person, id_pgsql, A >::passport_class_::
   date (A::table_name, "\"pass_date\"", 0);
 
   template <typename A>
-  const typename query_columns< ::kpk::data::Person, id_pgsql, A >::passport_class_::org_type_
-  query_columns< ::kpk::data::Person, id_pgsql, A >::passport_class_::
+  const typename pointer_query_columns< ::kpk::data::Person, id_pgsql, A >::passport_class_::org_type_
+  pointer_query_columns< ::kpk::data::Person, id_pgsql, A >::passport_class_::
   org (A::table_name, "\"pass_org\"", 0);
 
   template <typename A>
-  const typename query_columns< ::kpk::data::Person, id_pgsql, A >::passport_class_::orgCode_type_
-  query_columns< ::kpk::data::Person, id_pgsql, A >::passport_class_::
+  const typename pointer_query_columns< ::kpk::data::Person, id_pgsql, A >::passport_class_::orgCode_type_
+  pointer_query_columns< ::kpk::data::Person, id_pgsql, A >::passport_class_::
   orgCode (A::table_name, "\"pass_orgCode\"", 0);
 
   template <typename A>
-  const typename query_columns< ::kpk::data::Person, id_pgsql, A >::passport_class_
-  query_columns< ::kpk::data::Person, id_pgsql, A >::passport;
+  const typename pointer_query_columns< ::kpk::data::Person, id_pgsql, A >::passport_class_
+  pointer_query_columns< ::kpk::data::Person, id_pgsql, A >::passport;
 
   template <typename A>
-  const typename query_columns< ::kpk::data::Person, id_pgsql, A >::inn_type_
-  query_columns< ::kpk::data::Person, id_pgsql, A >::
+  const typename pointer_query_columns< ::kpk::data::Person, id_pgsql, A >::inn_type_
+  pointer_query_columns< ::kpk::data::Person, id_pgsql, A >::
   inn (A::table_name, "\"inn\"", 0);
 
   template <typename A>
-  const typename query_columns< ::kpk::data::Person, id_pgsql, A >::snils_type_
-  query_columns< ::kpk::data::Person, id_pgsql, A >::
+  const typename pointer_query_columns< ::kpk::data::Person, id_pgsql, A >::snils_type_
+  pointer_query_columns< ::kpk::data::Person, id_pgsql, A >::
   snils (A::table_name, "\"snils\"", 0);
 
   template <typename A>
-  struct pointer_query_columns< ::kpk::data::Person, id_pgsql, A >:
-    query_columns< ::kpk::data::Person, id_pgsql, A >
-  {
-  };
+  const typename pointer_query_columns< ::kpk::data::Person, id_pgsql, A >::member_type_
+  pointer_query_columns< ::kpk::data::Person, id_pgsql, A >::
+  member (A::table_name, "\"idMember\"", 0);
 
   template <>
   class access::object_traits_impl< ::kpk::data::Person, id_pgsql >:
@@ -405,10 +416,17 @@ namespace odb
       std::size_t _snils_size;
       bool _snils_null;
 
+      // _member
+      //
+      long long _member_value;
+      bool _member_null;
+
       std::size_t version;
     };
 
     struct extra_statement_cache_type;
+
+    struct member_tag;
 
     using object_traits<object_type>::id;
 
@@ -447,7 +465,7 @@ namespace odb
 
     typedef pgsql::query_base query_base_type;
 
-    static const std::size_t column_count = 12UL;
+    static const std::size_t column_count = 13UL;
     static const std::size_t id_column_count = 1UL;
     static const std::size_t inverse_column_count = 0UL;
     static const std::size_t readonly_column_count = 0UL;
@@ -524,6 +542,299 @@ namespace odb
 
   // Person
   //
+  template <>
+  struct alias_traits<
+    ::kpk::data::Member,
+    id_pgsql,
+    access::object_traits_impl< ::kpk::data::Person, id_pgsql >::member_tag>
+  {
+    static const char table_name[];
+  };
+
+  template <>
+  struct query_columns_base< ::kpk::data::Person, id_pgsql >
+  {
+    // member
+    //
+    typedef
+    odb::alias_traits<
+      ::kpk::data::Member,
+      id_pgsql,
+      access::object_traits_impl< ::kpk::data::Person, id_pgsql >::member_tag>
+    member_alias_;
+  };
+
+  template <typename A>
+  struct query_columns< ::kpk::data::Person, id_pgsql, A >:
+    query_columns_base< ::kpk::data::Person, id_pgsql >
+  {
+    // id
+    //
+    typedef
+    pgsql::query_column<
+      pgsql::value_traits<
+        ::ulong,
+        pgsql::id_bigint >::query_type,
+      pgsql::id_bigint >
+    id_type_;
+
+    static const id_type_ id;
+
+    // name
+    //
+    struct name_class_
+    {
+      name_class_ ()
+      {
+      }
+
+      // first
+      //
+      typedef
+      pgsql::query_column<
+        pgsql::value_traits<
+          ::QString,
+          pgsql::id_string >::query_type,
+        pgsql::id_string >
+      first_type_;
+
+      static const first_type_ first;
+
+      // middle
+      //
+      typedef
+      pgsql::query_column<
+        pgsql::value_traits<
+          ::QString,
+          pgsql::id_string >::query_type,
+        pgsql::id_string >
+      middle_type_;
+
+      static const middle_type_ middle;
+
+      // last
+      //
+      typedef
+      pgsql::query_column<
+        pgsql::value_traits<
+          ::QString,
+          pgsql::id_string >::query_type,
+        pgsql::id_string >
+      last_type_;
+
+      static const last_type_ last;
+
+      // full
+      //
+      typedef
+      pgsql::query_column<
+        pgsql::value_traits<
+          ::QString,
+          pgsql::id_string >::query_type,
+        pgsql::id_string >
+      full_type_;
+
+      static const full_type_ full;
+    };
+
+    static const name_class_ name;
+
+    // passport
+    //
+    struct passport_class_
+    {
+      passport_class_ ()
+      {
+      }
+
+      // series
+      //
+      typedef
+      pgsql::query_column<
+        pgsql::value_traits<
+          ::QString,
+          pgsql::id_string >::query_type,
+        pgsql::id_string >
+      series_type_;
+
+      static const series_type_ series;
+
+      // number
+      //
+      typedef
+      pgsql::query_column<
+        pgsql::value_traits<
+          ::QString,
+          pgsql::id_string >::query_type,
+        pgsql::id_string >
+      number_type_;
+
+      static const number_type_ number;
+
+      // date
+      //
+      typedef
+      pgsql::query_column<
+        pgsql::value_traits<
+          ::QDate,
+          pgsql::id_date >::query_type,
+        pgsql::id_date >
+      date_type_;
+
+      static const date_type_ date;
+
+      // org
+      //
+      typedef
+      pgsql::query_column<
+        pgsql::value_traits<
+          ::QString,
+          pgsql::id_string >::query_type,
+        pgsql::id_string >
+      org_type_;
+
+      static const org_type_ org;
+
+      // orgCode
+      //
+      typedef
+      pgsql::query_column<
+        pgsql::value_traits<
+          ::QString,
+          pgsql::id_string >::query_type,
+        pgsql::id_string >
+      orgCode_type_;
+
+      static const orgCode_type_ orgCode;
+    };
+
+    static const passport_class_ passport;
+
+    // inn
+    //
+    typedef
+    pgsql::query_column<
+      pgsql::value_traits<
+        ::QString,
+        pgsql::id_string >::query_type,
+      pgsql::id_string >
+    inn_type_;
+
+    static const inn_type_ inn;
+
+    // snils
+    //
+    typedef
+    pgsql::query_column<
+      pgsql::value_traits<
+        ::QString,
+        pgsql::id_string >::query_type,
+      pgsql::id_string >
+    snils_type_;
+
+    static const snils_type_ snils;
+
+    // member
+    //
+    typedef
+    pgsql::query_column<
+      pgsql::value_traits<
+        ::ulong,
+        pgsql::id_bigint >::query_type,
+      pgsql::id_bigint >
+    member_column_type_;
+
+    typedef
+    odb::query_pointer<
+      odb::pointer_query_columns<
+        ::kpk::data::Member,
+        id_pgsql,
+        member_alias_ > >
+    member_pointer_type_;
+
+    struct member_type_: member_pointer_type_, member_column_type_
+    {
+      member_type_ (const char* t, const char* c, const char* conv)
+        : member_column_type_ (t, c, conv)
+      {
+      }
+    };
+
+    static const member_type_ member;
+  };
+
+  template <typename A>
+  const typename query_columns< ::kpk::data::Person, id_pgsql, A >::id_type_
+  query_columns< ::kpk::data::Person, id_pgsql, A >::
+  id (A::table_name, "\"id\"", 0);
+
+  template <typename A>
+  const typename query_columns< ::kpk::data::Person, id_pgsql, A >::name_class_::first_type_
+  query_columns< ::kpk::data::Person, id_pgsql, A >::name_class_::
+  first (A::table_name, "\"name_first\"", 0);
+
+  template <typename A>
+  const typename query_columns< ::kpk::data::Person, id_pgsql, A >::name_class_::middle_type_
+  query_columns< ::kpk::data::Person, id_pgsql, A >::name_class_::
+  middle (A::table_name, "\"name_middle\"", 0);
+
+  template <typename A>
+  const typename query_columns< ::kpk::data::Person, id_pgsql, A >::name_class_::last_type_
+  query_columns< ::kpk::data::Person, id_pgsql, A >::name_class_::
+  last (A::table_name, "\"name_last\"", 0);
+
+  template <typename A>
+  const typename query_columns< ::kpk::data::Person, id_pgsql, A >::name_class_::full_type_
+  query_columns< ::kpk::data::Person, id_pgsql, A >::name_class_::
+  full (A::table_name, "\"name_full\"", 0);
+
+  template <typename A>
+  const typename query_columns< ::kpk::data::Person, id_pgsql, A >::name_class_
+  query_columns< ::kpk::data::Person, id_pgsql, A >::name;
+
+  template <typename A>
+  const typename query_columns< ::kpk::data::Person, id_pgsql, A >::passport_class_::series_type_
+  query_columns< ::kpk::data::Person, id_pgsql, A >::passport_class_::
+  series (A::table_name, "\"pass_series\"", 0);
+
+  template <typename A>
+  const typename query_columns< ::kpk::data::Person, id_pgsql, A >::passport_class_::number_type_
+  query_columns< ::kpk::data::Person, id_pgsql, A >::passport_class_::
+  number (A::table_name, "\"pass_number\"", 0);
+
+  template <typename A>
+  const typename query_columns< ::kpk::data::Person, id_pgsql, A >::passport_class_::date_type_
+  query_columns< ::kpk::data::Person, id_pgsql, A >::passport_class_::
+  date (A::table_name, "\"pass_date\"", 0);
+
+  template <typename A>
+  const typename query_columns< ::kpk::data::Person, id_pgsql, A >::passport_class_::org_type_
+  query_columns< ::kpk::data::Person, id_pgsql, A >::passport_class_::
+  org (A::table_name, "\"pass_org\"", 0);
+
+  template <typename A>
+  const typename query_columns< ::kpk::data::Person, id_pgsql, A >::passport_class_::orgCode_type_
+  query_columns< ::kpk::data::Person, id_pgsql, A >::passport_class_::
+  orgCode (A::table_name, "\"pass_orgCode\"", 0);
+
+  template <typename A>
+  const typename query_columns< ::kpk::data::Person, id_pgsql, A >::passport_class_
+  query_columns< ::kpk::data::Person, id_pgsql, A >::passport;
+
+  template <typename A>
+  const typename query_columns< ::kpk::data::Person, id_pgsql, A >::inn_type_
+  query_columns< ::kpk::data::Person, id_pgsql, A >::
+  inn (A::table_name, "\"inn\"", 0);
+
+  template <typename A>
+  const typename query_columns< ::kpk::data::Person, id_pgsql, A >::snils_type_
+  query_columns< ::kpk::data::Person, id_pgsql, A >::
+  snils (A::table_name, "\"snils\"", 0);
+
+  template <typename A>
+  const typename query_columns< ::kpk::data::Person, id_pgsql, A >::member_type_
+  query_columns< ::kpk::data::Person, id_pgsql, A >::
+  member (A::table_name, "\"idMember\"", 0);
 }
 
 #include "Person-odb.ixx"

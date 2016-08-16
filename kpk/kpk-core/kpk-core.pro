@@ -23,7 +23,8 @@ HEADERS += \
     core_global.h \    
     DbService.h \
     PersonService.h \
-    Core.h
+    Core.h \
+    Exceptions.h
 
 unix {
     target.path = /usr/lib

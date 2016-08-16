@@ -41,5 +41,26 @@ void Person::snils(const QString &snils)
     _snils = snils;
 }
 
+bool Person::isNew()
+{
+    return id() == 0;
+}
+
+QSharedPointer<Member> Person::member() const
+{
+    return _member;
+}
+
+void Person::member(const QSharedPointer<Member> &member)
+{
+    _member = member;
+}
+
+bool Person::isMember()
+{
+    return !member().isNull() &&
+            member()->exitReason() == ER_NONE;
+}
+
 }
 }

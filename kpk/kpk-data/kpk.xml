@@ -13,14 +13,22 @@
       <column name="pass_orgCode" type="char(6)" null="true"/>
       <column name="inn" type="char(12)" null="true"/>
       <column name="snils" type="char(14)" null="true"/>
+      <column name="idMember" type="BIGINT" null="true"/>
       <primary-key auto="true">
         <column name="id"/>
       </primary-key>
+      <foreign-key name="idMember_fk" deferrable="DEFERRED">
+        <column name="idMember"/>
+        <references table="Member">
+          <column name="id"/>
+        </references>
+      </foreign-key>
     </table>
     <table name="Member" kind="object">
       <column name="id" type="BIGINT" null="false"/>
       <column name="inDate" type="DATE" null="true"/>
       <column name="outDate" type="DATE" null="true"/>
+      <column name="exitReason" type="INTEGER" null="false"/>
       <column name="idPerson" type="BIGINT" null="false"/>
       <primary-key auto="true">
         <column name="id"/>

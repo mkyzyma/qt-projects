@@ -55,11 +55,13 @@ namespace odb
                       "  \"pass_org\" TEXT NULL,\n"
                       "  \"pass_orgCode\" char(6) NULL,\n"
                       "  \"inn\" char(12) NULL,\n"
-                      "  \"snils\" char(14) NULL)");
+                      "  \"snils\" char(14) NULL,\n"
+                      "  \"idMember\" BIGINT NULL)");
           db.execute ("CREATE TABLE \"Member\" (\n"
                       "  \"id\" BIGSERIAL NOT NULL PRIMARY KEY,\n"
                       "  \"inDate\" DATE NULL,\n"
                       "  \"outDate\" DATE NULL,\n"
+                      "  \"exitReason\" INTEGER NOT NULL,\n"
                       "  \"idPerson\" BIGINT NOT NULL,\n"
                       "  CONSTRAINT \"idPerson_fk\"\n"
                       "    FOREIGN KEY (\"idPerson\")\n"
@@ -121,6 +123,11 @@ namespace odb
         }
         case 2:
         {
+          db.execute ("ALTER TABLE \"Person\"\n"
+                      "  ADD CONSTRAINT \"idMember_fk\"\n"
+                      "    FOREIGN KEY (\"idMember\")\n"
+                      "    REFERENCES \"Member\" (\"id\")\n"
+                      "    INITIALLY DEFERRED");
           db.execute ("CREATE TABLE \"schema_version\" (\n"
                       "  \"name\" TEXT NOT NULL PRIMARY KEY,\n"
                       "  \"version\" BIGINT NOT NULL,\n"

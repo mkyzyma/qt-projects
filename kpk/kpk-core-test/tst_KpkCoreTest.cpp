@@ -3,6 +3,7 @@
 
 #include "kpk-core/Core.h"
 #include "kpk-data/Person.h"
+#include "kpk-core/Exceptions.h"
 
 namespace kpk{
 namespace test {
@@ -25,6 +26,8 @@ private Q_SLOTS:
     void canConnect();
     void canCreateSchema();
     void canAddPerson();
+    void canEnter();
+    void canExit();
 };
 
 KpkCoreTest::KpkCoreTest()
@@ -87,19 +90,66 @@ void KpkCoreTest::canCreateSchema()
 void KpkCoreTest::canAddPerson()
 {
     try{
-
-        PersonPtr p(createPerson());
-
         Core()->begin();
-        Core()->person()->add(p);
+        Core()->person()->add(_p);
         Core()->commit();
 
         Core()->begin();
-        p = Core()->person()->get(p->id());
-        QVERIFY2(p->name().full() == _p->name().full(), "Wrong name");
+        auto p = Core()->person()->get(_p->id());
         Core()->commit();
+
+        verifyPerson(*p);
 
     }catch(const std::exception e){
+        Core()->rollback();
+        QVERIFY2(false, e.what());
+    }
+}
+
+void KpkCoreTest::canEnter()
+{
+    try{
+        Core()->begin();
+        Core()->person()->enter(_p, QDate::currentDate().addYears(-1));
+        Core()->commit();
+
+        bool throws(false);
+
+        try{
+            Core()->begin();
+            Core()->person()->enter(_p, QDate::currentDate());
+            Core()->commit();
+        }catch(const exception::AlreadyMemberException e){
+            Core()->rollback();
+            throws = true;
+        }
+
+        QVERIFY2(throws, "Already member");
+    }
+
+    catch(const std::exception e){
+        Core()->rollback();
+        QVERIFY2(false, e.what());
+    }
+}
+
+void KpkCoreTest::canExit()
+{
+    try{
+        Core()->begin();
+        QDate date = QDate::currentDate().addMonths(-6);
+        Core()->person()->exit(_p, date, ER_EXIT);
+        Core()->commit();
+
+        Core()->begin();
+        //auto p = Core()->person()->get(_p->id());
+        Core()->commit();
+        /*
+        QVERIFY2(!p->isMember(), "Must be not member, but stil a member");
+        QVERIFY2(p->member()->exitReason() == ER_EXIT, "Wrong exit reason");*/
+    }
+
+    catch(const std::exception e){
         Core()->rollback();
         QVERIFY2(false, e.what());
     }

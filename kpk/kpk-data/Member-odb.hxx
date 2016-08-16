@@ -161,6 +161,18 @@ namespace odb
 
     static const outDate_type_ outDate;
 
+    // exitReason
+    //
+    typedef
+    pgsql::query_column<
+      pgsql::value_traits<
+        ::kpk::data::ExitReason,
+        pgsql::id_integer >::query_type,
+      pgsql::id_integer >
+    exitReason_type_;
+
+    static const exitReason_type_ exitReason;
+
     // person
     //
     typedef
@@ -188,6 +200,11 @@ namespace odb
   const typename pointer_query_columns< ::kpk::data::Member, id_pgsql, A >::outDate_type_
   pointer_query_columns< ::kpk::data::Member, id_pgsql, A >::
   outDate (A::table_name, "\"outDate\"", 0);
+
+  template <typename A>
+  const typename pointer_query_columns< ::kpk::data::Member, id_pgsql, A >::exitReason_type_
+  pointer_query_columns< ::kpk::data::Member, id_pgsql, A >::
+  exitReason (A::table_name, "\"exitReason\"", 0);
 
   template <typename A>
   const typename pointer_query_columns< ::kpk::data::Member, id_pgsql, A >::person_type_
@@ -223,6 +240,11 @@ namespace odb
       //
       int _outDate_value;
       bool _outDate_null;
+
+      // _exitReason
+      //
+      int _exitReason_value;
+      bool _exitReason_null;
 
       // _person
       //
@@ -273,7 +295,7 @@ namespace odb
 
     typedef pgsql::query_base query_base_type;
 
-    static const std::size_t column_count = 4UL;
+    static const std::size_t column_count = 5UL;
     static const std::size_t id_column_count = 1UL;
     static const std::size_t inverse_column_count = 0UL;
     static const std::size_t readonly_column_count = 0UL;
@@ -412,6 +434,18 @@ namespace odb
 
     static const outDate_type_ outDate;
 
+    // exitReason
+    //
+    typedef
+    pgsql::query_column<
+      pgsql::value_traits<
+        ::kpk::data::ExitReason,
+        pgsql::id_integer >::query_type,
+      pgsql::id_integer >
+    exitReason_type_;
+
+    static const exitReason_type_ exitReason;
+
     // person
     //
     typedef
@@ -455,6 +489,11 @@ namespace odb
   const typename query_columns< ::kpk::data::Member, id_pgsql, A >::outDate_type_
   query_columns< ::kpk::data::Member, id_pgsql, A >::
   outDate (A::table_name, "\"outDate\"", 0);
+
+  template <typename A>
+  const typename query_columns< ::kpk::data::Member, id_pgsql, A >::exitReason_type_
+  query_columns< ::kpk::data::Member, id_pgsql, A >::
+  exitReason (A::table_name, "\"exitReason\"", 0);
 
   template <typename A>
   const typename query_columns< ::kpk::data::Member, id_pgsql, A >::person_type_

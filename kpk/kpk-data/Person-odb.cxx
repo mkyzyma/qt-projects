@@ -5,6 +5,7 @@
 #include <odb/pre.hxx>
 
 #include "Person-odb.hxx"
+#include "Member-odb.hxx"
 
 #include <cassert>
 #include <cstring>  // std::memcpy
@@ -57,7 +58,8 @@ namespace odb
     pgsql::text_oid,
     pgsql::text_oid,
     pgsql::text_oid,
-    pgsql::text_oid
+    pgsql::text_oid,
+    pgsql::int8_oid
   };
 
   const unsigned int access::object_traits_impl< ::kpk::data::Person, id_pgsql >::
@@ -80,8 +82,14 @@ namespace odb
     pgsql::text_oid,
     pgsql::text_oid,
     pgsql::text_oid,
+    pgsql::int8_oid,
     pgsql::int8_oid
   };
+
+  const char alias_traits<  ::kpk::data::Member,
+    id_pgsql,
+    access::object_traits_impl< ::kpk::data::Person, id_pgsql >::member_tag>::
+  table_name[] = "\"idMember\"";
 
   struct access::object_traits_impl< ::kpk::data::Person, id_pgsql >::extra_statement_cache_type
   {
@@ -178,6 +186,10 @@ namespace odb
       grew = true;
     }
 
+    // _member
+    //
+    t[12UL] = 0;
+
     return grew;
   }
 
@@ -230,6 +242,13 @@ namespace odb
     b[n].capacity = i._snils_value.capacity ();
     b[n].size = &i._snils_size;
     b[n].is_null = &i._snils_null;
+    n++;
+
+    // _member
+    //
+    b[n].type = pgsql::bind::bigint;
+    b[n].buffer = &i._member_value;
+    b[n].is_null = &i._member_null;
     n++;
   }
 
@@ -323,6 +342,31 @@ namespace odb
       grew = grew || (cap != i._snils_value.capacity ());
     }
 
+    // _member
+    //
+    {
+      ::QSharedPointer< ::kpk::data::Member > const& v =
+        o._member;
+
+      typedef object_traits< ::kpk::data::Member > obj_traits;
+      typedef odb::pointer_traits< ::QSharedPointer< ::kpk::data::Member > > ptr_traits;
+
+      bool is_null (ptr_traits::null_ptr (v));
+      if (!is_null)
+      {
+        const obj_traits::id_type& id (
+          obj_traits::id (ptr_traits::get_ref (v)));
+
+        pgsql::value_traits<
+            obj_traits::id_type,
+            pgsql::id_bigint >::set_image (
+          i._member_value, is_null, id);
+        i._member_null = is_null;
+      }
+      else
+        i._member_null = true;
+    }
+
     return grew;
   }
 
@@ -402,6 +446,37 @@ namespace odb
         i._snils_size,
         i._snils_null);
     }
+
+    // _member
+    //
+    {
+      ::QSharedPointer< ::kpk::data::Member >& v =
+        o._member;
+
+      typedef object_traits< ::kpk::data::Member > obj_traits;
+      typedef odb::pointer_traits< ::QSharedPointer< ::kpk::data::Member > > ptr_traits;
+
+      if (i._member_null)
+        v = ptr_traits::pointer_type ();
+      else
+      {
+        obj_traits::id_type id;
+        pgsql::value_traits<
+            obj_traits::id_type,
+            pgsql::id_bigint >::set_value (
+          id,
+          i._member_value,
+          i._member_null);
+
+        // If a compiler error points to the line below, then
+        // it most likely means that a pointer used in a member
+        // cannot be initialized from an object pointer.
+        //
+        v = ptr_traits::pointer_type (
+          static_cast<pgsql::database*> (db)->load<
+            obj_traits::object_type > (id));
+      }
+    }
   }
 
   void access::object_traits_impl< ::kpk::data::Person, id_pgsql >::
@@ -430,9 +505,10 @@ namespace odb
   "\"pass_org\", "
   "\"pass_orgCode\", "
   "\"inn\", "
-  "\"snils\") "
+  "\"snils\", "
+  "\"idMember\") "
   "VALUES "
-  "(DEFAULT, $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) "
+  "(DEFAULT, $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) "
   "RETURNING \"id\"";
 
   const char access::object_traits_impl< ::kpk::data::Person, id_pgsql >::find_statement[] =
@@ -448,7 +524,8 @@ namespace odb
   "\"Person\".\"pass_org\", "
   "\"Person\".\"pass_orgCode\", "
   "\"Person\".\"inn\", "
-  "\"Person\".\"snils\" "
+  "\"Person\".\"snils\", "
+  "\"Person\".\"idMember\" "
   "FROM \"Person\" "
   "WHERE \"Person\".\"id\"=$1";
 
@@ -465,28 +542,31 @@ namespace odb
   "\"pass_org\"=$8, "
   "\"pass_orgCode\"=$9, "
   "\"inn\"=$10, "
-  "\"snils\"=$11 "
-  "WHERE \"id\"=$12";
+  "\"snils\"=$11, "
+  "\"idMember\"=$12 "
+  "WHERE \"id\"=$13";
 
   const char access::object_traits_impl< ::kpk::data::Person, id_pgsql >::erase_statement[] =
   "DELETE FROM \"Person\" "
   "WHERE \"id\"=$1";
 
   const char access::object_traits_impl< ::kpk::data::Person, id_pgsql >::query_statement[] =
-  "SELECT "
-  "\"Person\".\"id\", "
-  "\"Person\".\"name_first\", "
-  "\"Person\".\"name_middle\", "
-  "\"Person\".\"name_last\", "
-  "\"Person\".\"name_full\", "
-  "\"Person\".\"pass_series\", "
-  "\"Person\".\"pass_number\", "
-  "\"Person\".\"pass_date\", "
-  "\"Person\".\"pass_org\", "
-  "\"Person\".\"pass_orgCode\", "
-  "\"Person\".\"inn\", "
-  "\"Person\".\"snils\" "
-  "FROM \"Person\"";
+  "SELECT\n"
+  "\"Person\".\"id\",\n"
+  "\"Person\".\"name_first\",\n"
+  "\"Person\".\"name_middle\",\n"
+  "\"Person\".\"name_last\",\n"
+  "\"Person\".\"name_full\",\n"
+  "\"Person\".\"pass_series\",\n"
+  "\"Person\".\"pass_number\",\n"
+  "\"Person\".\"pass_date\",\n"
+  "\"Person\".\"pass_org\",\n"
+  "\"Person\".\"pass_orgCode\",\n"
+  "\"Person\".\"inn\",\n"
+  "\"Person\".\"snils\",\n"
+  "\"Person\".\"idMember\"\n"
+  "FROM \"Person\"\n"
+  "LEFT JOIN \"Member\" AS \"idMember\" ON \"idMember\".\"id\"=\"Person\".\"idMember\"";
 
   const char access::object_traits_impl< ::kpk::data::Person, id_pgsql >::erase_query_statement[] =
   "DELETE FROM \"Person\"";
@@ -834,7 +914,7 @@ namespace odb
     std::string text (query_statement);
     if (!q.empty ())
     {
-      text += " ";
+      text += "\n";
       text += q.clause ();
     }
 
@@ -844,7 +924,7 @@ namespace odb
         sts.connection (),
         query_statement_name,
         text,
-        false,
+        true,
         true,
         q.parameter_types (),
         q.parameter_count (),

@@ -49,6 +49,7 @@ namespace odb
   {
     pgsql::date_oid,
     pgsql::date_oid,
+    pgsql::int4_oid,
     pgsql::int8_oid
   };
 
@@ -63,6 +64,7 @@ namespace odb
   {
     pgsql::date_oid,
     pgsql::date_oid,
+    pgsql::int4_oid,
     pgsql::int8_oid,
     pgsql::int8_oid
   };
@@ -147,9 +149,13 @@ namespace odb
     //
     t[2UL] = 0;
 
-    // _person
+    // _exitReason
     //
     t[3UL] = 0;
+
+    // _person
+    //
+    t[4UL] = 0;
 
     return grew;
   }
@@ -187,6 +193,13 @@ namespace odb
     b[n].type = pgsql::bind::date;
     b[n].buffer = &i._outDate_value;
     b[n].is_null = &i._outDate_null;
+    n++;
+
+    // _exitReason
+    //
+    b[n].type = pgsql::bind::integer;
+    b[n].buffer = &i._exitReason_value;
+    b[n].is_null = &i._exitReason_null;
     n++;
 
     // _person
@@ -245,6 +258,20 @@ namespace odb
           pgsql::id_date >::set_image (
         i._outDate_value, is_null, v);
       i._outDate_null = is_null;
+    }
+
+    // _exitReason
+    //
+    {
+      ::kpk::data::ExitReason const& v =
+        o._exitReason;
+
+      bool is_null (false);
+      pgsql::value_traits<
+          ::kpk::data::ExitReason,
+          pgsql::id_integer >::set_image (
+        i._exitReason_value, is_null, v);
+      i._exitReason_null = is_null;
     }
 
     // _person
@@ -326,6 +353,20 @@ namespace odb
         i._outDate_null);
     }
 
+    // _exitReason
+    //
+    {
+      ::kpk::data::ExitReason& v =
+        o._exitReason;
+
+      pgsql::value_traits<
+          ::kpk::data::ExitReason,
+          pgsql::id_integer >::set_value (
+        v,
+        i._exitReason_value,
+        i._exitReason_null);
+    }
+
     // _person
     //
     {
@@ -376,9 +417,10 @@ namespace odb
   "(\"id\", "
   "\"inDate\", "
   "\"outDate\", "
+  "\"exitReason\", "
   "\"idPerson\") "
   "VALUES "
-  "(DEFAULT, $1, $2, $3) "
+  "(DEFAULT, $1, $2, $3, $4) "
   "RETURNING \"id\"";
 
   const char access::object_traits_impl< ::kpk::data::Member, id_pgsql >::find_statement[] =
@@ -386,6 +428,7 @@ namespace odb
   "\"Member\".\"id\", "
   "\"Member\".\"inDate\", "
   "\"Member\".\"outDate\", "
+  "\"Member\".\"exitReason\", "
   "\"Member\".\"idPerson\" "
   "FROM \"Member\" "
   "WHERE \"Member\".\"id\"=$1";
@@ -395,8 +438,9 @@ namespace odb
   "SET "
   "\"inDate\"=$1, "
   "\"outDate\"=$2, "
-  "\"idPerson\"=$3 "
-  "WHERE \"id\"=$4";
+  "\"exitReason\"=$3, "
+  "\"idPerson\"=$4 "
+  "WHERE \"id\"=$5";
 
   const char access::object_traits_impl< ::kpk::data::Member, id_pgsql >::erase_statement[] =
   "DELETE FROM \"Member\" "
@@ -407,6 +451,7 @@ namespace odb
   "\"Member\".\"id\",\n"
   "\"Member\".\"inDate\",\n"
   "\"Member\".\"outDate\",\n"
+  "\"Member\".\"exitReason\",\n"
   "\"Member\".\"idPerson\"\n"
   "FROM \"Member\"\n"
   "LEFT JOIN \"Person\" AS \"idPerson\" ON \"idPerson\".\"id\"=\"Member\".\"idPerson\"";
