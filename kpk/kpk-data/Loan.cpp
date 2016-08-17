@@ -10,7 +10,7 @@ Loan::Loan()
 
 Loan::Loan(QSharedPointer<Member> member,
            QDate openDate, QDate closeDate,
-           long limit, long rate, long length)
+           long limit, long rate, long length, long sum)
 {
     _member = member;
     _person = member->person();
@@ -19,8 +19,9 @@ Loan::Loan(QSharedPointer<Member> member,
     _limit = limit;
     _rate = rate;
     _length = length;
-    _sum = 0;
+    _sum = sum;
     _prc = 0;
+
 }
 
 ulong Loan::id()
@@ -43,9 +44,9 @@ QDate Loan::closeDate()
     return _closeDate;
 }
 
-void Loan::closeDate(QDate &val)
+void Loan::closeDate(QDate &closeDate)
 {
-    _closeDate = val;
+    _closeDate = closeDate;
 }
 
 QSharedPointer<Member> Loan::member() const
@@ -53,19 +54,15 @@ QSharedPointer<Member> Loan::member() const
     return _member;
 }
 
-void Loan::member(const QSharedPointer<Member> &val)
+void Loan::member(const QSharedPointer<Member> &member)
 {
-    _member = val;
+    _member = member;
+    _person = member->person();
 }
 
 QSharedPointer<Person> Loan::person() const
 {
     return _person;
-}
-
-void Loan::person(const QSharedPointer<Person> &val)
-{
-    _person = val;
 }
 
 bool Loan::isClosed() const

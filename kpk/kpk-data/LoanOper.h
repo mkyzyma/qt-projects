@@ -16,22 +16,57 @@ namespace kpk
 {
 namespace data
 {
-
+/*!
+ * \brief Операция по займу
+ *
+ * Операция по займу (оплата или выдача)
+ */
 #pragma db object
 class DATASHARED_EXPORT LoanOper
 {
 public:
     LoanOper();
+
+    /*!
+     * \brief Получить оплату по плану
+     * \return Оплата по плану
+     */
     LoanOperValue& plan();
-    LoanOperValue& fact();
 
-    QSharedPointer<Person> person() const;
-    void person(const QSharedPointer<Person> &person);
+    /*!
+     * \brief Получить оплату по факту
+     * \return Оплата по факту
+     */
+    LoanOperValue& fact();    
 
-    QSharedPointer<Member> member() const;
+    /*!
+     * \brief Получить пайщика
+     * \return Пайщик
+     */
+    QSharedPointer<Member> member() const;    
+
+    /*!
+     * \brief Установить пайщика
+     * \param member - пайщик
+     */
     void member(const QSharedPointer<Member> &member);
 
+    /*!
+     * \brief Получить личные данные
+     * \return Личные данные
+     */
+    QSharedPointer<Person> person() const;
+
+    /*!
+     * \brief Получить займ
+     * \return Займ
+     */
     QSharedPointer<Loan> loan() const;
+
+    /*!
+     * \brief Установить займ
+     * \param loan - займ
+     */
     void loan(const QSharedPointer<Loan> &loan);
 
 private:

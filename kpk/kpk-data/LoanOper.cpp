@@ -19,15 +19,6 @@ LoanOperValue& LoanOper::fact()
     return _fact;
 }
 
-QSharedPointer<Person> LoanOper::person() const
-{
-    return _person;
-}
-
-void LoanOper::person(const QSharedPointer<Person> &person)
-{
-    _person = person;
-}
 
 QSharedPointer<Member> LoanOper::member() const
 {
@@ -37,6 +28,12 @@ QSharedPointer<Member> LoanOper::member() const
 void LoanOper::member(const QSharedPointer<Member> &member)
 {
     _member = member;
+    _person = member->person();
+}
+
+QSharedPointer<Person> LoanOper::person() const
+{
+    return _person;
 }
 
 QSharedPointer<Loan> LoanOper::loan() const

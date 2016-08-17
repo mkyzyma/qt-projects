@@ -62,7 +62,6 @@ void PersonService::exit(PersonPtr person, QDate date, ExitReason reason)
     m->exitReason(reason);
 
     Core()->db()->update(m);
-
 }
 
 

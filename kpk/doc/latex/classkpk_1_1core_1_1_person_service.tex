@@ -1,0 +1,192 @@
+\hypertarget{classkpk_1_1core_1_1_person_service}{}\section{Класс kpk\+:\+:core\+:\+:Person\+Service}
+\label{classkpk_1_1core_1_1_person_service}\index{kpk\+::core\+::\+Person\+Service@{kpk\+::core\+::\+Person\+Service}}
+
+
+Служба по управлению личными данными  
+
+
+
+
+{\ttfamily \#include $<$Person\+Service.\+h$>$}
+
+\subsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classkpk_1_1core_1_1_person_service_a4c4a362520b4017ad471ea8ac66b94c4}{Person\+Service} ()
+\item 
+void \hyperlink{classkpk_1_1core_1_1_person_service_ad9944affacfbf9e54bb0292c075f9cd4}{add} (\hyperlink{namespacekpk_1_1core_a4a1c110098ffdfb42bdcba45c4d9a7fe}{Person\+Ptr} person)
+\begin{DoxyCompactList}\small\item\em Добавить личные данные \end{DoxyCompactList}\item 
+void \hyperlink{classkpk_1_1core_1_1_person_service_a98a60349c8aeb570be80116e67814c65}{update} (\hyperlink{namespacekpk_1_1core_a4a1c110098ffdfb42bdcba45c4d9a7fe}{Person\+Ptr} person)
+\begin{DoxyCompactList}\small\item\em Изменить личные данные \end{DoxyCompactList}\item 
+void \hyperlink{classkpk_1_1core_1_1_person_service_a42c2e03d47b6002dc35190a7b904717d}{remove} (ulong id)
+\begin{DoxyCompactList}\small\item\em Удалить личные данные \end{DoxyCompactList}\item 
+\hyperlink{namespacekpk_1_1core_a4a1c110098ffdfb42bdcba45c4d9a7fe}{Person\+Ptr} \hyperlink{classkpk_1_1core_1_1_person_service_a3dbe80fc1ca2e472c23f5615f93e56ca}{get} (ulong id)
+\begin{DoxyCompactList}\small\item\em Получить личные данные \end{DoxyCompactList}\item 
+void \hyperlink{classkpk_1_1core_1_1_person_service_afe32af602f3393f827e4999fb47ca499}{enter} (\hyperlink{namespacekpk_1_1core_a4a1c110098ffdfb42bdcba45c4d9a7fe}{Person\+Ptr} person, Q\+Date date)
+\begin{DoxyCompactList}\small\item\em Вступить в кооператив \end{DoxyCompactList}\item 
+void \hyperlink{classkpk_1_1core_1_1_person_service_a5ba7fb6ea238585a336ee845a668d65a}{exit} (\hyperlink{namespacekpk_1_1core_a4a1c110098ffdfb42bdcba45c4d9a7fe}{Person\+Ptr} person, Q\+Date date, \hyperlink{namespacekpk_1_1data_a16790bc647a6788cab282e185ee28998}{data\+::\+Exit\+Reason} reason)
+\begin{DoxyCompactList}\small\item\em Выйти из кооператива \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Подробное описание}
+Служба по управлению личными данными 
+
+Хранение личных данных, вступление/выход, поручительство и т.\+д. \begin{DoxyRefDesc}{Необходимо сделать}
+\item[\hyperlink{todo__todo000001}{Необходимо сделать}]Добавить работу с адресами \end{DoxyRefDesc}
+
+
+См. определение в файле Person\+Service.\+h строка 27
+
+
+
+\subsection{Конструктор(ы)}
+\index{kpk\+::core\+::\+Person\+Service@{kpk\+::core\+::\+Person\+Service}!Person\+Service@{Person\+Service}}
+\index{Person\+Service@{Person\+Service}!kpk\+::core\+::\+Person\+Service@{kpk\+::core\+::\+Person\+Service}}
+\subsubsection[{\texorpdfstring{Person\+Service()}{PersonService()}}]{\setlength{\rightskip}{0pt plus 5cm}kpk\+::core\+::\+Person\+Service\+::\+Person\+Service (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classkpk_1_1core_1_1_person_service_a4c4a362520b4017ad471ea8ac66b94c4}{}\label{classkpk_1_1core_1_1_person_service_a4c4a362520b4017ad471ea8ac66b94c4}
+
+
+См. определение в файле Person\+Service.\+cpp строка 16
+
+
+
+\subsection{Методы}
+\index{kpk\+::core\+::\+Person\+Service@{kpk\+::core\+::\+Person\+Service}!add@{add}}
+\index{add@{add}!kpk\+::core\+::\+Person\+Service@{kpk\+::core\+::\+Person\+Service}}
+\subsubsection[{\texorpdfstring{add(\+Person\+Ptr person)}{add(PersonPtr person)}}]{\setlength{\rightskip}{0pt plus 5cm}void kpk\+::core\+::\+Person\+Service\+::add (
+\begin{DoxyParamCaption}
+\item[{{\bf Person\+Ptr}}]{person}
+\end{DoxyParamCaption}
+)}\hypertarget{classkpk_1_1core_1_1_person_service_ad9944affacfbf9e54bb0292c075f9cd4}{}\label{classkpk_1_1core_1_1_person_service_ad9944affacfbf9e54bb0292c075f9cd4}
+
+
+Добавить личные данные 
+
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\tt in}  & {\em person} & -\/ личные данные \\
+\hline
+\end{DoxyParams}
+
+
+См. определение в файле Person\+Service.\+cpp строка 19
+
+\index{kpk\+::core\+::\+Person\+Service@{kpk\+::core\+::\+Person\+Service}!enter@{enter}}
+\index{enter@{enter}!kpk\+::core\+::\+Person\+Service@{kpk\+::core\+::\+Person\+Service}}
+\subsubsection[{\texorpdfstring{enter(\+Person\+Ptr person, Q\+Date date)}{enter(PersonPtr person, QDate date)}}]{\setlength{\rightskip}{0pt plus 5cm}void kpk\+::core\+::\+Person\+Service\+::enter (
+\begin{DoxyParamCaption}
+\item[{{\bf Person\+Ptr}}]{person, }
+\item[{Q\+Date}]{date}
+\end{DoxyParamCaption}
+)}\hypertarget{classkpk_1_1core_1_1_person_service_afe32af602f3393f827e4999fb47ca499}{}\label{classkpk_1_1core_1_1_person_service_afe32af602f3393f827e4999fb47ca499}
+
+
+Вступить в кооператив 
+
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\tt in}  & {\em person} & -\/ Личные данные \\
+\hline
+\mbox{\tt in}  & {\em date} & -\/ Дата вступления \\
+\hline
+\end{DoxyParams}
+
+
+См. определение в файле Person\+Service.\+cpp строка 39
+
+\index{kpk\+::core\+::\+Person\+Service@{kpk\+::core\+::\+Person\+Service}!exit@{exit}}
+\index{exit@{exit}!kpk\+::core\+::\+Person\+Service@{kpk\+::core\+::\+Person\+Service}}
+\subsubsection[{\texorpdfstring{exit(\+Person\+Ptr person, Q\+Date date, data\+::\+Exit\+Reason reason)}{exit(PersonPtr person, QDate date, data::ExitReason reason)}}]{\setlength{\rightskip}{0pt plus 5cm}void kpk\+::core\+::\+Person\+Service\+::exit (
+\begin{DoxyParamCaption}
+\item[{{\bf Person\+Ptr}}]{person, }
+\item[{Q\+Date}]{date, }
+\item[{{\bf data\+::\+Exit\+Reason}}]{reason}
+\end{DoxyParamCaption}
+)}\hypertarget{classkpk_1_1core_1_1_person_service_a5ba7fb6ea238585a336ee845a668d65a}{}\label{classkpk_1_1core_1_1_person_service_a5ba7fb6ea238585a336ee845a668d65a}
+
+
+Выйти из кооператива 
+
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\tt in}  & {\em person} & -\/ Личные данные \\
+\hline
+\mbox{\tt in}  & {\em date} & -\/ Дата выхода \\
+\hline
+\end{DoxyParams}
+
+
+См. определение в файле Person\+Service.\+cpp строка 54
+
+\index{kpk\+::core\+::\+Person\+Service@{kpk\+::core\+::\+Person\+Service}!get@{get}}
+\index{get@{get}!kpk\+::core\+::\+Person\+Service@{kpk\+::core\+::\+Person\+Service}}
+\subsubsection[{\texorpdfstring{get(ulong id)}{get(ulong id)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Person\+Ptr} kpk\+::core\+::\+Person\+Service\+::get (
+\begin{DoxyParamCaption}
+\item[{ulong}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{classkpk_1_1core_1_1_person_service_a3dbe80fc1ca2e472c23f5615f93e56ca}{}\label{classkpk_1_1core_1_1_person_service_a3dbe80fc1ca2e472c23f5615f93e56ca}
+
+
+Получить личные данные 
+
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\tt in}  & {\em id} & -\/ идентификатор \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Личные данные 
+\end{DoxyReturn}
+
+
+См. определение в файле Person\+Service.\+cpp строка 34
+
+\index{kpk\+::core\+::\+Person\+Service@{kpk\+::core\+::\+Person\+Service}!remove@{remove}}
+\index{remove@{remove}!kpk\+::core\+::\+Person\+Service@{kpk\+::core\+::\+Person\+Service}}
+\subsubsection[{\texorpdfstring{remove(ulong id)}{remove(ulong id)}}]{\setlength{\rightskip}{0pt plus 5cm}void kpk\+::core\+::\+Person\+Service\+::remove (
+\begin{DoxyParamCaption}
+\item[{ulong}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{classkpk_1_1core_1_1_person_service_a42c2e03d47b6002dc35190a7b904717d}{}\label{classkpk_1_1core_1_1_person_service_a42c2e03d47b6002dc35190a7b904717d}
+
+
+Удалить личные данные 
+
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\tt in}  & {\em id} & -\/ идентификатор \\
+\hline
+\end{DoxyParams}
+
+
+См. определение в файле Person\+Service.\+cpp строка 29
+
+\index{kpk\+::core\+::\+Person\+Service@{kpk\+::core\+::\+Person\+Service}!update@{update}}
+\index{update@{update}!kpk\+::core\+::\+Person\+Service@{kpk\+::core\+::\+Person\+Service}}
+\subsubsection[{\texorpdfstring{update(\+Person\+Ptr person)}{update(PersonPtr person)}}]{\setlength{\rightskip}{0pt plus 5cm}void kpk\+::core\+::\+Person\+Service\+::update (
+\begin{DoxyParamCaption}
+\item[{{\bf Person\+Ptr}}]{person}
+\end{DoxyParamCaption}
+)}\hypertarget{classkpk_1_1core_1_1_person_service_a98a60349c8aeb570be80116e67814c65}{}\label{classkpk_1_1core_1_1_person_service_a98a60349c8aeb570be80116e67814c65}
+
+
+Изменить личные данные 
+
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\tt in}  & {\em person} & -\/ личные данные \\
+\hline
+\end{DoxyParams}
+
+
+См. определение в файле Person\+Service.\+cpp строка 24
+
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+kpk-\/core/\hyperlink{_person_service_8h}{Person\+Service.\+h}\item 
+kpk-\/core/\hyperlink{_person_service_8cpp}{Person\+Service.\+cpp}\end{DoxyCompactItemize}

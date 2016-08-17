@@ -255,8 +255,7 @@ void kpkDataTest::loanOperCanPersist()
        QSharedPointer<LoanOper> o(new LoanOper);
 
        o->fact().date(QDate::currentDate());
-       o->plan().date(QDate::currentDate().addDays(10));
-       o->person(p);
+       o->plan().date(QDate::currentDate().addDays(10));      
        o->member(getMember());
        o->loan(getLoan());
 

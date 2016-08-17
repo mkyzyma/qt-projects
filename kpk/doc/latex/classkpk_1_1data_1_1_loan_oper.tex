@@ -1,0 +1,207 @@
+\hypertarget{classkpk_1_1data_1_1_loan_oper}{}\section{Класс kpk\+:\+:data\+:\+:Loan\+Oper}
+\label{classkpk_1_1data_1_1_loan_oper}\index{kpk\+::data\+::\+Loan\+Oper@{kpk\+::data\+::\+Loan\+Oper}}
+
+
+Операция по займу  
+
+
+
+
+{\ttfamily \#include $<$Loan\+Oper.\+h$>$}
+
+\subsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classkpk_1_1data_1_1_loan_oper_ab4c52cd423192f6d8a14bac56917e8cb}{Loan\+Oper} ()
+\item 
+\hyperlink{classkpk_1_1data_1_1_loan_oper_value}{Loan\+Oper\+Value} \& \hyperlink{classkpk_1_1data_1_1_loan_oper_af20e426695913f8593131a65014b29b4}{plan} ()
+\begin{DoxyCompactList}\small\item\em Получить оплату по плану \end{DoxyCompactList}\item 
+\hyperlink{classkpk_1_1data_1_1_loan_oper_value}{Loan\+Oper\+Value} \& \hyperlink{classkpk_1_1data_1_1_loan_oper_afab5ad2be6f0207bce3c61e2b6ea8f40}{fact} ()
+\begin{DoxyCompactList}\small\item\em Получить оплату по факту \end{DoxyCompactList}\item 
+Q\+Shared\+Pointer$<$ \hyperlink{classkpk_1_1data_1_1_member}{Member} $>$ \hyperlink{classkpk_1_1data_1_1_loan_oper_a284dc401e5e3707dc6b527a2319c48be}{member} () const 
+\begin{DoxyCompactList}\small\item\em Получить пайщика \end{DoxyCompactList}\item 
+void \hyperlink{classkpk_1_1data_1_1_loan_oper_a729594b0f6ae32a9e847fd6d96300f1a}{member} (const Q\+Shared\+Pointer$<$ \hyperlink{classkpk_1_1data_1_1_member}{Member} $>$ \&member)
+\begin{DoxyCompactList}\small\item\em Установить пайщика \end{DoxyCompactList}\item 
+Q\+Shared\+Pointer$<$ \hyperlink{classkpk_1_1data_1_1_person}{Person} $>$ \hyperlink{classkpk_1_1data_1_1_loan_oper_af91281245769158a57b1cde02863086f}{person} () const 
+\begin{DoxyCompactList}\small\item\em Получить личные данные \end{DoxyCompactList}\item 
+Q\+Shared\+Pointer$<$ \hyperlink{classkpk_1_1data_1_1_loan}{Loan} $>$ \hyperlink{classkpk_1_1data_1_1_loan_oper_a600f69026b98c1af25ac86f979802a48}{loan} () const 
+\begin{DoxyCompactList}\small\item\em Получить займ \end{DoxyCompactList}\item 
+void \hyperlink{classkpk_1_1data_1_1_loan_oper_a24ec06260b30649dae8020584b036df2}{loan} (const Q\+Shared\+Pointer$<$ \hyperlink{classkpk_1_1data_1_1_loan}{Loan} $>$ \&loan)
+\begin{DoxyCompactList}\small\item\em Установить займ \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Друзья}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classkpk_1_1data_1_1_loan_oper_acb4d953abf85ae525f1d06a0c3a86a55}{odb\+::access}
+\end{DoxyCompactItemize}
+
+
+\subsection{Подробное описание}
+Операция по займу 
+
+Операция по займу (оплата или выдача) 
+
+См. определение в файле Loan\+Oper.\+h строка 25
+
+
+
+\subsection{Конструктор(ы)}
+\index{kpk\+::data\+::\+Loan\+Oper@{kpk\+::data\+::\+Loan\+Oper}!Loan\+Oper@{Loan\+Oper}}
+\index{Loan\+Oper@{Loan\+Oper}!kpk\+::data\+::\+Loan\+Oper@{kpk\+::data\+::\+Loan\+Oper}}
+\subsubsection[{\texorpdfstring{Loan\+Oper()}{LoanOper()}}]{\setlength{\rightskip}{0pt plus 5cm}kpk\+::data\+::\+Loan\+Oper\+::\+Loan\+Oper (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classkpk_1_1data_1_1_loan_oper_ab4c52cd423192f6d8a14bac56917e8cb}{}\label{classkpk_1_1data_1_1_loan_oper_ab4c52cd423192f6d8a14bac56917e8cb}
+
+
+См. определение в файле Loan\+Oper.\+cpp строка 7
+
+
+
+\subsection{Методы}
+\index{kpk\+::data\+::\+Loan\+Oper@{kpk\+::data\+::\+Loan\+Oper}!fact@{fact}}
+\index{fact@{fact}!kpk\+::data\+::\+Loan\+Oper@{kpk\+::data\+::\+Loan\+Oper}}
+\subsubsection[{\texorpdfstring{fact()}{fact()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Loan\+Oper\+Value} \& kpk\+::data\+::\+Loan\+Oper\+::fact (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classkpk_1_1data_1_1_loan_oper_afab5ad2be6f0207bce3c61e2b6ea8f40}{}\label{classkpk_1_1data_1_1_loan_oper_afab5ad2be6f0207bce3c61e2b6ea8f40}
+
+
+Получить оплату по факту 
+
+\begin{DoxyReturn}{Возвращает}
+Оплата по факту 
+\end{DoxyReturn}
+
+
+См. определение в файле Loan\+Oper.\+cpp строка 17
+
+\index{kpk\+::data\+::\+Loan\+Oper@{kpk\+::data\+::\+Loan\+Oper}!loan@{loan}}
+\index{loan@{loan}!kpk\+::data\+::\+Loan\+Oper@{kpk\+::data\+::\+Loan\+Oper}}
+\subsubsection[{\texorpdfstring{loan() const }{loan() const }}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Shared\+Pointer$<$ {\bf Loan} $>$ kpk\+::data\+::\+Loan\+Oper\+::loan (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classkpk_1_1data_1_1_loan_oper_a600f69026b98c1af25ac86f979802a48}{}\label{classkpk_1_1data_1_1_loan_oper_a600f69026b98c1af25ac86f979802a48}
+
+
+Получить займ 
+
+\begin{DoxyReturn}{Возвращает}
+Займ 
+\end{DoxyReturn}
+
+
+См. определение в файле Loan\+Oper.\+cpp строка 39
+
+\index{kpk\+::data\+::\+Loan\+Oper@{kpk\+::data\+::\+Loan\+Oper}!loan@{loan}}
+\index{loan@{loan}!kpk\+::data\+::\+Loan\+Oper@{kpk\+::data\+::\+Loan\+Oper}}
+\subsubsection[{\texorpdfstring{loan(const Q\+Shared\+Pointer$<$ Loan $>$ \&loan)}{loan(const QSharedPointer< Loan > &loan)}}]{\setlength{\rightskip}{0pt plus 5cm}void kpk\+::data\+::\+Loan\+Oper\+::loan (
+\begin{DoxyParamCaption}
+\item[{const Q\+Shared\+Pointer$<$ {\bf Loan} $>$ \&}]{loan}
+\end{DoxyParamCaption}
+)}\hypertarget{classkpk_1_1data_1_1_loan_oper_a24ec06260b30649dae8020584b036df2}{}\label{classkpk_1_1data_1_1_loan_oper_a24ec06260b30649dae8020584b036df2}
+
+
+Установить займ 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em loan} & -\/ займ \\
+\hline
+\end{DoxyParams}
+
+
+См. определение в файле Loan\+Oper.\+cpp строка 44
+
+\index{kpk\+::data\+::\+Loan\+Oper@{kpk\+::data\+::\+Loan\+Oper}!member@{member}}
+\index{member@{member}!kpk\+::data\+::\+Loan\+Oper@{kpk\+::data\+::\+Loan\+Oper}}
+\subsubsection[{\texorpdfstring{member() const }{member() const }}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Shared\+Pointer$<$ {\bf Member} $>$ kpk\+::data\+::\+Loan\+Oper\+::member (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classkpk_1_1data_1_1_loan_oper_a284dc401e5e3707dc6b527a2319c48be}{}\label{classkpk_1_1data_1_1_loan_oper_a284dc401e5e3707dc6b527a2319c48be}
+
+
+Получить пайщика 
+
+\begin{DoxyReturn}{Возвращает}
+Пайщик 
+\end{DoxyReturn}
+
+
+См. определение в файле Loan\+Oper.\+cpp строка 23
+
+\index{kpk\+::data\+::\+Loan\+Oper@{kpk\+::data\+::\+Loan\+Oper}!member@{member}}
+\index{member@{member}!kpk\+::data\+::\+Loan\+Oper@{kpk\+::data\+::\+Loan\+Oper}}
+\subsubsection[{\texorpdfstring{member(const Q\+Shared\+Pointer$<$ Member $>$ \&member)}{member(const QSharedPointer< Member > &member)}}]{\setlength{\rightskip}{0pt plus 5cm}void kpk\+::data\+::\+Loan\+Oper\+::member (
+\begin{DoxyParamCaption}
+\item[{const Q\+Shared\+Pointer$<$ {\bf Member} $>$ \&}]{member}
+\end{DoxyParamCaption}
+)}\hypertarget{classkpk_1_1data_1_1_loan_oper_a729594b0f6ae32a9e847fd6d96300f1a}{}\label{classkpk_1_1data_1_1_loan_oper_a729594b0f6ae32a9e847fd6d96300f1a}
+
+
+Установить пайщика 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em member} & -\/ пайщик \\
+\hline
+\end{DoxyParams}
+
+
+См. определение в файле Loan\+Oper.\+cpp строка 28
+
+\index{kpk\+::data\+::\+Loan\+Oper@{kpk\+::data\+::\+Loan\+Oper}!person@{person}}
+\index{person@{person}!kpk\+::data\+::\+Loan\+Oper@{kpk\+::data\+::\+Loan\+Oper}}
+\subsubsection[{\texorpdfstring{person() const }{person() const }}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Shared\+Pointer$<$ {\bf Person} $>$ kpk\+::data\+::\+Loan\+Oper\+::person (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classkpk_1_1data_1_1_loan_oper_af91281245769158a57b1cde02863086f}{}\label{classkpk_1_1data_1_1_loan_oper_af91281245769158a57b1cde02863086f}
+
+
+Получить личные данные 
+
+\begin{DoxyReturn}{Возвращает}
+Личные данные 
+\end{DoxyReturn}
+
+
+См. определение в файле Loan\+Oper.\+cpp строка 34
+
+\index{kpk\+::data\+::\+Loan\+Oper@{kpk\+::data\+::\+Loan\+Oper}!plan@{plan}}
+\index{plan@{plan}!kpk\+::data\+::\+Loan\+Oper@{kpk\+::data\+::\+Loan\+Oper}}
+\subsubsection[{\texorpdfstring{plan()}{plan()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Loan\+Oper\+Value} \& kpk\+::data\+::\+Loan\+Oper\+::plan (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classkpk_1_1data_1_1_loan_oper_af20e426695913f8593131a65014b29b4}{}\label{classkpk_1_1data_1_1_loan_oper_af20e426695913f8593131a65014b29b4}
+
+
+Получить оплату по плану 
+
+\begin{DoxyReturn}{Возвращает}
+Оплата по плану 
+\end{DoxyReturn}
+
+
+См. определение в файле Loan\+Oper.\+cpp строка 12
+
+
+
+\subsection{Документация по друзьям класса и функциям, относящимся к классу}
+\index{kpk\+::data\+::\+Loan\+Oper@{kpk\+::data\+::\+Loan\+Oper}!odb\+::access@{odb\+::access}}
+\index{odb\+::access@{odb\+::access}!kpk\+::data\+::\+Loan\+Oper@{kpk\+::data\+::\+Loan\+Oper}}
+\subsubsection[{\texorpdfstring{odb\+::access}{odb::access}}]{\setlength{\rightskip}{0pt plus 5cm}friend class odb\+::access\hspace{0.3cm}{\ttfamily [friend]}}\hypertarget{classkpk_1_1data_1_1_loan_oper_acb4d953abf85ae525f1d06a0c3a86a55}{}\label{classkpk_1_1data_1_1_loan_oper_acb4d953abf85ae525f1d06a0c3a86a55}
+
+
+См. определение в файле Loan\+Oper.\+h строка 73
+
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+kpk-\/data/\hyperlink{_loan_oper_8h}{Loan\+Oper.\+h}\item 
+kpk-\/data/\hyperlink{_loan_oper_8cpp}{Loan\+Oper.\+cpp}\end{DoxyCompactItemize}

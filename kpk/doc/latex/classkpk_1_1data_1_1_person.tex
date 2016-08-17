@@ -1,0 +1,287 @@
+\hypertarget{classkpk_1_1data_1_1_person}{}\section{Класс kpk\+:\+:data\+:\+:Person}
+\label{classkpk_1_1data_1_1_person}\index{kpk\+::data\+::\+Person@{kpk\+::data\+::\+Person}}
+
+
+Личные данные  
+
+
+
+
+{\ttfamily \#include $<$Person.\+h$>$}
+
+\subsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classkpk_1_1data_1_1_person_a3d3734c98d4d71765b46ba63faf40d42}{Person} ()
+\item 
+ulong \hyperlink{classkpk_1_1data_1_1_person_ae8b70e7cdc9ebd68052a177a08110002}{id} () const 
+\begin{DoxyCompactList}\small\item\em Получить идентификатор \end{DoxyCompactList}\item 
+\hyperlink{classkpk_1_1data_1_1_name}{Name} \& \hyperlink{classkpk_1_1data_1_1_person_ad67f8ee4a541984f988e909eb0f18370}{name} ()
+\begin{DoxyCompactList}\small\item\em Получить имя \end{DoxyCompactList}\item 
+\hyperlink{classkpk_1_1data_1_1_passport}{Passport} \& \hyperlink{classkpk_1_1data_1_1_person_a38b692a8236cba1673554b3c6ed972b3}{passport} ()
+\begin{DoxyCompactList}\small\item\em Получить паспортные данные \end{DoxyCompactList}\item 
+Q\+String \hyperlink{classkpk_1_1data_1_1_person_a718b0634bef8c0281a8553afafd3ffd8}{inn} () const 
+\begin{DoxyCompactList}\small\item\em Получить ИНН \end{DoxyCompactList}\item 
+void \hyperlink{classkpk_1_1data_1_1_person_a8a3633d768cdb21913f499d0e89b72de}{inn} (const Q\+String \&inn)
+\begin{DoxyCompactList}\small\item\em Установить ИНН \end{DoxyCompactList}\item 
+Q\+String \hyperlink{classkpk_1_1data_1_1_person_ab97dd46a638436924b55be08e40fbd58}{snils} () const 
+\begin{DoxyCompactList}\small\item\em Получить СНИЛС \end{DoxyCompactList}\item 
+void \hyperlink{classkpk_1_1data_1_1_person_a110fad1e7ae404890ba536f6673f0d72}{snils} (const Q\+String \&snils)
+\begin{DoxyCompactList}\small\item\em Установить СНИЛС \end{DoxyCompactList}\item 
+bool \hyperlink{classkpk_1_1data_1_1_person_a102c06e6a83c60a46738fbbb46802b3b}{is\+New} ()
+\begin{DoxyCompactList}\small\item\em Сохранен ли в системе \end{DoxyCompactList}\item 
+Q\+Shared\+Pointer$<$ \hyperlink{classkpk_1_1data_1_1_member}{Member} $>$ \hyperlink{classkpk_1_1data_1_1_person_ae690eb327e9dc0c3ab781904889912ad}{member} () const 
+\begin{DoxyCompactList}\small\item\em Получить последнюю запись о членстве \end{DoxyCompactList}\item 
+void \hyperlink{classkpk_1_1data_1_1_person_a4357fd5288be372736f5e81bfe0b5f2f}{member} (const Q\+Shared\+Pointer$<$ \hyperlink{classkpk_1_1data_1_1_member}{Member} $>$ \&member)
+\begin{DoxyCompactList}\small\item\em Установить последнюю запись о членстве \end{DoxyCompactList}\item 
+bool \hyperlink{classkpk_1_1data_1_1_person_ab437e28e5004a3961c14c650fc99ee69}{is\+Member} ()
+\begin{DoxyCompactList}\small\item\em Является ли членом \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Друзья}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classkpk_1_1data_1_1_person_acb4d953abf85ae525f1d06a0c3a86a55}{odb\+::access}
+\end{DoxyCompactItemize}
+
+
+\subsection{Подробное описание}
+Личные данные 
+
+См. определение в файле Person.\+h строка 23
+
+
+
+\subsection{Конструктор(ы)}
+\index{kpk\+::data\+::\+Person@{kpk\+::data\+::\+Person}!Person@{Person}}
+\index{Person@{Person}!kpk\+::data\+::\+Person@{kpk\+::data\+::\+Person}}
+\subsubsection[{\texorpdfstring{Person()}{Person()}}]{\setlength{\rightskip}{0pt plus 5cm}kpk\+::data\+::\+Person\+::\+Person (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classkpk_1_1data_1_1_person_a3d3734c98d4d71765b46ba63faf40d42}{}\label{classkpk_1_1data_1_1_person_a3d3734c98d4d71765b46ba63faf40d42}
+
+
+См. определение в файле Person.\+cpp строка 6
+
+
+
+\subsection{Методы}
+\index{kpk\+::data\+::\+Person@{kpk\+::data\+::\+Person}!id@{id}}
+\index{id@{id}!kpk\+::data\+::\+Person@{kpk\+::data\+::\+Person}}
+\subsubsection[{\texorpdfstring{id() const }{id() const }}]{\setlength{\rightskip}{0pt plus 5cm}ulong kpk\+::data\+::\+Person\+::id (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classkpk_1_1data_1_1_person_ae8b70e7cdc9ebd68052a177a08110002}{}\label{classkpk_1_1data_1_1_person_ae8b70e7cdc9ebd68052a177a08110002}
+
+
+Получить идентификатор 
+
+\begin{DoxyReturn}{Возвращает}
+Идентификатор 
+\end{DoxyReturn}
+
+
+См. определение в файле Person.\+cpp строка 9
+
+\index{kpk\+::data\+::\+Person@{kpk\+::data\+::\+Person}!inn@{inn}}
+\index{inn@{inn}!kpk\+::data\+::\+Person@{kpk\+::data\+::\+Person}}
+\subsubsection[{\texorpdfstring{inn() const }{inn() const }}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String kpk\+::data\+::\+Person\+::inn (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classkpk_1_1data_1_1_person_a718b0634bef8c0281a8553afafd3ffd8}{}\label{classkpk_1_1data_1_1_person_a718b0634bef8c0281a8553afafd3ffd8}
+
+
+Получить ИНН 
+
+\begin{DoxyReturn}{Возвращает}
+ИНН 
+\end{DoxyReturn}
+
+
+См. определение в файле Person.\+cpp строка 24
+
+\index{kpk\+::data\+::\+Person@{kpk\+::data\+::\+Person}!inn@{inn}}
+\index{inn@{inn}!kpk\+::data\+::\+Person@{kpk\+::data\+::\+Person}}
+\subsubsection[{\texorpdfstring{inn(const Q\+String \&inn)}{inn(const QString &inn)}}]{\setlength{\rightskip}{0pt plus 5cm}void kpk\+::data\+::\+Person\+::inn (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{inn}
+\end{DoxyParamCaption}
+)}\hypertarget{classkpk_1_1data_1_1_person_a8a3633d768cdb21913f499d0e89b72de}{}\label{classkpk_1_1data_1_1_person_a8a3633d768cdb21913f499d0e89b72de}
+
+
+Установить ИНН 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em inn} & -\/ ИНН \\
+\hline
+\end{DoxyParams}
+
+
+См. определение в файле Person.\+cpp строка 29
+
+\index{kpk\+::data\+::\+Person@{kpk\+::data\+::\+Person}!is\+Member@{is\+Member}}
+\index{is\+Member@{is\+Member}!kpk\+::data\+::\+Person@{kpk\+::data\+::\+Person}}
+\subsubsection[{\texorpdfstring{is\+Member()}{isMember()}}]{\setlength{\rightskip}{0pt plus 5cm}bool kpk\+::data\+::\+Person\+::is\+Member (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classkpk_1_1data_1_1_person_ab437e28e5004a3961c14c650fc99ee69}{}\label{classkpk_1_1data_1_1_person_ab437e28e5004a3961c14c650fc99ee69}
+
+
+Является ли членом 
+
+\begin{DoxyReturn}{Возвращает}
+true -\/ является, false -\/ не является 
+\end{DoxyReturn}
+
+
+См. определение в файле Person.\+cpp строка 59
+
+\index{kpk\+::data\+::\+Person@{kpk\+::data\+::\+Person}!is\+New@{is\+New}}
+\index{is\+New@{is\+New}!kpk\+::data\+::\+Person@{kpk\+::data\+::\+Person}}
+\subsubsection[{\texorpdfstring{is\+New()}{isNew()}}]{\setlength{\rightskip}{0pt plus 5cm}bool kpk\+::data\+::\+Person\+::is\+New (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classkpk_1_1data_1_1_person_a102c06e6a83c60a46738fbbb46802b3b}{}\label{classkpk_1_1data_1_1_person_a102c06e6a83c60a46738fbbb46802b3b}
+
+
+Сохранен ли в системе 
+
+\begin{DoxyReturn}{Возвращает}
+false -\/ сохранен, true -\/ не сохранен 
+\end{DoxyReturn}
+
+
+См. определение в файле Person.\+cpp строка 44
+
+\index{kpk\+::data\+::\+Person@{kpk\+::data\+::\+Person}!member@{member}}
+\index{member@{member}!kpk\+::data\+::\+Person@{kpk\+::data\+::\+Person}}
+\subsubsection[{\texorpdfstring{member() const }{member() const }}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Shared\+Pointer$<$ {\bf Member} $>$ kpk\+::data\+::\+Person\+::member (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classkpk_1_1data_1_1_person_ae690eb327e9dc0c3ab781904889912ad}{}\label{classkpk_1_1data_1_1_person_ae690eb327e9dc0c3ab781904889912ad}
+
+
+Получить последнюю запись о членстве 
+
+\begin{DoxyReturn}{Возвращает}
+Последнеяя запись о членстве 
+\end{DoxyReturn}
+
+
+См. определение в файле Person.\+cpp строка 49
+
+\index{kpk\+::data\+::\+Person@{kpk\+::data\+::\+Person}!member@{member}}
+\index{member@{member}!kpk\+::data\+::\+Person@{kpk\+::data\+::\+Person}}
+\subsubsection[{\texorpdfstring{member(const Q\+Shared\+Pointer$<$ Member $>$ \&member)}{member(const QSharedPointer< Member > &member)}}]{\setlength{\rightskip}{0pt plus 5cm}void kpk\+::data\+::\+Person\+::member (
+\begin{DoxyParamCaption}
+\item[{const Q\+Shared\+Pointer$<$ {\bf Member} $>$ \&}]{member}
+\end{DoxyParamCaption}
+)}\hypertarget{classkpk_1_1data_1_1_person_a4357fd5288be372736f5e81bfe0b5f2f}{}\label{classkpk_1_1data_1_1_person_a4357fd5288be372736f5e81bfe0b5f2f}
+
+
+Установить последнюю запись о членстве 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em member} & -\/ последнеяя запись о членстве \\
+\hline
+\end{DoxyParams}
+
+
+См. определение в файле Person.\+cpp строка 54
+
+\index{kpk\+::data\+::\+Person@{kpk\+::data\+::\+Person}!name@{name}}
+\index{name@{name}!kpk\+::data\+::\+Person@{kpk\+::data\+::\+Person}}
+\subsubsection[{\texorpdfstring{name()}{name()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Name} \& kpk\+::data\+::\+Person\+::name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classkpk_1_1data_1_1_person_ad67f8ee4a541984f988e909eb0f18370}{}\label{classkpk_1_1data_1_1_person_ad67f8ee4a541984f988e909eb0f18370}
+
+
+Получить имя 
+
+\begin{DoxyReturn}{Возвращает}
+Имя 
+\end{DoxyReturn}
+
+
+См. определение в файле Person.\+cpp строка 14
+
+\index{kpk\+::data\+::\+Person@{kpk\+::data\+::\+Person}!passport@{passport}}
+\index{passport@{passport}!kpk\+::data\+::\+Person@{kpk\+::data\+::\+Person}}
+\subsubsection[{\texorpdfstring{passport()}{passport()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Passport} \& kpk\+::data\+::\+Person\+::passport (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classkpk_1_1data_1_1_person_a38b692a8236cba1673554b3c6ed972b3}{}\label{classkpk_1_1data_1_1_person_a38b692a8236cba1673554b3c6ed972b3}
+
+
+Получить паспортные данные 
+
+\begin{DoxyReturn}{Возвращает}
+Паспортные данные 
+\end{DoxyReturn}
+
+
+См. определение в файле Person.\+cpp строка 19
+
+\index{kpk\+::data\+::\+Person@{kpk\+::data\+::\+Person}!snils@{snils}}
+\index{snils@{snils}!kpk\+::data\+::\+Person@{kpk\+::data\+::\+Person}}
+\subsubsection[{\texorpdfstring{snils() const }{snils() const }}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String kpk\+::data\+::\+Person\+::snils (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classkpk_1_1data_1_1_person_ab97dd46a638436924b55be08e40fbd58}{}\label{classkpk_1_1data_1_1_person_ab97dd46a638436924b55be08e40fbd58}
+
+
+Получить СНИЛС 
+
+\begin{DoxyReturn}{Возвращает}
+СНИЛС 
+\end{DoxyReturn}
+
+
+См. определение в файле Person.\+cpp строка 34
+
+\index{kpk\+::data\+::\+Person@{kpk\+::data\+::\+Person}!snils@{snils}}
+\index{snils@{snils}!kpk\+::data\+::\+Person@{kpk\+::data\+::\+Person}}
+\subsubsection[{\texorpdfstring{snils(const Q\+String \&snils)}{snils(const QString &snils)}}]{\setlength{\rightskip}{0pt plus 5cm}void kpk\+::data\+::\+Person\+::snils (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{snils}
+\end{DoxyParamCaption}
+)}\hypertarget{classkpk_1_1data_1_1_person_a110fad1e7ae404890ba536f6673f0d72}{}\label{classkpk_1_1data_1_1_person_a110fad1e7ae404890ba536f6673f0d72}
+
+
+Установить СНИЛС 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em snils} & -\/ СНИЛС \\
+\hline
+\end{DoxyParams}
+
+
+См. определение в файле Person.\+cpp строка 39
+
+
+
+\subsection{Документация по друзьям класса и функциям, относящимся к классу}
+\index{kpk\+::data\+::\+Person@{kpk\+::data\+::\+Person}!odb\+::access@{odb\+::access}}
+\index{odb\+::access@{odb\+::access}!kpk\+::data\+::\+Person@{kpk\+::data\+::\+Person}}
+\subsubsection[{\texorpdfstring{odb\+::access}{odb::access}}]{\setlength{\rightskip}{0pt plus 5cm}friend class odb\+::access\hspace{0.3cm}{\ttfamily [friend]}}\hypertarget{classkpk_1_1data_1_1_person_acb4d953abf85ae525f1d06a0c3a86a55}{}\label{classkpk_1_1data_1_1_person_acb4d953abf85ae525f1d06a0c3a86a55}
+
+
+См. определение в файле Person.\+h строка 94
+
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+kpk-\/data/\hyperlink{_person_8h}{Person.\+h}\item 
+kpk-\/data/\hyperlink{_person_8cpp}{Person.\+cpp}\end{DoxyCompactItemize}

@@ -22,6 +22,7 @@ typedef QSharedPointer<data::Member> MemberPtr;
  * \brief Служба по управлению личными данными
  *
  * Хранение личных данных, вступление/выход, поручительство и т.д.
+ * \todo Добавить работу с адресами
  */
 class CORESHARED_EXPORT PersonService
 {
@@ -54,7 +55,7 @@ public:
     PersonPtr get(ulong id);
 
     /*!
-     * \brief Вступитль в кооператив
+     * \brief Вступить в кооператив
      * \param [in] person - Личные данные
      * \param [in] date - Дата вступления
      */

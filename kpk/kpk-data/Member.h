@@ -11,35 +11,90 @@
 namespace kpk{
 namespace data{
 
-
+/*!
+ * \brief Причина выхода
+ */
 enum ExitReason
 {
-    ER_NONE,
-    ER_EXIT,
-    ER_KICK,
-    ER_DEATH
+    ER_NONE, ///<\brief Не вышел
+    ER_EXIT, ///<\brief Вышел добровольно
+    ER_KICK, ///<\brief Исключен
+    ER_DEATH ///<\brief Умер
 };
 
+
+/*!
+ * \brief Пайщик
+ */
 #pragma db object
 class DATASHARED_EXPORT Member
 {
 public:    
     Member();
+    /*!
+     * \brief Конструктор
+     * \param person - личные данные
+     * \param inDate - дата вступления
+     * \param outDate - дата выхода
+     */
     Member(QSharedPointer<Person> person,
            QDate inDate,
-           QSharedPointer<QDate> outDate = QSharedPointer<QDate>());
+           QSharedPointer<QDate> outDate = QSharedPointer<QDate>(0));
+
+    /*!
+     * \brief Получить идентификатор
+     * \return Идкнтификатор
+     */
     ulong id() const;
 
-    QDate inDate() const;
-    void inDate(const QDate &inDate);
-
-    QSharedPointer<QDate> outDate() const;
-    void outDate(const QSharedPointer<QDate> &outDate);
-
+    /*!
+     * \brief Получить личные данные
+     * \return Личные данные
+     */
     QSharedPointer<Person> person() const;
+
+    /*!
+     * \brief Установить личные данные
+     * \param person - личные данные
+     */
     void person(const QSharedPointer<Person> &person);
 
+    /*!
+     * \brief Получить дату вступления
+     * \return  Дата вступления
+     */
+    QDate inDate() const;
+
+    /*!
+     * \brief Установить дату вступления
+     * \param inDate - дата вступления
+     */
+    void inDate(const QDate &inDate);
+
+    /*!
+     * \brief Получить дату выхода
+     * \return Указатель на дату выхода
+     * \warning Может быть NULL
+     */
+    QSharedPointer<QDate> outDate() const;
+
+    /*!
+     * \brief Установить дату выхода
+     * \param outDate - Указатель на дату выхода
+     * \warning Может быть NULL
+     */
+    void outDate(const QSharedPointer<QDate> &outDate);
+
+    /*!
+     * \brief Получить причину выхода
+     * \return Причина выхода
+     */
     ExitReason exitReason() const;
+
+    /*!
+     * \brief Установить причину выхода
+     * \param exitReason - причина выхода
+     */
     void exitReason(const ExitReason &exitReason);
 private:
     friend class odb::access;

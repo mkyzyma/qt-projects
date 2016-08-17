@@ -11,7 +11,7 @@ namespace kpk{
 namespace core{
 
 /*!
- * \brief Ядро
+ * \brief Класс Ядра
  *
  * Все службы собранные в кучу
  */
@@ -53,6 +53,10 @@ private:
     QSharedPointer<DbService> _dbService;
 };
 
+/*!
+ * \brief Получить ядро
+ * \return Указатель на ядро
+ */
 static CoreClass* Core(){
     static CoreClass instance;
     return &instance;
