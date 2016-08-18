@@ -14,18 +14,9 @@
 #include <odb/qt/basic/pgsql/qstring-traits.hxx>
 #include <odb/qt/basic/pgsql/qbyte-array-traits.hxx>
 #include <odb/qt/basic/pgsql/quuid-traits.hxx>
-#include <odb/qt/containers/qhash-traits.hxx>
-#include <odb/qt/containers/qlist-traits.hxx>
-#include <odb/qt/containers/qlinked-list-traits.hxx>
-#include <odb/qt/containers/qmap-traits.hxx>
-#include <odb/qt/containers/qset-traits.hxx>
-#include <odb/qt/containers/qvector-traits.hxx>
 #include <odb/qt/date-time/pgsql/qdate-traits.hxx>
 #include <odb/qt/date-time/pgsql/qtime-traits.hxx>
 #include <odb/qt/date-time/pgsql/qdate-time-traits.hxx>
-#include <QtCore/QSharedPointer>
-#include <odb/qt/smart-ptr/pointer-traits.hxx>
-#include <odb/qt/smart-ptr/wrapper-traits.hxx>
 //
 // End prologue.
 
@@ -41,6 +32,7 @@
 
 #include "Loan-odb.hxx"
 #include "LoanOperValue-odb.hxx"
+#include "LoanType-odb.hxx"
 #include "Member-odb.hxx"
 #include "Name-odb.hxx"
 #include "Passport-odb.hxx"
@@ -79,7 +71,7 @@ namespace odb
   {
     public:
     typedef ::kpk::data::LoanOper object_type;
-    typedef ::QSharedPointer< ::kpk::data::LoanOper > pointer_type;
+    typedef ::std::shared_ptr< ::kpk::data::LoanOper > pointer_type;
     typedef odb::pointer_traits<pointer_type> pointer_traits;
 
     static const bool polymorphic = false;

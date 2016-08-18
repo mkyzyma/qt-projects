@@ -2,7 +2,7 @@
 #define LOAN_H
 
 #include <QtCore/QDate>
-#include <QtCore/QSharedPointer>
+#include <memory>
 
 
 
@@ -12,6 +12,7 @@
 
 #include "Member.h"
 #include "Person.h"
+#include "LoanType.h"
 
 namespace kpk {
 namespace data {
@@ -36,7 +37,7 @@ public:
      * \param length - срок
      * \param sum - выданная сумма
      */
-    Loan(QSharedPointer<Member> member,
+    Loan(std::shared_ptr<Member> member, std::shared_ptr<LoanType> loanType,
          QDate openDate, QDate closeDate, long limit, long rate, long length, long sum = 0);
 
     /*!
@@ -67,25 +68,7 @@ public:
      * \brief Установить дату завершения
      * \param closeDate - дата завершения
      */
-    void closeDate(QDate& closeDate);
-
-    /*!
-     * \brief Получить пайщика
-     * \return Пайщик
-     */
-    QSharedPointer<Member> member() const;
-
-    /*!
-     * \brief Установить пайщика
-     * \param member - пайщик
-     */
-    void member(const QSharedPointer<Member> &member);
-
-    /*!
-     * \brief Получить личные данные
-     * \return личные данные
-     */
-    QSharedPointer<Person> person() const;
+    void closeDate(QDate& closeDate);    
 
     /*!
      * \brief Закрыт ли займ
@@ -110,7 +93,6 @@ public:
      * \param rate - процентная ставка
      */
     void rate(long rate);
-
 
     /*!
      * \brief Получить лимит кредитования
@@ -176,6 +158,36 @@ public:
      */
     void remains(long remains);
 
+    /*!
+     * \brief Получить пайщика
+     * \return Пайщик
+     */
+    std::shared_ptr<Member> member() const;
+
+    /*!
+     * \brief Установить пайщика
+     * \param member - пайщик
+     */
+    void member(const std::shared_ptr<Member> &member);
+
+    /*!
+     * \brief Получить личные данные
+     * \return личные данные
+     */
+    std::shared_ptr<Person> person() const;
+
+    /*!
+     * \brief Получить вид займа
+     * \return Вид займа
+     */
+    std::shared_ptr<LoanType> loanType() const;
+
+    /*!
+     * \brief Установить вид займа
+     * \param loanType - вид займа
+     */
+    void loanType(const std::shared_ptr<LoanType> &loanType);
+
 private:
     friend class  odb::access;
 
@@ -194,11 +206,15 @@ private:
 
     #pragma db not_null
     #pragma db column("idMember")
-    QSharedPointer<Member> _member;
+    std::shared_ptr<Member> _member;
 
     #pragma db not_null
     #pragma db column("idPerson")
-    QSharedPointer<Person> _person;
+    std::shared_ptr<Person> _person;
+
+    #pragma db not_null
+    #pragma db column("idLoanType")
+    std::shared_ptr<LoanType> _loanType;
 };
 
 }

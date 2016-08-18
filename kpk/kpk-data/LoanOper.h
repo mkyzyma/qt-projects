@@ -1,7 +1,7 @@
 #ifndef LOANOPER_H
 #define LOANOPER_H
 
-#include <QtCore/QSharedPointer>
+#include <memory>
 
 #include <odb/core.hxx>
 
@@ -43,31 +43,31 @@ public:
      * \brief Получить пайщика
      * \return Пайщик
      */
-    QSharedPointer<Member> member() const;    
+    std::shared_ptr<Member> member() const;
 
     /*!
      * \brief Установить пайщика
      * \param member - пайщик
      */
-    void member(const QSharedPointer<Member> &member);
+    void member(const std::shared_ptr<Member> &member);
 
     /*!
      * \brief Получить личные данные
      * \return Личные данные
      */
-    QSharedPointer<Person> person() const;
+    std::shared_ptr<Person> person() const;
 
     /*!
      * \brief Получить займ
      * \return Займ
      */
-    QSharedPointer<Loan> loan() const;
+    std::shared_ptr<Loan> loan() const;
 
     /*!
      * \brief Установить займ
      * \param loan - займ
      */
-    void loan(const QSharedPointer<Loan> &loan);
+    void loan(const std::shared_ptr<Loan> &loan);
 
 private:
     friend class odb::access;
@@ -80,15 +80,15 @@ private:
 
     #pragma db not_null
     #pragma db column("idPerson")
-    QSharedPointer<Person> _person;
+    std::shared_ptr<Person> _person;
 
     #pragma db not_null
     #pragma db column("idMember")
-    QSharedPointer<Member> _member;
+    std::shared_ptr<Member> _member;
 
     #pragma db not_null
     #pragma db column("idLoan")
-    QSharedPointer<Loan> _loan;
+    std::shared_ptr<Loan> _loan;
 };
 
 }

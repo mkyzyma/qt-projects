@@ -14,18 +14,9 @@
 #include <odb/qt/basic/pgsql/qstring-traits.hxx>
 #include <odb/qt/basic/pgsql/qbyte-array-traits.hxx>
 #include <odb/qt/basic/pgsql/quuid-traits.hxx>
-#include <odb/qt/containers/qhash-traits.hxx>
-#include <odb/qt/containers/qlist-traits.hxx>
-#include <odb/qt/containers/qlinked-list-traits.hxx>
-#include <odb/qt/containers/qmap-traits.hxx>
-#include <odb/qt/containers/qset-traits.hxx>
-#include <odb/qt/containers/qvector-traits.hxx>
 #include <odb/qt/date-time/pgsql/qdate-traits.hxx>
 #include <odb/qt/date-time/pgsql/qtime-traits.hxx>
 #include <odb/qt/date-time/pgsql/qdate-time-traits.hxx>
-#include <QtCore/QSharedPointer>
-#include <odb/qt/smart-ptr/pointer-traits.hxx>
-#include <odb/qt/smart-ptr/wrapper-traits.hxx>
 //
 // End prologue.
 
@@ -76,7 +67,7 @@ namespace odb
   {
     public:
     typedef ::kpk::data::Member object_type;
-    typedef ::QSharedPointer< ::kpk::data::Member > pointer_type;
+    typedef ::std::shared_ptr< ::kpk::data::Member > pointer_type;
     typedef odb::pointer_traits<pointer_type> pointer_traits;
 
     static const bool polymorphic = false;

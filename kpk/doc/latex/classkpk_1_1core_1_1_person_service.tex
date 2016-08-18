@@ -14,17 +14,17 @@
 \item 
 \hyperlink{classkpk_1_1core_1_1_person_service_a4c4a362520b4017ad471ea8ac66b94c4}{Person\+Service} ()
 \item 
-void \hyperlink{classkpk_1_1core_1_1_person_service_ad9944affacfbf9e54bb0292c075f9cd4}{add} (\hyperlink{namespacekpk_1_1core_a4a1c110098ffdfb42bdcba45c4d9a7fe}{Person\+Ptr} person)
+void \hyperlink{classkpk_1_1core_1_1_person_service_ad9944affacfbf9e54bb0292c075f9cd4}{add} (\hyperlink{namespacekpk_1_1core_ab7506e35456bfb9d583bc7815bbb5ca4}{Person\+Ptr} person)
 \begin{DoxyCompactList}\small\item\em Добавить личные данные \end{DoxyCompactList}\item 
-void \hyperlink{classkpk_1_1core_1_1_person_service_a98a60349c8aeb570be80116e67814c65}{update} (\hyperlink{namespacekpk_1_1core_a4a1c110098ffdfb42bdcba45c4d9a7fe}{Person\+Ptr} person)
+void \hyperlink{classkpk_1_1core_1_1_person_service_a98a60349c8aeb570be80116e67814c65}{update} (\hyperlink{namespacekpk_1_1core_ab7506e35456bfb9d583bc7815bbb5ca4}{Person\+Ptr} person)
 \begin{DoxyCompactList}\small\item\em Изменить личные данные \end{DoxyCompactList}\item 
 void \hyperlink{classkpk_1_1core_1_1_person_service_a42c2e03d47b6002dc35190a7b904717d}{remove} (ulong id)
 \begin{DoxyCompactList}\small\item\em Удалить личные данные \end{DoxyCompactList}\item 
-\hyperlink{namespacekpk_1_1core_a4a1c110098ffdfb42bdcba45c4d9a7fe}{Person\+Ptr} \hyperlink{classkpk_1_1core_1_1_person_service_a3dbe80fc1ca2e472c23f5615f93e56ca}{get} (ulong id)
+std\+::shared\+\_\+ptr$<$ \hyperlink{classkpk_1_1data_1_1_person}{data\+::\+Person} $>$ \hyperlink{classkpk_1_1core_1_1_person_service_a3dbe80fc1ca2e472c23f5615f93e56ca}{get} (ulong id)
 \begin{DoxyCompactList}\small\item\em Получить личные данные \end{DoxyCompactList}\item 
-void \hyperlink{classkpk_1_1core_1_1_person_service_afe32af602f3393f827e4999fb47ca499}{enter} (\hyperlink{namespacekpk_1_1core_a4a1c110098ffdfb42bdcba45c4d9a7fe}{Person\+Ptr} person, Q\+Date date)
+void \hyperlink{classkpk_1_1core_1_1_person_service_afe32af602f3393f827e4999fb47ca499}{enter} (\hyperlink{namespacekpk_1_1core_ab7506e35456bfb9d583bc7815bbb5ca4}{Person\+Ptr} person, Q\+Date date)
 \begin{DoxyCompactList}\small\item\em Вступить в кооператив \end{DoxyCompactList}\item 
-void \hyperlink{classkpk_1_1core_1_1_person_service_a5ba7fb6ea238585a336ee845a668d65a}{exit} (\hyperlink{namespacekpk_1_1core_a4a1c110098ffdfb42bdcba45c4d9a7fe}{Person\+Ptr} person, Q\+Date date, \hyperlink{namespacekpk_1_1data_a16790bc647a6788cab282e185ee28998}{data\+::\+Exit\+Reason} reason)
+void \hyperlink{classkpk_1_1core_1_1_person_service_a5ba7fb6ea238585a336ee845a668d65a}{exit} (\hyperlink{namespacekpk_1_1core_ab7506e35456bfb9d583bc7815bbb5ca4}{Person\+Ptr} person, Q\+Date date, \hyperlink{namespacekpk_1_1data_a16790bc647a6788cab282e185ee28998}{data\+::\+Exit\+Reason} reason)
 \begin{DoxyCompactList}\small\item\em Выйти из кооператива \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -32,7 +32,7 @@ void \hyperlink{classkpk_1_1core_1_1_person_service_a5ba7fb6ea238585a336ee845a66
 Служба по управлению личными данными 
 
 Хранение личных данных, вступление/выход, поручительство и т.\+д. \begin{DoxyRefDesc}{Необходимо сделать}
-\item[\hyperlink{todo__todo000001}{Необходимо сделать}]Добавить работу с адресами \end{DoxyRefDesc}
+\item[\hyperlink{todo__todo000002}{Необходимо сделать}]Добавить работу с адресами \end{DoxyRefDesc}
 
 
 См. определение в файле Person\+Service.\+h строка 27
@@ -94,8 +94,13 @@ void \hyperlink{classkpk_1_1core_1_1_person_service_a5ba7fb6ea238585a336ee845a66
 \hline
 \end{DoxyParams}
 
+\begin{DoxyExceptions}{Исключения}
+{\em \hyperlink{classkpk_1_1exception_1_1_already_member_exception}{kpk\+::exception\+::\+Already\+Member\+Exception}} & если person уже пайщик \\
+\hline
+\end{DoxyExceptions}
 
-См. определение в файле Person\+Service.\+cpp строка 39
+
+См. определение в файле Person\+Service.\+cpp строка 40
 
 \index{kpk\+::core\+::\+Person\+Service@{kpk\+::core\+::\+Person\+Service}!exit@{exit}}
 \index{exit@{exit}!kpk\+::core\+::\+Person\+Service@{kpk\+::core\+::\+Person\+Service}}
@@ -118,8 +123,13 @@ void \hyperlink{classkpk_1_1core_1_1_person_service_a5ba7fb6ea238585a336ee845a66
 \hline
 \end{DoxyParams}
 
+\begin{DoxyExceptions}{Исключения}
+{\em \hyperlink{classkpk_1_1exception_1_1_not_a_member_exception}{kpk\+::exception\+::\+Not\+A\+Member\+Exception}} & если person не пайщик \\
+\hline
+\end{DoxyExceptions}
 
-См. определение в файле Person\+Service.\+cpp строка 54
+
+См. определение в файле Person\+Service.\+cpp строка 55
 
 \index{kpk\+::core\+::\+Person\+Service@{kpk\+::core\+::\+Person\+Service}!get@{get}}
 \index{get@{get}!kpk\+::core\+::\+Person\+Service@{kpk\+::core\+::\+Person\+Service}}

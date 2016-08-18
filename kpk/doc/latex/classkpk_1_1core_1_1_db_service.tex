@@ -14,14 +14,14 @@
 \item 
 \hyperlink{classkpk_1_1core_1_1_db_service_ad7213ea1a3e710889dcd06876c165d95}{Db\+Service} ()
 \item 
-\hyperlink{namespacekpk_1_1core_a57462cfcc109ed2afcc118d0668710cf}{Db\+Ptr} \& \hyperlink{classkpk_1_1core_1_1_db_service_a185ef44041963592970695ecac61f3c3}{connect} ()
+\hyperlink{namespacekpk_1_1core_a466e66f45327171cc2976df1304573ab}{Db\+Ptr} \& \hyperlink{classkpk_1_1core_1_1_db_service_a185ef44041963592970695ecac61f3c3}{connect} ()
 \begin{DoxyCompactList}\small\item\em Подключение к БД \end{DoxyCompactList}\item 
-\hyperlink{namespacekpk_1_1core_a57462cfcc109ed2afcc118d0668710cf}{Db\+Ptr} \& \hyperlink{classkpk_1_1core_1_1_db_service_a67de388a45320984577d9223918c13fb}{get} ()
+\hyperlink{namespacekpk_1_1core_a466e66f45327171cc2976df1304573ab}{Db\+Ptr} \& \hyperlink{classkpk_1_1core_1_1_db_service_a67de388a45320984577d9223918c13fb}{get} ()
 \begin{DoxyCompactList}\small\item\em Получить объект БД \end{DoxyCompactList}\item 
-\hyperlink{namespacekpk_1_1core_a57462cfcc109ed2afcc118d0668710cf}{Db\+Ptr} \& \hyperlink{classkpk_1_1core_1_1_db_service_aacb6bafd43eda109a2888bb0d6f86892}{create\+Shcema} ()
+\hyperlink{namespacekpk_1_1core_a466e66f45327171cc2976df1304573ab}{Db\+Ptr} \& \hyperlink{classkpk_1_1core_1_1_db_service_aacb6bafd43eda109a2888bb0d6f86892}{create\+Shcema} ()
 \begin{DoxyCompactList}\small\item\em Создать схему \end{DoxyCompactList}\item 
 void \hyperlink{classkpk_1_1core_1_1_db_service_a2fcdfaec8a98b2a6224bfbf7e6e0a3b9}{begin} ()
-\begin{DoxyCompactList}\small\item\em Открыть транзакцию \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Начало транзакции \end{DoxyCompactList}\item 
 void \hyperlink{classkpk_1_1core_1_1_db_service_a819d4e51894ea9950d69d7d159003aa5}{commit} ()
 \begin{DoxyCompactList}\small\item\em Фиксация транзакции \end{DoxyCompactList}\item 
 void \hyperlink{classkpk_1_1core_1_1_db_service_a360724207bed795a2ca720961d2808a9}{rollback} ()
@@ -31,9 +31,16 @@ void \hyperlink{classkpk_1_1core_1_1_db_service_a360724207bed795a2ca720961d2808a
 \subsection{Подробное описание}
 Служба управления базой данных 
 
-Подключение, создание, работа с транзакциями 
+Подключение, создание, работа с транзакциями \begin{DoxyNote}{Заметки}
+Строка\+:
+\begin{DoxyCode}
+odb::session \hyperlink{namespacekpk_1_1core_a4f9bed5f4644496878e2126c1c8e6412}{s}; 
+\end{DoxyCode}
+ в \hyperlink{_db_service_8cpp}{Db\+Service.\+cpp} нужна для возможности работать с двунаправленными отношениями (один-\/к-\/одному, один-\/ко-\/многим) (см. odb-\/manual п. 11 \char`\"{}\+Session\char`\"{}) 
+\end{DoxyNote}
 
-См. определение в файле Db\+Service.\+h строка 21
+
+См. определение в файле Db\+Service.\+h строка 25
 
 
 
@@ -47,7 +54,7 @@ void \hyperlink{classkpk_1_1core_1_1_db_service_a360724207bed795a2ca720961d2808a
 )}\hypertarget{classkpk_1_1core_1_1_db_service_ad7213ea1a3e710889dcd06876c165d95}{}\label{classkpk_1_1core_1_1_db_service_ad7213ea1a3e710889dcd06876c165d95}
 
 
-См. определение в файле Db\+Service.\+cpp строка 12
+См. определение в файле Db\+Service.\+cpp строка 19
 
 
 
@@ -61,11 +68,11 @@ void \hyperlink{classkpk_1_1core_1_1_db_service_a360724207bed795a2ca720961d2808a
 )}\hypertarget{classkpk_1_1core_1_1_db_service_a2fcdfaec8a98b2a6224bfbf7e6e0a3b9}{}\label{classkpk_1_1core_1_1_db_service_a2fcdfaec8a98b2a6224bfbf7e6e0a3b9}
 
 
-Открыть транзакцию 
+Начало транзакции 
 
 
 
-См. определение в файле Db\+Service.\+cpp строка 59
+См. определение в файле Db\+Service.\+cpp строка 86
 
 \index{kpk\+::core\+::\+Db\+Service@{kpk\+::core\+::\+Db\+Service}!commit@{commit}}
 \index{commit@{commit}!kpk\+::core\+::\+Db\+Service@{kpk\+::core\+::\+Db\+Service}}
@@ -80,7 +87,7 @@ void \hyperlink{classkpk_1_1core_1_1_db_service_a360724207bed795a2ca720961d2808a
 
 
 
-См. определение в файле Db\+Service.\+cpp строка 64
+См. определение в файле Db\+Service.\+cpp строка 91
 
 \index{kpk\+::core\+::\+Db\+Service@{kpk\+::core\+::\+Db\+Service}!connect@{connect}}
 \index{connect@{connect}!kpk\+::core\+::\+Db\+Service@{kpk\+::core\+::\+Db\+Service}}
@@ -98,7 +105,7 @@ void \hyperlink{classkpk_1_1core_1_1_db_service_a360724207bed795a2ca720961d2808a
 \end{DoxyReturn}
 
 
-См. определение в файле Db\+Service.\+cpp строка 17
+См. определение в файле Db\+Service.\+cpp строка 24
 
 \index{kpk\+::core\+::\+Db\+Service@{kpk\+::core\+::\+Db\+Service}!create\+Shcema@{create\+Shcema}}
 \index{create\+Shcema@{create\+Shcema}!kpk\+::core\+::\+Db\+Service@{kpk\+::core\+::\+Db\+Service}}
@@ -116,7 +123,7 @@ void \hyperlink{classkpk_1_1core_1_1_db_service_a360724207bed795a2ca720961d2808a
 \end{DoxyReturn}
 
 
-См. определение в файле Db\+Service.\+cpp строка 45
+См. определение в файле Db\+Service.\+cpp строка 52
 
 \index{kpk\+::core\+::\+Db\+Service@{kpk\+::core\+::\+Db\+Service}!get@{get}}
 \index{get@{get}!kpk\+::core\+::\+Db\+Service@{kpk\+::core\+::\+Db\+Service}}
@@ -134,7 +141,7 @@ void \hyperlink{classkpk_1_1core_1_1_db_service_a360724207bed795a2ca720961d2808a
 \end{DoxyReturn}
 
 
-См. определение в файле Db\+Service.\+cpp строка 40
+См. определение в файле Db\+Service.\+cpp строка 47
 
 \index{kpk\+::core\+::\+Db\+Service@{kpk\+::core\+::\+Db\+Service}!rollback@{rollback}}
 \index{rollback@{rollback}!kpk\+::core\+::\+Db\+Service@{kpk\+::core\+::\+Db\+Service}}
@@ -149,7 +156,7 @@ void \hyperlink{classkpk_1_1core_1_1_db_service_a360724207bed795a2ca720961d2808a
 
 
 
-См. определение в файле Db\+Service.\+cpp строка 69
+См. определение в файле Db\+Service.\+cpp строка 96
 
 
 

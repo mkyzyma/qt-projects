@@ -14,7 +14,7 @@
 \item 
 \hyperlink{classkpk_1_1data_1_1_loan_a466384959c1ccfaf4942c96c3409e6e6}{Loan} ()
 \item 
-\hyperlink{classkpk_1_1data_1_1_loan_abf20833f3a4537c70b9e495ccef933a4}{Loan} (Q\+Shared\+Pointer$<$ \hyperlink{classkpk_1_1data_1_1_member}{Member} $>$ \hyperlink{classkpk_1_1data_1_1_loan_affe990a0811434de611bc365a377fc76}{member}, Q\+Date \hyperlink{classkpk_1_1data_1_1_loan_a0b039c0e6667da4f809f8e921f359f9b}{open\+Date}, Q\+Date \hyperlink{classkpk_1_1data_1_1_loan_af8ccbb954480eae0aa3b2a6b2f39fcb5}{close\+Date}, long \hyperlink{classkpk_1_1data_1_1_loan_ae82f80aa7a9b58fdfb2ac818dd33611d}{limit}, long \hyperlink{classkpk_1_1data_1_1_loan_affb2d1a39a5c7c185b07d5f6de87a43e}{rate}, long \hyperlink{classkpk_1_1data_1_1_loan_a89c1fd9e63d8923796f0cb3452bafa27}{length}, long \hyperlink{classkpk_1_1data_1_1_loan_a5b207380d82a2079ea83ec1ecf11f090}{sum}=0)
+\hyperlink{classkpk_1_1data_1_1_loan_afe8d8c50d04caef057413f2739599c82}{Loan} (std\+::shared\+\_\+ptr$<$ \hyperlink{classkpk_1_1data_1_1_member}{Member} $>$ \hyperlink{classkpk_1_1data_1_1_loan_a37fb3cc07280aa8310a32b4477b5528f}{member}, std\+::shared\+\_\+ptr$<$ \hyperlink{classkpk_1_1data_1_1_loan_type}{Loan\+Type} $>$ \hyperlink{classkpk_1_1data_1_1_loan_a791850364c82ef161f09669c64bcc2a3}{loan\+Type}, Q\+Date \hyperlink{classkpk_1_1data_1_1_loan_a0b039c0e6667da4f809f8e921f359f9b}{open\+Date}, Q\+Date \hyperlink{classkpk_1_1data_1_1_loan_af8ccbb954480eae0aa3b2a6b2f39fcb5}{close\+Date}, long \hyperlink{classkpk_1_1data_1_1_loan_ae82f80aa7a9b58fdfb2ac818dd33611d}{limit}, long \hyperlink{classkpk_1_1data_1_1_loan_affb2d1a39a5c7c185b07d5f6de87a43e}{rate}, long \hyperlink{classkpk_1_1data_1_1_loan_a89c1fd9e63d8923796f0cb3452bafa27}{length}, long \hyperlink{classkpk_1_1data_1_1_loan_a5b207380d82a2079ea83ec1ecf11f090}{sum}=0)
 \begin{DoxyCompactList}\small\item\em Конструктор \end{DoxyCompactList}\item 
 ulong \hyperlink{classkpk_1_1data_1_1_loan_a2827052c65d91b314bf1573ab56ffa3d}{id} ()
 \begin{DoxyCompactList}\small\item\em Получить идентификатор \end{DoxyCompactList}\item 
@@ -26,12 +26,6 @@ Q\+Date \hyperlink{classkpk_1_1data_1_1_loan_af8ccbb954480eae0aa3b2a6b2f39fcb5}{
 \begin{DoxyCompactList}\small\item\em Получить дату завершения \end{DoxyCompactList}\item 
 void \hyperlink{classkpk_1_1data_1_1_loan_ada266f079bcda1b9877ab161655c22e1}{close\+Date} (Q\+Date \&close\+Date)
 \begin{DoxyCompactList}\small\item\em Установить дату завершения \end{DoxyCompactList}\item 
-Q\+Shared\+Pointer$<$ \hyperlink{classkpk_1_1data_1_1_member}{Member} $>$ \hyperlink{classkpk_1_1data_1_1_loan_affe990a0811434de611bc365a377fc76}{member} () const 
-\begin{DoxyCompactList}\small\item\em Получить пайщика \end{DoxyCompactList}\item 
-void \hyperlink{classkpk_1_1data_1_1_loan_a658c2387c3619fef4b7cac20e23dbf59}{member} (const Q\+Shared\+Pointer$<$ \hyperlink{classkpk_1_1data_1_1_member}{Member} $>$ \&member)
-\begin{DoxyCompactList}\small\item\em Установить пайщика \end{DoxyCompactList}\item 
-Q\+Shared\+Pointer$<$ \hyperlink{classkpk_1_1data_1_1_person}{Person} $>$ \hyperlink{classkpk_1_1data_1_1_loan_a2b0d3e4f98779590faa7fd6bbd36e27e}{person} () const 
-\begin{DoxyCompactList}\small\item\em Получить личные данные \end{DoxyCompactList}\item 
 bool \hyperlink{classkpk_1_1data_1_1_loan_a70783859ac8c369fbacf45743b7dc527}{is\+Closed} () const 
 \begin{DoxyCompactList}\small\item\em Закрыт ли займ \end{DoxyCompactList}\item 
 void \hyperlink{classkpk_1_1data_1_1_loan_a582b7aa81d2087f14f69caf92254e865}{is\+Closed} (bool is\+Closed)
@@ -59,7 +53,17 @@ void \hyperlink{classkpk_1_1data_1_1_loan_ae7141c53eac6c77d33c9e78eca17427d}{prc
 long \hyperlink{classkpk_1_1data_1_1_loan_a3a85e20cceb9a563153d51fe07f15262}{remains} () const 
 \begin{DoxyCompactList}\small\item\em Получить остаток займа \end{DoxyCompactList}\item 
 void \hyperlink{classkpk_1_1data_1_1_loan_a242c59d916d1d2dd17d579bfac388e4a}{remains} (long remains)
-\begin{DoxyCompactList}\small\item\em Установить остаток займа \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Установить остаток займа \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classkpk_1_1data_1_1_member}{Member} $>$ \hyperlink{classkpk_1_1data_1_1_loan_a37fb3cc07280aa8310a32b4477b5528f}{member} () const 
+\begin{DoxyCompactList}\small\item\em Получить пайщика \end{DoxyCompactList}\item 
+void \hyperlink{classkpk_1_1data_1_1_loan_afecd269c6ce5285602760df1bce52a41}{member} (const std\+::shared\+\_\+ptr$<$ \hyperlink{classkpk_1_1data_1_1_member}{Member} $>$ \&member)
+\begin{DoxyCompactList}\small\item\em Установить пайщика \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classkpk_1_1data_1_1_person}{Person} $>$ \hyperlink{classkpk_1_1data_1_1_loan_abace5ace0d55d9e640a1d96fcd5c389b}{person} () const 
+\begin{DoxyCompactList}\small\item\em Получить личные данные \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classkpk_1_1data_1_1_loan_type}{Loan\+Type} $>$ \hyperlink{classkpk_1_1data_1_1_loan_a791850364c82ef161f09669c64bcc2a3}{loan\+Type} () const 
+\begin{DoxyCompactList}\small\item\em Получить вид займа \end{DoxyCompactList}\item 
+void \hyperlink{classkpk_1_1data_1_1_loan_a4f6570e5a76b24dfa70009b0b60283a6}{loan\+Type} (const std\+::shared\+\_\+ptr$<$ \hyperlink{classkpk_1_1data_1_1_loan_type}{Loan\+Type} $>$ \&loan\+Type)
+\begin{DoxyCompactList}\small\item\em Установить вид займа \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Друзья}
 \begin{DoxyCompactItemize}
 \item 
@@ -70,7 +74,7 @@ class \hyperlink{classkpk_1_1data_1_1_loan_acb4d953abf85ae525f1d06a0c3a86a55}{od
 \subsection{Подробное описание}
 Займ 
 
-См. определение в файле Loan.\+h строка 24
+См. определение в файле Loan.\+h строка 25
 
 
 
@@ -88,9 +92,10 @@ class \hyperlink{classkpk_1_1data_1_1_loan_acb4d953abf85ae525f1d06a0c3a86a55}{od
 
 \index{kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}!Loan@{Loan}}
 \index{Loan@{Loan}!kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}}
-\subsubsection[{\texorpdfstring{Loan(\+Q\+Shared\+Pointer$<$ Member $>$ member, Q\+Date open\+Date, Q\+Date close\+Date, long limit, long rate, long length, long sum=0)}{Loan(QSharedPointer< Member > member, QDate openDate, QDate closeDate, long limit, long rate, long length, long sum=0)}}]{\setlength{\rightskip}{0pt plus 5cm}kpk\+::data\+::\+Loan\+::\+Loan (
+\subsubsection[{\texorpdfstring{Loan(std\+::shared\+\_\+ptr$<$ Member $>$ member, std\+::shared\+\_\+ptr$<$ Loan\+Type $>$ loan\+Type, Q\+Date open\+Date, Q\+Date close\+Date, long limit, long rate, long length, long sum=0)}{Loan(std::shared_ptr< Member > member, std::shared_ptr< LoanType > loanType, QDate openDate, QDate closeDate, long limit, long rate, long length, long sum=0)}}]{\setlength{\rightskip}{0pt plus 5cm}kpk\+::data\+::\+Loan\+::\+Loan (
 \begin{DoxyParamCaption}
-\item[{Q\+Shared\+Pointer$<$ {\bf Member} $>$}]{member, }
+\item[{std\+::shared\+\_\+ptr$<$ {\bf Member} $>$}]{member, }
+\item[{std\+::shared\+\_\+ptr$<$ {\bf Loan\+Type} $>$}]{loan\+Type, }
 \item[{Q\+Date}]{open\+Date, }
 \item[{Q\+Date}]{close\+Date, }
 \item[{long}]{limit, }
@@ -98,7 +103,7 @@ class \hyperlink{classkpk_1_1data_1_1_loan_acb4d953abf85ae525f1d06a0c3a86a55}{od
 \item[{long}]{length, }
 \item[{long}]{sum = {\ttfamily 0}}
 \end{DoxyParamCaption}
-)}\hypertarget{classkpk_1_1data_1_1_loan_abf20833f3a4537c70b9e495ccef933a4}{}\label{classkpk_1_1data_1_1_loan_abf20833f3a4537c70b9e495ccef933a4}
+)}\hypertarget{classkpk_1_1data_1_1_loan_afe8d8c50d04caef057413f2739599c82}{}\label{classkpk_1_1data_1_1_loan_afe8d8c50d04caef057413f2739599c82}
 
 
 Конструктор 
@@ -143,7 +148,7 @@ class \hyperlink{classkpk_1_1data_1_1_loan_acb4d953abf85ae525f1d06a0c3a86a55}{od
 \end{DoxyReturn}
 
 
-См. определение в файле Loan.\+cpp строка 42
+См. определение в файле Loan.\+cpp строка 43
 
 \index{kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}!close\+Date@{close\+Date}}
 \index{close\+Date@{close\+Date}!kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}}
@@ -163,7 +168,7 @@ class \hyperlink{classkpk_1_1data_1_1_loan_acb4d953abf85ae525f1d06a0c3a86a55}{od
 \end{DoxyParams}
 
 
-См. определение в файле Loan.\+cpp строка 47
+См. определение в файле Loan.\+cpp строка 48
 
 \index{kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}!id@{id}}
 \index{id@{id}!kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}}
@@ -181,7 +186,7 @@ class \hyperlink{classkpk_1_1data_1_1_loan_acb4d953abf85ae525f1d06a0c3a86a55}{od
 \end{DoxyReturn}
 
 
-См. определение в файле Loan.\+cpp строка 27
+См. определение в файле Loan.\+cpp строка 28
 
 \index{kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}!is\+Closed@{is\+Closed}}
 \index{is\+Closed@{is\+Closed}!kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}}
@@ -199,7 +204,7 @@ class \hyperlink{classkpk_1_1data_1_1_loan_acb4d953abf85ae525f1d06a0c3a86a55}{od
 \end{DoxyReturn}
 
 
-См. определение в файле Loan.\+cpp строка 68
+См. определение в файле Loan.\+cpp строка 79
 
 \index{kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}!is\+Closed@{is\+Closed}}
 \index{is\+Closed@{is\+Closed}!kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}}
@@ -219,7 +224,7 @@ class \hyperlink{classkpk_1_1data_1_1_loan_acb4d953abf85ae525f1d06a0c3a86a55}{od
 \end{DoxyParams}
 
 
-См. определение в файле Loan.\+cpp строка 73
+См. определение в файле Loan.\+cpp строка 84
 
 \index{kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}!length@{length}}
 \index{length@{length}!kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}}
@@ -237,7 +242,7 @@ class \hyperlink{classkpk_1_1data_1_1_loan_acb4d953abf85ae525f1d06a0c3a86a55}{od
 \end{DoxyReturn}
 
 
-См. определение в файле Loan.\+cpp строка 98
+См. определение в файле Loan.\+cpp строка 109
 
 \index{kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}!length@{length}}
 \index{length@{length}!kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}}
@@ -257,7 +262,7 @@ class \hyperlink{classkpk_1_1data_1_1_loan_acb4d953abf85ae525f1d06a0c3a86a55}{od
 \end{DoxyParams}
 
 
-См. определение в файле Loan.\+cpp строка 103
+См. определение в файле Loan.\+cpp строка 114
 
 \index{kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}!limit@{limit}}
 \index{limit@{limit}!kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}}
@@ -275,7 +280,7 @@ class \hyperlink{classkpk_1_1data_1_1_loan_acb4d953abf85ae525f1d06a0c3a86a55}{od
 \end{DoxyReturn}
 
 
-См. определение в файле Loan.\+cpp строка 88
+См. определение в файле Loan.\+cpp строка 99
 
 \index{kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}!limit@{limit}}
 \index{limit@{limit}!kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}}
@@ -295,15 +300,53 @@ class \hyperlink{classkpk_1_1data_1_1_loan_acb4d953abf85ae525f1d06a0c3a86a55}{od
 \end{DoxyParams}
 
 
-См. определение в файле Loan.\+cpp строка 93
+См. определение в файле Loan.\+cpp строка 104
 
-\index{kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}!member@{member}}
-\index{member@{member}!kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}}
-\subsubsection[{\texorpdfstring{member() const }{member() const }}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Shared\+Pointer$<$ {\bf Member} $>$ kpk\+::data\+::\+Loan\+::member (
+\index{kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}!loan\+Type@{loan\+Type}}
+\index{loan\+Type@{loan\+Type}!kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}}
+\subsubsection[{\texorpdfstring{loan\+Type() const }{loanType() const }}]{\setlength{\rightskip}{0pt plus 5cm}std\+::shared\+\_\+ptr$<$ {\bf Loan\+Type} $>$ kpk\+::data\+::\+Loan\+::loan\+Type (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-) const}\hypertarget{classkpk_1_1data_1_1_loan_affe990a0811434de611bc365a377fc76}{}\label{classkpk_1_1data_1_1_loan_affe990a0811434de611bc365a377fc76}
+) const}\hypertarget{classkpk_1_1data_1_1_loan_a791850364c82ef161f09669c64bcc2a3}{}\label{classkpk_1_1data_1_1_loan_a791850364c82ef161f09669c64bcc2a3}
+
+
+Получить вид займа 
+
+\begin{DoxyReturn}{Возвращает}
+Вид займа 
+\end{DoxyReturn}
+
+
+См. определение в файле Loan.\+cpp строка 69
+
+\index{kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}!loan\+Type@{loan\+Type}}
+\index{loan\+Type@{loan\+Type}!kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}}
+\subsubsection[{\texorpdfstring{loan\+Type(const std\+::shared\+\_\+ptr$<$ Loan\+Type $>$ \&loan\+Type)}{loanType(const std::shared_ptr< LoanType > &loanType)}}]{\setlength{\rightskip}{0pt plus 5cm}void kpk\+::data\+::\+Loan\+::loan\+Type (
+\begin{DoxyParamCaption}
+\item[{const std\+::shared\+\_\+ptr$<$ {\bf Loan\+Type} $>$ \&}]{loan\+Type}
+\end{DoxyParamCaption}
+)}\hypertarget{classkpk_1_1data_1_1_loan_a4f6570e5a76b24dfa70009b0b60283a6}{}\label{classkpk_1_1data_1_1_loan_a4f6570e5a76b24dfa70009b0b60283a6}
+
+
+Установить вид займа 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em loan\+Type} & -\/ вид займа \\
+\hline
+\end{DoxyParams}
+
+
+См. определение в файле Loan.\+cpp строка 74
+
+\index{kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}!member@{member}}
+\index{member@{member}!kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}}
+\subsubsection[{\texorpdfstring{member() const }{member() const }}]{\setlength{\rightskip}{0pt plus 5cm}std\+::shared\+\_\+ptr$<$ {\bf Member} $>$ kpk\+::data\+::\+Loan\+::member (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classkpk_1_1data_1_1_loan_a37fb3cc07280aa8310a32b4477b5528f}{}\label{classkpk_1_1data_1_1_loan_a37fb3cc07280aa8310a32b4477b5528f}
 
 
 Получить пайщика 
@@ -313,15 +356,15 @@ class \hyperlink{classkpk_1_1data_1_1_loan_acb4d953abf85ae525f1d06a0c3a86a55}{od
 \end{DoxyReturn}
 
 
-См. определение в файле Loan.\+cpp строка 52
+См. определение в файле Loan.\+cpp строка 53
 
 \index{kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}!member@{member}}
 \index{member@{member}!kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}}
-\subsubsection[{\texorpdfstring{member(const Q\+Shared\+Pointer$<$ Member $>$ \&member)}{member(const QSharedPointer< Member > &member)}}]{\setlength{\rightskip}{0pt plus 5cm}void kpk\+::data\+::\+Loan\+::member (
+\subsubsection[{\texorpdfstring{member(const std\+::shared\+\_\+ptr$<$ Member $>$ \&member)}{member(const std::shared_ptr< Member > &member)}}]{\setlength{\rightskip}{0pt plus 5cm}void kpk\+::data\+::\+Loan\+::member (
 \begin{DoxyParamCaption}
-\item[{const Q\+Shared\+Pointer$<$ {\bf Member} $>$ \&}]{member}
+\item[{const std\+::shared\+\_\+ptr$<$ {\bf Member} $>$ \&}]{member}
 \end{DoxyParamCaption}
-)}\hypertarget{classkpk_1_1data_1_1_loan_a658c2387c3619fef4b7cac20e23dbf59}{}\label{classkpk_1_1data_1_1_loan_a658c2387c3619fef4b7cac20e23dbf59}
+)}\hypertarget{classkpk_1_1data_1_1_loan_afecd269c6ce5285602760df1bce52a41}{}\label{classkpk_1_1data_1_1_loan_afecd269c6ce5285602760df1bce52a41}
 
 
 Установить пайщика 
@@ -333,7 +376,7 @@ class \hyperlink{classkpk_1_1data_1_1_loan_acb4d953abf85ae525f1d06a0c3a86a55}{od
 \end{DoxyParams}
 
 
-См. определение в файле Loan.\+cpp строка 57
+См. определение в файле Loan.\+cpp строка 58
 
 \index{kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}!open\+Date@{open\+Date}}
 \index{open\+Date@{open\+Date}!kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}}
@@ -351,7 +394,7 @@ class \hyperlink{classkpk_1_1data_1_1_loan_acb4d953abf85ae525f1d06a0c3a86a55}{od
 \end{DoxyReturn}
 
 
-См. определение в файле Loan.\+cpp строка 32
+См. определение в файле Loan.\+cpp строка 33
 
 \index{kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}!open\+Date@{open\+Date}}
 \index{open\+Date@{open\+Date}!kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}}
@@ -371,15 +414,15 @@ class \hyperlink{classkpk_1_1data_1_1_loan_acb4d953abf85ae525f1d06a0c3a86a55}{od
 \end{DoxyParams}
 
 
-См. определение в файле Loan.\+cpp строка 37
+См. определение в файле Loan.\+cpp строка 38
 
 \index{kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}!person@{person}}
 \index{person@{person}!kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}}
-\subsubsection[{\texorpdfstring{person() const }{person() const }}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Shared\+Pointer$<$ {\bf Person} $>$ kpk\+::data\+::\+Loan\+::person (
+\subsubsection[{\texorpdfstring{person() const }{person() const }}]{\setlength{\rightskip}{0pt plus 5cm}std\+::shared\+\_\+ptr$<$ {\bf Person} $>$ kpk\+::data\+::\+Loan\+::person (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-) const}\hypertarget{classkpk_1_1data_1_1_loan_a2b0d3e4f98779590faa7fd6bbd36e27e}{}\label{classkpk_1_1data_1_1_loan_a2b0d3e4f98779590faa7fd6bbd36e27e}
+) const}\hypertarget{classkpk_1_1data_1_1_loan_abace5ace0d55d9e640a1d96fcd5c389b}{}\label{classkpk_1_1data_1_1_loan_abace5ace0d55d9e640a1d96fcd5c389b}
 
 
 Получить личные данные 
@@ -389,7 +432,7 @@ class \hyperlink{classkpk_1_1data_1_1_loan_acb4d953abf85ae525f1d06a0c3a86a55}{od
 \end{DoxyReturn}
 
 
-См. определение в файле Loan.\+cpp строка 63
+См. определение в файле Loan.\+cpp строка 64
 
 \index{kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}!prc@{prc}}
 \index{prc@{prc}!kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}}
@@ -407,7 +450,7 @@ class \hyperlink{classkpk_1_1data_1_1_loan_acb4d953abf85ae525f1d06a0c3a86a55}{od
 \end{DoxyReturn}
 
 
-См. определение в файле Loan.\+cpp строка 118
+См. определение в файле Loan.\+cpp строка 129
 
 \index{kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}!prc@{prc}}
 \index{prc@{prc}!kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}}
@@ -427,7 +470,7 @@ class \hyperlink{classkpk_1_1data_1_1_loan_acb4d953abf85ae525f1d06a0c3a86a55}{od
 \end{DoxyParams}
 
 
-См. определение в файле Loan.\+cpp строка 123
+См. определение в файле Loan.\+cpp строка 134
 
 \index{kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}!rate@{rate}}
 \index{rate@{rate}!kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}}
@@ -445,7 +488,7 @@ class \hyperlink{classkpk_1_1data_1_1_loan_acb4d953abf85ae525f1d06a0c3a86a55}{od
 \end{DoxyReturn}
 
 
-См. определение в файле Loan.\+cpp строка 78
+См. определение в файле Loan.\+cpp строка 89
 
 \index{kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}!rate@{rate}}
 \index{rate@{rate}!kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}}
@@ -465,7 +508,7 @@ class \hyperlink{classkpk_1_1data_1_1_loan_acb4d953abf85ae525f1d06a0c3a86a55}{od
 \end{DoxyParams}
 
 
-См. определение в файле Loan.\+cpp строка 83
+См. определение в файле Loan.\+cpp строка 94
 
 \index{kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}!remains@{remains}}
 \index{remains@{remains}!kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}}
@@ -483,7 +526,7 @@ class \hyperlink{classkpk_1_1data_1_1_loan_acb4d953abf85ae525f1d06a0c3a86a55}{od
 \end{DoxyReturn}
 
 
-См. определение в файле Loan.\+cpp строка 128
+См. определение в файле Loan.\+cpp строка 139
 
 \index{kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}!remains@{remains}}
 \index{remains@{remains}!kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}}
@@ -503,7 +546,7 @@ class \hyperlink{classkpk_1_1data_1_1_loan_acb4d953abf85ae525f1d06a0c3a86a55}{od
 \end{DoxyParams}
 
 
-См. определение в файле Loan.\+cpp строка 133
+См. определение в файле Loan.\+cpp строка 144
 
 \index{kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}!sum@{sum}}
 \index{sum@{sum}!kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}}
@@ -521,7 +564,7 @@ class \hyperlink{classkpk_1_1data_1_1_loan_acb4d953abf85ae525f1d06a0c3a86a55}{od
 \end{DoxyReturn}
 
 
-См. определение в файле Loan.\+cpp строка 108
+См. определение в файле Loan.\+cpp строка 119
 
 \index{kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}!sum@{sum}}
 \index{sum@{sum}!kpk\+::data\+::\+Loan@{kpk\+::data\+::\+Loan}}
@@ -541,7 +584,7 @@ class \hyperlink{classkpk_1_1data_1_1_loan_acb4d953abf85ae525f1d06a0c3a86a55}{od
 \end{DoxyParams}
 
 
-См. определение в файле Loan.\+cpp строка 113
+См. определение в файле Loan.\+cpp строка 124
 
 
 
@@ -551,7 +594,7 @@ class \hyperlink{classkpk_1_1data_1_1_loan_acb4d953abf85ae525f1d06a0c3a86a55}{od
 \subsubsection[{\texorpdfstring{odb\+::access}{odb::access}}]{\setlength{\rightskip}{0pt plus 5cm}friend class odb\+::access\hspace{0.3cm}{\ttfamily [friend]}}\hypertarget{classkpk_1_1data_1_1_loan_acb4d953abf85ae525f1d06a0c3a86a55}{}\label{classkpk_1_1data_1_1_loan_acb4d953abf85ae525f1d06a0c3a86a55}
 
 
-См. определение в файле Loan.\+h строка 180
+См. определение в файле Loan.\+h строка 192
 
 
 

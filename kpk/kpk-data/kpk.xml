@@ -40,6 +40,14 @@
         </references>
       </foreign-key>
     </table>
+    <table name="LoanType" kind="object">
+      <column name="id" type="BIGINT" null="false"/>
+      <column name="caption" type="char(63)" null="true"/>
+      <column name="rate" type="BIGINT" null="false"/>
+      <primary-key auto="true">
+        <column name="id"/>
+      </primary-key>
+    </table>
     <table name="Loan" kind="object">
       <column name="id" type="BIGINT" null="false"/>
       <column name="openDate" type="DATE" null="true"/>
@@ -53,6 +61,7 @@
       <column name="prc" type="BIGINT" null="false"/>
       <column name="idMember" type="BIGINT" null="false"/>
       <column name="idPerson" type="BIGINT" null="false"/>
+      <column name="idLoanType" type="BIGINT" null="false"/>
       <primary-key auto="true">
         <column name="id"/>
       </primary-key>
@@ -65,6 +74,12 @@
       <foreign-key name="idPerson_fk" deferrable="DEFERRED">
         <column name="idPerson"/>
         <references table="Person">
+          <column name="id"/>
+        </references>
+      </foreign-key>
+      <foreign-key name="idLoanType_fk" deferrable="DEFERRED">
+        <column name="idLoanType"/>
+        <references table="LoanType">
           <column name="id"/>
         </references>
       </foreign-key>

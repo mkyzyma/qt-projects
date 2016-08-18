@@ -2,7 +2,7 @@
 \label{classkpk_1_1data_1_1_person}\index{kpk\+::data\+::\+Person@{kpk\+::data\+::\+Person}}
 
 
-Личные данные  
+Человек  
 
 
 
@@ -30,9 +30,9 @@ void \hyperlink{classkpk_1_1data_1_1_person_a110fad1e7ae404890ba536f6673f0d72}{s
 \begin{DoxyCompactList}\small\item\em Установить СНИЛС \end{DoxyCompactList}\item 
 bool \hyperlink{classkpk_1_1data_1_1_person_a102c06e6a83c60a46738fbbb46802b3b}{is\+New} ()
 \begin{DoxyCompactList}\small\item\em Сохранен ли в системе \end{DoxyCompactList}\item 
-Q\+Shared\+Pointer$<$ \hyperlink{classkpk_1_1data_1_1_member}{Member} $>$ \hyperlink{classkpk_1_1data_1_1_person_ae690eb327e9dc0c3ab781904889912ad}{member} () const 
+std\+::weak\+\_\+ptr$<$ \hyperlink{classkpk_1_1data_1_1_member}{Member} $>$ \hyperlink{classkpk_1_1data_1_1_person_a2aa5f4a78eb6490e72dc099ab9076e54}{member} () const 
 \begin{DoxyCompactList}\small\item\em Получить последнюю запись о членстве \end{DoxyCompactList}\item 
-void \hyperlink{classkpk_1_1data_1_1_person_a4357fd5288be372736f5e81bfe0b5f2f}{member} (const Q\+Shared\+Pointer$<$ \hyperlink{classkpk_1_1data_1_1_member}{Member} $>$ \&member)
+void \hyperlink{classkpk_1_1data_1_1_person_acc17c11bcc2f63ff0e8a325c926d7600}{member} (const std\+::weak\+\_\+ptr$<$ \hyperlink{classkpk_1_1data_1_1_member}{Member} $>$ \&member)
 \begin{DoxyCompactList}\small\item\em Установить последнюю запись о членстве \end{DoxyCompactList}\item 
 bool \hyperlink{classkpk_1_1data_1_1_person_ab437e28e5004a3961c14c650fc99ee69}{is\+Member} ()
 \begin{DoxyCompactList}\small\item\em Является ли членом \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -44,7 +44,7 @@ class \hyperlink{classkpk_1_1data_1_1_person_acb4d953abf85ae525f1d06a0c3a86a55}{
 
 
 \subsection{Подробное описание}
-Личные данные 
+Человек 
 
 См. определение в файле Person.\+h строка 23
 
@@ -159,11 +159,11 @@ false -\/ сохранен, true -\/ не сохранен
 
 \index{kpk\+::data\+::\+Person@{kpk\+::data\+::\+Person}!member@{member}}
 \index{member@{member}!kpk\+::data\+::\+Person@{kpk\+::data\+::\+Person}}
-\subsubsection[{\texorpdfstring{member() const }{member() const }}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Shared\+Pointer$<$ {\bf Member} $>$ kpk\+::data\+::\+Person\+::member (
+\subsubsection[{\texorpdfstring{member() const }{member() const }}]{\setlength{\rightskip}{0pt plus 5cm}std\+::weak\+\_\+ptr$<$ {\bf Member} $>$ kpk\+::data\+::\+Person\+::member (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-) const}\hypertarget{classkpk_1_1data_1_1_person_ae690eb327e9dc0c3ab781904889912ad}{}\label{classkpk_1_1data_1_1_person_ae690eb327e9dc0c3ab781904889912ad}
+) const}\hypertarget{classkpk_1_1data_1_1_person_a2aa5f4a78eb6490e72dc099ab9076e54}{}\label{classkpk_1_1data_1_1_person_a2aa5f4a78eb6490e72dc099ab9076e54}
 
 
 Получить последнюю запись о членстве 
@@ -171,17 +171,20 @@ false -\/ сохранен, true -\/ не сохранен
 \begin{DoxyReturn}{Возвращает}
 Последнеяя запись о членстве 
 \end{DoxyReturn}
+\begin{DoxyNote}{Заметки}
+std\+::weak\+\_\+ptr вместо std\+::shared\+\_\+ptr используется для того чтобы избежать бесконечной рекурсии из за двунапраленного отношения person\+::member $<$-\/$>$ member\+::person 
+\end{DoxyNote}
 
 
 См. определение в файле Person.\+cpp строка 49
 
 \index{kpk\+::data\+::\+Person@{kpk\+::data\+::\+Person}!member@{member}}
 \index{member@{member}!kpk\+::data\+::\+Person@{kpk\+::data\+::\+Person}}
-\subsubsection[{\texorpdfstring{member(const Q\+Shared\+Pointer$<$ Member $>$ \&member)}{member(const QSharedPointer< Member > &member)}}]{\setlength{\rightskip}{0pt plus 5cm}void kpk\+::data\+::\+Person\+::member (
+\subsubsection[{\texorpdfstring{member(const std\+::weak\+\_\+ptr$<$ Member $>$ \&member)}{member(const std::weak_ptr< Member > &member)}}]{\setlength{\rightskip}{0pt plus 5cm}void kpk\+::data\+::\+Person\+::member (
 \begin{DoxyParamCaption}
-\item[{const Q\+Shared\+Pointer$<$ {\bf Member} $>$ \&}]{member}
+\item[{const std\+::weak\+\_\+ptr$<$ {\bf Member} $>$ \&}]{member}
 \end{DoxyParamCaption}
-)}\hypertarget{classkpk_1_1data_1_1_person_a4357fd5288be372736f5e81bfe0b5f2f}{}\label{classkpk_1_1data_1_1_person_a4357fd5288be372736f5e81bfe0b5f2f}
+)}\hypertarget{classkpk_1_1data_1_1_person_acc17c11bcc2f63ff0e8a325c926d7600}{}\label{classkpk_1_1data_1_1_person_acc17c11bcc2f63ff0e8a325c926d7600}
 
 
 Установить последнюю запись о членстве 
@@ -277,7 +280,7 @@ false -\/ сохранен, true -\/ не сохранен
 \subsubsection[{\texorpdfstring{odb\+::access}{odb::access}}]{\setlength{\rightskip}{0pt plus 5cm}friend class odb\+::access\hspace{0.3cm}{\ttfamily [friend]}}\hypertarget{classkpk_1_1data_1_1_person_acb4d953abf85ae525f1d06a0c3a86a55}{}\label{classkpk_1_1data_1_1_person_acb4d953abf85ae525f1d06a0c3a86a55}
 
 
-См. определение в файле Person.\+h строка 94
+См. определение в файле Person.\+h строка 96
 
 
 

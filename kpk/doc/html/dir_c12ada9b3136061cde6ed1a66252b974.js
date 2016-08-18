@@ -13,6 +13,10 @@ var dir_c12ada9b3136061cde6ed1a66252b974 =
     [ "LoanOperValue.h", "_loan_oper_value_8h.html", [
       [ "LoanOperValue", "classkpk_1_1data_1_1_loan_oper_value.html", "classkpk_1_1data_1_1_loan_oper_value" ]
     ] ],
+    [ "LoanType.cpp", "_loan_type_8cpp.html", null ],
+    [ "LoanType.h", "_loan_type_8h.html", [
+      [ "LoanType", "classkpk_1_1data_1_1_loan_type.html", "classkpk_1_1data_1_1_loan_type" ]
+    ] ],
     [ "Member.cpp", "_member_8cpp.html", null ],
     [ "Member.h", "_member_8h.html", "_member_8h" ],
     [ "Name.cpp", "_name_8cpp.html", null ],

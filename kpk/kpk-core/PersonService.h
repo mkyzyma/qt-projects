@@ -1,7 +1,7 @@
 #ifndef PERSONSERVICE_H
 #define PERSONSERVICE_H
 
-#include <QSharedPointer>
+#include <memory>
 #include <QDate>
 
 #include "core_global.h"
@@ -11,13 +11,13 @@
 namespace kpk{
 namespace core{
 /*!
- * \brief PersonPtr Указатель на личные данные
+ * \brief Указатель на личные данные
  */
-typedef QSharedPointer<data::Person> PersonPtr;
+typedef std::shared_ptr<data::Person> PersonPtr;
 /*!
- * \brief Указатель на запись членства
+ * \brief Указатель на пайщика
  */
-typedef QSharedPointer<data::Member> MemberPtr;
+typedef std::shared_ptr<data::Member> MemberPtr;
 /*!
  * \brief Служба по управлению личными данными
  *
@@ -52,12 +52,13 @@ public:
      * \param [in] id - идентификатор
      * \return  Личные данные
      */
-    PersonPtr get(ulong id);
+    std::shared_ptr<data::Person> get(ulong id);
 
     /*!
      * \brief Вступить в кооператив
      * \param [in] person - Личные данные
      * \param [in] date - Дата вступления
+     * \throw kpk::exception::AlreadyMemberException если person уже пайщик
      */
     void enter(PersonPtr person, QDate date);
 
@@ -65,6 +66,7 @@ public:
      * \brief Выйти из кооператива
      * \param [in] person - Личные данные
      * \param [in] date - Дата выхода
+     * \throw kpk::exception::NotAMemberException если person не пайщик
      */
     void exit(PersonPtr person, QDate date, data::ExitReason reason);
 };

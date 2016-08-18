@@ -1,8 +1,8 @@
 #ifndef PERSON_H
 #define PERSON_H
 
-#include <QtCore/QString>
-#include <QtCore/QSharedPointer>
+#include <string>
+#include <memory>
 
 #include <odb/core.hxx>
 
@@ -17,7 +17,7 @@ namespace data{
 
 class Member;
 /*!
- * \brief Личные данные
+ * \brief Человек
  */
 #pragma db object
 class  DATASHARED_EXPORT Person
@@ -72,18 +72,20 @@ public:
      * \return false - сохранен, true - не сохранен
      */
     bool isNew();
-
     /*!
      * \brief Получить последнюю запись о членстве
      * \return Последнеяя запись о членстве
+     * \note std::weak_ptr вместо std::shared_ptr используется
+     *       для того чтобы избежать бесконечной рекурсии
+     *       из-за двунапраленного отношения person::member <-> member::person
      */
-    QSharedPointer<Member> member() const;
+    std::weak_ptr<Member> member() const;
 
     /*!
      * \brief Установить последнюю запись о членстве
      * \param member - последнеяя запись о членстве
      */
-    void member(const QSharedPointer<Member> &member);
+    void member(const std::weak_ptr<Member> &member);
 
     /*!
      * \brief Является ли членом
@@ -93,7 +95,7 @@ public:
 private:
     friend class odb::access;
 
-#pragma db id auto
+    #pragma db id auto
     ulong _id;
 
     Name _name;
@@ -108,8 +110,8 @@ private:
     QString _snils;
 
     #pragma db null
-    #pragma db column("idMember")
-    QSharedPointer<Member> _member;
+    #pragma db column("idMember")    
+    std::weak_ptr<Member> _member;
 };
 
 }

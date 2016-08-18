@@ -2,7 +2,7 @@
 #include "Core.h"
 
 #include <odb/pgsql/exceptions.hxx>
-
+#include <odb/session.hxx>
 #include "kpk-data/Person-odb.hxx"
 #include "kpk-data/Member-odb.hxx"
 
@@ -32,8 +32,9 @@ void PersonService::remove(ulong id)
 }
 
 PersonPtr PersonService::get(ulong id)
-{
-    return PersonPtr(Core()->db()->load<Person>(id));
+{    
+    auto p(Core()->db()->load<Person>(id));
+    return p;
 }
 
 void PersonService::enter(PersonPtr person, QDate date)
@@ -44,7 +45,8 @@ void PersonService::enter(PersonPtr person, QDate date)
         if(person->isMember())
             throw exception::AlreadyMemberException();
 
-    MemberPtr member(new Member(person, date));
+    auto member(std::make_shared<Member>(Member(person, date)));
+
     Core()->db()->persist(member);
 
     person->member(member);
@@ -56,9 +58,9 @@ void PersonService::exit(PersonPtr person, QDate date, ExitReason reason)
    if(!person->isMember())
         throw exception::NotAMemberException();
 
-   auto m = person->member();
+   auto m = person->member().lock();
 
-    m->outDate(QSharedPointer<QDate>(&date));
+    m->outDate(std::make_shared<QDate>(date));
     m->exitReason(reason);
 
     Core()->db()->update(m);

@@ -6,6 +6,7 @@ var NAVTREE =
       [ "Пространства имен", "namespaces.html", "namespaces" ],
       [ "Члены пространств имен", "namespacemembers.html", [
         [ "Указатель", "namespacemembers.html", null ],
+        [ "Переменные", "namespacemembers_vars.html", null ],
         [ "Определения типов", "namespacemembers_type.html", null ],
         [ "Перечисления", "namespacemembers_enum.html", null ],
         [ "Элементы перечислений", "namespacemembers_eval.html", null ]
@@ -34,7 +35,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_core_8cpp.html"
+"_core_8cpp.html",
+"namespacekpk_1_1test.html"
 ];
 
 var SYNCONMSG = 'нажмите на выключить для синхронизации панелей';

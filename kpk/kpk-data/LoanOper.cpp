@@ -20,28 +20,28 @@ LoanOperValue& LoanOper::fact()
 }
 
 
-QSharedPointer<Member> LoanOper::member() const
+std::shared_ptr<Member> LoanOper::member() const
 {
     return _member;
 }
 
-void LoanOper::member(const QSharedPointer<Member> &member)
+void LoanOper::member(const std::shared_ptr<Member> &member)
 {
     _member = member;
     _person = member->person();
 }
 
-QSharedPointer<Person> LoanOper::person() const
+std::shared_ptr<Person> LoanOper::person() const
 {
     return _person;
 }
 
-QSharedPointer<Loan> LoanOper::loan() const
+std::shared_ptr<Loan> LoanOper::loan() const
 {
     return _loan;
 }
 
-void LoanOper::loan(const QSharedPointer<Loan> &loan)
+void LoanOper::loan(const std::shared_ptr<Loan> &loan)
 {
     _loan = loan;
 }

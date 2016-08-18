@@ -3,6 +3,7 @@ SOURCES += \
     ../kpk-data/Name-odb.cxx \
     ../kpk-data/Passport-odb.cxx \
     ../kpk-data/Member-odb.cxx \
+    ../kpk-data/LoanType-odb.cxx \
     ../kpk-data/Loan-odb.cxx \
     ../kpk-data/LoanOperValue-odb.cxx \
     ../kpk-data/LoanOper-odb.cxx \

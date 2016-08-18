@@ -1,13 +1,20 @@
 #include "DbService.h"
 
+#include <memory>
+
 #include <odb/core.hxx>
 #include <odb/pgsql/database.hxx>
 #include <odb/pgsql/exceptions.hxx>
 #include <odb/schema-catalog.hxx>
+#include <odb/session.hxx>
 
-#include <kpk-data/Person.h>
+#include <kpk-data/LoanType.h>
+#include <kpk-data/LoanType-odb.hxx>
+
 namespace kpk{
 namespace core{
+
+odb::session s;
 
 DbService::DbService()
 {
@@ -18,7 +25,7 @@ DbPtr& DbService::connect()
 {
     try{
 
-        _db =  QSharedPointer<odb::database> (
+        _db =  std::shared_ptr<odb::database> (
                     new odb::pgsql::database (
                         "postgres",
                         "7895123",
@@ -28,7 +35,7 @@ DbPtr& DbService::connect()
                         )
                     );
 
-    // _db->tracer(odb::stderr_tracer);
+        _db->tracer(odb::stderr_tracer);
     }
     catch(const odb::pgsql::database_exception e){
         throw std::exception(e.what());
@@ -45,9 +52,29 @@ DbPtr& DbService::get()
 DbPtr &DbService::createShcema()
 {
     try {
-        odb::transaction t (_db->begin ());
+        begin();
         odb::schema_catalog::create_schema(*_db);
-        t.commit();
+        commit();
+
+        begin();
+
+        using namespace data;
+
+        auto t = LoanType(QString("Неотложные нужды"), 205000);
+        _db->persist<LoanType>(t);
+
+        t = LoanType(QString("Покупка автомобиля"), 180000);
+        _db->persist<LoanType>(t);
+
+        t = LoanType(QString("Приобретение жилья (недвижимости)"), 200000);
+        _db->persist<LoanType>(t);
+
+        t = LoanType(QString("Товарный заем"), 200000);
+        _db->persist<LoanType>(t);
+
+        t = LoanType(QString("Ипотека"), 160000);
+        _db->persist<LoanType>(t);
+        commit();
     }
     catch(const odb::pgsql::database_exception e){
         throw std::exception(e.what());
@@ -70,8 +97,6 @@ void DbService::rollback()
 {
     _tr->rollback();
 }
-
-
 
 }
 }

@@ -1,6 +1,6 @@
 var _person_service_8h =
 [
     [ "PersonService", "classkpk_1_1core_1_1_person_service.html", "classkpk_1_1core_1_1_person_service" ],
-    [ "MemberPtr", "_person_service_8h.html#aca962f7fa9cb72f79643863d3634f7b9", null ],
-    [ "PersonPtr", "_person_service_8h.html#a4a1c110098ffdfb42bdcba45c4d9a7fe", null ]
+    [ "MemberPtr", "_person_service_8h.html#a51190e5694e0b82ddd1e02382ddd9586", null ],
+    [ "PersonPtr", "_person_service_8h.html#ab7506e35456bfb9d583bc7815bbb5ca4", null ]
 ];

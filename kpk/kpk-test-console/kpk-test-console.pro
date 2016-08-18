@@ -11,7 +11,7 @@ TEMPLATE = app
 
 include("../../odb.pri")
 include("../../qdecimal.pri")
-include("../kpk-data.pri")
+#include("../kpk-data.pri")
 
 SOURCES += main.cpp
 
@@ -23,4 +23,11 @@ INCLUDEPATH += $$PWD/../
 DEPENDPATH += $$PWD/../
 
 
+
+
+
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../kpk-core/release/ -lkpk-core
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../kpk-core/debug/ -lkpk-core
+else:unix: LIBS += -L$$OUT_PWD/../kpk-core/ -lkpk-core
 

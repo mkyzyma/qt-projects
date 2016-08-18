@@ -30,6 +30,7 @@ namespace odb
         {
           db.execute ("DROP TABLE IF EXISTS \"LoanOper\" CASCADE");
           db.execute ("DROP TABLE IF EXISTS \"Loan\" CASCADE");
+          db.execute ("DROP TABLE IF EXISTS \"LoanType\" CASCADE");
           db.execute ("DROP TABLE IF EXISTS \"Member\" CASCADE");
           db.execute ("DROP TABLE IF EXISTS \"Person\" CASCADE");
           db.execute ("DROP TABLE IF EXISTS \"schema_version\"");
@@ -67,6 +68,10 @@ namespace odb
                       "    FOREIGN KEY (\"idPerson\")\n"
                       "    REFERENCES \"Person\" (\"id\")\n"
                       "    INITIALLY DEFERRED)");
+          db.execute ("CREATE TABLE \"LoanType\" (\n"
+                      "  \"id\" BIGSERIAL NOT NULL PRIMARY KEY,\n"
+                      "  \"caption\" char(63) NULL,\n"
+                      "  \"rate\" BIGINT NOT NULL)");
           db.execute ("CREATE TABLE \"Loan\" (\n"
                       "  \"id\" BIGSERIAL NOT NULL PRIMARY KEY,\n"
                       "  \"openDate\" DATE NULL,\n"
@@ -80,6 +85,7 @@ namespace odb
                       "  \"prc\" BIGINT NOT NULL,\n"
                       "  \"idMember\" BIGINT NOT NULL,\n"
                       "  \"idPerson\" BIGINT NOT NULL,\n"
+                      "  \"idLoanType\" BIGINT NOT NULL,\n"
                       "  CONSTRAINT \"idMember_fk\"\n"
                       "    FOREIGN KEY (\"idMember\")\n"
                       "    REFERENCES \"Member\" (\"id\")\n"
@@ -87,6 +93,10 @@ namespace odb
                       "  CONSTRAINT \"idPerson_fk\"\n"
                       "    FOREIGN KEY (\"idPerson\")\n"
                       "    REFERENCES \"Person\" (\"id\")\n"
+                      "    INITIALLY DEFERRED,\n"
+                      "  CONSTRAINT \"idLoanType_fk\"\n"
+                      "    FOREIGN KEY (\"idLoanType\")\n"
+                      "    REFERENCES \"LoanType\" (\"id\")\n"
                       "    INITIALLY DEFERRED)");
           db.execute ("CREATE TABLE \"LoanOper\" (\n"
                       "  \"id\" BIGSERIAL NOT NULL PRIMARY KEY,\n"

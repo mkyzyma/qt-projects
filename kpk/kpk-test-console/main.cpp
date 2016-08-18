@@ -2,16 +2,17 @@
 #include <QTextStream>
 #include <QDebug>
 
-#include <odb/database.hxx>
+/*#include <odb/database.hxx>
 #include <odb/pgsql/database.hxx>
 #include <odb/pgsql/exceptions.hxx>
-#include <odb/schema-catalog.hxx>
+#include <odb/schema-catalog.hxx>*/
 
 #include "kpk-data/Person.h"
-#include "kpk-data/Person-odb.hxx"
+//#include "kpk-data/Person-odb.hxx"
 
 #include "kpk-data/Member.h"
-#include "kpk-data/Member-odb.hxx"
+//#include "kpk-data/Member-odb.hxx"
+
 
 #include <QDecContext.hh>
 #include <QDecNumber.hh>
@@ -19,97 +20,61 @@
 //static QTextStream cout(stdout);
 //static QTextStream cerr(stderr);
 
-
+#include "kpk-core/Core.h"
 
 using namespace kpk::data;
+using namespace kpk::core;
+
+QTextStream cout(stdout);
+QTextStream cerr(stderr);
 
 int main(int argc, char *argv[])
 {
 
-    {
-        QDecContext ctx;
-
-        QDecNumber a, b;
-
-        a = 10;
-        b = 100;
-
-        qDebug() << (a / b).toString();
-    }
-
+    auto p = std::make_shared<Person>(Person());
+    p->name().set("Иван", "Иванович", "Пупкин");
+    p->passport().series("6714");
+    p->passport().number("370364");
+    p->passport().date(QDate(2014,05,20));
+    p->passport().org("отд. УФМС России по ХМАО-Югре в г. Урае");
+    p->passport().orgCode("860028");
+    p->inn("123456789010");
+    p->snils("123-456-789 01");
 
 
     QCoreApplication a(argc, argv);
-    return a.exec();
+    //return a.exec();
 
     system("chcp 1251");
 
 
-    try{
+    //try{
 
-        qint64 a = 25000, b = 3000, c;
+    Core()->dbService()->connect();
+    //Core()->dbService()->createShcema();
 
-        c = a / b;
+    Core()->begin();
 
-        qDebug() << c << "\r\n";
+    Core()->person()->add(p);
 
-        QSharedPointer<odb::database> db (
-                            new odb::pgsql::database (
-                                "postgres",
-                                "7895123",
-                                "kpk",
-                                "",
-                                5433
-                                )
-                            );
-        db->tracer(odb::stderr_tracer);
+    Core()->commit();
 
+    Core()->begin();
 
-        odb::transaction t (db->begin ());
-        odb::schema_catalog::create_schema(*db);
+    auto p1 = Core()->person()->get(1);
 
-        /*odb::schema_version v (db->schema_version());
-        if(!v)
-            odb::schema_catalog::create_schema(*db);
-        else
-            odb::schema_catalog::migrate (*db);*/
+    Core()->commit();
 
-        t.commit();
+    qDebug() << p1->name().full();
 
-        QSharedPointer<Person> miha(new Person());
+    cout << "\r\nOK";
 
-        miha->name().first("Михаил");
-        miha->name().middle("Васильевич");
-        miha->name().last("Кызыма");
-
-        miha->passport().series("6714");
-        miha->passport().number("370364");
-        miha->passport().date(QDate(2014,05,20));
-        miha->passport().org("отд. УФМС России по ХМАО-Югре в г. Урае");
-        miha->passport().orgCode("860028");
-
-        /*qDebug() << miha->name().toString();
-        qDebug() << miha->passport().toString();*/
-
-        t.reset(db->begin());
-
-        db->persist(miha);
-
-        t.commit();
-
-        Member member(miha, QDate::currentDate());
-
-        t.reset(db->begin());
-
-        db->persist(member);
-
-        t.commit();
-
-    }
-    catch(const odb::pgsql::database_exception e){
-        qDebug() << QString(e.message().c_str());
+    /*}
+    catch(const std::exception& e){
+        cerr << e.what() << endl;
         return EXIT_FAILURE;
-    }
+    }*/
+
 
     return a.exec();
 

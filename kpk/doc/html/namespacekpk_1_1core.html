@@ -106,7 +106,8 @@ $(document).ready(function(){initNavTree('namespacekpk_1_1core.html','');});
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Классы</a> &#124;
-<a href="#typedef-members">Определения типов</a>  </div>
+<a href="#typedef-members">Определения типов</a> &#124;
+<a href="#var-members">Переменные</a>  </div>
   <div class="headertitle">
 <div class="title">Пространство имен kpk::core</div>  </div>
 </div><!--header-->
@@ -128,75 +129,82 @@ $(document).ready(function(){initNavTree('namespacekpk_1_1core.html','');});
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Определения типов</h2></td></tr>
-<tr class="memitem:a57462cfcc109ed2afcc118d0668710cf"><td class="memItemLeft" align="right" valign="top">typedef QSharedPointer&lt; odb::database &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekpk_1_1core.html#a57462cfcc109ed2afcc118d0668710cf">DbPtr</a></td></tr>
-<tr class="separator:a57462cfcc109ed2afcc118d0668710cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3bd2bbeaff3894d4ee696d6fae548f3f"><td class="memItemLeft" align="right" valign="top">typedef QSharedPointer&lt; odb::transaction &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekpk_1_1core.html#a3bd2bbeaff3894d4ee696d6fae548f3f">TrPtr</a></td></tr>
-<tr class="separator:a3bd2bbeaff3894d4ee696d6fae548f3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4a1c110098ffdfb42bdcba45c4d9a7fe"><td class="memItemLeft" align="right" valign="top">typedef QSharedPointer&lt; <a class="el" href="classkpk_1_1data_1_1_person.html">data::Person</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekpk_1_1core.html#a4a1c110098ffdfb42bdcba45c4d9a7fe">PersonPtr</a></td></tr>
-<tr class="memdesc:a4a1c110098ffdfb42bdcba45c4d9a7fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">PersonPtr Указатель на личные данные  <a href="#a4a1c110098ffdfb42bdcba45c4d9a7fe">Подробнее...</a><br /></td></tr>
-<tr class="separator:a4a1c110098ffdfb42bdcba45c4d9a7fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca962f7fa9cb72f79643863d3634f7b9"><td class="memItemLeft" align="right" valign="top">typedef QSharedPointer&lt; <a class="el" href="classkpk_1_1data_1_1_member.html">data::Member</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekpk_1_1core.html#aca962f7fa9cb72f79643863d3634f7b9">MemberPtr</a></td></tr>
-<tr class="memdesc:aca962f7fa9cb72f79643863d3634f7b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Указатель на запись членства  <a href="#aca962f7fa9cb72f79643863d3634f7b9">Подробнее...</a><br /></td></tr>
-<tr class="separator:aca962f7fa9cb72f79643863d3634f7b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a466e66f45327171cc2976df1304573ab"><td class="memItemLeft" align="right" valign="top">typedef std::shared_ptr&lt; odb::database &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekpk_1_1core.html#a466e66f45327171cc2976df1304573ab">DbPtr</a></td></tr>
+<tr class="memdesc:a466e66f45327171cc2976df1304573ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Указатель на БД  <a href="#a466e66f45327171cc2976df1304573ab">Подробнее...</a><br /></td></tr>
+<tr class="separator:a466e66f45327171cc2976df1304573ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7506e35456bfb9d583bc7815bbb5ca4"><td class="memItemLeft" align="right" valign="top">typedef std::shared_ptr&lt; <a class="el" href="classkpk_1_1data_1_1_person.html">data::Person</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekpk_1_1core.html#ab7506e35456bfb9d583bc7815bbb5ca4">PersonPtr</a></td></tr>
+<tr class="memdesc:ab7506e35456bfb9d583bc7815bbb5ca4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Указатель на личные данные  <a href="#ab7506e35456bfb9d583bc7815bbb5ca4">Подробнее...</a><br /></td></tr>
+<tr class="separator:ab7506e35456bfb9d583bc7815bbb5ca4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51190e5694e0b82ddd1e02382ddd9586"><td class="memItemLeft" align="right" valign="top">typedef std::shared_ptr&lt; <a class="el" href="classkpk_1_1data_1_1_member.html">data::Member</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekpk_1_1core.html#a51190e5694e0b82ddd1e02382ddd9586">MemberPtr</a></td></tr>
+<tr class="memdesc:a51190e5694e0b82ddd1e02382ddd9586"><td class="mdescLeft">&#160;</td><td class="mdescRight">Указатель на пайщика  <a href="#a51190e5694e0b82ddd1e02382ddd9586">Подробнее...</a><br /></td></tr>
+<tr class="separator:a51190e5694e0b82ddd1e02382ddd9586"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Переменные</h2></td></tr>
+<tr class="memitem:a4f9bed5f4644496878e2126c1c8e6412"><td class="memItemLeft" align="right" valign="top">odb::session&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacekpk_1_1core.html#a4f9bed5f4644496878e2126c1c8e6412">s</a></td></tr>
+<tr class="separator:a4f9bed5f4644496878e2126c1c8e6412"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Типы</h2>
-<a class="anchor" id="a57462cfcc109ed2afcc118d0668710cf"></a>
+<a class="anchor" id="a466e66f45327171cc2976df1304573ab"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef QSharedPointer&lt;odb::database&gt; <a class="el" href="namespacekpk_1_1core.html#a57462cfcc109ed2afcc118d0668710cf">kpk::core::DbPtr</a></td>
+          <td class="memname">typedef std::shared_ptr&lt;odb::database&gt; <a class="el" href="namespacekpk_1_1core.html#a466e66f45327171cc2976df1304573ab">kpk::core::DbPtr</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>См. определение в файле <a class="el" href="_db_service_8h_source.html">DbService.h</a> строка <a class="el" href="_db_service_8h_source.html#l00013">13</a></p>
+<p>Указатель на БД </p>
+
+<p>См. определение в файле <a class="el" href="_db_service_8h_source.html">DbService.h</a> строка <a class="el" href="_db_service_8h_source.html#l00017">17</a></p>
 
 </div>
 </div>
-<a class="anchor" id="aca962f7fa9cb72f79643863d3634f7b9"></a>
+<a class="anchor" id="a51190e5694e0b82ddd1e02382ddd9586"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef QSharedPointer&lt;<a class="el" href="classkpk_1_1data_1_1_member.html">data::Member</a>&gt; <a class="el" href="namespacekpk_1_1core.html#aca962f7fa9cb72f79643863d3634f7b9">kpk::core::MemberPtr</a></td>
+          <td class="memname">typedef std::shared_ptr&lt;<a class="el" href="classkpk_1_1data_1_1_member.html">data::Member</a>&gt; <a class="el" href="namespacekpk_1_1core.html#a51190e5694e0b82ddd1e02382ddd9586">kpk::core::MemberPtr</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Указатель на запись членства </p>
+<p>Указатель на пайщика </p>
 
 <p>См. определение в файле <a class="el" href="_person_service_8h_source.html">PersonService.h</a> строка <a class="el" href="_person_service_8h_source.html#l00020">20</a></p>
 
 </div>
 </div>
-<a class="anchor" id="a4a1c110098ffdfb42bdcba45c4d9a7fe"></a>
+<a class="anchor" id="ab7506e35456bfb9d583bc7815bbb5ca4"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef QSharedPointer&lt;<a class="el" href="classkpk_1_1data_1_1_person.html">data::Person</a>&gt; <a class="el" href="namespacekpk_1_1core.html#a4a1c110098ffdfb42bdcba45c4d9a7fe">kpk::core::PersonPtr</a></td>
+          <td class="memname">typedef std::shared_ptr&lt;<a class="el" href="classkpk_1_1data_1_1_person.html">data::Person</a>&gt; <a class="el" href="namespacekpk_1_1core.html#ab7506e35456bfb9d583bc7815bbb5ca4">kpk::core::PersonPtr</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>PersonPtr Указатель на личные данные </p>
+<p>Указатель на личные данные </p>
 
 <p>См. определение в файле <a class="el" href="_person_service_8h_source.html">PersonService.h</a> строка <a class="el" href="_person_service_8h_source.html#l00016">16</a></p>
 
 </div>
 </div>
-<a class="anchor" id="a3bd2bbeaff3894d4ee696d6fae548f3f"></a>
+<h2 class="groupheader">Переменные</h2>
+<a class="anchor" id="a4f9bed5f4644496878e2126c1c8e6412"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef QSharedPointer&lt;odb::transaction&gt; <a class="el" href="namespacekpk_1_1core.html#a3bd2bbeaff3894d4ee696d6fae548f3f">kpk::core::TrPtr</a></td>
+          <td class="memname">odb::session kpk::core::s</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>См. определение в файле <a class="el" href="_db_service_8h_source.html">DbService.h</a> строка <a class="el" href="_db_service_8h_source.html#l00014">14</a></p>
+<p>См. определение в файле <a class="el" href="_db_service_8cpp_source.html">DbService.cpp</a> строка <a class="el" href="_db_service_8cpp_source.html#l00017">17</a></p>
 
 </div>
 </div>

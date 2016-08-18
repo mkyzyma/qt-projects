@@ -1,7 +1,7 @@
 #ifndef MEMBER_H
 #define MEMBER_H
 
-#include <QtCore/QSharedPointer>
+#include <memory>
 
 #include <odb/core.hxx>
 
@@ -37,9 +37,9 @@ public:
      * \param inDate - дата вступления
      * \param outDate - дата выхода
      */
-    Member(QSharedPointer<Person> person,
+    Member(std::shared_ptr<Person> person,
            QDate inDate,
-           QSharedPointer<QDate> outDate = QSharedPointer<QDate>(0));
+           std::shared_ptr<QDate> outDate = nullptr);
 
     /*!
      * \brief Получить идентификатор
@@ -51,13 +51,13 @@ public:
      * \brief Получить личные данные
      * \return Личные данные
      */
-    QSharedPointer<Person> person() const;
+    std::shared_ptr<Person> person() const;
 
     /*!
      * \brief Установить личные данные
      * \param person - личные данные
      */
-    void person(const QSharedPointer<Person> &person);
+    void person(const std::shared_ptr<Person> &person);
 
     /*!
      * \brief Получить дату вступления
@@ -76,14 +76,14 @@ public:
      * \return Указатель на дату выхода
      * \warning Может быть NULL
      */
-    QSharedPointer<QDate> outDate() const;
+    std::shared_ptr<QDate> outDate() const;
 
     /*!
      * \brief Установить дату выхода
      * \param outDate - Указатель на дату выхода
      * \warning Может быть NULL
      */
-    void outDate(const QSharedPointer<QDate> &outDate);
+    void outDate(const std::shared_ptr<QDate> &outDate);
 
     /*!
      * \brief Получить причину выхода
@@ -105,13 +105,13 @@ private:
     QDate _inDate;
 
     #pragma db null
-    QSharedPointer<QDate> _outDate;
+    std::shared_ptr<QDate> _outDate;
 
     ExitReason _exitReason;
 
     #pragma db not_null
     #pragma db column("idPerson")
-    QSharedPointer<Person> _person;
+    std::shared_ptr<Person> _person;
 };
 
 

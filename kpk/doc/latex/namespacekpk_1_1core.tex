@@ -14,30 +14,37 @@ class \hyperlink{classkpk_1_1core_1_1_person_service}{Person\+Service}
 \subsection*{Определения типов}
 \begin{DoxyCompactItemize}
 \item 
-typedef Q\+Shared\+Pointer$<$ odb\+::database $>$ \hyperlink{namespacekpk_1_1core_a57462cfcc109ed2afcc118d0668710cf}{Db\+Ptr}
+typedef std\+::shared\+\_\+ptr$<$ odb\+::database $>$ \hyperlink{namespacekpk_1_1core_a466e66f45327171cc2976df1304573ab}{Db\+Ptr}
+\begin{DoxyCompactList}\small\item\em Указатель на БД \end{DoxyCompactList}\item 
+typedef std\+::shared\+\_\+ptr$<$ \hyperlink{classkpk_1_1data_1_1_person}{data\+::\+Person} $>$ \hyperlink{namespacekpk_1_1core_ab7506e35456bfb9d583bc7815bbb5ca4}{Person\+Ptr}
+\begin{DoxyCompactList}\small\item\em Указатель на личные данные \end{DoxyCompactList}\item 
+typedef std\+::shared\+\_\+ptr$<$ \hyperlink{classkpk_1_1data_1_1_member}{data\+::\+Member} $>$ \hyperlink{namespacekpk_1_1core_a51190e5694e0b82ddd1e02382ddd9586}{Member\+Ptr}
+\begin{DoxyCompactList}\small\item\em Указатель на пайщика \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Переменные}
+\begin{DoxyCompactItemize}
 \item 
-typedef Q\+Shared\+Pointer$<$ odb\+::transaction $>$ \hyperlink{namespacekpk_1_1core_a3bd2bbeaff3894d4ee696d6fae548f3f}{Tr\+Ptr}
-\item 
-typedef Q\+Shared\+Pointer$<$ \hyperlink{classkpk_1_1data_1_1_person}{data\+::\+Person} $>$ \hyperlink{namespacekpk_1_1core_a4a1c110098ffdfb42bdcba45c4d9a7fe}{Person\+Ptr}
-\begin{DoxyCompactList}\small\item\em Person\+Ptr Указатель на личные данные \end{DoxyCompactList}\item 
-typedef Q\+Shared\+Pointer$<$ \hyperlink{classkpk_1_1data_1_1_member}{data\+::\+Member} $>$ \hyperlink{namespacekpk_1_1core_aca962f7fa9cb72f79643863d3634f7b9}{Member\+Ptr}
-\begin{DoxyCompactList}\small\item\em Указатель на запись членства \end{DoxyCompactList}\end{DoxyCompactItemize}
+odb\+::session \hyperlink{namespacekpk_1_1core_a4f9bed5f4644496878e2126c1c8e6412}{s}
+\end{DoxyCompactItemize}
 
 
 \subsection{Типы}
 \index{kpk\+::core@{kpk\+::core}!Db\+Ptr@{Db\+Ptr}}
 \index{Db\+Ptr@{Db\+Ptr}!kpk\+::core@{kpk\+::core}}
-\subsubsection[{\texorpdfstring{Db\+Ptr}{DbPtr}}]{\setlength{\rightskip}{0pt plus 5cm}typedef Q\+Shared\+Pointer$<$odb\+::database$>$ {\bf kpk\+::core\+::\+Db\+Ptr}}\hypertarget{namespacekpk_1_1core_a57462cfcc109ed2afcc118d0668710cf}{}\label{namespacekpk_1_1core_a57462cfcc109ed2afcc118d0668710cf}
+\subsubsection[{\texorpdfstring{Db\+Ptr}{DbPtr}}]{\setlength{\rightskip}{0pt plus 5cm}typedef std\+::shared\+\_\+ptr$<$odb\+::database$>$ {\bf kpk\+::core\+::\+Db\+Ptr}}\hypertarget{namespacekpk_1_1core_a466e66f45327171cc2976df1304573ab}{}\label{namespacekpk_1_1core_a466e66f45327171cc2976df1304573ab}
 
 
-См. определение в файле Db\+Service.\+h строка 13
+Указатель на БД 
+
+
+
+См. определение в файле Db\+Service.\+h строка 17
 
 \index{kpk\+::core@{kpk\+::core}!Member\+Ptr@{Member\+Ptr}}
 \index{Member\+Ptr@{Member\+Ptr}!kpk\+::core@{kpk\+::core}}
-\subsubsection[{\texorpdfstring{Member\+Ptr}{MemberPtr}}]{\setlength{\rightskip}{0pt plus 5cm}typedef Q\+Shared\+Pointer$<${\bf data\+::\+Member}$>$ {\bf kpk\+::core\+::\+Member\+Ptr}}\hypertarget{namespacekpk_1_1core_aca962f7fa9cb72f79643863d3634f7b9}{}\label{namespacekpk_1_1core_aca962f7fa9cb72f79643863d3634f7b9}
+\subsubsection[{\texorpdfstring{Member\+Ptr}{MemberPtr}}]{\setlength{\rightskip}{0pt plus 5cm}typedef std\+::shared\+\_\+ptr$<${\bf data\+::\+Member}$>$ {\bf kpk\+::core\+::\+Member\+Ptr}}\hypertarget{namespacekpk_1_1core_a51190e5694e0b82ddd1e02382ddd9586}{}\label{namespacekpk_1_1core_a51190e5694e0b82ddd1e02382ddd9586}
 
 
-Указатель на запись членства 
+Указатель на пайщика 
 
 
 
@@ -45,19 +52,22 @@ typedef Q\+Shared\+Pointer$<$ \hyperlink{classkpk_1_1data_1_1_member}{data\+::\+
 
 \index{kpk\+::core@{kpk\+::core}!Person\+Ptr@{Person\+Ptr}}
 \index{Person\+Ptr@{Person\+Ptr}!kpk\+::core@{kpk\+::core}}
-\subsubsection[{\texorpdfstring{Person\+Ptr}{PersonPtr}}]{\setlength{\rightskip}{0pt plus 5cm}typedef Q\+Shared\+Pointer$<${\bf data\+::\+Person}$>$ {\bf kpk\+::core\+::\+Person\+Ptr}}\hypertarget{namespacekpk_1_1core_a4a1c110098ffdfb42bdcba45c4d9a7fe}{}\label{namespacekpk_1_1core_a4a1c110098ffdfb42bdcba45c4d9a7fe}
+\subsubsection[{\texorpdfstring{Person\+Ptr}{PersonPtr}}]{\setlength{\rightskip}{0pt plus 5cm}typedef std\+::shared\+\_\+ptr$<${\bf data\+::\+Person}$>$ {\bf kpk\+::core\+::\+Person\+Ptr}}\hypertarget{namespacekpk_1_1core_ab7506e35456bfb9d583bc7815bbb5ca4}{}\label{namespacekpk_1_1core_ab7506e35456bfb9d583bc7815bbb5ca4}
 
 
-Person\+Ptr Указатель на личные данные 
+Указатель на личные данные 
 
 
 
 См. определение в файле Person\+Service.\+h строка 16
 
-\index{kpk\+::core@{kpk\+::core}!Tr\+Ptr@{Tr\+Ptr}}
-\index{Tr\+Ptr@{Tr\+Ptr}!kpk\+::core@{kpk\+::core}}
-\subsubsection[{\texorpdfstring{Tr\+Ptr}{TrPtr}}]{\setlength{\rightskip}{0pt plus 5cm}typedef Q\+Shared\+Pointer$<$odb\+::transaction$>$ {\bf kpk\+::core\+::\+Tr\+Ptr}}\hypertarget{namespacekpk_1_1core_a3bd2bbeaff3894d4ee696d6fae548f3f}{}\label{namespacekpk_1_1core_a3bd2bbeaff3894d4ee696d6fae548f3f}
 
 
-См. определение в файле Db\+Service.\+h строка 14
+\subsection{Переменные}
+\index{kpk\+::core@{kpk\+::core}!s@{s}}
+\index{s@{s}!kpk\+::core@{kpk\+::core}}
+\subsubsection[{\texorpdfstring{s}{s}}]{\setlength{\rightskip}{0pt plus 5cm}odb\+::session kpk\+::core\+::s}\hypertarget{namespacekpk_1_1core_a4f9bed5f4644496878e2126c1c8e6412}{}\label{namespacekpk_1_1core_a4f9bed5f4644496878e2126c1c8e6412}
+
+
+См. определение в файле Db\+Service.\+cpp строка 17
 

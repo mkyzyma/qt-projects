@@ -5,11 +5,11 @@ namespace core{
 
 CoreClass::CoreClass()
 {
-    _person = QSharedPointer<PersonService>(new PersonService);
-    _dbService = QSharedPointer<DbService>(new DbService);
+    _person = std::shared_ptr<PersonService>(new PersonService);
+    _dbService = std::shared_ptr<DbService>(new DbService);
 }
 
-QSharedPointer<DbService> &CoreClass::dbService()
+std::shared_ptr<DbService> &CoreClass::dbService()
 {
     return _dbService;
 }
@@ -19,7 +19,7 @@ DbPtr CoreClass::db()
     return dbService()->get();
 }
 
-QSharedPointer<PersonService> &CoreClass::person()
+std::shared_ptr<PersonService> &CoreClass::person()
 {
     return _person;
 }

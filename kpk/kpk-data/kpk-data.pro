@@ -21,7 +21,8 @@ SOURCES += \
     Member.cpp \
     Loan.cpp \
     LoanOperValue.cpp \
-    LoanOper.cpp
+    LoanOper.cpp \
+    LoanType.cpp
 
 HEADERS += \
     data_global.h \
@@ -31,7 +32,8 @@ HEADERS += \
     Member.h \
     Loan.h \
     LoanOperValue.h \
-    LoanOper.h
+    LoanOper.h \
+    LoanType.h
 
 unix {
     target.path = /usr/lib

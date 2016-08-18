@@ -1,6 +1,6 @@
 \hypertarget{_db_service_8h}{}\section{Файл kpk-\/core/\+Db\+Service.h}
 \label{_db_service_8h}\index{kpk-\/core/\+Db\+Service.\+h@{kpk-\/core/\+Db\+Service.\+h}}
-{\ttfamily \#include $<$Q\+Shared\+Pointer$>$}\\*
+{\ttfamily \#include $<$memory$>$}\\*
 {\ttfamily \#include $<$odb/database.\+hxx$>$}\\*
 {\ttfamily \#include \char`\"{}core\+\_\+global.\+h\char`\"{}}\\*
 \subsection*{Классы}
@@ -18,7 +18,5 @@ class \hyperlink{classkpk_1_1core_1_1_db_service}{kpk\+::core\+::\+Db\+Service}
 \subsection*{Определения типов}
 \begin{DoxyCompactItemize}
 \item 
-typedef Q\+Shared\+Pointer$<$ odb\+::database $>$ \hyperlink{namespacekpk_1_1core_a57462cfcc109ed2afcc118d0668710cf}{kpk\+::core\+::\+Db\+Ptr}
-\item 
-typedef Q\+Shared\+Pointer$<$ odb\+::transaction $>$ \hyperlink{namespacekpk_1_1core_a3bd2bbeaff3894d4ee696d6fae548f3f}{kpk\+::core\+::\+Tr\+Ptr}
-\end{DoxyCompactItemize}
+typedef std\+::shared\+\_\+ptr$<$ odb\+::database $>$ \hyperlink{namespacekpk_1_1core_a466e66f45327171cc2976df1304573ab}{kpk\+::core\+::\+Db\+Ptr}
+\begin{DoxyCompactList}\small\item\em Указатель на БД \end{DoxyCompactList}\end{DoxyCompactItemize}

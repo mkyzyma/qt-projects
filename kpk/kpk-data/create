@@ -4,11 +4,12 @@
 ./createfile Passport.h
 ./createfile Person.h
 ./createfile Member.h
+./createfile LoanType.h
 ./createfile Loan.h
 ./createfile LoanOperValue.h
 ./createfile LoanOper.h
 
-odb --database pgsql --generate-schema-only --profile qt -x -fPIC \
+odb --database pgsql --generate-schema-only --profile qt/date-time -x -fPIC \
 -I/home/miha/tools/Qt/5.6/gcc_64/include --at-once \
 --schema-format separate --input-name kpk \
-Name.h Passport.h Person.h Member.h Loan.h LoanOperValue.h LoanOper.h
+Name.h Passport.h Person.h Member.h LoanType.h Loan.h LoanOperValue.h LoanOper.h

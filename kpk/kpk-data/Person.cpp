@@ -46,20 +46,25 @@ bool Person::isNew()
     return id() == 0;
 }
 
-QSharedPointer<Member> Person::member() const
+std::weak_ptr<Member> Person::member() const
 {
     return _member;
 }
 
-void Person::member(const QSharedPointer<Member> &member)
+void Person::member(const std::weak_ptr<Member> &member)
 {
     _member = member;
 }
 
 bool Person::isMember()
 {
-    return !member().isNull() &&
-            member()->exitReason() == ER_NONE;
+    /*return !member().isNull() &&
+            member()->exitReason() == ER_NONE;*/
+
+    if(auto m = member().lock()){
+        return m->exitReason() == ER_NONE;
+    }
+    return false;
 }
 
 }

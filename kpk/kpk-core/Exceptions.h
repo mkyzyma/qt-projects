@@ -1,10 +1,19 @@
 #ifndef EXCEPTIONS_H
 #define EXCEPTIONS_H
 
+#include <exception>
+/*!
+ *\file
+ * \brief Исключения
+ * \todo Разобраться с передачей сообщений в исключениях и вообще с исключениями с++
+ */
 namespace kpk{
 namespace exception{
 
-struct AlreadyMemberException : std::exception
+/*!
+ * \brief Уже является членом кооператива
+ */
+class AlreadyMemberException : public std::exception
 {
     const char * what() const throw()
     {
@@ -12,7 +21,10 @@ struct AlreadyMemberException : std::exception
     }
 };
 
-struct NotAMemberException : std::exception
+/*!
+ * \brief Не является членом кооператива
+ */
+class NotAMemberException : public std::exception
 {
     const char * what() const throw()
     {

@@ -57,6 +57,7 @@ namespace odb
     pgsql::int8_oid,
     pgsql::int8_oid,
     pgsql::int8_oid,
+    pgsql::int8_oid,
     pgsql::int8_oid
   };
 
@@ -80,6 +81,7 @@ namespace odb
     pgsql::int8_oid,
     pgsql::int8_oid,
     pgsql::int8_oid,
+    pgsql::int8_oid,
     pgsql::int8_oid
   };
 
@@ -92,6 +94,11 @@ namespace odb
     id_pgsql,
     access::object_traits_impl< ::kpk::data::Loan, id_pgsql >::person_tag>::
   table_name[] = "\"idPerson\"";
+
+  const char alias_traits<  ::kpk::data::LoanType,
+    id_pgsql,
+    access::object_traits_impl< ::kpk::data::Loan, id_pgsql >::loanType_tag>::
+  table_name[] = "\"idLoanType\"";
 
   struct access::object_traits_impl< ::kpk::data::Loan, id_pgsql >::extra_statement_cache_type
   {
@@ -204,6 +211,10 @@ namespace odb
     //
     t[11UL] = 0;
 
+    // _loanType
+    //
+    t[12UL] = 0;
+
     return grew;
   }
 
@@ -303,6 +314,13 @@ namespace odb
     b[n].type = pgsql::bind::bigint;
     b[n].buffer = &i._person_value;
     b[n].is_null = &i._person_null;
+    n++;
+
+    // _loanType
+    //
+    b[n].type = pgsql::bind::bigint;
+    b[n].buffer = &i._loanType_value;
+    b[n].is_null = &i._loanType_null;
     n++;
   }
 
@@ -457,11 +475,11 @@ namespace odb
     // _member
     //
     {
-      ::QSharedPointer< ::kpk::data::Member > const& v =
+      ::std::shared_ptr< ::kpk::data::Member > const& v =
         o._member;
 
       typedef object_traits< ::kpk::data::Member > obj_traits;
-      typedef odb::pointer_traits< ::QSharedPointer< ::kpk::data::Member > > ptr_traits;
+      typedef odb::pointer_traits< ::std::shared_ptr< ::kpk::data::Member > > ptr_traits;
 
       bool is_null (ptr_traits::null_ptr (v));
       if (!is_null)
@@ -482,11 +500,11 @@ namespace odb
     // _person
     //
     {
-      ::QSharedPointer< ::kpk::data::Person > const& v =
+      ::std::shared_ptr< ::kpk::data::Person > const& v =
         o._person;
 
       typedef object_traits< ::kpk::data::Person > obj_traits;
-      typedef odb::pointer_traits< ::QSharedPointer< ::kpk::data::Person > > ptr_traits;
+      typedef odb::pointer_traits< ::std::shared_ptr< ::kpk::data::Person > > ptr_traits;
 
       bool is_null (ptr_traits::null_ptr (v));
       if (!is_null)
@@ -499,6 +517,31 @@ namespace odb
             pgsql::id_bigint >::set_image (
           i._person_value, is_null, id);
         i._person_null = is_null;
+      }
+      else
+        throw null_pointer ();
+    }
+
+    // _loanType
+    //
+    {
+      ::std::shared_ptr< ::kpk::data::LoanType > const& v =
+        o._loanType;
+
+      typedef object_traits< ::kpk::data::LoanType > obj_traits;
+      typedef odb::pointer_traits< ::std::shared_ptr< ::kpk::data::LoanType > > ptr_traits;
+
+      bool is_null (ptr_traits::null_ptr (v));
+      if (!is_null)
+      {
+        const obj_traits::id_type& id (
+          obj_traits::id (ptr_traits::get_ref (v)));
+
+        pgsql::value_traits<
+            obj_traits::id_type,
+            pgsql::id_bigint >::set_image (
+          i._loanType_value, is_null, id);
+        i._loanType_null = is_null;
       }
       else
         throw null_pointer ();
@@ -659,11 +702,11 @@ namespace odb
     // _member
     //
     {
-      ::QSharedPointer< ::kpk::data::Member >& v =
+      ::std::shared_ptr< ::kpk::data::Member >& v =
         o._member;
 
       typedef object_traits< ::kpk::data::Member > obj_traits;
-      typedef odb::pointer_traits< ::QSharedPointer< ::kpk::data::Member > > ptr_traits;
+      typedef odb::pointer_traits< ::std::shared_ptr< ::kpk::data::Member > > ptr_traits;
 
       if (i._member_null)
         v = ptr_traits::pointer_type ();
@@ -690,11 +733,11 @@ namespace odb
     // _person
     //
     {
-      ::QSharedPointer< ::kpk::data::Person >& v =
+      ::std::shared_ptr< ::kpk::data::Person >& v =
         o._person;
 
       typedef object_traits< ::kpk::data::Person > obj_traits;
-      typedef odb::pointer_traits< ::QSharedPointer< ::kpk::data::Person > > ptr_traits;
+      typedef odb::pointer_traits< ::std::shared_ptr< ::kpk::data::Person > > ptr_traits;
 
       if (i._person_null)
         v = ptr_traits::pointer_type ();
@@ -707,6 +750,37 @@ namespace odb
           id,
           i._person_value,
           i._person_null);
+
+        // If a compiler error points to the line below, then
+        // it most likely means that a pointer used in a member
+        // cannot be initialized from an object pointer.
+        //
+        v = ptr_traits::pointer_type (
+          static_cast<pgsql::database*> (db)->load<
+            obj_traits::object_type > (id));
+      }
+    }
+
+    // _loanType
+    //
+    {
+      ::std::shared_ptr< ::kpk::data::LoanType >& v =
+        o._loanType;
+
+      typedef object_traits< ::kpk::data::LoanType > obj_traits;
+      typedef odb::pointer_traits< ::std::shared_ptr< ::kpk::data::LoanType > > ptr_traits;
+
+      if (i._loanType_null)
+        v = ptr_traits::pointer_type ();
+      else
+      {
+        obj_traits::id_type id;
+        pgsql::value_traits<
+            obj_traits::id_type,
+            pgsql::id_bigint >::set_value (
+          id,
+          i._loanType_value,
+          i._loanType_null);
 
         // If a compiler error points to the line below, then
         // it most likely means that a pointer used in a member
@@ -745,9 +819,10 @@ namespace odb
   "\"remains\", "
   "\"prc\", "
   "\"idMember\", "
-  "\"idPerson\") "
+  "\"idPerson\", "
+  "\"idLoanType\") "
   "VALUES "
-  "(DEFAULT, $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) "
+  "(DEFAULT, $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) "
   "RETURNING \"id\"";
 
   const char access::object_traits_impl< ::kpk::data::Loan, id_pgsql >::find_statement[] =
@@ -763,7 +838,8 @@ namespace odb
   "\"Loan\".\"remains\", "
   "\"Loan\".\"prc\", "
   "\"Loan\".\"idMember\", "
-  "\"Loan\".\"idPerson\" "
+  "\"Loan\".\"idPerson\", "
+  "\"Loan\".\"idLoanType\" "
   "FROM \"Loan\" "
   "WHERE \"Loan\".\"id\"=$1";
 
@@ -780,8 +856,9 @@ namespace odb
   "\"remains\"=$8, "
   "\"prc\"=$9, "
   "\"idMember\"=$10, "
-  "\"idPerson\"=$11 "
-  "WHERE \"id\"=$12";
+  "\"idPerson\"=$11, "
+  "\"idLoanType\"=$12 "
+  "WHERE \"id\"=$13";
 
   const char access::object_traits_impl< ::kpk::data::Loan, id_pgsql >::erase_statement[] =
   "DELETE FROM \"Loan\" "
@@ -800,10 +877,12 @@ namespace odb
   "\"Loan\".\"remains\",\n"
   "\"Loan\".\"prc\",\n"
   "\"Loan\".\"idMember\",\n"
-  "\"Loan\".\"idPerson\"\n"
+  "\"Loan\".\"idPerson\",\n"
+  "\"Loan\".\"idLoanType\"\n"
   "FROM \"Loan\"\n"
   "LEFT JOIN \"Member\" AS \"idMember\" ON \"idMember\".\"id\"=\"Loan\".\"idMember\"\n"
-  "LEFT JOIN \"Person\" AS \"idPerson\" ON \"idPerson\".\"id\"=\"Loan\".\"idPerson\"";
+  "LEFT JOIN \"Person\" AS \"idPerson\" ON \"idPerson\".\"id\"=\"Loan\".\"idPerson\"\n"
+  "LEFT JOIN \"LoanType\" AS \"idLoanType\" ON \"idLoanType\".\"id\"=\"Loan\".\"idLoanType\"";
 
   const char access::object_traits_impl< ::kpk::data::Loan, id_pgsql >::erase_query_statement[] =
   "DELETE FROM \"Loan\"";

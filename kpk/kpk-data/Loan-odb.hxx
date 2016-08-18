@@ -14,18 +14,9 @@
 #include <odb/qt/basic/pgsql/qstring-traits.hxx>
 #include <odb/qt/basic/pgsql/qbyte-array-traits.hxx>
 #include <odb/qt/basic/pgsql/quuid-traits.hxx>
-#include <odb/qt/containers/qhash-traits.hxx>
-#include <odb/qt/containers/qlist-traits.hxx>
-#include <odb/qt/containers/qlinked-list-traits.hxx>
-#include <odb/qt/containers/qmap-traits.hxx>
-#include <odb/qt/containers/qset-traits.hxx>
-#include <odb/qt/containers/qvector-traits.hxx>
 #include <odb/qt/date-time/pgsql/qdate-traits.hxx>
 #include <odb/qt/date-time/pgsql/qtime-traits.hxx>
 #include <odb/qt/date-time/pgsql/qdate-time-traits.hxx>
-#include <QtCore/QSharedPointer>
-#include <odb/qt/smart-ptr/pointer-traits.hxx>
-#include <odb/qt/smart-ptr/wrapper-traits.hxx>
 //
 // End prologue.
 
@@ -39,6 +30,7 @@
 
 #include "Loan.h"
 
+#include "LoanType-odb.hxx"
 #include "Member-odb.hxx"
 #include "Name-odb.hxx"
 #include "Passport-odb.hxx"
@@ -77,7 +69,7 @@ namespace odb
   {
     public:
     typedef ::kpk::data::Loan object_type;
-    typedef ::QSharedPointer< ::kpk::data::Loan > pointer_type;
+    typedef ::std::shared_ptr< ::kpk::data::Loan > pointer_type;
     typedef odb::pointer_traits<pointer_type> pointer_traits;
 
     static const bool polymorphic = false;
@@ -269,6 +261,18 @@ namespace odb
     person_type_;
 
     static const person_type_ person;
+
+    // loanType
+    //
+    typedef
+    pgsql::query_column<
+      pgsql::value_traits<
+        ::ulong,
+        pgsql::id_bigint >::query_type,
+      pgsql::id_bigint >
+    loanType_type_;
+
+    static const loanType_type_ loanType;
   };
 
   template <typename A>
@@ -330,6 +334,11 @@ namespace odb
   const typename pointer_query_columns< ::kpk::data::Loan, id_pgsql, A >::person_type_
   pointer_query_columns< ::kpk::data::Loan, id_pgsql, A >::
   person (A::table_name, "\"idPerson\"", 0);
+
+  template <typename A>
+  const typename pointer_query_columns< ::kpk::data::Loan, id_pgsql, A >::loanType_type_
+  pointer_query_columns< ::kpk::data::Loan, id_pgsql, A >::
+  loanType (A::table_name, "\"idLoanType\"", 0);
 
   template <>
   class access::object_traits_impl< ::kpk::data::Loan, id_pgsql >:
@@ -406,6 +415,11 @@ namespace odb
       long long _person_value;
       bool _person_null;
 
+      // _loanType
+      //
+      long long _loanType_value;
+      bool _loanType_null;
+
       std::size_t version;
     };
 
@@ -413,6 +427,7 @@ namespace odb
 
     struct member_tag;
     struct person_tag;
+    struct loanType_tag;
 
     using object_traits<object_type>::id;
 
@@ -451,7 +466,7 @@ namespace odb
 
     typedef pgsql::query_base query_base_type;
 
-    static const std::size_t column_count = 12UL;
+    static const std::size_t column_count = 13UL;
     static const std::size_t id_column_count = 1UL;
     static const std::size_t inverse_column_count = 0UL;
     static const std::size_t readonly_column_count = 0UL;
@@ -547,6 +562,15 @@ namespace odb
   };
 
   template <>
+  struct alias_traits<
+    ::kpk::data::LoanType,
+    id_pgsql,
+    access::object_traits_impl< ::kpk::data::Loan, id_pgsql >::loanType_tag>
+  {
+    static const char table_name[];
+  };
+
+  template <>
   struct query_columns_base< ::kpk::data::Loan, id_pgsql >
   {
     // member
@@ -566,6 +590,15 @@ namespace odb
       id_pgsql,
       access::object_traits_impl< ::kpk::data::Loan, id_pgsql >::person_tag>
     person_alias_;
+
+    // loanType
+    //
+    typedef
+    odb::alias_traits<
+      ::kpk::data::LoanType,
+      id_pgsql,
+      access::object_traits_impl< ::kpk::data::Loan, id_pgsql >::loanType_tag>
+    loanType_alias_;
   };
 
   template <typename A>
@@ -747,6 +780,34 @@ namespace odb
     };
 
     static const person_type_ person;
+
+    // loanType
+    //
+    typedef
+    pgsql::query_column<
+      pgsql::value_traits<
+        ::ulong,
+        pgsql::id_bigint >::query_type,
+      pgsql::id_bigint >
+    loanType_column_type_;
+
+    typedef
+    odb::query_pointer<
+      odb::pointer_query_columns<
+        ::kpk::data::LoanType,
+        id_pgsql,
+        loanType_alias_ > >
+    loanType_pointer_type_;
+
+    struct loanType_type_: loanType_pointer_type_, loanType_column_type_
+    {
+      loanType_type_ (const char* t, const char* c, const char* conv)
+        : loanType_column_type_ (t, c, conv)
+      {
+      }
+    };
+
+    static const loanType_type_ loanType;
   };
 
   template <typename A>
@@ -808,6 +869,11 @@ namespace odb
   const typename query_columns< ::kpk::data::Loan, id_pgsql, A >::person_type_
   query_columns< ::kpk::data::Loan, id_pgsql, A >::
   person (A::table_name, "\"idPerson\"", 0);
+
+  template <typename A>
+  const typename query_columns< ::kpk::data::Loan, id_pgsql, A >::loanType_type_
+  query_columns< ::kpk::data::Loan, id_pgsql, A >::
+  loanType (A::table_name, "\"idLoanType\"", 0);
 }
 
 #include "Loan-odb.ixx"

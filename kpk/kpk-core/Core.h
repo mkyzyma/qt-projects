@@ -1,7 +1,7 @@
 #ifndef CORE_H
 #define CORE_H
 
-#include <QSharedPointer>
+#include <memory>
 
 #include "core_global.h"
 #include "DbService.h"
@@ -24,7 +24,7 @@ public:
      * \brief Служба управления базой данных
      * \return Указатель на службу
      */
-    QSharedPointer<DbService>& dbService();
+    std::shared_ptr<DbService>& dbService();
     /*!
      * \brief Основная база данных
      * \return Указатель на базу данных
@@ -34,7 +34,7 @@ public:
      * \brief Служба управления личными данными
      * \return Указатель на службу
      */
-    QSharedPointer<PersonService>& person();
+    std::shared_ptr<PersonService>& person();
 
     /*!
      * \brief Начать транзакцию в основной базе
@@ -49,8 +49,8 @@ public:
      */
     void rollback();
 private:
-    QSharedPointer<PersonService> _person;
-    QSharedPointer<DbService> _dbService;
+    std::shared_ptr<PersonService> _person;
+    std::shared_ptr<DbService> _dbService;
 };
 
 /*!

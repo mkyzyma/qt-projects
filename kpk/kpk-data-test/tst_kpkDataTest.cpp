@@ -1,6 +1,6 @@
 #include <QString>
 #include <QtTest>
-#include <QSharedPointer>
+#include <memory>
 
 #include <odb/database.hxx>
 #include <odb/pgsql/database.hxx>
@@ -12,6 +12,9 @@
 
 #include "kpk-data/Member.h"
 #include "kpk-data/Member-odb.hxx"
+
+#include "kpk-data/LoanType.h"
+#include "kpk-data/LoanType-odb.hxx"
 
 #include "kpk-data/Loan.h"
 #include "kpk-data/Loan-odb.hxx"
@@ -30,15 +33,15 @@ class kpkDataTest : public QObject
 public:
     kpkDataTest();
 private:    
-    QSharedPointer<odb::database> _db;
+    std::shared_ptr<odb::database> _db;
     ulong _id;
-    QSharedPointer<Person> _p;
+    std::shared_ptr<Person> _p;
     const QString PERSON_NAME = "";
     void verifyPerson(Person& p);
-    QSharedPointer<Person> createPerson();
-    QSharedPointer<Person> getPerson();
-    QSharedPointer<Member> getMember();
-    QSharedPointer<Loan> getLoan();
+    std::shared_ptr<Person> createPerson();
+    const std::shared_ptr<Person> getPerson();
+    std::shared_ptr<Member> getMember();
+    std::shared_ptr<Loan> getLoan();
 private Q_SLOTS:
     void initTestCase();
 
@@ -55,7 +58,7 @@ private Q_SLOTS:
 
 kpkDataTest::kpkDataTest()
 {
-    _p = QSharedPointer<Person>(new Person());
+    _p = std::shared_ptr<Person>(new Person());
     _p->name().set("Иван", "Иванович", "Пупкин");
     _p->passport().series("6714");
     _p->passport().number("370364");
@@ -76,9 +79,9 @@ void kpkDataTest::verifyPerson(Person& p)
 
 }
 
-QSharedPointer<Person> kpkDataTest::createPerson()
+std::shared_ptr<Person> kpkDataTest::createPerson()
 {
-    QSharedPointer<Person> p(new Person());
+    std::shared_ptr<Person> p(new Person());
 
     p->name().set(_p->name().first(), _p->name().middle(), _p->name().last());
     p->passport().series(_p->passport().series());
@@ -92,18 +95,18 @@ QSharedPointer<Person> kpkDataTest::createPerson()
     return p;
 }
 
-QSharedPointer<Person> kpkDataTest::getPerson()
+const std::shared_ptr<Person> kpkDataTest::getPerson()
 {
    return _db->load<Person>(_id);
 }
 
-QSharedPointer<Member> kpkDataTest::getMember()
+std::shared_ptr<Member> kpkDataTest::getMember()
 {
     odb::result<Member> r (_db->query<Member> (odb::query<Member>::person == _id));
     return r.begin().load();
 }
 
-QSharedPointer<Loan> kpkDataTest::getLoan()
+std::shared_ptr<Loan> kpkDataTest::getLoan()
 {
     odb::result<Loan> r (_db->query<Loan> (odb::query<Loan>::person == _id));
     return r.begin().load();
@@ -113,7 +116,7 @@ void kpkDataTest::initTestCase()
 {
     //system("chcp 65001");
     try{
-        _db =  QSharedPointer<odb::database> (
+        _db =  std::shared_ptr<odb::database> (
                     new odb::pgsql::database (
                         "postgres",
                         "7895123",
@@ -138,7 +141,7 @@ void kpkDataTest::initTestCase()
 void kpkDataTest::personCanPersist()
 {
      try{
-        QSharedPointer<Person> p(_p);
+        std::shared_ptr<Person> p(_p);
 
         odb::transaction t (_db->begin ());
 
@@ -155,7 +158,7 @@ void kpkDataTest::personPersisted()
     try{
        odb::transaction t (_db->begin ());
 
-       QSharedPointer<Person> p(getPerson());
+       std::shared_ptr<Person> p(getPerson());
 
        verifyPerson(*p);
 
@@ -169,7 +172,7 @@ void kpkDataTest::memberCanPersist()
 {
     try{
        odb::transaction t (_db->begin ());
-       QSharedPointer<Member> m(new Member());
+       std::shared_ptr<Member> m(new Member());
 
        _id = _db->persist(m);
 
@@ -182,8 +185,8 @@ void kpkDataTest::memberCanPersist()
     try{
        odb::transaction t (_db->begin ());
 
-       QSharedPointer<Person> p (_db->load<Person>(_id));
-       QSharedPointer<Member> m(new Member(p, QDate::currentDate()));
+       std::shared_ptr<Person> p (_db->load<Person>(_id));
+       std::shared_ptr<Member> m(new Member(p, QDate::currentDate()));
 
        _id = _db->persist(m);
 
@@ -198,10 +201,10 @@ void kpkDataTest::memberPersisted()
     try{
        odb::transaction t (_db->begin ());
 
-       QSharedPointer<Member> m(getMember());
+       std::shared_ptr<Member> m(getMember());
 
        QVERIFY2(m->id() == _id, "Wrong id");
-       QVERIFY2(!m->person().isNull(), "Person is null");
+       QVERIFY2(m->person(), "Person is null");
 
        verifyPerson(*m->person());
 
@@ -219,7 +222,9 @@ void kpkDataTest::loanCanPersist()
        auto p (getPerson());
        auto m (getMember());
 
-       QSharedPointer<Loan> l(new Loan(m, QDate::currentDate(), QDate::currentDate().addMonths(12),
+       std::shared_ptr<Loan> l(new Loan(m, std::shared_ptr<LoanType>(),
+                                       QDate::currentDate(),
+                                       QDate::currentDate().addMonths(12),
                                        100000, 21, 12));
 
        _db->persist(l);
@@ -252,7 +257,7 @@ void kpkDataTest::loanOperCanPersist()
 
        auto p (getPerson());
 
-       QSharedPointer<LoanOper> o(new LoanOper);
+       std::shared_ptr<LoanOper> o(new LoanOper);
 
        o->fact().date(QDate::currentDate());
        o->plan().date(QDate::currentDate().addDays(10));      

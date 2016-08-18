@@ -1,27 +1,34 @@
 #ifndef DBSERVICE_H
 #define DBSERVICE_H
 
-#include <QSharedPointer>
+#include <memory>
 
 #include <odb/database.hxx>
 
 #include "core_global.h"
 
+
+
 namespace kpk{
 namespace core{
 
-typedef QSharedPointer<odb::database> DbPtr;
-typedef QSharedPointer<odb::transaction> TrPtr;
 
+//! \brief Указатель на БД
+typedef std::shared_ptr<odb::database> DbPtr;
 /*!
  * \brief Служба управления базой данных
- *
- * Подключение, создание, работа с транзакциями
+ * \details Подключение, создание, работа с транзакциями
+ * \note Строка: \code odb::session s; \endcode в DbService.cpp нужна для возможности
+ *       работать с двунаправленными отношениями (один-к-одному, один-ко-многим)
+ *       (см. odb-manual п. 11 "Session")
  */
 class CORESHARED_EXPORT DbService
 {
 private:
     DbPtr _db;
+
+    //! \brief Указатель на Транзакцию
+    typedef std::shared_ptr<odb::transaction> TrPtr;
     TrPtr _tr;
 public:
     DbService();
@@ -45,7 +52,7 @@ public:
     DbPtr& createShcema();
 
     /*!
-     * \brief Открыть транзакцию
+     * \brief Начало транзакции
      */
     void begin();
 

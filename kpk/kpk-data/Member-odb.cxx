@@ -249,12 +249,12 @@ namespace odb
     // _outDate
     //
     {
-      ::QSharedPointer< ::QDate > const& v =
+      ::std::shared_ptr< ::QDate > const& v =
         o._outDate;
 
       bool is_null (true);
       pgsql::value_traits<
-          ::QSharedPointer< ::QDate >,
+          ::std::shared_ptr< ::QDate >,
           pgsql::id_date >::set_image (
         i._outDate_value, is_null, v);
       i._outDate_null = is_null;
@@ -277,11 +277,11 @@ namespace odb
     // _person
     //
     {
-      ::QSharedPointer< ::kpk::data::Person > const& v =
+      ::std::shared_ptr< ::kpk::data::Person > const& v =
         o._person;
 
       typedef object_traits< ::kpk::data::Person > obj_traits;
-      typedef odb::pointer_traits< ::QSharedPointer< ::kpk::data::Person > > ptr_traits;
+      typedef odb::pointer_traits< ::std::shared_ptr< ::kpk::data::Person > > ptr_traits;
 
       bool is_null (ptr_traits::null_ptr (v));
       if (!is_null)
@@ -342,11 +342,11 @@ namespace odb
     // _outDate
     //
     {
-      ::QSharedPointer< ::QDate >& v =
+      ::std::shared_ptr< ::QDate >& v =
         o._outDate;
 
       pgsql::value_traits<
-          ::QSharedPointer< ::QDate >,
+          ::std::shared_ptr< ::QDate >,
           pgsql::id_date >::set_value (
         v,
         i._outDate_value,
@@ -370,11 +370,11 @@ namespace odb
     // _person
     //
     {
-      ::QSharedPointer< ::kpk::data::Person >& v =
+      ::std::shared_ptr< ::kpk::data::Person >& v =
         o._person;
 
       typedef object_traits< ::kpk::data::Person > obj_traits;
-      typedef odb::pointer_traits< ::QSharedPointer< ::kpk::data::Person > > ptr_traits;
+      typedef odb::pointer_traits< ::std::shared_ptr< ::kpk::data::Person > > ptr_traits;
 
       if (i._person_null)
         v = ptr_traits::pointer_type ();
