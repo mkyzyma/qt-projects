@@ -1,6 +1,10 @@
 var dir_c12ada9b3136061cde6ed1a66252b974 =
 [
     [ "data_global.h", "data__global_8h.html", "data__global_8h" ],
+    [ "IsDeleted.cpp", "_is_deleted_8cpp.html", null ],
+    [ "IsDeleted.h", "_is_deleted_8h.html", [
+      [ "IsDeleted", "classkpk_1_1data_1_1_is_deleted.html", "classkpk_1_1data_1_1_is_deleted" ]
+    ] ],
     [ "Loan.cpp", "_loan_8cpp.html", null ],
     [ "Loan.h", "_loan_8h.html", [
       [ "Loan", "classkpk_1_1data_1_1_loan.html", "classkpk_1_1data_1_1_loan" ]

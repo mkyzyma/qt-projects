@@ -1,17 +1,21 @@
+#include <vector>
+
 #include <QCoreApplication>
 #include <QTextStream>
 #include <QDebug>
 
-/*#include <odb/database.hxx>
+#include <odb/database.hxx>
 #include <odb/pgsql/database.hxx>
 #include <odb/pgsql/exceptions.hxx>
-#include <odb/schema-catalog.hxx>*/
+#include <odb/schema-catalog.hxx>
+#include <odb/query.hxx>
+#include <odb/result.hxx>
 
 #include "kpk-data/Person.h"
-//#include "kpk-data/Person-odb.hxx"
+#include "kpk-data/Person-odb.hxx"
 
 #include "kpk-data/Member.h"
-//#include "kpk-data/Member-odb.hxx"
+#include "kpk-data/Member-odb.hxx"
 
 
 #include <QDecContext.hh>
@@ -48,12 +52,12 @@ int main(int argc, char *argv[])
     system("chcp 1251");
 
 
-    //try{
+    try{
 
     Core()->dbService()->connect();
     //Core()->dbService()->createShcema();
 
-    Core()->begin();
+    /*Core()->begin();
 
     Core()->person()->add(p);
 
@@ -65,15 +69,29 @@ int main(int argc, char *argv[])
 
     Core()->commit();
 
-    qDebug() << p1->name().full();
+    qDebug() << p1->name().full();*/
+
+    Core()->begin();
+
+    auto r = (Core()->db()->query<Person>(odb::query<Person>::id == 1));
+
+
+
+    qDebug() << r.begin().load()->name().full();
+
+    Core()->commit();
+
+
+
+
 
     cout << "\r\nOK";
 
-    /*}
+    }
     catch(const std::exception& e){
         cerr << e.what() << endl;
         return EXIT_FAILURE;
-    }*/
+    }
 
 
     return a.exec();

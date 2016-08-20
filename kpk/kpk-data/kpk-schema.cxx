@@ -73,6 +73,8 @@ namespace odb
                       "  \"caption\" char(63) NULL,\n"
                       "  \"rate\" BIGINT NOT NULL)");
           db.execute ("CREATE TABLE \"Loan\" (\n"
+                      "  \"isDeleted\" BOOLEAN NOT NULL,\n"
+                      "  \"deleteDate\" DATE NULL,\n"
                       "  \"id\" BIGSERIAL NOT NULL PRIMARY KEY,\n"
                       "  \"openDate\" DATE NULL,\n"
                       "  \"closeDate\" DATE NULL,\n"
@@ -99,6 +101,8 @@ namespace odb
                       "    REFERENCES \"LoanType\" (\"id\")\n"
                       "    INITIALLY DEFERRED)");
           db.execute ("CREATE TABLE \"LoanOper\" (\n"
+                      "  \"isDeleted\" BOOLEAN NOT NULL,\n"
+                      "  \"deleteDate\" DATE NULL,\n"
                       "  \"id\" BIGSERIAL NOT NULL PRIMARY KEY,\n"
                       "  \"plan_date\" DATE NULL,\n"
                       "  \"plan_amount\" BIGINT NOT NULL,\n"

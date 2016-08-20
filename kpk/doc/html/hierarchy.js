@@ -6,8 +6,10 @@ var hierarchy =
       [ "kpk::exception::AlreadyMemberException", "classkpk_1_1exception_1_1_already_member_exception.html", null ],
       [ "kpk::exception::NotAMemberException", "classkpk_1_1exception_1_1_not_a_member_exception.html", null ]
     ] ],
-    [ "kpk::data::Loan", "classkpk_1_1data_1_1_loan.html", null ],
-    [ "kpk::data::LoanOper", "classkpk_1_1data_1_1_loan_oper.html", null ],
+    [ "kpk::data::IsDeleted", "classkpk_1_1data_1_1_is_deleted.html", [
+      [ "kpk::data::Loan", "classkpk_1_1data_1_1_loan.html", null ],
+      [ "kpk::data::LoanOper", "classkpk_1_1data_1_1_loan_oper.html", null ]
+    ] ],
     [ "kpk::data::LoanOperValue", "classkpk_1_1data_1_1_loan_oper_value.html", null ],
     [ "kpk::core::LoanService", "classkpk_1_1core_1_1_loan_service.html", null ],
     [ "kpk::data::LoanType", "classkpk_1_1data_1_1_loan_type.html", null ],

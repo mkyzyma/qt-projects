@@ -22,7 +22,8 @@ SOURCES += \
     Loan.cpp \
     LoanOperValue.cpp \
     LoanOper.cpp \
-    LoanType.cpp
+    LoanType.cpp \
+    IsDeleted.cpp
 
 HEADERS += \
     data_global.h \
@@ -33,7 +34,8 @@ HEADERS += \
     Loan.h \
     LoanOperValue.h \
     LoanOper.h \
-    LoanType.h
+    LoanType.h \
+    IsDeleted.h
 
 unix {
     target.path = /usr/lib

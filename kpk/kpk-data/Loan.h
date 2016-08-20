@@ -10,6 +10,7 @@
 
 #include "data_global.h"
 
+#include "IsDeleted.h"
 #include "Member.h"
 #include "Person.h"
 #include "LoanType.h"
@@ -22,7 +23,7 @@ namespace data {
  * \brief Займ
  */
 #pragma db object
-class DATASHARED_EXPORT Loan
+class DATASHARED_EXPORT Loan : public IsDeleted
 {
 public:
     Loan();

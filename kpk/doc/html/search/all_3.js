@@ -1,14 +1,16 @@
 var searchData=
 [
-  ['data_5fglobal_2eh',['data_global.h',['../data__global_8h.html',1,'']]],
-  ['datashared_5fexport',['DATASHARED_EXPORT',['../data__global_8h.html#a3a15c7c178f43bd209847a355ecf1dbf',1,'data_global.h']]],
-  ['datatest',['dataTest',['../classdata_test.html',1,'']]],
-  ['date',['date',['../classkpk_1_1data_1_1_loan_oper_value.html#a79a69dfe8b0585d044da833ae6fb499c',1,'kpk::data::LoanOperValue::date() const '],['../classkpk_1_1data_1_1_loan_oper_value.html#a666ebe276be1ee68f7daa6b71b32102e',1,'kpk::data::LoanOperValue::date(const QDate &amp;date)'],['../classkpk_1_1data_1_1_passport.html#afe8d9f68888e8e820347d31f60485a24',1,'kpk::data::Passport::date() const '],['../classkpk_1_1data_1_1_passport.html#a03dc05509b3b5b9d0e62cc26702c45eb',1,'kpk::data::Passport::date(const QDate &amp;date)']]],
-  ['db',['db',['../classkpk_1_1core_1_1_core_class.html#aeb0cc8cb53c4ab4dc945226bd4f349d2',1,'kpk::core::CoreClass']]],
-  ['db_5fbase_5fversion',['DB_BASE_VERSION',['../data__global_8h.html#a02b58a502765f2e01f0de0facc8a94f4',1,'data_global.h']]],
-  ['dbptr',['DbPtr',['../namespacekpk_1_1core.html#a466e66f45327171cc2976df1304573ab',1,'kpk::core']]],
-  ['dbservice',['DbService',['../classkpk_1_1core_1_1_db_service.html',1,'kpk::core']]],
-  ['dbservice',['dbService',['../classkpk_1_1core_1_1_core_class.html#ac3d5e1bb072ace0ad6b55e93d61f8482',1,'kpk::core::CoreClass::dbService()'],['../classkpk_1_1core_1_1_db_service.html#ad7213ea1a3e710889dcd06876c165d95',1,'kpk::core::DbService::DbService()']]],
-  ['dbservice_2ecpp',['DbService.cpp',['../_db_service_8cpp.html',1,'']]],
-  ['dbservice_2eh',['DbService.h',['../_db_service_8h.html',1,'']]]
+  ['caption',['caption',['../classkpk_1_1data_1_1_loan_type.html#a7169dc0b49289c4a7b219ff39c00b072',1,'kpk::data::LoanType::caption() const '],['../classkpk_1_1data_1_1_loan_type.html#a6583131a70e2f112383e58b6ab3d6e67',1,'kpk::data::LoanType::caption(const QString &amp;caption)']]],
+  ['cerr',['cerr',['../kpk-test-console_2main_8cpp.html#a841cdc35fc77e3f6a49ca2d6ccd51939',1,'main.cpp']]],
+  ['closedate',['closeDate',['../classkpk_1_1data_1_1_loan.html#af8ccbb954480eae0aa3b2a6b2f39fcb5',1,'kpk::data::Loan::closeDate()'],['../classkpk_1_1data_1_1_loan.html#ada266f079bcda1b9877ab161655c22e1',1,'kpk::data::Loan::closeDate(QDate &amp;closeDate)']]],
+  ['commit',['commit',['../classkpk_1_1core_1_1_core_class.html#a4b9e63dd9e488616d4a70a6b3c8a929c',1,'kpk::core::CoreClass::commit()'],['../classkpk_1_1core_1_1_db_service.html#a819d4e51894ea9950d69d7d159003aa5',1,'kpk::core::DbService::commit()']]],
+  ['connect',['connect',['../classkpk_1_1core_1_1_db_service.html#a185ef44041963592970695ecac61f3c3',1,'kpk::core::DbService']]],
+  ['core_2ecpp',['Core.cpp',['../_core_8cpp.html',1,'']]],
+  ['core_2eh',['Core.h',['../_core_8h.html',1,'']]],
+  ['core_5fglobal_2eh',['core_global.h',['../core__global_8h.html',1,'']]],
+  ['coreclass',['CoreClass',['../classkpk_1_1core_1_1_core_class.html',1,'kpk::core']]],
+  ['coreclass',['CoreClass',['../classkpk_1_1core_1_1_core_class.html#a5dc08a07fb3d8e84da07623d7739261a',1,'kpk::core::CoreClass']]],
+  ['coreshared_5fexport',['CORESHARED_EXPORT',['../core__global_8h.html#a35b4f560a49976697e57858385e52c17',1,'core_global.h']]],
+  ['cout',['cout',['../kpk-test-console_2main_8cpp.html#aaa6e46bf787b32b7a417fd4244a82702',1,'main.cpp']]],
+  ['createshcema',['createShcema',['../classkpk_1_1core_1_1_db_service.html#aacb6bafd43eda109a2888bb0d6f86892',1,'kpk::core::DbService']]]
 ];

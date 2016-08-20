@@ -30,6 +30,7 @@
 
 #include "LoanOper.h"
 
+#include "IsDeleted-odb.hxx"
 #include "Loan-odb.hxx"
 #include "LoanOperValue-odb.hxx"
 #include "LoanType-odb.hxx"
@@ -118,8 +119,13 @@ namespace odb
   // LoanOper
   //
   template <typename A>
-  struct pointer_query_columns< ::kpk::data::LoanOper, id_pgsql, A >
+  struct pointer_query_columns< ::kpk::data::LoanOper, id_pgsql, A >:
+    pointer_query_columns< ::kpk::data::IsDeleted, id_pgsql, A >
   {
+    // IsDeleted
+    //
+    typedef pointer_query_columns< ::kpk::data::IsDeleted, id_pgsql, A > IsDeleted;
+
     // id
     //
     typedef
@@ -470,7 +476,7 @@ namespace odb
       std::size_t version;
     };
 
-    struct image_type
+    struct image_type: object_traits_impl< ::kpk::data::IsDeleted, id_pgsql >::image_type
     {
       // _id
       //
@@ -546,7 +552,7 @@ namespace odb
 
     typedef pgsql::query_base query_base_type;
 
-    static const std::size_t column_count = 18UL;
+    static const std::size_t column_count = 20UL;
     static const std::size_t id_column_count = 1UL;
     static const std::size_t inverse_column_count = 0UL;
     static const std::size_t readonly_column_count = 0UL;
@@ -683,8 +689,13 @@ namespace odb
 
   template <typename A>
   struct query_columns< ::kpk::data::LoanOper, id_pgsql, A >:
-    query_columns_base< ::kpk::data::LoanOper, id_pgsql >
+    query_columns_base< ::kpk::data::LoanOper, id_pgsql >,
+    query_columns< ::kpk::data::IsDeleted, id_pgsql, A >
   {
+    // IsDeleted
+    //
+    typedef query_columns< ::kpk::data::IsDeleted, id_pgsql, A > IsDeleted;
+
     // id
     //
     typedef

@@ -19,6 +19,7 @@ var NAVTREE =
       [ "Члены классов", "functions.html", [
         [ "Указатель", "functions.html", null ],
         [ "Функции", "functions_func.html", null ],
+        [ "Переменные", "functions_vars.html", null ],
         [ "Относящиеся к классу функции", "functions_rela.html", null ]
       ] ]
     ] ],
@@ -36,7 +37,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_core_8cpp.html",
-"namespacekpk_1_1test.html"
+"kpk-test-console_2main_8cpp.html#a841cdc35fc77e3f6a49ca2d6ccd51939"
 ];
 
 var SYNCONMSG = 'нажмите на выключить для синхронизации панелей';

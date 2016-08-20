@@ -7,6 +7,7 @@
 
 #include "data_global.h"
 
+#include "IsDeleted.h"
 #include "LoanOperValue.h"
 #include "Person.h"
 #include "Member.h"
@@ -22,7 +23,7 @@ namespace data
  * Операция по займу (оплата или выдача)
  */
 #pragma db object
-class DATASHARED_EXPORT LoanOper
+class DATASHARED_EXPORT LoanOper : public IsDeleted
 {
 public:
     LoanOper();

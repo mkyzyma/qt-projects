@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['s',['s',['../namespacekpk_1_1core.html#a4f9bed5f4644496878e2126c1c8e6412',1,'kpk::core']]],
-  ['series',['series',['../classkpk_1_1data_1_1_passport.html#aa39a5d6fe1bdd5f736b1fca37dda1850',1,'kpk::data::Passport::series() const '],['../classkpk_1_1data_1_1_passport.html#aa535cb5a1d9c87fd5d6a0937df06280a',1,'kpk::data::Passport::series(const QString &amp;series)']]],
-  ['set',['set',['../classkpk_1_1data_1_1_name.html#acf3d804bb9ffbe68658c09fdb2e55594',1,'kpk::data::Name::set()'],['../classkpk_1_1data_1_1_passport.html#a1c52607e828b39be3db6269ab97482bb',1,'kpk::data::Passport::set()']]],
-  ['snils',['snils',['../classkpk_1_1data_1_1_person.html#ab97dd46a638436924b55be08e40fbd58',1,'kpk::data::Person::snils() const '],['../classkpk_1_1data_1_1_person.html#a110fad1e7ae404890ba536f6673f0d72',1,'kpk::data::Person::snils(const QString &amp;snils)']]],
-  ['sum',['sum',['../classkpk_1_1data_1_1_loan.html#a5b207380d82a2079ea83ec1ecf11f090',1,'kpk::data::Loan::sum() const '],['../classkpk_1_1data_1_1_loan.html#a07ba28ed26a7a422b5c2435dbacd3825',1,'kpk::data::Loan::sum(long sum)']]]
+  ['rate',['rate',['../classkpk_1_1data_1_1_loan.html#affb2d1a39a5c7c185b07d5f6de87a43e',1,'kpk::data::Loan::rate() const '],['../classkpk_1_1data_1_1_loan.html#aefef4f72d088471f5f32d1843c221108',1,'kpk::data::Loan::rate(long rate)'],['../classkpk_1_1data_1_1_loan_type.html#a352f35f5fed5ede4e7256ed5ce5215f1',1,'kpk::data::LoanType::rate() const '],['../classkpk_1_1data_1_1_loan_type.html#aee60769278639d1fd65940e00ac0755b',1,'kpk::data::LoanType::rate(long rate)']]],
+  ['remains',['remains',['../classkpk_1_1data_1_1_loan.html#a3a85e20cceb9a563153d51fe07f15262',1,'kpk::data::Loan::remains() const '],['../classkpk_1_1data_1_1_loan.html#a242c59d916d1d2dd17d579bfac388e4a',1,'kpk::data::Loan::remains(long remains)']]],
+  ['remove',['remove',['../classkpk_1_1core_1_1_person_service.html#a42c2e03d47b6002dc35190a7b904717d',1,'kpk::core::PersonService']]],
+  ['resetdeleted',['resetDeleted',['../classkpk_1_1data_1_1_is_deleted.html#a1b597a2eb55984417874341dba8160b2',1,'kpk::data::IsDeleted']]],
+  ['rollback',['rollback',['../classkpk_1_1core_1_1_core_class.html#a6e64f22a4b5d786e3172b13a671971af',1,'kpk::core::CoreClass::rollback()'],['../classkpk_1_1core_1_1_db_service.html#a360724207bed795a2ca720961d2808a9',1,'kpk::core::DbService::rollback()']]]
 ];

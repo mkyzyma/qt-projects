@@ -49,6 +49,8 @@
       </primary-key>
     </table>
     <table name="Loan" kind="object">
+      <column name="isDeleted" type="BOOLEAN" null="false"/>
+      <column name="deleteDate" type="DATE" null="true"/>
       <column name="id" type="BIGINT" null="false"/>
       <column name="openDate" type="DATE" null="true"/>
       <column name="closeDate" type="DATE" null="true"/>
@@ -85,6 +87,8 @@
       </foreign-key>
     </table>
     <table name="LoanOper" kind="object">
+      <column name="isDeleted" type="BOOLEAN" null="false"/>
+      <column name="deleteDate" type="DATE" null="true"/>
       <column name="id" type="BIGINT" null="false"/>
       <column name="plan_date" type="DATE" null="true"/>
       <column name="plan_amount" type="BIGINT" null="false"/>

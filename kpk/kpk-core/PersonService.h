@@ -2,6 +2,9 @@
 #define PERSONSERVICE_H
 
 #include <memory>
+#include <list>
+
+
 #include <QDate>
 
 #include "core_global.h"
@@ -18,6 +21,8 @@ typedef std::shared_ptr<data::Person> PersonPtr;
  * \brief Указатель на пайщика
  */
 typedef std::shared_ptr<data::Member> MemberPtr;
+
+
 /*!
  * \brief Служба по управлению личными данными
  *
@@ -69,6 +74,8 @@ public:
      * \throw kpk::exception::NotAMemberException если person не пайщик
      */
     void exit(PersonPtr person, QDate date, data::ExitReason reason);
+
+
 };
 
 }

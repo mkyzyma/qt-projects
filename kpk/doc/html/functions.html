@@ -80,11 +80,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
     <ul class="tablist">
       <li class="current"><a href="functions.html"><span>Указатель</span></a></li>
       <li><a href="functions_func.html"><span>Функции</span></a></li>
+      <li><a href="functions_vars.html"><span>Переменные</span></a></li>
       <li><a href="functions_rela.html"><span>Относящиеся&#160;к&#160;классу&#160;функции</span></a></li>
     </ul>
   </div>
   <div id="navrow4" class="tabs3">
     <ul class="tablist">
+      <li><a href="#index__"><span>_</span></a></li>
       <li><a href="#index_a"><span>a</span></a></li>
       <li><a href="#index_b"><span>b</span></a></li>
       <li><a href="#index_c"><span>c</span></a></li>
@@ -137,12 +139,22 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <div class="contents">
 <div class="textblock">Список всех членов классов со ссылками на классы, к которым они принадлежат.</div>
 
+<h3><a class="anchor" id="index__"></a>- _ -</h3><ul>
+<li>_deleteDate
+: <a class="el" href="classkpk_1_1data_1_1_is_deleted.html#a1226792236a4987deb3aca9624bf9bc2">kpk::data::IsDeleted</a>
+</li>
+<li>_isDeleted
+: <a class="el" href="classkpk_1_1data_1_1_is_deleted.html#ae6d3de0c3378f082059f2ca10cbcf790">kpk::data::IsDeleted</a>
+</li>
+</ul>
+
+
 <h3><a class="anchor" id="index_a"></a>- a -</h3><ul>
 <li>add()
 : <a class="el" href="classkpk_1_1core_1_1_person_service.html#ad9944affacfbf9e54bb0292c075f9cd4">kpk::core::PersonService</a>
 </li>
 <li>amount()
-: <a class="el" href="classkpk_1_1data_1_1_loan_oper_value.html#a7c02ccfb03583b86685063c794bfb127">kpk::data::LoanOperValue</a>
+: <a class="el" href="classkpk_1_1data_1_1_loan_oper_value.html#a674d9125b2b2529a05c83aa3247488ea">kpk::data::LoanOperValue</a>
 </li>
 </ul>
 
@@ -160,7 +172,7 @@ $(document).ready(function(){initNavTree('functions.html','');});
 : <a class="el" href="classkpk_1_1data_1_1_loan_type.html#a7169dc0b49289c4a7b219ff39c00b072">kpk::data::LoanType</a>
 </li>
 <li>closeDate()
-: <a class="el" href="classkpk_1_1data_1_1_loan.html#af8ccbb954480eae0aa3b2a6b2f39fcb5">kpk::data::Loan</a>
+: <a class="el" href="classkpk_1_1data_1_1_loan.html#ada266f079bcda1b9877ab161655c22e1">kpk::data::Loan</a>
 </li>
 <li>commit()
 : <a class="el" href="classkpk_1_1core_1_1_core_class.html#a4b9e63dd9e488616d4a70a6b3c8a929c">kpk::core::CoreClass</a>
@@ -181,7 +193,7 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <h3><a class="anchor" id="index_d"></a>- d -</h3><ul>
 <li>date()
 : <a class="el" href="classkpk_1_1data_1_1_loan_oper_value.html#a79a69dfe8b0585d044da833ae6fb499c">kpk::data::LoanOperValue</a>
-, <a class="el" href="classkpk_1_1data_1_1_passport.html#afe8d9f68888e8e820347d31f60485a24">kpk::data::Passport</a>
+, <a class="el" href="classkpk_1_1data_1_1_passport.html#a03dc05509b3b5b9d0e62cc26702c45eb">kpk::data::Passport</a>
 </li>
 <li>db()
 : <a class="el" href="classkpk_1_1core_1_1_core_class.html#aeb0cc8cb53c4ab4dc945226bd4f349d2">kpk::core::CoreClass</a>
@@ -191,6 +203,9 @@ $(document).ready(function(){initNavTree('functions.html','');});
 </li>
 <li>DbService()
 : <a class="el" href="classkpk_1_1core_1_1_db_service.html#ad7213ea1a3e710889dcd06876c165d95">kpk::core::DbService</a>
+</li>
+<li>deleteDate()
+: <a class="el" href="classkpk_1_1data_1_1_is_deleted.html#a69c216d6793d2dd3dada333fa88fc8c6">kpk::data::IsDeleted</a>
 </li>
 </ul>
 
@@ -241,10 +256,16 @@ $(document).ready(function(){initNavTree('functions.html','');});
 : <a class="el" href="classkpk_1_1data_1_1_member.html#a94ae4a3def291913ce30f0e56f5211b3">kpk::data::Member</a>
 </li>
 <li>inn()
-: <a class="el" href="classkpk_1_1data_1_1_person.html#a718b0634bef8c0281a8553afafd3ffd8">kpk::data::Person</a>
+: <a class="el" href="classkpk_1_1data_1_1_person.html#a8a3633d768cdb21913f499d0e89b72de">kpk::data::Person</a>
 </li>
 <li>isClosed()
 : <a class="el" href="classkpk_1_1data_1_1_loan.html#a70783859ac8c369fbacf45743b7dc527">kpk::data::Loan</a>
+</li>
+<li>IsDeleted()
+: <a class="el" href="classkpk_1_1data_1_1_is_deleted.html#a165b6aaa4948a655b38eecb50d9a8d58">kpk::data::IsDeleted</a>
+</li>
+<li>isDeleted()
+: <a class="el" href="classkpk_1_1data_1_1_is_deleted.html#a96b7887184ab26316d1f1a6c30ad690b">kpk::data::IsDeleted</a>
 </li>
 <li>isMember()
 : <a class="el" href="classkpk_1_1data_1_1_person.html#ab437e28e5004a3961c14c650fc99ee69">kpk::data::Person</a>
@@ -270,7 +291,7 @@ $(document).ready(function(){initNavTree('functions.html','');});
 : <a class="el" href="classkpk_1_1data_1_1_name.html#a99905897dea9f8bb74ce3b7bddd9207d">kpk::data::Name</a>
 </li>
 <li>length()
-: <a class="el" href="classkpk_1_1data_1_1_loan.html#a89c1fd9e63d8923796f0cb3452bafa27">kpk::data::Loan</a>
+: <a class="el" href="classkpk_1_1data_1_1_loan.html#af134c522e66faccb01b71c69c801ac6f">kpk::data::Loan</a>
 </li>
 <li>limit()
 : <a class="el" href="classkpk_1_1data_1_1_loan.html#ae82f80aa7a9b58fdfb2ac818dd33611d">kpk::data::Loan</a>
@@ -279,7 +300,7 @@ $(document).ready(function(){initNavTree('functions.html','');});
 : <a class="el" href="classkpk_1_1data_1_1_loan.html#a466384959c1ccfaf4942c96c3409e6e6">kpk::data::Loan</a>
 </li>
 <li>loan()
-: <a class="el" href="classkpk_1_1data_1_1_loan_oper.html#a112db60dae0b1e3f2e40c8c3a2444848">kpk::data::LoanOper</a>
+: <a class="el" href="classkpk_1_1data_1_1_loan_oper.html#af46beb664e0021f8939e70de3c89ab50">kpk::data::LoanOper</a>
 , <a class="el" href="classkpk_1_1data_1_1_loan_oper_value.html#a62abaf1afa796f4ab870b3eaf28c52a3">kpk::data::LoanOperValue</a>
 </li>
 <li>loanDept()
@@ -298,7 +319,7 @@ $(document).ready(function(){initNavTree('functions.html','');});
 : <a class="el" href="classkpk_1_1data_1_1_loan.html#a791850364c82ef161f09669c64bcc2a3">kpk::data::Loan</a>
 </li>
 <li>LoanType()
-: <a class="el" href="classkpk_1_1data_1_1_loan_type.html#ac9e8649f46b7938421a3081b58796b97">kpk::data::LoanType</a>
+: <a class="el" href="classkpk_1_1data_1_1_loan_type.html#a3f7276e76fdbfcdceb3716f55c0d0ad8">kpk::data::LoanType</a>
 </li>
 </ul>
 
@@ -315,7 +336,7 @@ $(document).ready(function(){initNavTree('functions.html','');});
 : <a class="el" href="classkpk_1_1data_1_1_person.html#a2aa5f4a78eb6490e72dc099ab9076e54">kpk::data::Person</a>
 </li>
 <li>middle()
-: <a class="el" href="classkpk_1_1data_1_1_name.html#ad65653506f46a201cf903e383d558421">kpk::data::Name</a>
+: <a class="el" href="classkpk_1_1data_1_1_name.html#a6193fa09a5adf9ee2eb3a5a448578ec7">kpk::data::Name</a>
 </li>
 </ul>
 
@@ -335,7 +356,8 @@ $(document).ready(function(){initNavTree('functions.html','');});
 
 <h3><a class="anchor" id="index_o"></a>- o -</h3><ul>
 <li>odb::access
-: <a class="el" href="classkpk_1_1data_1_1_loan.html#acb4d953abf85ae525f1d06a0c3a86a55">kpk::data::Loan</a>
+: <a class="el" href="classkpk_1_1data_1_1_is_deleted.html#acb4d953abf85ae525f1d06a0c3a86a55">kpk::data::IsDeleted</a>
+, <a class="el" href="classkpk_1_1data_1_1_loan.html#acb4d953abf85ae525f1d06a0c3a86a55">kpk::data::Loan</a>
 , <a class="el" href="classkpk_1_1data_1_1_loan_oper.html#acb4d953abf85ae525f1d06a0c3a86a55">kpk::data::LoanOper</a>
 , <a class="el" href="classkpk_1_1data_1_1_loan_oper_value.html#acb4d953abf85ae525f1d06a0c3a86a55">kpk::data::LoanOperValue</a>
 , <a class="el" href="classkpk_1_1data_1_1_loan_type.html#acb4d953abf85ae525f1d06a0c3a86a55">kpk::data::LoanType</a>
@@ -345,10 +367,10 @@ $(document).ready(function(){initNavTree('functions.html','');});
 , <a class="el" href="classkpk_1_1data_1_1_person.html#acb4d953abf85ae525f1d06a0c3a86a55">kpk::data::Person</a>
 </li>
 <li>openDate()
-: <a class="el" href="classkpk_1_1data_1_1_loan.html#a0b039c0e6667da4f809f8e921f359f9b">kpk::data::Loan</a>
+: <a class="el" href="classkpk_1_1data_1_1_loan.html#a46351e2f11a23a671e2a2d4be126eb2b">kpk::data::Loan</a>
 </li>
 <li>org()
-: <a class="el" href="classkpk_1_1data_1_1_passport.html#ad15c144b9acbdcafbee4111f8f763c07">kpk::data::Passport</a>
+: <a class="el" href="classkpk_1_1data_1_1_passport.html#a2a48baa96953345dda7329efc8218ec5">kpk::data::Passport</a>
 </li>
 <li>orgCode()
 : <a class="el" href="classkpk_1_1data_1_1_passport.html#a9cf26ca78882684924c50cefc2b0ff6a">kpk::data::Passport</a>
@@ -367,7 +389,7 @@ $(document).ready(function(){initNavTree('functions.html','');});
 : <a class="el" href="classkpk_1_1data_1_1_person.html#a38b692a8236cba1673554b3c6ed972b3">kpk::data::Person</a>
 </li>
 <li>peni()
-: <a class="el" href="classkpk_1_1data_1_1_loan_oper_value.html#a10b14d39ece49ca7ce6cc3b71ae3413d">kpk::data::LoanOperValue</a>
+: <a class="el" href="classkpk_1_1data_1_1_loan_oper_value.html#af3834e6064f5dfd1fa5544e0f54adb4a">kpk::data::LoanOperValue</a>
 </li>
 <li>person()
 : <a class="el" href="classkpk_1_1core_1_1_core_class.html#a069b9845931bb50a9fc221ff3e436862">kpk::core::CoreClass</a>
@@ -385,7 +407,7 @@ $(document).ready(function(){initNavTree('functions.html','');});
 : <a class="el" href="classkpk_1_1data_1_1_loan_oper.html#af20e426695913f8593131a65014b29b4">kpk::data::LoanOper</a>
 </li>
 <li>prc()
-: <a class="el" href="classkpk_1_1data_1_1_loan.html#aabe63b94775011f6c971d8fb7a9cf5b0">kpk::data::Loan</a>
+: <a class="el" href="classkpk_1_1data_1_1_loan.html#ae7141c53eac6c77d33c9e78eca17427d">kpk::data::Loan</a>
 , <a class="el" href="classkpk_1_1data_1_1_loan_oper_value.html#a73063afb20f403339b47a1459b5cf0e8">kpk::data::LoanOperValue</a>
 </li>
 <li>prcDept()
@@ -397,13 +419,16 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <h3><a class="anchor" id="index_r"></a>- r -</h3><ul>
 <li>rate()
 : <a class="el" href="classkpk_1_1data_1_1_loan.html#affb2d1a39a5c7c185b07d5f6de87a43e">kpk::data::Loan</a>
-, <a class="el" href="classkpk_1_1data_1_1_loan_type.html#a352f35f5fed5ede4e7256ed5ce5215f1">kpk::data::LoanType</a>
+, <a class="el" href="classkpk_1_1data_1_1_loan_type.html#aee60769278639d1fd65940e00ac0755b">kpk::data::LoanType</a>
 </li>
 <li>remains()
 : <a class="el" href="classkpk_1_1data_1_1_loan.html#a3a85e20cceb9a563153d51fe07f15262">kpk::data::Loan</a>
 </li>
 <li>remove()
 : <a class="el" href="classkpk_1_1core_1_1_person_service.html#a42c2e03d47b6002dc35190a7b904717d">kpk::core::PersonService</a>
+</li>
+<li>resetDeleted()
+: <a class="el" href="classkpk_1_1data_1_1_is_deleted.html#a1b597a2eb55984417874341dba8160b2">kpk::data::IsDeleted</a>
 </li>
 <li>rollback()
 : <a class="el" href="classkpk_1_1core_1_1_core_class.html#a6e64f22a4b5d786e3172b13a671971af">kpk::core::CoreClass</a>
@@ -420,11 +445,14 @@ $(document).ready(function(){initNavTree('functions.html','');});
 : <a class="el" href="classkpk_1_1data_1_1_name.html#acf3d804bb9ffbe68658c09fdb2e55594">kpk::data::Name</a>
 , <a class="el" href="classkpk_1_1data_1_1_passport.html#a1c52607e828b39be3db6269ab97482bb">kpk::data::Passport</a>
 </li>
+<li>setDeleted()
+: <a class="el" href="classkpk_1_1data_1_1_is_deleted.html#aa53449c36ce24163228ab2fdc099ffbb">kpk::data::IsDeleted</a>
+</li>
 <li>snils()
-: <a class="el" href="classkpk_1_1data_1_1_person.html#ab97dd46a638436924b55be08e40fbd58">kpk::data::Person</a>
+: <a class="el" href="classkpk_1_1data_1_1_person.html#a110fad1e7ae404890ba536f6673f0d72">kpk::data::Person</a>
 </li>
 <li>sum()
-: <a class="el" href="classkpk_1_1data_1_1_loan.html#a5b207380d82a2079ea83ec1ecf11f090">kpk::data::Loan</a>
+: <a class="el" href="classkpk_1_1data_1_1_loan.html#a07ba28ed26a7a422b5c2435dbacd3825">kpk::data::Loan</a>
 </li>
 </ul>
 

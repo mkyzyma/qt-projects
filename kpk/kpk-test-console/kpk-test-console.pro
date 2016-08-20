@@ -11,7 +11,7 @@ TEMPLATE = app
 
 include("../../odb.pri")
 include("../../qdecimal.pri")
-#include("../kpk-data.pri")
+include("../kpk-data.pri")
 
 SOURCES += main.cpp
 

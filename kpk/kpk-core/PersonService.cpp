@@ -68,5 +68,7 @@ void PersonService::exit(PersonPtr person, QDate date, ExitReason reason)
 
 
 
+
+
 }
 }

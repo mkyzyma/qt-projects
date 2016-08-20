@@ -28,6 +28,7 @@ private Q_SLOTS:
     void canAddPerson();
     void canEnter();
     void canExit();
+    void canEnterAgain();
 };
 
 KpkCoreTest::KpkCoreTest()
@@ -114,7 +115,7 @@ void KpkCoreTest::canEnter()
         Core()->person()->enter(_p, QDate::currentDate().addYears(-1));
         Core()->commit();
 
-        /*bool throws(false);
+        bool throws(false);
 
         try{
             Core()->begin();
@@ -125,7 +126,7 @@ void KpkCoreTest::canEnter()
             throws = true;
         }
 
-        QVERIFY2(throws, "Already member");*/
+        QVERIFY2(throws, "Already member");
     }
 
     catch(const std::exception e){
@@ -142,15 +143,38 @@ void KpkCoreTest::canExit()
         Core()->person()->exit(_p, date, ER_EXIT);
         Core()->commit();
 
-       /* Core()->begin();
+        Core()->begin();
         auto p(Core()->person()->get(_p->id()));
         Core()->commit();
 
         QVERIFY2(!p->isMember(), "Must be not member, but stil a member");
-        QVERIFY2(p->member().lock()->exitReason() == ER_EXIT, "Wrong exit reason");*/
+        QVERIFY2(p->member().lock()->exitReason() == ER_EXIT, "Wrong exit reason");
     }
 
     catch(const odb::pgsql::database_exception e){
+        Core()->rollback();
+        QVERIFY2(false, e.what());
+    }
+}
+
+void KpkCoreTest::canEnterAgain()
+{
+    try{
+        Core()->begin();
+        Core()->person()->enter(_p, QDate::currentDate());
+        Core()->commit();
+
+        Core()->begin();
+        auto p(Core()->person()->get(_p->id()));
+        Core()->commit();
+
+        QVERIFY2(p->isMember(), "Must be a member, but is not");
+
+        auto m = p->member().lock();
+        QVERIFY2(m->inDate() == QDate::currentDate(), "Wrong enter date");
+    }
+
+    catch(const std::exception e){
         Core()->rollback();
         QVERIFY2(false, e.what());
     }
