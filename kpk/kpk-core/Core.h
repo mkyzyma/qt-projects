@@ -6,36 +6,41 @@
 #include "core_global.h"
 #include "DbService.h"
 #include "PersonService.h"
+#include "DateService.h"
 
 namespace kpk{
 namespace core{
 
 /*!
- * \brief Класс Ядра
+ * \brief Ядро системы
+ * \note Реализует шаблон "одиночка"
  *
  * Все службы собранные в кучу
  */
 class CORESHARED_EXPORT CoreClass
 {
-public:
-    CoreClass();
+public:    
 
     /*!
      * \brief Служба управления базой данных
      * \return Указатель на службу
      */
-    std::shared_ptr<DbService>& dbService();
+    std::shared_ptr<DbService> dbService() const;
     /*!
      * \brief Основная база данных
      * \return Указатель на базу данных
      */
     DbPtr db();
     /*!
+     * \brief Получить cлужбу управления текущей датой
+     * \return Служба управления текущей датой
+     */
+    std::shared_ptr<DateService> date() const;
+    /*!
      * \brief Служба управления личными данными
      * \return Указатель на службу
      */
-    std::shared_ptr<PersonService>& person();
-
+    std::shared_ptr<PersonService> person() const;
     /*!
      * \brief Начать транзакцию в основной базе
      */
@@ -48,9 +53,18 @@ public:
      * \brief Отменить транзакцию в основной базе
      */
     void rollback();
+    /*!
+     * \brief Получить экземпляр объекта
+     * \return Экземпляр объекта
+     */
+    static CoreClass* instance();
+protected:
+    CoreClass();
+    virtual ~CoreClass();
 private:
     std::shared_ptr<PersonService> _person;
     std::shared_ptr<DbService> _dbService;
+    std::shared_ptr<DateService> _date;
 };
 
 /*!
@@ -58,8 +72,7 @@ private:
  * \return Указатель на ядро
  */
 static CoreClass* Core(){
-    static CoreClass instance;
-    return &instance;
+    return CoreClass::instance();
 }
 
 }

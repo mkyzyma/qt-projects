@@ -35,7 +35,7 @@ DbPtr& DbService::connect()
                         )
                     );
 
-        _db->tracer(odb::stderr_tracer);
+        //_db->tracer(odb::stderr_tracer);
     }
     catch(const odb::pgsql::database_exception e){
         throw std::exception(e.what());

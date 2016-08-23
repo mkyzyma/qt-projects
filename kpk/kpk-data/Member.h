@@ -5,6 +5,7 @@
 
 #include <odb/core.hxx>
 
+
 #include "data_global.h"
 #include "Person.h"
 
@@ -21,7 +22,6 @@ enum ExitReason
     ER_KICK, ///<\brief Исключен
     ER_DEATH ///<\brief Умер
 };
-
 
 /*!
  * \brief Пайщик
@@ -113,7 +113,6 @@ private:
     #pragma db column("idPerson")
     std::shared_ptr<Person> _person;
 };
-
 
 }
 }

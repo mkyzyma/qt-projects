@@ -1,5 +1,8 @@
 #include <QtTest>
 
+#include <odb/core.hxx>
+
+
 #include "kpk-core/Core.h"
 #include "kpk-data/Person.h"
 #include "kpk-core/Exceptions.h"
@@ -112,14 +115,14 @@ void KpkCoreTest::canEnter()
 {
     try{
         Core()->begin();
-        Core()->person()->enter(_p, QDate::currentDate().addYears(-1));
+        Core()->person()->enter(_p, Core()->date()->current().addYears(-1));
         Core()->commit();
 
         bool throws(false);
 
         try{
             Core()->begin();
-            Core()->person()->enter(_p, QDate::currentDate());
+            Core()->person()->enter(_p, Core()->date()->current());
             Core()->commit();
         }catch(const exception::AlreadyMemberException e){
             Core()->rollback();
@@ -139,7 +142,7 @@ void KpkCoreTest::canExit()
 {
     try{
         Core()->begin();
-        QDate date = QDate::currentDate().addMonths(-6);
+        QDate date = Core()->date()->current().addMonths(-6);
         Core()->person()->exit(_p, date, ER_EXIT);
         Core()->commit();
 
@@ -161,7 +164,7 @@ void KpkCoreTest::canEnterAgain()
 {
     try{
         Core()->begin();
-        Core()->person()->enter(_p, QDate::currentDate());
+        Core()->person()->enter(_p, Core()->date()->current());
         Core()->commit();
 
         Core()->begin();
@@ -172,6 +175,14 @@ void KpkCoreTest::canEnterAgain()
 
         auto m = p->member().lock();
         QVERIFY2(m->inDate() == QDate::currentDate(), "Wrong enter date");
+        Core()->begin();
+        auto r = Core()->person()->membership(p->id());
+        QVERIFY2(r.size() == 2, "Membership size must be 2");
+
+        verifyPerson(*(r.begin().load()->person()));
+
+        Core()->commit();
+
     }
 
     catch(const std::exception e){

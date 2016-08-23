@@ -4,13 +4,14 @@
 #include <memory>
 #include <list>
 
-
 #include <QDate>
 
 #include "core_global.h"
 
 #include "kpk-data/Person.h"
 #include "kpk-data/Member.h"
+#include "kpk-data/Member-odb.hxx"
+
 namespace kpk{
 namespace core{
 /*!
@@ -21,8 +22,10 @@ typedef std::shared_ptr<data::Person> PersonPtr;
  * \brief Указатель на пайщика
  */
 typedef std::shared_ptr<data::Member> MemberPtr;
-
-
+/*!
+ * \brief Результат запроса пайщиков
+ */
+typedef odb::result<data::Member> MemberResult;
 /*!
  * \brief Служба по управлению личными данными
  *
@@ -33,7 +36,6 @@ class CORESHARED_EXPORT PersonService
 {
 public:
     PersonService();
-
     /*!
      * \brief Добавить личные данные
      * \param [in] person - личные данные
@@ -75,7 +77,12 @@ public:
      */
     void exit(PersonPtr person, QDate date, data::ExitReason reason);
 
-
+    /*!
+     * \brief Получить список членства
+     * \param idPerson - идентификатор личных данных
+     * \return Список членства
+     */
+    MemberResult membership(ulong idPerson) const;
 };
 
 }

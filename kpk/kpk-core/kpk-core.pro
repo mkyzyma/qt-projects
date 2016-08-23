@@ -17,14 +17,16 @@ DEFINES += KPKCORE_LIBRARY
 SOURCES += \
     DbService.cpp \
     PersonService.cpp \
-    Core.cpp
+    Core.cpp \
+    DateService.cpp
 
 HEADERS += \
     core_global.h \    
     DbService.h \
     PersonService.h \
     Core.h \
-    Exceptions.h
+    Exceptions.h \
+    DateService.h
 
 unix {
     target.path = /usr/lib

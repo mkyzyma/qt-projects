@@ -1,10 +1,12 @@
 #include "PersonService.h"
 #include "Core.h"
 
-#include <odb/pgsql/exceptions.hxx>
 #include <odb/session.hxx>
+#include <odb/query.hxx>
+
 #include "kpk-data/Person-odb.hxx"
 #include "kpk-data/Member-odb.hxx"
+
 
 #include "Exceptions.h"
 
@@ -12,6 +14,8 @@ namespace kpk{
 namespace core{
 
 using namespace data;
+
+typedef odb::query<Member> MemberQuery;
 
 PersonService::PersonService()
 {}
@@ -66,8 +70,11 @@ void PersonService::exit(PersonPtr person, QDate date, ExitReason reason)
     Core()->db()->update(m);
 }
 
-
-
+MemberResult PersonService::membership(ulong idPerson) const
+{
+    auto q(MemberQuery::person == idPerson);
+    return Core()->db()->query<Member>(q);
+}
 
 
 }
