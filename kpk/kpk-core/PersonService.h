@@ -15,17 +15,9 @@
 namespace kpk{
 namespace core{
 /*!
- * \brief Указатель на личные данные
- */
-typedef std::shared_ptr<data::Person> PersonPtr;
-/*!
- * \brief Указатель на пайщика
- */
-typedef std::shared_ptr<data::Member> MemberPtr;
-/*!
  * \brief Результат запроса пайщиков
  */
-typedef odb::result<data::Member> MemberResult;
+using MemberResult = odb::result<data::Member>;
 /*!
  * \brief Служба по управлению личными данными
  *
@@ -36,31 +28,32 @@ class CORESHARED_EXPORT PersonService
 {
 public:
     PersonService();
-    PersonPtr create();
+
+    data::PersonPtr create();
     /*!
      * \brief Добавить личные данные
      * \param person - личные данные
      */
-    void add(PersonPtr person);
+    void add(data::PersonPtr person);
 
     /*!
      * \brief Изменить личные данные
      * \param person - личные данные
      */
-    void update(PersonPtr person);
+    void update(data::PersonPtr person);
 
     /*!
      * \brief Удалить личные данные
      * \param person - личные данные
      */
-    void remove(PersonPtr person);
+    void remove(data::PersonPtr person);
 
     /*!
      * \brief Получить личные данные
      * \param id - идентификатор
      * \return  Личные данные
      */
-    std::shared_ptr<data::Person> get(ulong id);
+    data::PersonPtr get(ulong id);
 
     /*!
      * \brief Вступить в кооператив
@@ -68,7 +61,7 @@ public:
      * \param date - Дата вступления
      * \throw kpk::exception::AlreadyMemberException если person уже пайщик
      */
-    void enter(PersonPtr person, QDate date);
+    void enter(data::PersonPtr person, QDate date);
 
     /*!
      * \brief Выйти из кооператива
@@ -77,7 +70,7 @@ public:
      * \param reason - Причина
      * \throw kpk::exception::NotAMemberException если person не пайщик
      */
-    void exit(PersonPtr person, QDate date, data::ExitReason reason);
+    void exit(data::PersonPtr person, QDate date, data::ExitReason reason);
 
     /*!
      * \brief Получить историю членства

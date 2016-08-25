@@ -15,7 +15,7 @@ namespace core{
 
 using namespace data;
 
-typedef odb::query<Member> MemberQuery;
+using MemberQuery = odb::query<Member> ;
 
 PersonService::PersonService()
 {}

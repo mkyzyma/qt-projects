@@ -18,6 +18,10 @@
 namespace kpk{
 namespace core{
 
+/*!
+ * \brief Объект сессии odb
+ * \details Без этого объекта не работают связи
+ */
 odb::session s;
 
 DbService::DbService()

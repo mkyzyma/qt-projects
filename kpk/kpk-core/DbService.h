@@ -14,7 +14,7 @@ namespace core{
 
 
 //! \brief Указатель на БД
-typedef std::shared_ptr<odb::database> DbPtr;
+using DbPtr = std::shared_ptr<odb::database>;
 /*!
  * \brief Служба управления базой данных
  * \details Подключение, создание, работа с транзакциями
@@ -28,7 +28,7 @@ private:
     DbPtr _db;
 
     //! \brief Указатель на Транзакцию
-    typedef std::shared_ptr<odb::transaction> TrPtr;
+    using TrPtr = std::shared_ptr<odb::transaction>;
     TrPtr _tr;
 public:
     DbService();

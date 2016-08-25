@@ -17,6 +17,7 @@ namespace kpk{
 namespace data{
 
 class Member;
+
 /*!
  * \brief Человек
  */
@@ -113,6 +114,11 @@ private:
     #pragma db column("idMember")    
     std::weak_ptr<Member> _member;
 };
+
+/*!
+ * \brief Указатель на личные данные
+ */
+using PersonPtr = std::shared_ptr<data::Person>;
 
 }
 }

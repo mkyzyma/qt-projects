@@ -44,31 +44,31 @@ public:
      * \brief Получить пайщика
      * \return Пайщик
      */
-    std::shared_ptr<Member> member() const;
+    MemberPtr member() const;
 
     /*!
      * \brief Установить пайщика
      * \param member - пайщик
      */
-    void member(const std::shared_ptr<Member> &member);
+    void member(const MemberPtr &member);
 
     /*!
      * \brief Получить личные данные
      * \return Личные данные
      */
-    std::shared_ptr<Person> person() const;
+    PersonPtr person() const;
 
     /*!
      * \brief Получить займ
      * \return Займ
      */
-    std::shared_ptr<Loan> loan() const;
+    LoanPtr loan() const;
 
     /*!
      * \brief Установить займ
      * \param loan - займ
      */
-    void loan(const std::shared_ptr<Loan> &loan);
+    void loan(const LoanPtr &loan);
 
 private:
     friend class odb::access;
@@ -81,16 +81,21 @@ private:
 
     #pragma db not_null
     #pragma db column("idPerson")
-    std::shared_ptr<Person> _person;
+    PersonPtr _person;
 
     #pragma db not_null
     #pragma db column("idMember")
-    std::shared_ptr<Member> _member;
+    MemberPtr _member;
 
     #pragma db not_null
     #pragma db column("idLoan")
-    std::shared_ptr<Loan> _loan;
+    LoanPtr _loan;
 };
+
+/*!
+ * \brief Указатель на операцию по займу
+ */
+using LoanOperPtr = std::shared_ptr<LoanOper>;
 
 }
 }

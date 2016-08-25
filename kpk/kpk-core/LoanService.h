@@ -1,15 +1,22 @@
 #ifndef LOANSERVICE_H
 #define LOANSERVICE_H
 
-#include "core_global.h"
+#include <QObject>
 
+#include "core_global.h"
 namespace kpk{
 namespace core{
 
-class CORESHARED_EXPORT LoanService
+/*!
+ * \brief Служба управления займами
+ */
+class CORESHARED_EXPORT LoanService : public QObject
 {
+    Q_OBJECT
 public:
-    LoanService();
+    explicit LoanService(QObject *parent = 0);
+
+
 };
 
 }

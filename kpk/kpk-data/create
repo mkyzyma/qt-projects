@@ -8,6 +8,7 @@
 ./createfile Member.h
 ./createfile LoanType.h
 ./createfile Loan.h
+./createfile LoanGarantor.h
 ./createfile LoanOperValue.h
 ./createfile LoanOper.h
 
@@ -15,4 +16,4 @@ odb --database pgsql --generate-schema-only --profile qt/date-time -x -fPIC \
 -I/home/miha/tools/Qt/5.6/gcc_64/include --at-once \
 --schema-format separate --input-name kpk \
 IsDeleted.h DbObject.h Name.h Passport.h Person.h User.h \
-Member.h LoanType.h Loan.h LoanOperValue.h LoanOper.h
+Member.h LoanType.h Loan.h LoanGarantor.h LoanOperValue.h LoanOper.h

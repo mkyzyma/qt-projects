@@ -9,6 +9,7 @@
 #include "DbObject.h"
 namespace kpk{
 namespace data{
+
 /*!
  * \brief Вид займа
  */
@@ -64,6 +65,11 @@ private:
 
     long _rate;
 };
+
+/*!
+ * \brief Указатель на вид займа
+ */
+using LoanTypePtr = std::shared_ptr<LoanType>;
 
 }
 }

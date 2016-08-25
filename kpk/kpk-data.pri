@@ -10,6 +10,7 @@ SOURCES += \
     ../kpk-data/Loan-odb.cxx \
     ../kpk-data/LoanOperValue-odb.cxx \
     ../kpk-data/LoanOper-odb.cxx \
+    ../kpk-data/LoanGarantor-odb.cxx \
     ../kpk-data/kpk-schema.cxx
 
 

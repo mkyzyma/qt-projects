@@ -16,6 +16,7 @@
 namespace kpk{
 namespace data{
 //class Person;
+
 /*!
  * \brief Пользователь
  */
@@ -48,6 +49,11 @@ private:
     #pragma db column("idPerson")
     std::shared_ptr<Person> _person;*/
 };
+
+/*!
+ * \brief Указатель на пользователя
+ */
+using UserPtr = std::shared_ptr<User>;
 
 }
 }

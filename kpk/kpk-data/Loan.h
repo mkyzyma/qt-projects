@@ -18,7 +18,6 @@
 namespace kpk {
 namespace data {
 
-
 /*!
  * \brief Займ
  */
@@ -39,8 +38,9 @@ public:
      * \param length - срок
      * \param sum - выданная сумма
      */
-    Loan(std::shared_ptr<Member> member, std::shared_ptr<LoanType> loanType,
-         QDate openDate, QDate closeDate, long limit, long rate, long length, long sum = 0);
+    Loan(MemberPtr member, LoanTypePtr loanType,
+         QDate openDate, QDate closeDate,
+         long limit, long rate, long length, long sum = 0);
 
     /*!
      * \brief Получить идентификатор
@@ -164,31 +164,31 @@ public:
      * \brief Получить пайщика
      * \return Пайщик
      */
-    std::shared_ptr<Member> member() const;
+    MemberPtr member() const;
 
     /*!
      * \brief Установить пайщика
      * \param member - пайщик
      */
-    void member(const std::shared_ptr<Member> &member);
+    void member(const MemberPtr &member);
 
     /*!
      * \brief Получить личные данные
      * \return личные данные
      */
-    std::shared_ptr<Person> person() const;
+    PersonPtr person() const;
 
     /*!
      * \brief Получить вид займа
      * \return Вид займа
      */
-    std::shared_ptr<LoanType> loanType() const;
+    LoanTypePtr loanType() const;
 
     /*!
      * \brief Установить вид займа
      * \param loanType - вид займа
      */
-    void loanType(const std::shared_ptr<LoanType> &loanType);
+    void loanType(const LoanTypePtr &loanType);
 
 private:
     friend class  odb::access;
@@ -208,16 +208,21 @@ private:
 
     #pragma db not_null
     #pragma db column("idMember")
-    std::shared_ptr<Member> _member;
+    MemberPtr _member;
 
     #pragma db not_null
     #pragma db column("idPerson")
-    std::shared_ptr<Person> _person;
+    PersonPtr _person;
 
     #pragma db not_null
     #pragma db column("idLoanType")
-    std::shared_ptr<LoanType> _loanType;
+    LoanTypePtr _loanType;
 };
+
+/*!
+ * \brief Указатель на займ
+ */
+using LoanPtr = std::shared_ptr<Loan>;
 
 }
 }

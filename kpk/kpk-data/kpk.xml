@@ -169,6 +169,44 @@
         </references>
       </foreign-key>
     </table>
+    <table name="LoanGarantor" kind="object">
+      <column name="isDeleted" type="BOOLEAN" null="false"/>
+      <column name="deleteTime" type="TIMESTAMP" null="true"/>
+      <column name="deletedBy" type="BIGINT" null="true"/>
+      <column name="createTime" type="TIMESTAMP" null="true"/>
+      <column name="idUser" type="BIGINT" null="false"/>
+      <column name="id" type="BIGINT" null="false"/>
+      <column name="addDate" type="DATE" null="true"/>
+      <column name="loan" type="BIGINT" null="true"/>
+      <column name="person" type="BIGINT" null="true"/>
+      <primary-key auto="true">
+        <column name="id"/>
+      </primary-key>
+      <foreign-key name="deletedBy_fk" deferrable="DEFERRED">
+        <column name="deletedBy"/>
+        <references table="User">
+          <column name="id"/>
+        </references>
+      </foreign-key>
+      <foreign-key name="idUser_fk" deferrable="DEFERRED">
+        <column name="idUser"/>
+        <references table="User">
+          <column name="id"/>
+        </references>
+      </foreign-key>
+      <foreign-key name="loan_fk" deferrable="DEFERRED">
+        <column name="loan"/>
+        <references table="Loan">
+          <column name="id"/>
+        </references>
+      </foreign-key>
+      <foreign-key name="person_fk" deferrable="DEFERRED">
+        <column name="person"/>
+        <references table="Person">
+          <column name="id"/>
+        </references>
+      </foreign-key>
+    </table>
     <table name="LoanOper" kind="object">
       <column name="isDeleted" type="BOOLEAN" null="false"/>
       <column name="deleteTime" type="TIMESTAMP" null="true"/>

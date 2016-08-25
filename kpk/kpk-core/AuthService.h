@@ -12,7 +12,6 @@
 namespace kpk{
 namespace core{
 
-typedef std::shared_ptr<data::User> UserPtr;
 /*!
  * \brief Служба авторизации
  * \warning Не реализована
@@ -28,10 +27,7 @@ public:
      * \brief Получить пользователя
      * \return Пользователь
      */
-    UserPtr user();
-signals:
-
-public slots:
+    data::UserPtr user();
 };
 
 }

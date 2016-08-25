@@ -20,12 +20,12 @@ LoanOperValue& LoanOper::fact()
 }
 
 
-std::shared_ptr<Member> LoanOper::member() const
+MemberPtr LoanOper::member() const
 {
     return _member;
 }
 
-void LoanOper::member(const std::shared_ptr<Member> &member)
+void LoanOper::member(const MemberPtr &member)
 {
     _member = member;
     _person = member->person();
@@ -36,12 +36,12 @@ std::shared_ptr<Person> LoanOper::person() const
     return _person;
 }
 
-std::shared_ptr<Loan> LoanOper::loan() const
+LoanPtr LoanOper::loan() const
 {
     return _loan;
 }
 
-void LoanOper::loan(const std::shared_ptr<Loan> &loan)
+void LoanOper::loan(const LoanPtr &loan)
 {
     _loan = loan;
 }

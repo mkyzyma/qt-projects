@@ -27,16 +27,19 @@ public:
      * \return Серия
      */
     QString series() const;
+
     /*!
      * \brief Установить серию
      * \param series - серия
      */
     void series(const QString &series);
+
     /*!
      * \brief Получить номер
      * \return Номер
      */
     QString number() const;
+
     /*!
      * \brief Установить номер
      * \param number - номер

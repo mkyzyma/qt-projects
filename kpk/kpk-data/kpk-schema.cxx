@@ -29,6 +29,7 @@ namespace odb
         case 2:
         {
           db.execute ("DROP TABLE IF EXISTS \"LoanOper\" CASCADE");
+          db.execute ("DROP TABLE IF EXISTS \"LoanGarantor\" CASCADE");
           db.execute ("DROP TABLE IF EXISTS \"Loan\" CASCADE");
           db.execute ("DROP TABLE IF EXISTS \"LoanType\" CASCADE");
           db.execute ("DROP TABLE IF EXISTS \"Member\" CASCADE");
@@ -161,6 +162,32 @@ namespace odb
                       "  CONSTRAINT \"idLoanType_fk\"\n"
                       "    FOREIGN KEY (\"idLoanType\")\n"
                       "    REFERENCES \"LoanType\" (\"id\")\n"
+                      "    INITIALLY DEFERRED)");
+          db.execute ("CREATE TABLE \"LoanGarantor\" (\n"
+                      "  \"isDeleted\" BOOLEAN NOT NULL,\n"
+                      "  \"deleteTime\" TIMESTAMP NULL,\n"
+                      "  \"deletedBy\" BIGINT NULL,\n"
+                      "  \"createTime\" TIMESTAMP NULL,\n"
+                      "  \"idUser\" BIGINT NOT NULL,\n"
+                      "  \"id\" BIGSERIAL NOT NULL PRIMARY KEY,\n"
+                      "  \"addDate\" DATE NULL,\n"
+                      "  \"loan\" BIGINT NULL,\n"
+                      "  \"person\" BIGINT NULL,\n"
+                      "  CONSTRAINT \"deletedBy_fk\"\n"
+                      "    FOREIGN KEY (\"deletedBy\")\n"
+                      "    REFERENCES \"User\" (\"id\")\n"
+                      "    INITIALLY DEFERRED,\n"
+                      "  CONSTRAINT \"idUser_fk\"\n"
+                      "    FOREIGN KEY (\"idUser\")\n"
+                      "    REFERENCES \"User\" (\"id\")\n"
+                      "    INITIALLY DEFERRED,\n"
+                      "  CONSTRAINT \"loan_fk\"\n"
+                      "    FOREIGN KEY (\"loan\")\n"
+                      "    REFERENCES \"Loan\" (\"id\")\n"
+                      "    INITIALLY DEFERRED,\n"
+                      "  CONSTRAINT \"person_fk\"\n"
+                      "    FOREIGN KEY (\"person\")\n"
+                      "    REFERENCES \"Person\" (\"id\")\n"
                       "    INITIALLY DEFERRED)");
           db.execute ("CREATE TABLE \"LoanOper\" (\n"
                       "  \"isDeleted\" BOOLEAN NOT NULL,\n"

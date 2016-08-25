@@ -25,7 +25,8 @@ SOURCES += \
     LoanType.cpp \
     IsDeleted.cpp \
     User.cpp \
-    DbObject.cpp
+    DbObject.cpp \
+    LoanGarantor.cpp
 
 HEADERS += \
     data_global.h \
@@ -39,7 +40,8 @@ HEADERS += \
     LoanType.h \
     IsDeleted.h \
     User.h \
-    DbObject.h
+    DbObject.h \
+    LoanGarantor.h
 
 unix {
     target.path = /usr/lib

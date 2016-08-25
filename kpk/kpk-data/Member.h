@@ -37,7 +37,7 @@ public:
      * \param inDate - дата вступления
      * \param outDate - дата выхода
      */
-    Member(std::shared_ptr<Person> person,
+    Member(PersonPtr person,
            QDate inDate,
            std::shared_ptr<QDate> outDate = nullptr);
 
@@ -51,13 +51,13 @@ public:
      * \brief Получить личные данные
      * \return Личные данные
      */
-    std::shared_ptr<Person> person() const;
+    PersonPtr person() const;
 
     /*!
      * \brief Установить личные данные
      * \param person - личные данные
      */
-    void person(const std::shared_ptr<Person> &person);
+    void person(const PersonPtr &person);
 
     /*!
      * \brief Получить дату вступления
@@ -111,8 +111,13 @@ private:
 
     #pragma db not_null
     #pragma db column("idPerson")
-    std::shared_ptr<Person> _person;
+    PersonPtr _person;
 };
+
+/*!
+ * \brief Указатель на пайщика
+ */
+using MemberPtr = std::shared_ptr<Member>;
 
 }
 }

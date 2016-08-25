@@ -8,7 +8,7 @@ Loan::Loan()
 
 }
 
-Loan::Loan(std::shared_ptr<Member> member, std::shared_ptr<LoanType> loanType,
+Loan::Loan(MemberPtr member, LoanTypePtr loanType,
            QDate openDate, QDate closeDate,
            long limit, long rate, long length, long sum)
 {
@@ -50,28 +50,28 @@ void Loan::closeDate(QDate &closeDate)
     _closeDate = closeDate;
 }
 
-std::shared_ptr<Member> Loan::member() const
+MemberPtr Loan::member() const
 {
     return _member;
 }
 
-void Loan::member(const std::shared_ptr<Member> &member)
+void Loan::member(const MemberPtr &member)
 {
     _member = member;
     _person = member->person();
 }
 
-std::shared_ptr<Person> Loan::person() const
+PersonPtr Loan::person() const
 {
     return _person;
 }
 
-std::shared_ptr<LoanType> Loan::loanType() const
+LoanTypePtr Loan::loanType() const
 {
     return _loanType;
 }
 
-void Loan::loanType(const std::shared_ptr<LoanType> &loanType)
+void Loan::loanType(const LoanTypePtr &loanType)
 {
     _loanType = loanType;
 }
