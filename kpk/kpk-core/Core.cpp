@@ -3,11 +3,7 @@
 namespace kpk{
 namespace core{
 
-CoreClass::CoreClass()
-    : _person(std::make_shared<PersonService>()),
-      _dbService(std::make_shared<DbService>()),
-      _auth(std::make_shared<AuthService>()),
-      _date(std::make_shared<DateService>(QDate::currentDate()))
+CoreClass::CoreClass()   
 {    
 }
 
@@ -37,6 +33,11 @@ std::shared_ptr<DateService> CoreClass::date() const
 std::shared_ptr<PersonService> CoreClass::person() const
 {
     return _person;
+}
+
+std::shared_ptr<LoanService> CoreClass::loan() const
+{
+    return _loan;
 }
 
 void CoreClass::begin()

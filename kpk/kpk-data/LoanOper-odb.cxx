@@ -334,11 +334,11 @@ namespace odb
     // _person
     //
     {
-      ::std::shared_ptr< ::kpk::data::Person > const& v =
+      ::kpk::data::PersonPtr const& v =
         o._person;
 
       typedef object_traits< ::kpk::data::Person > obj_traits;
-      typedef odb::pointer_traits< ::std::shared_ptr< ::kpk::data::Person > > ptr_traits;
+      typedef odb::pointer_traits< ::kpk::data::PersonPtr > ptr_traits;
 
       bool is_null (ptr_traits::null_ptr (v));
       if (!is_null)
@@ -359,11 +359,11 @@ namespace odb
     // _member
     //
     {
-      ::std::shared_ptr< ::kpk::data::Member > const& v =
+      ::kpk::data::MemberPtr const& v =
         o._member;
 
       typedef object_traits< ::kpk::data::Member > obj_traits;
-      typedef odb::pointer_traits< ::std::shared_ptr< ::kpk::data::Member > > ptr_traits;
+      typedef odb::pointer_traits< ::kpk::data::MemberPtr > ptr_traits;
 
       bool is_null (ptr_traits::null_ptr (v));
       if (!is_null)
@@ -384,11 +384,11 @@ namespace odb
     // _loan
     //
     {
-      ::std::shared_ptr< ::kpk::data::Loan > const& v =
+      ::kpk::data::LoanPtr const& v =
         o._loan;
 
       typedef object_traits< ::kpk::data::Loan > obj_traits;
-      typedef odb::pointer_traits< ::std::shared_ptr< ::kpk::data::Loan > > ptr_traits;
+      typedef odb::pointer_traits< ::kpk::data::LoanPtr > ptr_traits;
 
       bool is_null (ptr_traits::null_ptr (v));
       if (!is_null)
@@ -463,11 +463,11 @@ namespace odb
     // _person
     //
     {
-      ::std::shared_ptr< ::kpk::data::Person >& v =
+      ::kpk::data::PersonPtr& v =
         o._person;
 
       typedef object_traits< ::kpk::data::Person > obj_traits;
-      typedef odb::pointer_traits< ::std::shared_ptr< ::kpk::data::Person > > ptr_traits;
+      typedef odb::pointer_traits< ::kpk::data::PersonPtr > ptr_traits;
 
       if (i._person_null)
         v = ptr_traits::pointer_type ();
@@ -494,11 +494,11 @@ namespace odb
     // _member
     //
     {
-      ::std::shared_ptr< ::kpk::data::Member >& v =
+      ::kpk::data::MemberPtr& v =
         o._member;
 
       typedef object_traits< ::kpk::data::Member > obj_traits;
-      typedef odb::pointer_traits< ::std::shared_ptr< ::kpk::data::Member > > ptr_traits;
+      typedef odb::pointer_traits< ::kpk::data::MemberPtr > ptr_traits;
 
       if (i._member_null)
         v = ptr_traits::pointer_type ();
@@ -525,11 +525,11 @@ namespace odb
     // _loan
     //
     {
-      ::std::shared_ptr< ::kpk::data::Loan >& v =
+      ::kpk::data::LoanPtr& v =
         o._loan;
 
       typedef object_traits< ::kpk::data::Loan > obj_traits;
-      typedef odb::pointer_traits< ::std::shared_ptr< ::kpk::data::Loan > > ptr_traits;
+      typedef odb::pointer_traits< ::kpk::data::LoanPtr > ptr_traits;
 
       if (i._loan_null)
         v = ptr_traits::pointer_type ();

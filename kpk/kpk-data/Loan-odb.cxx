@@ -54,7 +54,7 @@ namespace odb
     pgsql::int8_oid,
     pgsql::date_oid,
     pgsql::date_oid,
-    pgsql::bool_oid,
+    pgsql::int4_oid,
     pgsql::int8_oid,
     pgsql::int8_oid,
     pgsql::int8_oid,
@@ -82,7 +82,7 @@ namespace odb
     pgsql::int8_oid,
     pgsql::date_oid,
     pgsql::date_oid,
-    pgsql::bool_oid,
+    pgsql::int4_oid,
     pgsql::int8_oid,
     pgsql::int8_oid,
     pgsql::int8_oid,
@@ -191,7 +191,7 @@ namespace odb
     //
     t[7UL] = 0;
 
-    // _isClosed
+    // _state
     //
     t[8UL] = 0;
 
@@ -274,11 +274,11 @@ namespace odb
     b[n].is_null = &i._closeDate_null;
     n++;
 
-    // _isClosed
+    // _state
     //
-    b[n].type = pgsql::bind::boolean_;
-    b[n].buffer = &i._isClosed_value;
-    b[n].is_null = &i._isClosed_null;
+    b[n].type = pgsql::bind::integer;
+    b[n].buffer = &i._state_value;
+    b[n].is_null = &i._state_null;
     n++;
 
     // _rate
@@ -400,18 +400,18 @@ namespace odb
       i._closeDate_null = is_null;
     }
 
-    // _isClosed
+    // _state
     //
     {
-      bool const& v =
-        o._isClosed;
+      ::kpk::data::LoanState const& v =
+        o._state;
 
       bool is_null (false);
       pgsql::value_traits<
-          bool,
-          pgsql::id_boolean >::set_image (
-        i._isClosed_value, is_null, v);
-      i._isClosed_null = is_null;
+          ::kpk::data::LoanState,
+          pgsql::id_integer >::set_image (
+        i._state_value, is_null, v);
+      i._state_null = is_null;
     }
 
     // _rate
@@ -501,11 +501,11 @@ namespace odb
     // _member
     //
     {
-      ::std::shared_ptr< ::kpk::data::Member > const& v =
+      ::kpk::data::MemberPtr const& v =
         o._member;
 
       typedef object_traits< ::kpk::data::Member > obj_traits;
-      typedef odb::pointer_traits< ::std::shared_ptr< ::kpk::data::Member > > ptr_traits;
+      typedef odb::pointer_traits< ::kpk::data::MemberPtr > ptr_traits;
 
       bool is_null (ptr_traits::null_ptr (v));
       if (!is_null)
@@ -526,11 +526,11 @@ namespace odb
     // _person
     //
     {
-      ::std::shared_ptr< ::kpk::data::Person > const& v =
+      ::kpk::data::PersonPtr const& v =
         o._person;
 
       typedef object_traits< ::kpk::data::Person > obj_traits;
-      typedef odb::pointer_traits< ::std::shared_ptr< ::kpk::data::Person > > ptr_traits;
+      typedef odb::pointer_traits< ::kpk::data::PersonPtr > ptr_traits;
 
       bool is_null (ptr_traits::null_ptr (v));
       if (!is_null)
@@ -551,11 +551,11 @@ namespace odb
     // _loanType
     //
     {
-      ::std::shared_ptr< ::kpk::data::LoanType > const& v =
+      ::kpk::data::LoanTypePtr const& v =
         o._loanType;
 
       typedef object_traits< ::kpk::data::LoanType > obj_traits;
-      typedef odb::pointer_traits< ::std::shared_ptr< ::kpk::data::LoanType > > ptr_traits;
+      typedef odb::pointer_traits< ::kpk::data::LoanTypePtr > ptr_traits;
 
       bool is_null (ptr_traits::null_ptr (v));
       if (!is_null)
@@ -631,18 +631,18 @@ namespace odb
         i._closeDate_null);
     }
 
-    // _isClosed
+    // _state
     //
     {
-      bool& v =
-        o._isClosed;
+      ::kpk::data::LoanState& v =
+        o._state;
 
       pgsql::value_traits<
-          bool,
-          pgsql::id_boolean >::set_value (
+          ::kpk::data::LoanState,
+          pgsql::id_integer >::set_value (
         v,
-        i._isClosed_value,
-        i._isClosed_null);
+        i._state_value,
+        i._state_null);
     }
 
     // _rate
@@ -732,11 +732,11 @@ namespace odb
     // _member
     //
     {
-      ::std::shared_ptr< ::kpk::data::Member >& v =
+      ::kpk::data::MemberPtr& v =
         o._member;
 
       typedef object_traits< ::kpk::data::Member > obj_traits;
-      typedef odb::pointer_traits< ::std::shared_ptr< ::kpk::data::Member > > ptr_traits;
+      typedef odb::pointer_traits< ::kpk::data::MemberPtr > ptr_traits;
 
       if (i._member_null)
         v = ptr_traits::pointer_type ();
@@ -763,11 +763,11 @@ namespace odb
     // _person
     //
     {
-      ::std::shared_ptr< ::kpk::data::Person >& v =
+      ::kpk::data::PersonPtr& v =
         o._person;
 
       typedef object_traits< ::kpk::data::Person > obj_traits;
-      typedef odb::pointer_traits< ::std::shared_ptr< ::kpk::data::Person > > ptr_traits;
+      typedef odb::pointer_traits< ::kpk::data::PersonPtr > ptr_traits;
 
       if (i._person_null)
         v = ptr_traits::pointer_type ();
@@ -794,11 +794,11 @@ namespace odb
     // _loanType
     //
     {
-      ::std::shared_ptr< ::kpk::data::LoanType >& v =
+      ::kpk::data::LoanTypePtr& v =
         o._loanType;
 
       typedef object_traits< ::kpk::data::LoanType > obj_traits;
-      typedef odb::pointer_traits< ::std::shared_ptr< ::kpk::data::LoanType > > ptr_traits;
+      typedef odb::pointer_traits< ::kpk::data::LoanTypePtr > ptr_traits;
 
       if (i._loanType_null)
         v = ptr_traits::pointer_type ();
@@ -846,7 +846,7 @@ namespace odb
   "\"id\", "
   "\"openDate\", "
   "\"closeDate\", "
-  "\"isClosed\", "
+  "\"state\", "
   "\"rate\", "
   "\"limit\", "
   "\"length\", "
@@ -870,7 +870,7 @@ namespace odb
   "\"Loan\".\"id\", "
   "\"Loan\".\"openDate\", "
   "\"Loan\".\"closeDate\", "
-  "\"Loan\".\"isClosed\", "
+  "\"Loan\".\"state\", "
   "\"Loan\".\"rate\", "
   "\"Loan\".\"limit\", "
   "\"Loan\".\"length\", "
@@ -893,7 +893,7 @@ namespace odb
   "\"idUser\"=$5, "
   "\"openDate\"=$6, "
   "\"closeDate\"=$7, "
-  "\"isClosed\"=$8, "
+  "\"state\"=$8, "
   "\"rate\"=$9, "
   "\"limit\"=$10, "
   "\"length\"=$11, "
@@ -919,7 +919,7 @@ namespace odb
   "\"Loan\".\"id\",\n"
   "\"Loan\".\"openDate\",\n"
   "\"Loan\".\"closeDate\",\n"
-  "\"Loan\".\"isClosed\",\n"
+  "\"Loan\".\"state\",\n"
   "\"Loan\".\"rate\",\n"
   "\"Loan\".\"limit\",\n"
   "\"Loan\".\"length\",\n"

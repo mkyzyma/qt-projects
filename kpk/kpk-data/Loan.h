@@ -19,6 +19,16 @@ namespace kpk {
 namespace data {
 
 /*!
+ * \brief Состояние займа
+ */
+enum class LoanState
+{
+    inactive,   ///<\brief В ожидании
+    active,     ///<\brief Выдан
+    closed,     ///<\brief Закрыт
+    order       ///<\brief Исполнительный лист
+};
+/*!
  * \brief Займ
  */
 #pragma db object
@@ -35,12 +45,11 @@ public:
      * \param closeDate - дата завершения
      * \param limit - лимит кредитования
      * \param rate - ставка
-     * \param length - срок
-     * \param sum - выданная сумма
+     * \param length - срок     
      */
     Loan(MemberPtr member, LoanTypePtr loanType,
          QDate openDate, QDate closeDate,
-         long limit, long rate, long length, long sum = 0);
+         long limit, long rate, long length);
 
     /*!
      * \brief Получить идентификатор
@@ -76,13 +85,13 @@ public:
      * \brief Закрыт ли займ
      * \return Признак закрытия
      */
-    bool isClosed() const;
+    LoanState state() const;
 
     /*!
      * \brief Установить признак закрытия
      * \param isClosed - признак закрытия
      */
-    void isClosed(bool isClosed);
+    void state(LoanState state);
 
     /*!
      * \brief Получить процентную ставку
@@ -198,13 +207,13 @@ private:
 
     QDate _openDate;
     QDate _closeDate;
-    bool _isClosed;
+    LoanState _state = LoanState::inactive;
     long _rate;
     long _limit;
     long _length;
-    long _sum;
+    long _sum = 0;
     long _remains;
-    long _prc;
+    long _prc = 0;
 
     #pragma db not_null
     #pragma db column("idMember")

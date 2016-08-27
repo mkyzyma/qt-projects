@@ -80,12 +80,12 @@ namespace odb
   const char alias_traits<  ::kpk::data::Loan,
     id_pgsql,
     access::object_traits_impl< ::kpk::data::LoanGarantor, id_pgsql >::loan_tag>::
-  table_name[] = "\"loan\"";
+  table_name[] = "\"idLoan\"";
 
   const char alias_traits<  ::kpk::data::Person,
     id_pgsql,
     access::object_traits_impl< ::kpk::data::LoanGarantor, id_pgsql >::person_tag>::
-  table_name[] = "\"person\"";
+  table_name[] = "\"idPerson\"";
 
   struct access::object_traits_impl< ::kpk::data::LoanGarantor, id_pgsql >::extra_statement_cache_type
   {
@@ -267,11 +267,11 @@ namespace odb
     // _loan
     //
     {
-      ::std::shared_ptr< ::kpk::data::Loan > const& v =
+      ::kpk::data::LoanPtr const& v =
         o._loan;
 
       typedef object_traits< ::kpk::data::Loan > obj_traits;
-      typedef odb::pointer_traits< ::std::shared_ptr< ::kpk::data::Loan > > ptr_traits;
+      typedef odb::pointer_traits< ::kpk::data::LoanPtr > ptr_traits;
 
       bool is_null (ptr_traits::null_ptr (v));
       if (!is_null)
@@ -286,17 +286,17 @@ namespace odb
         i._loan_null = is_null;
       }
       else
-        i._loan_null = true;
+        throw null_pointer ();
     }
 
     // _person
     //
     {
-      ::std::shared_ptr< ::kpk::data::Person > const& v =
+      ::kpk::data::PersonPtr const& v =
         o._person;
 
       typedef object_traits< ::kpk::data::Person > obj_traits;
-      typedef odb::pointer_traits< ::std::shared_ptr< ::kpk::data::Person > > ptr_traits;
+      typedef odb::pointer_traits< ::kpk::data::PersonPtr > ptr_traits;
 
       bool is_null (ptr_traits::null_ptr (v));
       if (!is_null)
@@ -311,7 +311,7 @@ namespace odb
         i._person_null = is_null;
       }
       else
-        i._person_null = true;
+        throw null_pointer ();
     }
 
     return grew;
@@ -361,11 +361,11 @@ namespace odb
     // _loan
     //
     {
-      ::std::shared_ptr< ::kpk::data::Loan >& v =
+      ::kpk::data::LoanPtr& v =
         o._loan;
 
       typedef object_traits< ::kpk::data::Loan > obj_traits;
-      typedef odb::pointer_traits< ::std::shared_ptr< ::kpk::data::Loan > > ptr_traits;
+      typedef odb::pointer_traits< ::kpk::data::LoanPtr > ptr_traits;
 
       if (i._loan_null)
         v = ptr_traits::pointer_type ();
@@ -392,11 +392,11 @@ namespace odb
     // _person
     //
     {
-      ::std::shared_ptr< ::kpk::data::Person >& v =
+      ::kpk::data::PersonPtr& v =
         o._person;
 
       typedef object_traits< ::kpk::data::Person > obj_traits;
-      typedef odb::pointer_traits< ::std::shared_ptr< ::kpk::data::Person > > ptr_traits;
+      typedef odb::pointer_traits< ::kpk::data::PersonPtr > ptr_traits;
 
       if (i._person_null)
         v = ptr_traits::pointer_type ();
@@ -443,8 +443,8 @@ namespace odb
   "\"idUser\", "
   "\"id\", "
   "\"addDate\", "
-  "\"loan\", "
-  "\"person\") "
+  "\"idLoan\", "
+  "\"idPerson\") "
   "VALUES "
   "($1, $2, $3, $4, $5, DEFAULT, $6, $7, $8) "
   "RETURNING \"id\"";
@@ -458,8 +458,8 @@ namespace odb
   "\"LoanGarantor\".\"idUser\", "
   "\"LoanGarantor\".\"id\", "
   "\"LoanGarantor\".\"addDate\", "
-  "\"LoanGarantor\".\"loan\", "
-  "\"LoanGarantor\".\"person\" "
+  "\"LoanGarantor\".\"idLoan\", "
+  "\"LoanGarantor\".\"idPerson\" "
   "FROM \"LoanGarantor\" "
   "WHERE \"LoanGarantor\".\"id\"=$1";
 
@@ -472,8 +472,8 @@ namespace odb
   "\"createTime\"=$4, "
   "\"idUser\"=$5, "
   "\"addDate\"=$6, "
-  "\"loan\"=$7, "
-  "\"person\"=$8 "
+  "\"idLoan\"=$7, "
+  "\"idPerson\"=$8 "
   "WHERE \"id\"=$9";
 
   const char access::object_traits_impl< ::kpk::data::LoanGarantor, id_pgsql >::erase_statement[] =
@@ -489,13 +489,13 @@ namespace odb
   "\"LoanGarantor\".\"idUser\",\n"
   "\"LoanGarantor\".\"id\",\n"
   "\"LoanGarantor\".\"addDate\",\n"
-  "\"LoanGarantor\".\"loan\",\n"
-  "\"LoanGarantor\".\"person\"\n"
+  "\"LoanGarantor\".\"idLoan\",\n"
+  "\"LoanGarantor\".\"idPerson\"\n"
   "FROM \"LoanGarantor\"\n"
   "LEFT JOIN \"User\" AS \"deletedBy\" ON \"deletedBy\".\"id\"=\"LoanGarantor\".\"deletedBy\"\n"
   "LEFT JOIN \"User\" AS \"idUser\" ON \"idUser\".\"id\"=\"LoanGarantor\".\"idUser\"\n"
-  "LEFT JOIN \"Loan\" AS \"loan\" ON \"loan\".\"id\"=\"LoanGarantor\".\"loan\"\n"
-  "LEFT JOIN \"Person\" AS \"person\" ON \"person\".\"id\"=\"LoanGarantor\".\"person\"";
+  "LEFT JOIN \"Loan\" AS \"idLoan\" ON \"idLoan\".\"id\"=\"LoanGarantor\".\"idLoan\"\n"
+  "LEFT JOIN \"Person\" AS \"idPerson\" ON \"idPerson\".\"id\"=\"LoanGarantor\".\"idPerson\"";
 
   const char access::object_traits_impl< ::kpk::data::LoanGarantor, id_pgsql >::erase_query_statement[] =
   "DELETE FROM \"LoanGarantor\"";

@@ -162,17 +162,17 @@ namespace odb
 
     static const closeDate_type_ closeDate;
 
-    // isClosed
+    // state
     //
     typedef
     pgsql::query_column<
       pgsql::value_traits<
-        bool,
-        pgsql::id_boolean >::query_type,
-      pgsql::id_boolean >
-    isClosed_type_;
+        ::kpk::data::LoanState,
+        pgsql::id_integer >::query_type,
+      pgsql::id_integer >
+    state_type_;
 
-    static const isClosed_type_ isClosed;
+    static const state_type_ state;
 
     // rate
     //
@@ -299,9 +299,9 @@ namespace odb
   closeDate (A::table_name, "\"closeDate\"", 0);
 
   template <typename A>
-  const typename pointer_query_columns< ::kpk::data::Loan, id_pgsql, A >::isClosed_type_
+  const typename pointer_query_columns< ::kpk::data::Loan, id_pgsql, A >::state_type_
   pointer_query_columns< ::kpk::data::Loan, id_pgsql, A >::
-  isClosed (A::table_name, "\"isClosed\"", 0);
+  state (A::table_name, "\"state\"", 0);
 
   template <typename A>
   const typename pointer_query_columns< ::kpk::data::Loan, id_pgsql, A >::rate_type_
@@ -378,10 +378,10 @@ namespace odb
       int _closeDate_value;
       bool _closeDate_null;
 
-      // _isClosed
+      // _state
       //
-      bool _isClosed_value;
-      bool _isClosed_null;
+      int _state_value;
+      bool _state_null;
 
       // _rate
       //
@@ -654,17 +654,17 @@ namespace odb
 
     static const closeDate_type_ closeDate;
 
-    // isClosed
+    // state
     //
     typedef
     pgsql::query_column<
       pgsql::value_traits<
-        bool,
-        pgsql::id_boolean >::query_type,
-      pgsql::id_boolean >
-    isClosed_type_;
+        ::kpk::data::LoanState,
+        pgsql::id_integer >::query_type,
+      pgsql::id_integer >
+    state_type_;
 
-    static const isClosed_type_ isClosed;
+    static const state_type_ state;
 
     // rate
     //
@@ -839,9 +839,9 @@ namespace odb
   closeDate (A::table_name, "\"closeDate\"", 0);
 
   template <typename A>
-  const typename query_columns< ::kpk::data::Loan, id_pgsql, A >::isClosed_type_
+  const typename query_columns< ::kpk::data::Loan, id_pgsql, A >::state_type_
   query_columns< ::kpk::data::Loan, id_pgsql, A >::
-  isClosed (A::table_name, "\"isClosed\"", 0);
+  state (A::table_name, "\"state\"", 0);
 
   template <typename A>
   const typename query_columns< ::kpk::data::Loan, id_pgsql, A >::rate_type_

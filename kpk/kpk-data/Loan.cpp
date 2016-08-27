@@ -10,20 +10,11 @@ Loan::Loan()
 
 Loan::Loan(MemberPtr member, LoanTypePtr loanType,
            QDate openDate, QDate closeDate,
-           long limit, long rate, long length, long sum)
-{
-    _member = member;
-    _person = member->person();
-    _openDate = openDate;
-    _closeDate = closeDate;
-    _limit = limit;
-    _rate = rate;
-    _length = length;
-    _sum = sum;
-    _prc = 0;
-    _loanType = loanType;
-
-}
+           long limit, long rate, long length)
+    : _member(member), _person(member->person()), _openDate(openDate),
+      _closeDate(closeDate), _limit(limit), _rate(rate), _length(length),
+      _loanType(loanType)
+{}
 
 ulong Loan::id()
 {
@@ -76,14 +67,14 @@ void Loan::loanType(const LoanTypePtr &loanType)
     _loanType = loanType;
 }
 
-bool Loan::isClosed() const
+LoanState Loan::state() const
 {
-    return _isClosed;
+    return _state;
 }
 
-void Loan::isClosed(bool isClosed)
+void Loan::state(LoanState isClosed)
 {
-    _isClosed = isClosed;
+    _state = isClosed;
 }
 
 long Loan::rate() const

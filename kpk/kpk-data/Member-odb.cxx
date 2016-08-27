@@ -303,11 +303,11 @@ namespace odb
     // _person
     //
     {
-      ::std::shared_ptr< ::kpk::data::Person > const& v =
+      ::kpk::data::PersonPtr const& v =
         o._person;
 
       typedef object_traits< ::kpk::data::Person > obj_traits;
-      typedef odb::pointer_traits< ::std::shared_ptr< ::kpk::data::Person > > ptr_traits;
+      typedef odb::pointer_traits< ::kpk::data::PersonPtr > ptr_traits;
 
       bool is_null (ptr_traits::null_ptr (v));
       if (!is_null)
@@ -400,11 +400,11 @@ namespace odb
     // _person
     //
     {
-      ::std::shared_ptr< ::kpk::data::Person >& v =
+      ::kpk::data::PersonPtr& v =
         o._person;
 
       typedef object_traits< ::kpk::data::Person > obj_traits;
-      typedef odb::pointer_traits< ::std::shared_ptr< ::kpk::data::Person > > ptr_traits;
+      typedef odb::pointer_traits< ::kpk::data::PersonPtr > ptr_traits;
 
       if (i._person_null)
         v = ptr_traits::pointer_type ();

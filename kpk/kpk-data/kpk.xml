@@ -125,7 +125,7 @@
       <column name="id" type="BIGINT" null="false"/>
       <column name="openDate" type="DATE" null="true"/>
       <column name="closeDate" type="DATE" null="true"/>
-      <column name="isClosed" type="BOOLEAN" null="false"/>
+      <column name="state" type="INTEGER" null="false"/>
       <column name="rate" type="BIGINT" null="false"/>
       <column name="limit" type="BIGINT" null="false"/>
       <column name="length" type="BIGINT" null="false"/>
@@ -177,8 +177,8 @@
       <column name="idUser" type="BIGINT" null="false"/>
       <column name="id" type="BIGINT" null="false"/>
       <column name="addDate" type="DATE" null="true"/>
-      <column name="loan" type="BIGINT" null="true"/>
-      <column name="person" type="BIGINT" null="true"/>
+      <column name="idLoan" type="BIGINT" null="false"/>
+      <column name="idPerson" type="BIGINT" null="false"/>
       <primary-key auto="true">
         <column name="id"/>
       </primary-key>
@@ -194,14 +194,14 @@
           <column name="id"/>
         </references>
       </foreign-key>
-      <foreign-key name="loan_fk" deferrable="DEFERRED">
-        <column name="loan"/>
+      <foreign-key name="idLoan_fk" deferrable="DEFERRED">
+        <column name="idLoan"/>
         <references table="Loan">
           <column name="id"/>
         </references>
       </foreign-key>
-      <foreign-key name="person_fk" deferrable="DEFERRED">
-        <column name="person"/>
+      <foreign-key name="idPerson_fk" deferrable="DEFERRED">
+        <column name="idPerson"/>
         <references table="Person">
           <column name="id"/>
         </references>

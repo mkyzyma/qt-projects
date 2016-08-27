@@ -7,6 +7,7 @@
 #include "DbService.h"
 #include "AuthService.h"
 #include "PersonService.h"
+#include "LoanService.h"
 #include "DateService.h"
 
 namespace kpk{
@@ -47,6 +48,8 @@ public:
      * \return Указатель на службу
      */
     std::shared_ptr<PersonService> person() const;
+
+    std::shared_ptr<LoanService> loan() const;
     /*!
      * \brief Начать транзакцию в основной базе
      */
@@ -64,16 +67,15 @@ public:
      * \return Экземпляр объекта
      */
     static CoreClass* instance();
-
-
 protected:
     CoreClass();
     virtual ~CoreClass();
 private:
-    std::shared_ptr<DbService> _dbService;
-    std::shared_ptr<AuthService> _auth;
-    std::shared_ptr<PersonService> _person;        
-    std::shared_ptr<DateService> _date;
+    std::shared_ptr<DbService> _dbService = std::make_shared<DbService>();
+    std::shared_ptr<AuthService> _auth = std::make_shared<AuthService>();
+    std::shared_ptr<PersonService> _person = std::make_shared<PersonService>();
+    std::shared_ptr<LoanService> _loan = std::make_shared<LoanService>();
+    std::shared_ptr<DateService> _date = std::make_shared<DateService>(QDate::currentDate());
 };
 
 /*!
