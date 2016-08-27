@@ -48,7 +48,10 @@ public:
      * \return Указатель на службу
      */
     std::shared_ptr<PersonService> person() const;
-
+    /*!
+     * \brief Получить службу управления займами
+     * \return Служба управления займами
+     */
     std::shared_ptr<LoanService> loan() const;
     /*!
      * \brief Начать транзакцию в основной базе
