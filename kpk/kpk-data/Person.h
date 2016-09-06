@@ -16,6 +16,7 @@
 namespace kpk{
 namespace data{
 
+
 class Member;
 
 /*!
@@ -23,7 +24,7 @@ class Member;
  */
 #pragma db object
 class  DATASHARED_EXPORT Person : public DbObject
-{    
+{
 public:
     Person();
     /*!
@@ -80,7 +81,8 @@ public:
      *       для того чтобы избежать бесконечной рекурсии
      *       из-за двунапраленного отношения person::member <-> member::person
      */
-    std::weak_ptr<Member> member() const;
+    std::shared_ptr<Member> member() const;
+    //std::weak_ptr<Member> member() const;
 
     /*!
      * \brief Установить последнюю запись о членстве
@@ -93,7 +95,7 @@ public:
      * \return true - является, false - не является
      */
     bool isMember();
-private:   
+private:
     friend class odb::access;
 
     #pragma db id auto
@@ -111,7 +113,7 @@ private:
     QString _snils;
 
     #pragma db null
-    #pragma db column("idMember")    
+    #pragma db column("idMember")
     std::weak_ptr<Member> _member;
 };
 

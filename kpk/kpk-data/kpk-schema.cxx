@@ -28,7 +28,9 @@ namespace odb
         }
         case 2:
         {
-          db.execute ("DROP TABLE IF EXISTS \"LoanOper\" CASCADE");
+          db.execute ("DROP TABLE IF EXISTS \"DecTest\" CASCADE");
+          db.execute ("DROP TABLE IF EXISTS \"LoanPayment\" CASCADE");
+          db.execute ("DROP TABLE IF EXISTS \"Bank\" CASCADE");
           db.execute ("DROP TABLE IF EXISTS \"LoanGarantor\" CASCADE");
           db.execute ("DROP TABLE IF EXISTS \"Loan\" CASCADE");
           db.execute ("DROP TABLE IF EXISTS \"LoanType\" CASCADE");
@@ -136,7 +138,7 @@ namespace odb
                       "  \"state\" INTEGER NOT NULL,\n"
                       "  \"rate\" BIGINT NOT NULL,\n"
                       "  \"limit\" BIGINT NOT NULL,\n"
-                      "  \"length\" BIGINT NOT NULL,\n"
+                      "  \"length\" INTEGER NOT NULL,\n"
                       "  \"sum\" BIGINT NOT NULL,\n"
                       "  \"remains\" BIGINT NOT NULL,\n"
                       "  \"prc\" BIGINT NOT NULL,\n"
@@ -189,12 +191,35 @@ namespace odb
                       "    FOREIGN KEY (\"idPerson\")\n"
                       "    REFERENCES \"Person\" (\"id\")\n"
                       "    INITIALLY DEFERRED)");
-          db.execute ("CREATE TABLE \"LoanOper\" (\n"
+          db.execute ("CREATE TABLE \"Bank\" (\n"
                       "  \"isDeleted\" BOOLEAN NOT NULL,\n"
                       "  \"deleteTime\" TIMESTAMP NULL,\n"
                       "  \"deletedBy\" BIGINT NULL,\n"
                       "  \"createTime\" TIMESTAMP NULL,\n"
                       "  \"idUser\" BIGINT NOT NULL,\n"
+                      "  \"id\" BIGSERIAL NOT NULL PRIMARY KEY,\n"
+                      "  \"bik\" char(9) NULL,\n"
+                      "  \"name\" TEXT NULL,\n"
+                      "  \"cnt\" BIGINT NOT NULL,\n"
+                      "  CONSTRAINT \"deletedBy_fk\"\n"
+                      "    FOREIGN KEY (\"deletedBy\")\n"
+                      "    REFERENCES \"User\" (\"id\")\n"
+                      "    INITIALLY DEFERRED,\n"
+                      "  CONSTRAINT \"idUser_fk\"\n"
+                      "    FOREIGN KEY (\"idUser\")\n"
+                      "    REFERENCES \"User\" (\"id\")\n"
+                      "    INITIALLY DEFERRED)");
+          db.execute ("CREATE TABLE \"LoanPayment\" (\n"
+                      "  \"isDeleted\" BOOLEAN NOT NULL,\n"
+                      "  \"deleteTime\" TIMESTAMP NULL,\n"
+                      "  \"deletedBy\" BIGINT NULL,\n"
+                      "  \"createTime\" TIMESTAMP NULL,\n"
+                      "  \"idUser\" BIGINT NOT NULL,\n"
+                      "  \"idPerson\" BIGINT NOT NULL,\n"
+                      "  \"idMember\" BIGINT NOT NULL,\n"
+                      "  \"date\" DATE NULL,\n"
+                      "  \"paymentType\" INTEGER NOT NULL,\n"
+                      "  \"bank\" BIGINT NULL,\n"
                       "  \"id\" BIGSERIAL NOT NULL PRIMARY KEY,\n"
                       "  \"plan_date\" DATE NULL,\n"
                       "  \"plan_amount\" BIGINT NOT NULL,\n"
@@ -210,8 +235,6 @@ namespace odb
                       "  \"fact_prc\" BIGINT NOT NULL,\n"
                       "  \"fact_prcDept\" BIGINT NOT NULL,\n"
                       "  \"fact_peni\" BIGINT NOT NULL,\n"
-                      "  \"idPerson\" BIGINT NOT NULL,\n"
-                      "  \"idMember\" BIGINT NOT NULL,\n"
                       "  \"idLoan\" BIGINT NOT NULL,\n"
                       "  CONSTRAINT \"deletedBy_fk\"\n"
                       "    FOREIGN KEY (\"deletedBy\")\n"
@@ -229,10 +252,17 @@ namespace odb
                       "    FOREIGN KEY (\"idMember\")\n"
                       "    REFERENCES \"Member\" (\"id\")\n"
                       "    INITIALLY DEFERRED,\n"
+                      "  CONSTRAINT \"bank_fk\"\n"
+                      "    FOREIGN KEY (\"bank\")\n"
+                      "    REFERENCES \"Bank\" (\"id\")\n"
+                      "    INITIALLY DEFERRED,\n"
                       "  CONSTRAINT \"idLoan_fk\"\n"
                       "    FOREIGN KEY (\"idLoan\")\n"
                       "    REFERENCES \"Loan\" (\"id\")\n"
                       "    INITIALLY DEFERRED)");
+          db.execute ("CREATE TABLE \"DecTest\" (\n"
+                      "  \"id\" BIGSERIAL NOT NULL PRIMARY KEY,\n"
+                      "  \"num\" BIGINT NOT NULL)");
           return true;
         }
         case 2:

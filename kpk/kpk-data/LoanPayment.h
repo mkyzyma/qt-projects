@@ -8,55 +8,47 @@
 #include "data_global.h"
 
 #include "DbObject.h"
-#include "LoanOperValue.h"
+#include "LoanPaymentValue.h"
+#include "Payment.h"
 #include "Person.h"
 #include "Member.h"
 #include "Loan.h"
 
-namespace kpk
+namespace kpk {
+namespace data {
+
+/*!
+ * \brief Вид операции по займу
+ */
+enum class LoanPaymentType
 {
-namespace data
-{
+    payment, ///<\brief Оплата
+    issuance, ///<\brief Выдача
+};
+
 /*!
  * \brief Операция по займу
  *
  * Операция по займу (оплата или выдача)
  */
 #pragma db object
-class DATASHARED_EXPORT LoanOper : public DbObject
+class DATASHARED_EXPORT LoanPayment : public Payment
 {
 public:
-    LoanOper();
-
+    LoanPayment(const QDate &date,
+                const PaymentType &paymentType = PaymentType::cash,
+                const BankPtr &bank = nullptr);
     /*!
      * \brief Получить оплату по плану
      * \return Оплата по плану
      */
-    LoanOperValue& plan();
+    LoanPaymentValue& plan();
 
     /*!
      * \brief Получить оплату по факту
      * \return Оплата по факту
      */
-    LoanOperValue& fact();    
-
-    /*!
-     * \brief Получить пайщика
-     * \return Пайщик
-     */
-    MemberPtr member() const;
-
-    /*!
-     * \brief Установить пайщика
-     * \param member - пайщик
-     */
-    void member(const MemberPtr &member);
-
-    /*!
-     * \brief Получить личные данные
-     * \return Личные данные
-     */
-    PersonPtr person() const;
+    LoanPaymentValue& fact();
 
     /*!
      * \brief Получить займ
@@ -71,21 +63,14 @@ public:
     void loan(const LoanPtr &loan);
 
 private:
+    LoanPayment();
     friend class odb::access;
 
-#pragma db id auto
+    #pragma db id auto
     ulong _id;
 
-    LoanOperValue _plan;
-    LoanOperValue _fact;
-
-    #pragma db not_null
-    #pragma db column("idPerson")
-    PersonPtr _person;
-
-    #pragma db not_null
-    #pragma db column("idMember")
-    MemberPtr _member;
+    LoanPaymentValue _plan;
+    LoanPaymentValue _fact;
 
     #pragma db not_null
     #pragma db column("idLoan")
@@ -95,7 +80,7 @@ private:
 /*!
  * \brief Указатель на операцию по займу
  */
-using LoanOperPtr = std::shared_ptr<LoanOper>;
+using LoanPaymentPtr = std::shared_ptr<LoanPayment>;
 
 }
 }

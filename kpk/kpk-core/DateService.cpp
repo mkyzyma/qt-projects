@@ -3,39 +3,37 @@
 namespace kpk{
 namespace core{
 
-DateService::DateService(QObject *parent)
-    : QObject(parent)
-{
+DateService::
+DateService(QObject *parent)
+    : QObject(parent) {}
 
-}
+DateService::
+DateService(const QDate &working)
+    : _working(working) {}
 
-DateService::DateService(const QDate &working)
-    : _working(working)
-{
-
-}
-
-QDate DateService::working() const
+QDate DateService::
+working() const
 {
     return _working;
 }
 
-void DateService::working(const QDate &working)
+void DateService::
+working(const QDate &working)
 {
     _working = working;
 }
 
-QDate DateService::current() const
+QDate DateService::
+current() const
 {
     return QDate::currentDate();
 }
 
-QDateTime DateService::currentTime() const
+QDateTime DateService::
+currentTime() const
 {
     return QDateTime::currentDateTime();
 }
-
-
 
 }
 }

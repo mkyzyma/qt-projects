@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QDate>
+#include <QString>
 
 #include "kpk-data/Loan.h"
 #include "kpk-data/Member.h"
@@ -27,13 +28,16 @@ public:
 
     data::LoanPtr open(data::MemberPtr member, data::LoanTypePtr loanType,
                        QDate openDate,
-                       long limit, long rate, long length);
+                       Number limit, Number rate, int length);
 
-    data::LoanPtr get(long id);
+    data::LoanPtr get(ulong id);
 
 
 
     QDate getCloseDate(QDate openDate, long length);
+
+    LoanTypeResult loanTypes();
+    data::LoanTypePtr getLoanType(ulong id);
 };
 
 }

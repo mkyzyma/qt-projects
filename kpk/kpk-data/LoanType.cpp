@@ -3,33 +3,39 @@
 namespace kpk{
 namespace data{
 
-LoanType::LoanType()
+LoanType::
+LoanType()
 {
 
 }
 
-LoanType::LoanType(QString caption, long rate)
+LoanType::
+LoanType(QString caption, Number rate)
 {
     _caption = caption;
     _rate = rate;
 }
 
-QString LoanType::caption() const
+QString LoanType::
+caption() const
 {
     return _caption;
 }
 
-void LoanType::caption(const QString &caption)
+void LoanType::
+caption(const QString &caption)
 {
     _caption = caption;
 }
 
-long LoanType::rate() const
+Number LoanType::
+rate() const
 {
     return _rate;
 }
 
-void LoanType::rate(long rate)
+void LoanType::
+rate(const Number &rate)
 {
     _rate = rate;
 }

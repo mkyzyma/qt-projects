@@ -13,20 +13,23 @@ DEFINES += KPKDATA_LIBRARY
 
 include("../../odb.pri")
 include("../../qdecimal.pri")
-
 SOURCES += \
     Person.cpp \
     Name.cpp \
     Passport.cpp \
     Member.cpp \
     Loan.cpp \
-    LoanOperValue.cpp \
-    LoanOper.cpp \
     LoanType.cpp \
     IsDeleted.cpp \
     User.cpp \
     DbObject.cpp \
-    LoanGarantor.cpp
+    LoanGarantor.cpp \
+    DecTest.cpp \
+    Payment.cpp \
+    Bank.cpp \
+    LoanPaymentValue.cpp \
+    LoanPayment.cpp \
+    MemberInfo.cpp
 
 HEADERS += \
     data_global.h \
@@ -35,13 +38,19 @@ HEADERS += \
     Passport.h \
     Member.h \
     Loan.h \
-    LoanOperValue.h \
-    LoanOper.h \
     LoanType.h \
     IsDeleted.h \
     User.h \
     DbObject.h \
-    LoanGarantor.h
+    LoanGarantor.h \
+    DecTest.h \
+    traits-pgsql.h \
+    type.h \
+    Payment.h \
+    Bank.h \
+    LoanPaymentValue.h \
+    LoanPayment.h \
+    MemberInfo.h
 
 unix {
     target.path = /usr/lib

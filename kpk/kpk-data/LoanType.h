@@ -4,7 +4,10 @@
 
 #include <odb/core.hxx>
 
+#include <QDecNumber.hh>
+
 #include "data_global.h"
+#include "type.h"
 
 #include "DbObject.h"
 namespace kpk{
@@ -18,12 +21,13 @@ class DATASHARED_EXPORT LoanType : public DbObject
 {
 public:
     LoanType();
+
     /*!
      * \brief Конструктор
      * \param caption - название
      * \param rate - ставка по умолчанию
      */
-    LoanType(QString caption, long rate);
+    LoanType(QString caption, Number rate);
 
     /*!
      * \brief Получить идентификатор
@@ -47,23 +51,24 @@ public:
      * \brief Получить ставку по умолчанию
      * \return Ставка по умолчанию
      */
-    long rate() const;
+    Number rate() const;
 
     /*!
      * \brief Установить ставку по умолчанию
      * \param rate - ставка по умолчанию
      */
-    void rate(long rate);
+    void rate(const Number &rate);
 
 private:
     friend class odb::access;
+
     #pragma db id auto
     ulong _id;
 
     #pragma db type("char(63)")
     QString _caption;
 
-    long _rate;
+    Number _rate;
 };
 
 /*!

@@ -15,6 +15,7 @@ CONFIG   -= app_bundle
 TEMPLATE = app
 
 include("../../odb.pri")
+include("../../qdecimal.pri")
 #include("../kpk-data.pri")
 
 SOURCES += tst_KpkCoreTest.cpp

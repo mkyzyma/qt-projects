@@ -10,6 +10,7 @@ RESOURCES += qml.qrc
 QML_IMPORT_PATH =
 include("../../odb.pri")
 include("../kpk-data.pri")
+include("../../qdecimal.pri")
 # Default rules for deployment.
 include(deployment.pri)
 

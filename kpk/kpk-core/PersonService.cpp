@@ -17,41 +17,47 @@ using namespace data;
 
 using MemberQuery = odb::query<Member> ;
 
-PersonService::PersonService()
-{}
+PersonService::
+PersonService() {}
 
-PersonPtr PersonService::create()
+PersonPtr PersonService::
+create()
 {
     auto p(std::make_shared<Person>());
     return p;
 }
 
-void PersonService::add(PersonPtr person)
+void PersonService::
+add(PersonPtr person)
 {
     person->setCreateInfo(Core()->date()->currentTime(),
                           Core()->auth()->user());
     Core()->db()->persist(person);
 }
 
-void PersonService::update(PersonPtr person)
+void PersonService::
+update(PersonPtr person)
 {
     Core()->db()->update(person);
 }
 
-void PersonService::remove(PersonPtr person)
+void PersonService::
+remove(PersonPtr person)
 {
     person->setDeleted(Core()->date()->currentTime(),
                        Core()->auth()->user());
     update(person);
 }
 
-PersonPtr PersonService::get(ulong id)
+PersonPtr PersonService::
+get(ulong id)
 {    
     auto p(Core()->db()->load<Person>(id));
     return p;
 }
 
-void PersonService::enter(PersonPtr person, QDate date)
+void PersonService::
+enter(PersonPtr person, QDate date)
 {    
     if(person->isNew())
         add(person);
@@ -70,12 +76,13 @@ void PersonService::enter(PersonPtr person, QDate date)
     update(person);
 }
 
-void PersonService::exit(PersonPtr person, QDate date, ExitReason reason)
+void PersonService::
+exit(PersonPtr person, QDate date, ExitReason reason)
 {
    if(!person->isMember())
         throw exception::NotAMemberException();
 
-   auto m = person->member().lock();
+   auto m = person->member();
 
     m->outDate(std::make_shared<QDate>(date));
     m->exitReason(reason);
@@ -83,9 +90,10 @@ void PersonService::exit(PersonPtr person, QDate date, ExitReason reason)
     Core()->db()->update(m);
 }
 
-MemberResult PersonService::membership(ulong idPerson) const
+MemberResult PersonService::
+membership(ulong idPerson) const
 {
-    auto q(MemberQuery::person == idPerson);
+    auto q(MemberQuery::person == idPerson && !MemberQuery::isDeleted);
     return Core()->db()->query<Member>(q);
 }
 

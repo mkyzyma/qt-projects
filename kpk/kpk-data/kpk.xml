@@ -128,7 +128,7 @@
       <column name="state" type="INTEGER" null="false"/>
       <column name="rate" type="BIGINT" null="false"/>
       <column name="limit" type="BIGINT" null="false"/>
-      <column name="length" type="BIGINT" null="false"/>
+      <column name="length" type="INTEGER" null="false"/>
       <column name="sum" type="BIGINT" null="false"/>
       <column name="remains" type="BIGINT" null="false"/>
       <column name="prc" type="BIGINT" null="false"/>
@@ -207,12 +207,43 @@
         </references>
       </foreign-key>
     </table>
-    <table name="LoanOper" kind="object">
+    <table name="Bank" kind="object">
       <column name="isDeleted" type="BOOLEAN" null="false"/>
       <column name="deleteTime" type="TIMESTAMP" null="true"/>
       <column name="deletedBy" type="BIGINT" null="true"/>
       <column name="createTime" type="TIMESTAMP" null="true"/>
       <column name="idUser" type="BIGINT" null="false"/>
+      <column name="id" type="BIGINT" null="false"/>
+      <column name="bik" type="char(9)" null="true"/>
+      <column name="name" type="TEXT" null="true"/>
+      <column name="cnt" type="BIGINT" null="false"/>
+      <primary-key auto="true">
+        <column name="id"/>
+      </primary-key>
+      <foreign-key name="deletedBy_fk" deferrable="DEFERRED">
+        <column name="deletedBy"/>
+        <references table="User">
+          <column name="id"/>
+        </references>
+      </foreign-key>
+      <foreign-key name="idUser_fk" deferrable="DEFERRED">
+        <column name="idUser"/>
+        <references table="User">
+          <column name="id"/>
+        </references>
+      </foreign-key>
+    </table>
+    <table name="LoanPayment" kind="object">
+      <column name="isDeleted" type="BOOLEAN" null="false"/>
+      <column name="deleteTime" type="TIMESTAMP" null="true"/>
+      <column name="deletedBy" type="BIGINT" null="true"/>
+      <column name="createTime" type="TIMESTAMP" null="true"/>
+      <column name="idUser" type="BIGINT" null="false"/>
+      <column name="idPerson" type="BIGINT" null="false"/>
+      <column name="idMember" type="BIGINT" null="false"/>
+      <column name="date" type="DATE" null="true"/>
+      <column name="paymentType" type="INTEGER" null="false"/>
+      <column name="bank" type="BIGINT" null="true"/>
       <column name="id" type="BIGINT" null="false"/>
       <column name="plan_date" type="DATE" null="true"/>
       <column name="plan_amount" type="BIGINT" null="false"/>
@@ -228,8 +259,6 @@
       <column name="fact_prc" type="BIGINT" null="false"/>
       <column name="fact_prcDept" type="BIGINT" null="false"/>
       <column name="fact_peni" type="BIGINT" null="false"/>
-      <column name="idPerson" type="BIGINT" null="false"/>
-      <column name="idMember" type="BIGINT" null="false"/>
       <column name="idLoan" type="BIGINT" null="false"/>
       <primary-key auto="true">
         <column name="id"/>
@@ -258,12 +287,25 @@
           <column name="id"/>
         </references>
       </foreign-key>
+      <foreign-key name="bank_fk" deferrable="DEFERRED">
+        <column name="bank"/>
+        <references table="Bank">
+          <column name="id"/>
+        </references>
+      </foreign-key>
       <foreign-key name="idLoan_fk" deferrable="DEFERRED">
         <column name="idLoan"/>
         <references table="Loan">
           <column name="id"/>
         </references>
       </foreign-key>
+    </table>
+    <table name="DecTest" kind="object">
+      <column name="id" type="BIGINT" null="false"/>
+      <column name="num" type="BIGINT" null="false"/>
+      <primary-key auto="true">
+        <column name="id"/>
+      </primary-key>
     </table>
   </model>
 </changelog>

@@ -17,6 +17,7 @@
 #include <odb/qt/date-time/pgsql/qdate-traits.hxx>
 #include <odb/qt/date-time/pgsql/qtime-traits.hxx>
 #include <odb/qt/date-time/pgsql/qdate-time-traits.hxx>
+#include "traits-pgsql.h"
 //
 // End prologue.
 
@@ -179,7 +180,7 @@ namespace odb
     typedef
     pgsql::query_column<
       pgsql::value_traits<
-        long int,
+        ::Number,
         pgsql::id_bigint >::query_type,
       pgsql::id_bigint >
     rate_type_;
@@ -191,7 +192,7 @@ namespace odb
     typedef
     pgsql::query_column<
       pgsql::value_traits<
-        long int,
+        ::Number,
         pgsql::id_bigint >::query_type,
       pgsql::id_bigint >
     limit_type_;
@@ -203,9 +204,9 @@ namespace odb
     typedef
     pgsql::query_column<
       pgsql::value_traits<
-        long int,
-        pgsql::id_bigint >::query_type,
-      pgsql::id_bigint >
+        int,
+        pgsql::id_integer >::query_type,
+      pgsql::id_integer >
     length_type_;
 
     static const length_type_ length;
@@ -215,7 +216,7 @@ namespace odb
     typedef
     pgsql::query_column<
       pgsql::value_traits<
-        long int,
+        ::Number,
         pgsql::id_bigint >::query_type,
       pgsql::id_bigint >
     sum_type_;
@@ -227,7 +228,7 @@ namespace odb
     typedef
     pgsql::query_column<
       pgsql::value_traits<
-        long int,
+        ::Number,
         pgsql::id_bigint >::query_type,
       pgsql::id_bigint >
     remains_type_;
@@ -239,7 +240,7 @@ namespace odb
     typedef
     pgsql::query_column<
       pgsql::value_traits<
-        long int,
+        ::Number,
         pgsql::id_bigint >::query_type,
       pgsql::id_bigint >
     prc_type_;
@@ -395,7 +396,7 @@ namespace odb
 
       // _length
       //
-      long long _length_value;
+      int _length_value;
       bool _length_null;
 
       // _sum
@@ -671,7 +672,7 @@ namespace odb
     typedef
     pgsql::query_column<
       pgsql::value_traits<
-        long int,
+        ::Number,
         pgsql::id_bigint >::query_type,
       pgsql::id_bigint >
     rate_type_;
@@ -683,7 +684,7 @@ namespace odb
     typedef
     pgsql::query_column<
       pgsql::value_traits<
-        long int,
+        ::Number,
         pgsql::id_bigint >::query_type,
       pgsql::id_bigint >
     limit_type_;
@@ -695,9 +696,9 @@ namespace odb
     typedef
     pgsql::query_column<
       pgsql::value_traits<
-        long int,
-        pgsql::id_bigint >::query_type,
-      pgsql::id_bigint >
+        int,
+        pgsql::id_integer >::query_type,
+      pgsql::id_integer >
     length_type_;
 
     static const length_type_ length;
@@ -707,7 +708,7 @@ namespace odb
     typedef
     pgsql::query_column<
       pgsql::value_traits<
-        long int,
+        ::Number,
         pgsql::id_bigint >::query_type,
       pgsql::id_bigint >
     sum_type_;
@@ -719,7 +720,7 @@ namespace odb
     typedef
     pgsql::query_column<
       pgsql::value_traits<
-        long int,
+        ::Number,
         pgsql::id_bigint >::query_type,
       pgsql::id_bigint >
     remains_type_;
@@ -731,7 +732,7 @@ namespace odb
     typedef
     pgsql::query_column<
       pgsql::value_traits<
-        long int,
+        ::Number,
         pgsql::id_bigint >::query_type,
       pgsql::id_bigint >
     prc_type_;

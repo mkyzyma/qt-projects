@@ -40,7 +40,7 @@ public:
      * \brief Кем создан
      * \return Создавший пользователь
      */    std::shared_ptr<User> createdBy() const;
-private:
+protected:
     friend class odb::access;
     QDateTime _createTime;
 

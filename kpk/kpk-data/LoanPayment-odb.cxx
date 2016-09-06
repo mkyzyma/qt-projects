@@ -4,7 +4,7 @@
 
 #include <odb/pre.hxx>
 
-#include "LoanOper-odb.hxx"
+#include "LoanPayment-odb.hxx"
 
 #include <cassert>
 #include <cstring>  // std::memcpy
@@ -23,28 +23,28 @@
 
 namespace odb
 {
-  // LoanOper
+  // LoanPayment
   //
 
-  const char access::object_traits_impl< ::kpk::data::LoanOper, id_pgsql >::
-  persist_statement_name[] = "persist_kpk_data_LoanOper";
+  const char access::object_traits_impl< ::kpk::data::LoanPayment, id_pgsql >::
+  persist_statement_name[] = "persist_kpk_data_LoanPayment";
 
-  const char access::object_traits_impl< ::kpk::data::LoanOper, id_pgsql >::
-  find_statement_name[] = "find_kpk_data_LoanOper";
+  const char access::object_traits_impl< ::kpk::data::LoanPayment, id_pgsql >::
+  find_statement_name[] = "find_kpk_data_LoanPayment";
 
-  const char access::object_traits_impl< ::kpk::data::LoanOper, id_pgsql >::
-  update_statement_name[] = "update_kpk_data_LoanOper";
+  const char access::object_traits_impl< ::kpk::data::LoanPayment, id_pgsql >::
+  update_statement_name[] = "update_kpk_data_LoanPayment";
 
-  const char access::object_traits_impl< ::kpk::data::LoanOper, id_pgsql >::
-  erase_statement_name[] = "erase_kpk_data_LoanOper";
+  const char access::object_traits_impl< ::kpk::data::LoanPayment, id_pgsql >::
+  erase_statement_name[] = "erase_kpk_data_LoanPayment";
 
-  const char access::object_traits_impl< ::kpk::data::LoanOper, id_pgsql >::
-  query_statement_name[] = "query_kpk_data_LoanOper";
+  const char access::object_traits_impl< ::kpk::data::LoanPayment, id_pgsql >::
+  query_statement_name[] = "query_kpk_data_LoanPayment";
 
-  const char access::object_traits_impl< ::kpk::data::LoanOper, id_pgsql >::
-  erase_query_statement_name[] = "erase_query_kpk_data_LoanOper";
+  const char access::object_traits_impl< ::kpk::data::LoanPayment, id_pgsql >::
+  erase_query_statement_name[] = "erase_query_kpk_data_LoanPayment";
 
-  const unsigned int access::object_traits_impl< ::kpk::data::LoanOper, id_pgsql >::
+  const unsigned int access::object_traits_impl< ::kpk::data::LoanPayment, id_pgsql >::
   persist_statement_types[] =
   {
     pgsql::bool_oid,
@@ -52,6 +52,11 @@ namespace odb
     pgsql::int8_oid,
     pgsql::timestamp_oid,
     pgsql::int8_oid,
+    pgsql::int8_oid,
+    pgsql::int8_oid,
+    pgsql::date_oid,
+    pgsql::int4_oid,
+    pgsql::int8_oid,
     pgsql::date_oid,
     pgsql::int8_oid,
     pgsql::int8_oid,
@@ -60,8 +65,6 @@ namespace odb
     pgsql::int8_oid,
     pgsql::int8_oid,
     pgsql::date_oid,
-    pgsql::int8_oid,
-    pgsql::int8_oid,
     pgsql::int8_oid,
     pgsql::int8_oid,
     pgsql::int8_oid,
@@ -71,13 +74,13 @@ namespace odb
     pgsql::int8_oid
   };
 
-  const unsigned int access::object_traits_impl< ::kpk::data::LoanOper, id_pgsql >::
+  const unsigned int access::object_traits_impl< ::kpk::data::LoanPayment, id_pgsql >::
   find_statement_types[] =
   {
     pgsql::int8_oid
   };
 
-  const unsigned int access::object_traits_impl< ::kpk::data::LoanOper, id_pgsql >::
+  const unsigned int access::object_traits_impl< ::kpk::data::LoanPayment, id_pgsql >::
   update_statement_types[] =
   {
     pgsql::bool_oid,
@@ -85,6 +88,11 @@ namespace odb
     pgsql::int8_oid,
     pgsql::timestamp_oid,
     pgsql::int8_oid,
+    pgsql::int8_oid,
+    pgsql::int8_oid,
+    pgsql::date_oid,
+    pgsql::int4_oid,
+    pgsql::int8_oid,
     pgsql::date_oid,
     pgsql::int8_oid,
     pgsql::int8_oid,
@@ -93,8 +101,6 @@ namespace odb
     pgsql::int8_oid,
     pgsql::int8_oid,
     pgsql::date_oid,
-    pgsql::int8_oid,
-    pgsql::int8_oid,
     pgsql::int8_oid,
     pgsql::int8_oid,
     pgsql::int8_oid,
@@ -105,22 +111,12 @@ namespace odb
     pgsql::int8_oid
   };
 
-  const char alias_traits<  ::kpk::data::Person,
-    id_pgsql,
-    access::object_traits_impl< ::kpk::data::LoanOper, id_pgsql >::person_tag>::
-  table_name[] = "\"idPerson\"";
-
-  const char alias_traits<  ::kpk::data::Member,
-    id_pgsql,
-    access::object_traits_impl< ::kpk::data::LoanOper, id_pgsql >::member_tag>::
-  table_name[] = "\"idMember\"";
-
   const char alias_traits<  ::kpk::data::Loan,
     id_pgsql,
-    access::object_traits_impl< ::kpk::data::LoanOper, id_pgsql >::loan_tag>::
+    access::object_traits_impl< ::kpk::data::LoanPayment, id_pgsql >::loan_tag>::
   table_name[] = "\"idLoan\"";
 
-  struct access::object_traits_impl< ::kpk::data::LoanOper, id_pgsql >::extra_statement_cache_type
+  struct access::object_traits_impl< ::kpk::data::LoanPayment, id_pgsql >::extra_statement_cache_type
   {
     extra_statement_cache_type (
       pgsql::connection&,
@@ -134,8 +130,8 @@ namespace odb
     }
   };
 
-  access::object_traits_impl< ::kpk::data::LoanOper, id_pgsql >::id_type
-  access::object_traits_impl< ::kpk::data::LoanOper, id_pgsql >::
+  access::object_traits_impl< ::kpk::data::LoanPayment, id_pgsql >::id_type
+  access::object_traits_impl< ::kpk::data::LoanPayment, id_pgsql >::
   id (const id_image_type& i)
   {
     pgsql::database* db (0);
@@ -154,8 +150,8 @@ namespace odb
     return id;
   }
 
-  access::object_traits_impl< ::kpk::data::LoanOper, id_pgsql >::id_type
-  access::object_traits_impl< ::kpk::data::LoanOper, id_pgsql >::
+  access::object_traits_impl< ::kpk::data::LoanPayment, id_pgsql >::id_type
+  access::object_traits_impl< ::kpk::data::LoanPayment, id_pgsql >::
   id (const image_type& i)
   {
     pgsql::database* db (0);
@@ -174,7 +170,7 @@ namespace odb
     return id;
   }
 
-  bool access::object_traits_impl< ::kpk::data::LoanOper, id_pgsql >::
+  bool access::object_traits_impl< ::kpk::data::LoanPayment, id_pgsql >::
   grow (image_type& i,
         bool* t)
   {
@@ -183,44 +179,36 @@ namespace odb
 
     bool grew (false);
 
-    // DbObject base
+    // Payment base
     //
-    if (object_traits_impl< ::kpk::data::DbObject, id_pgsql >::grow (
+    if (object_traits_impl< ::kpk::data::Payment, id_pgsql >::grow (
           i, t + 0UL))
       grew = true;
 
     // _id
     //
-    t[5UL] = 0;
+    t[10UL] = 0;
 
     // _plan
     //
-    if (composite_value_traits< ::kpk::data::LoanOperValue, id_pgsql >::grow (
-          i._plan_value, t + 6UL))
+    if (composite_value_traits< ::kpk::data::LoanPaymentValue, id_pgsql >::grow (
+          i._plan_value, t + 11UL))
       grew = true;
 
     // _fact
     //
-    if (composite_value_traits< ::kpk::data::LoanOperValue, id_pgsql >::grow (
-          i._fact_value, t + 13UL))
+    if (composite_value_traits< ::kpk::data::LoanPaymentValue, id_pgsql >::grow (
+          i._fact_value, t + 18UL))
       grew = true;
-
-    // _person
-    //
-    t[20UL] = 0;
-
-    // _member
-    //
-    t[21UL] = 0;
 
     // _loan
     //
-    t[22UL] = 0;
+    t[25UL] = 0;
 
     return grew;
   }
 
-  void access::object_traits_impl< ::kpk::data::LoanOper, id_pgsql >::
+  void access::object_traits_impl< ::kpk::data::LoanPayment, id_pgsql >::
   bind (pgsql::bind* b,
         image_type& i,
         pgsql::statement_kind sk)
@@ -231,10 +219,10 @@ namespace odb
 
     std::size_t n (0);
 
-    // DbObject base
+    // Payment base
     //
-    object_traits_impl< ::kpk::data::DbObject, id_pgsql >::bind (b + n, i, sk);
-    n += 5UL;
+    object_traits_impl< ::kpk::data::Payment, id_pgsql >::bind (b + n, i, sk);
+    n += 10UL;
 
     // _id
     //
@@ -248,29 +236,15 @@ namespace odb
 
     // _plan
     //
-    composite_value_traits< ::kpk::data::LoanOperValue, id_pgsql >::bind (
+    composite_value_traits< ::kpk::data::LoanPaymentValue, id_pgsql >::bind (
       b + n, i._plan_value, sk);
     n += 7UL;
 
     // _fact
     //
-    composite_value_traits< ::kpk::data::LoanOperValue, id_pgsql >::bind (
+    composite_value_traits< ::kpk::data::LoanPaymentValue, id_pgsql >::bind (
       b + n, i._fact_value, sk);
     n += 7UL;
-
-    // _person
-    //
-    b[n].type = pgsql::bind::bigint;
-    b[n].buffer = &i._person_value;
-    b[n].is_null = &i._person_null;
-    n++;
-
-    // _member
-    //
-    b[n].type = pgsql::bind::bigint;
-    b[n].buffer = &i._member_value;
-    b[n].is_null = &i._member_null;
-    n++;
 
     // _loan
     //
@@ -280,7 +254,7 @@ namespace odb
     n++;
   }
 
-  void access::object_traits_impl< ::kpk::data::LoanOper, id_pgsql >::
+  void access::object_traits_impl< ::kpk::data::LoanPayment, id_pgsql >::
   bind (pgsql::bind* b, id_image_type& i)
   {
     std::size_t n (0);
@@ -289,7 +263,7 @@ namespace odb
     b[n].is_null = &i.id_null;
   }
 
-  bool access::object_traits_impl< ::kpk::data::LoanOper, id_pgsql >::
+  bool access::object_traits_impl< ::kpk::data::LoanPayment, id_pgsql >::
   init (image_type& i,
         const object_type& o,
         pgsql::statement_kind sk)
@@ -302,18 +276,18 @@ namespace odb
 
     bool grew (false);
 
-    // DbObject base
+    // Payment base
     //
-    if (object_traits_impl< ::kpk::data::DbObject, id_pgsql >::init (i, o, sk))
+    if (object_traits_impl< ::kpk::data::Payment, id_pgsql >::init (i, o, sk))
       grew = true;
 
     // _plan
     //
     {
-      ::kpk::data::LoanOperValue const& v =
+      ::kpk::data::LoanPaymentValue const& v =
         o._plan;
 
-      composite_value_traits< ::kpk::data::LoanOperValue, id_pgsql >::init (
+      composite_value_traits< ::kpk::data::LoanPaymentValue, id_pgsql >::init (
         i._plan_value,
         v,
         sk);
@@ -322,63 +296,13 @@ namespace odb
     // _fact
     //
     {
-      ::kpk::data::LoanOperValue const& v =
+      ::kpk::data::LoanPaymentValue const& v =
         o._fact;
 
-      composite_value_traits< ::kpk::data::LoanOperValue, id_pgsql >::init (
+      composite_value_traits< ::kpk::data::LoanPaymentValue, id_pgsql >::init (
         i._fact_value,
         v,
         sk);
-    }
-
-    // _person
-    //
-    {
-      ::kpk::data::PersonPtr const& v =
-        o._person;
-
-      typedef object_traits< ::kpk::data::Person > obj_traits;
-      typedef odb::pointer_traits< ::kpk::data::PersonPtr > ptr_traits;
-
-      bool is_null (ptr_traits::null_ptr (v));
-      if (!is_null)
-      {
-        const obj_traits::id_type& id (
-          obj_traits::id (ptr_traits::get_ref (v)));
-
-        pgsql::value_traits<
-            obj_traits::id_type,
-            pgsql::id_bigint >::set_image (
-          i._person_value, is_null, id);
-        i._person_null = is_null;
-      }
-      else
-        throw null_pointer ();
-    }
-
-    // _member
-    //
-    {
-      ::kpk::data::MemberPtr const& v =
-        o._member;
-
-      typedef object_traits< ::kpk::data::Member > obj_traits;
-      typedef odb::pointer_traits< ::kpk::data::MemberPtr > ptr_traits;
-
-      bool is_null (ptr_traits::null_ptr (v));
-      if (!is_null)
-      {
-        const obj_traits::id_type& id (
-          obj_traits::id (ptr_traits::get_ref (v)));
-
-        pgsql::value_traits<
-            obj_traits::id_type,
-            pgsql::id_bigint >::set_image (
-          i._member_value, is_null, id);
-        i._member_null = is_null;
-      }
-      else
-        throw null_pointer ();
     }
 
     // _loan
@@ -409,7 +333,7 @@ namespace odb
     return grew;
   }
 
-  void access::object_traits_impl< ::kpk::data::LoanOper, id_pgsql >::
+  void access::object_traits_impl< ::kpk::data::LoanPayment, id_pgsql >::
   init (object_type& o,
         const image_type& i,
         database* db)
@@ -418,9 +342,9 @@ namespace odb
     ODB_POTENTIALLY_UNUSED (i);
     ODB_POTENTIALLY_UNUSED (db);
 
-    // DbObject base
+    // Payment base
     //
-    object_traits_impl< ::kpk::data::DbObject, id_pgsql >::init (o, i, db);
+    object_traits_impl< ::kpk::data::Payment, id_pgsql >::init (o, i, db);
 
     // _id
     //
@@ -439,10 +363,10 @@ namespace odb
     // _plan
     //
     {
-      ::kpk::data::LoanOperValue& v =
+      ::kpk::data::LoanPaymentValue& v =
         o._plan;
 
-      composite_value_traits< ::kpk::data::LoanOperValue, id_pgsql >::init (
+      composite_value_traits< ::kpk::data::LoanPaymentValue, id_pgsql >::init (
         v,
         i._plan_value,
         db);
@@ -451,75 +375,13 @@ namespace odb
     // _fact
     //
     {
-      ::kpk::data::LoanOperValue& v =
+      ::kpk::data::LoanPaymentValue& v =
         o._fact;
 
-      composite_value_traits< ::kpk::data::LoanOperValue, id_pgsql >::init (
+      composite_value_traits< ::kpk::data::LoanPaymentValue, id_pgsql >::init (
         v,
         i._fact_value,
         db);
-    }
-
-    // _person
-    //
-    {
-      ::kpk::data::PersonPtr& v =
-        o._person;
-
-      typedef object_traits< ::kpk::data::Person > obj_traits;
-      typedef odb::pointer_traits< ::kpk::data::PersonPtr > ptr_traits;
-
-      if (i._person_null)
-        v = ptr_traits::pointer_type ();
-      else
-      {
-        obj_traits::id_type id;
-        pgsql::value_traits<
-            obj_traits::id_type,
-            pgsql::id_bigint >::set_value (
-          id,
-          i._person_value,
-          i._person_null);
-
-        // If a compiler error points to the line below, then
-        // it most likely means that a pointer used in a member
-        // cannot be initialized from an object pointer.
-        //
-        v = ptr_traits::pointer_type (
-          static_cast<pgsql::database*> (db)->load<
-            obj_traits::object_type > (id));
-      }
-    }
-
-    // _member
-    //
-    {
-      ::kpk::data::MemberPtr& v =
-        o._member;
-
-      typedef object_traits< ::kpk::data::Member > obj_traits;
-      typedef odb::pointer_traits< ::kpk::data::MemberPtr > ptr_traits;
-
-      if (i._member_null)
-        v = ptr_traits::pointer_type ();
-      else
-      {
-        obj_traits::id_type id;
-        pgsql::value_traits<
-            obj_traits::id_type,
-            pgsql::id_bigint >::set_value (
-          id,
-          i._member_value,
-          i._member_null);
-
-        // If a compiler error points to the line below, then
-        // it most likely means that a pointer used in a member
-        // cannot be initialized from an object pointer.
-        //
-        v = ptr_traits::pointer_type (
-          static_cast<pgsql::database*> (db)->load<
-            obj_traits::object_type > (id));
-      }
     }
 
     // _loan
@@ -554,7 +416,7 @@ namespace odb
     }
   }
 
-  void access::object_traits_impl< ::kpk::data::LoanOper, id_pgsql >::
+  void access::object_traits_impl< ::kpk::data::LoanPayment, id_pgsql >::
   init (id_image_type& i, const id_type& id)
   {
     {
@@ -567,13 +429,18 @@ namespace odb
     }
   }
 
-  const char access::object_traits_impl< ::kpk::data::LoanOper, id_pgsql >::persist_statement[] =
-  "INSERT INTO \"LoanOper\" "
+  const char access::object_traits_impl< ::kpk::data::LoanPayment, id_pgsql >::persist_statement[] =
+  "INSERT INTO \"LoanPayment\" "
   "(\"isDeleted\", "
   "\"deleteTime\", "
   "\"deletedBy\", "
   "\"createTime\", "
   "\"idUser\", "
+  "\"idPerson\", "
+  "\"idMember\", "
+  "\"date\", "
+  "\"paymentType\", "
+  "\"bank\", "
   "\"id\", "
   "\"plan_date\", "
   "\"plan_amount\", "
@@ -589,111 +456,119 @@ namespace odb
   "\"fact_prc\", "
   "\"fact_prcDept\", "
   "\"fact_peni\", "
-  "\"idPerson\", "
-  "\"idMember\", "
   "\"idLoan\") "
   "VALUES "
-  "($1, $2, $3, $4, $5, DEFAULT, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22) "
+  "($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, DEFAULT, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25) "
   "RETURNING \"id\"";
 
-  const char access::object_traits_impl< ::kpk::data::LoanOper, id_pgsql >::find_statement[] =
+  const char access::object_traits_impl< ::kpk::data::LoanPayment, id_pgsql >::find_statement[] =
   "SELECT "
-  "\"LoanOper\".\"isDeleted\", "
-  "\"LoanOper\".\"deleteTime\", "
-  "\"LoanOper\".\"deletedBy\", "
-  "\"LoanOper\".\"createTime\", "
-  "\"LoanOper\".\"idUser\", "
-  "\"LoanOper\".\"id\", "
-  "\"LoanOper\".\"plan_date\", "
-  "\"LoanOper\".\"plan_amount\", "
-  "\"LoanOper\".\"plan_loan\", "
-  "\"LoanOper\".\"plan_loanDept\", "
-  "\"LoanOper\".\"plan_prc\", "
-  "\"LoanOper\".\"plan_prcDept\", "
-  "\"LoanOper\".\"plan_peni\", "
-  "\"LoanOper\".\"fact_date\", "
-  "\"LoanOper\".\"fact_amount\", "
-  "\"LoanOper\".\"fact_loan\", "
-  "\"LoanOper\".\"fact_loanDept\", "
-  "\"LoanOper\".\"fact_prc\", "
-  "\"LoanOper\".\"fact_prcDept\", "
-  "\"LoanOper\".\"fact_peni\", "
-  "\"LoanOper\".\"idPerson\", "
-  "\"LoanOper\".\"idMember\", "
-  "\"LoanOper\".\"idLoan\" "
-  "FROM \"LoanOper\" "
-  "WHERE \"LoanOper\".\"id\"=$1";
+  "\"LoanPayment\".\"isDeleted\", "
+  "\"LoanPayment\".\"deleteTime\", "
+  "\"LoanPayment\".\"deletedBy\", "
+  "\"LoanPayment\".\"createTime\", "
+  "\"LoanPayment\".\"idUser\", "
+  "\"LoanPayment\".\"idPerson\", "
+  "\"LoanPayment\".\"idMember\", "
+  "\"LoanPayment\".\"date\", "
+  "\"LoanPayment\".\"paymentType\", "
+  "\"LoanPayment\".\"bank\", "
+  "\"LoanPayment\".\"id\", "
+  "\"LoanPayment\".\"plan_date\", "
+  "\"LoanPayment\".\"plan_amount\", "
+  "\"LoanPayment\".\"plan_loan\", "
+  "\"LoanPayment\".\"plan_loanDept\", "
+  "\"LoanPayment\".\"plan_prc\", "
+  "\"LoanPayment\".\"plan_prcDept\", "
+  "\"LoanPayment\".\"plan_peni\", "
+  "\"LoanPayment\".\"fact_date\", "
+  "\"LoanPayment\".\"fact_amount\", "
+  "\"LoanPayment\".\"fact_loan\", "
+  "\"LoanPayment\".\"fact_loanDept\", "
+  "\"LoanPayment\".\"fact_prc\", "
+  "\"LoanPayment\".\"fact_prcDept\", "
+  "\"LoanPayment\".\"fact_peni\", "
+  "\"LoanPayment\".\"idLoan\" "
+  "FROM \"LoanPayment\" "
+  "WHERE \"LoanPayment\".\"id\"=$1";
 
-  const char access::object_traits_impl< ::kpk::data::LoanOper, id_pgsql >::update_statement[] =
-  "UPDATE \"LoanOper\" "
+  const char access::object_traits_impl< ::kpk::data::LoanPayment, id_pgsql >::update_statement[] =
+  "UPDATE \"LoanPayment\" "
   "SET "
   "\"isDeleted\"=$1, "
   "\"deleteTime\"=$2, "
   "\"deletedBy\"=$3, "
   "\"createTime\"=$4, "
   "\"idUser\"=$5, "
-  "\"plan_date\"=$6, "
-  "\"plan_amount\"=$7, "
-  "\"plan_loan\"=$8, "
-  "\"plan_loanDept\"=$9, "
-  "\"plan_prc\"=$10, "
-  "\"plan_prcDept\"=$11, "
-  "\"plan_peni\"=$12, "
-  "\"fact_date\"=$13, "
-  "\"fact_amount\"=$14, "
-  "\"fact_loan\"=$15, "
-  "\"fact_loanDept\"=$16, "
-  "\"fact_prc\"=$17, "
-  "\"fact_prcDept\"=$18, "
-  "\"fact_peni\"=$19, "
-  "\"idPerson\"=$20, "
-  "\"idMember\"=$21, "
-  "\"idLoan\"=$22 "
-  "WHERE \"id\"=$23";
+  "\"idPerson\"=$6, "
+  "\"idMember\"=$7, "
+  "\"date\"=$8, "
+  "\"paymentType\"=$9, "
+  "\"bank\"=$10, "
+  "\"plan_date\"=$11, "
+  "\"plan_amount\"=$12, "
+  "\"plan_loan\"=$13, "
+  "\"plan_loanDept\"=$14, "
+  "\"plan_prc\"=$15, "
+  "\"plan_prcDept\"=$16, "
+  "\"plan_peni\"=$17, "
+  "\"fact_date\"=$18, "
+  "\"fact_amount\"=$19, "
+  "\"fact_loan\"=$20, "
+  "\"fact_loanDept\"=$21, "
+  "\"fact_prc\"=$22, "
+  "\"fact_prcDept\"=$23, "
+  "\"fact_peni\"=$24, "
+  "\"idLoan\"=$25 "
+  "WHERE \"id\"=$26";
 
-  const char access::object_traits_impl< ::kpk::data::LoanOper, id_pgsql >::erase_statement[] =
-  "DELETE FROM \"LoanOper\" "
+  const char access::object_traits_impl< ::kpk::data::LoanPayment, id_pgsql >::erase_statement[] =
+  "DELETE FROM \"LoanPayment\" "
   "WHERE \"id\"=$1";
 
-  const char access::object_traits_impl< ::kpk::data::LoanOper, id_pgsql >::query_statement[] =
+  const char access::object_traits_impl< ::kpk::data::LoanPayment, id_pgsql >::query_statement[] =
   "SELECT\n"
-  "\"LoanOper\".\"isDeleted\",\n"
-  "\"LoanOper\".\"deleteTime\",\n"
-  "\"LoanOper\".\"deletedBy\",\n"
-  "\"LoanOper\".\"createTime\",\n"
-  "\"LoanOper\".\"idUser\",\n"
-  "\"LoanOper\".\"id\",\n"
-  "\"LoanOper\".\"plan_date\",\n"
-  "\"LoanOper\".\"plan_amount\",\n"
-  "\"LoanOper\".\"plan_loan\",\n"
-  "\"LoanOper\".\"plan_loanDept\",\n"
-  "\"LoanOper\".\"plan_prc\",\n"
-  "\"LoanOper\".\"plan_prcDept\",\n"
-  "\"LoanOper\".\"plan_peni\",\n"
-  "\"LoanOper\".\"fact_date\",\n"
-  "\"LoanOper\".\"fact_amount\",\n"
-  "\"LoanOper\".\"fact_loan\",\n"
-  "\"LoanOper\".\"fact_loanDept\",\n"
-  "\"LoanOper\".\"fact_prc\",\n"
-  "\"LoanOper\".\"fact_prcDept\",\n"
-  "\"LoanOper\".\"fact_peni\",\n"
-  "\"LoanOper\".\"idPerson\",\n"
-  "\"LoanOper\".\"idMember\",\n"
-  "\"LoanOper\".\"idLoan\"\n"
-  "FROM \"LoanOper\"\n"
-  "LEFT JOIN \"User\" AS \"deletedBy\" ON \"deletedBy\".\"id\"=\"LoanOper\".\"deletedBy\"\n"
-  "LEFT JOIN \"User\" AS \"idUser\" ON \"idUser\".\"id\"=\"LoanOper\".\"idUser\"\n"
-  "LEFT JOIN \"Person\" AS \"idPerson\" ON \"idPerson\".\"id\"=\"LoanOper\".\"idPerson\"\n"
-  "LEFT JOIN \"Member\" AS \"idMember\" ON \"idMember\".\"id\"=\"LoanOper\".\"idMember\"\n"
-  "LEFT JOIN \"Loan\" AS \"idLoan\" ON \"idLoan\".\"id\"=\"LoanOper\".\"idLoan\"";
+  "\"LoanPayment\".\"isDeleted\",\n"
+  "\"LoanPayment\".\"deleteTime\",\n"
+  "\"LoanPayment\".\"deletedBy\",\n"
+  "\"LoanPayment\".\"createTime\",\n"
+  "\"LoanPayment\".\"idUser\",\n"
+  "\"LoanPayment\".\"idPerson\",\n"
+  "\"LoanPayment\".\"idMember\",\n"
+  "\"LoanPayment\".\"date\",\n"
+  "\"LoanPayment\".\"paymentType\",\n"
+  "\"LoanPayment\".\"bank\",\n"
+  "\"LoanPayment\".\"id\",\n"
+  "\"LoanPayment\".\"plan_date\",\n"
+  "\"LoanPayment\".\"plan_amount\",\n"
+  "\"LoanPayment\".\"plan_loan\",\n"
+  "\"LoanPayment\".\"plan_loanDept\",\n"
+  "\"LoanPayment\".\"plan_prc\",\n"
+  "\"LoanPayment\".\"plan_prcDept\",\n"
+  "\"LoanPayment\".\"plan_peni\",\n"
+  "\"LoanPayment\".\"fact_date\",\n"
+  "\"LoanPayment\".\"fact_amount\",\n"
+  "\"LoanPayment\".\"fact_loan\",\n"
+  "\"LoanPayment\".\"fact_loanDept\",\n"
+  "\"LoanPayment\".\"fact_prc\",\n"
+  "\"LoanPayment\".\"fact_prcDept\",\n"
+  "\"LoanPayment\".\"fact_peni\",\n"
+  "\"LoanPayment\".\"idLoan\"\n"
+  "FROM \"LoanPayment\"\n"
+  "LEFT JOIN \"User\" AS \"deletedBy\" ON \"deletedBy\".\"id\"=\"LoanPayment\".\"deletedBy\"\n"
+  "LEFT JOIN \"User\" AS \"idUser\" ON \"idUser\".\"id\"=\"LoanPayment\".\"idUser\"\n"
+  "LEFT JOIN \"Person\" AS \"idPerson\" ON \"idPerson\".\"id\"=\"LoanPayment\".\"idPerson\"\n"
+  "LEFT JOIN \"Member\" AS \"idMember\" ON \"idMember\".\"id\"=\"LoanPayment\".\"idMember\"\n"
+  "LEFT JOIN \"Bank\" AS \"bank\" ON \"bank\".\"id\"=\"LoanPayment\".\"bank\"\n"
+  "LEFT JOIN \"Loan\" AS \"idLoan\" ON \"idLoan\".\"id\"=\"LoanPayment\".\"idLoan\"";
 
-  const char access::object_traits_impl< ::kpk::data::LoanOper, id_pgsql >::erase_query_statement[] =
-  "DELETE FROM \"LoanOper\"";
+  const char access::object_traits_impl< ::kpk::data::LoanPayment, id_pgsql >::erase_query_statement[] =
+  "DELETE FROM \"LoanPayment\"";
 
-  const char access::object_traits_impl< ::kpk::data::LoanOper, id_pgsql >::table_name[] =
-  "\"LoanOper\"";
+  const char access::object_traits_impl< ::kpk::data::LoanPayment, id_pgsql >::table_name[] =
+  "\"LoanPayment\"";
 
-  void access::object_traits_impl< ::kpk::data::LoanOper, id_pgsql >::
+  void access::object_traits_impl< ::kpk::data::LoanPayment, id_pgsql >::
   persist (database& db, object_type& obj)
   {
     ODB_POTENTIALLY_UNUSED (db);
@@ -745,7 +620,7 @@ namespace odb
               callback_event::post_persist);
   }
 
-  void access::object_traits_impl< ::kpk::data::LoanOper, id_pgsql >::
+  void access::object_traits_impl< ::kpk::data::LoanPayment, id_pgsql >::
   update (database& db, const object_type& obj)
   {
     ODB_POTENTIALLY_UNUSED (db);
@@ -806,7 +681,7 @@ namespace odb
     pointer_cache_traits::update (db, obj);
   }
 
-  void access::object_traits_impl< ::kpk::data::LoanOper, id_pgsql >::
+  void access::object_traits_impl< ::kpk::data::LoanPayment, id_pgsql >::
   erase (database& db, const id_type& id)
   {
     using namespace pgsql;
@@ -835,8 +710,8 @@ namespace odb
     pointer_cache_traits::erase (db, id);
   }
 
-  access::object_traits_impl< ::kpk::data::LoanOper, id_pgsql >::pointer_type
-  access::object_traits_impl< ::kpk::data::LoanOper, id_pgsql >::
+  access::object_traits_impl< ::kpk::data::LoanPayment, id_pgsql >::pointer_type
+  access::object_traits_impl< ::kpk::data::LoanPayment, id_pgsql >::
   find (database& db, const id_type& id)
   {
     using namespace pgsql;
@@ -891,7 +766,7 @@ namespace odb
     return p;
   }
 
-  bool access::object_traits_impl< ::kpk::data::LoanOper, id_pgsql >::
+  bool access::object_traits_impl< ::kpk::data::LoanPayment, id_pgsql >::
   find (database& db, const id_type& id, object_type& obj)
   {
     using namespace pgsql;
@@ -924,7 +799,7 @@ namespace odb
     return true;
   }
 
-  bool access::object_traits_impl< ::kpk::data::LoanOper, id_pgsql >::
+  bool access::object_traits_impl< ::kpk::data::LoanPayment, id_pgsql >::
   reload (database& db, object_type& obj)
   {
     using namespace pgsql;
@@ -954,7 +829,7 @@ namespace odb
     return true;
   }
 
-  bool access::object_traits_impl< ::kpk::data::LoanOper, id_pgsql >::
+  bool access::object_traits_impl< ::kpk::data::LoanPayment, id_pgsql >::
   find_ (statements_type& sts,
          const id_type* id)
   {
@@ -991,8 +866,8 @@ namespace odb
     return r != select_statement::no_data;
   }
 
-  result< access::object_traits_impl< ::kpk::data::LoanOper, id_pgsql >::object_type >
-  access::object_traits_impl< ::kpk::data::LoanOper, id_pgsql >::
+  result< access::object_traits_impl< ::kpk::data::LoanPayment, id_pgsql >::object_type >
+  access::object_traits_impl< ::kpk::data::LoanPayment, id_pgsql >::
   query (database&, const query_base_type& q)
   {
     using namespace pgsql;
@@ -1046,7 +921,7 @@ namespace odb
     return result<object_type> (r);
   }
 
-  unsigned long long access::object_traits_impl< ::kpk::data::LoanOper, id_pgsql >::
+  unsigned long long access::object_traits_impl< ::kpk::data::LoanPayment, id_pgsql >::
   erase_query (database&, const query_base_type& q)
   {
     using namespace pgsql;

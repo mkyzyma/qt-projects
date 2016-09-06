@@ -11,6 +11,7 @@ TEMPLATE = lib
 
 include("../../odb.pri")
 include("../kpk-data.pri")
+include("../../qdecimal.pri")
 
 DEFINES += KPKCORE_LIBRARY
 

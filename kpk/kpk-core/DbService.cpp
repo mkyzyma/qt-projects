@@ -24,12 +24,11 @@ namespace core{
  */
 odb::session s;
 
-DbService::DbService()
-{
+DbService::
+DbService() {}
 
-}
-
-DbPtr& DbService::connect()
+DbPtr& DbService::
+connect()
 {
     try{
 
@@ -52,12 +51,14 @@ DbPtr& DbService::connect()
     return _db;
 }
 
-DbPtr& DbService::get()
+DbPtr& DbService::
+get()
 {
     return _db;
 }
 
-DbPtr &DbService::createShcema()
+DbPtr &DbService::
+createShcema()
 {
     try {
         begin();
@@ -73,23 +74,23 @@ DbPtr &DbService::createShcema()
         u->password("1234");
         _db->persist(u);
 
-        auto t = LoanType(QString("Неотложные нужды"), 205000);
+        auto t = LoanType(QString("Неотложные нужды"), 20.5);
         t.setCreateInfo(Core()->date()->currentTime(), Core()->auth()->user());
         _db->persist<LoanType>(t);
 
-        t = LoanType(QString("Покупка автомобиля"), 180000);
+        t = LoanType(QString("Покупка автомобиля"), 18);
         t.setCreateInfo(Core()->date()->currentTime(), Core()->auth()->user());
         _db->persist<LoanType>(t);
 
-        t = LoanType(QString("Приобретение жилья (недвижимости)"), 200000);
+        t = LoanType(QString("Приобретение жилья (недвижимости)"), 20);
         t.setCreateInfo(Core()->date()->currentTime(), Core()->auth()->user());
         _db->persist<LoanType>(t);
 
-        t = LoanType(QString("Товарный заем"), 200000);
+        t = LoanType(QString("Товарный заем"), 20);
         t.setCreateInfo(Core()->date()->currentTime(), Core()->auth()->user());
         _db->persist<LoanType>(t);
 
-        t = LoanType(QString("Ипотека"), 160000);
+        t = LoanType(QString("Ипотека"), 16);
         t.setCreateInfo(Core()->date()->currentTime(), Core()->auth()->user());
         _db->persist<LoanType>(t);
 
@@ -103,17 +104,20 @@ DbPtr &DbService::createShcema()
     return _db;
 }
 
-void DbService::begin()
+void DbService::
+begin()
 {
     _tr = TrPtr(new odb::transaction(_db->begin()));
 }
 
-void DbService::commit()
+void DbService::
+commit()
 {
     _tr->commit();
 }
 
-void DbService::rollback()
+void DbService::
+rollback()
 {
     _tr->rollback();
 }

@@ -47,6 +47,7 @@ public:
      * \retval nullptr если не удален
      */
     std::shared_ptr<User> deletedBy() const;
+
     /*!
      * \brief Установить признак удаления
      * \param time - время удаления

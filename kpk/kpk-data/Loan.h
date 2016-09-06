@@ -4,15 +4,13 @@
 #include <QtCore/QDate>
 #include <memory>
 
-
-
 #include <odb/core.hxx>
 
 #include "data_global.h"
 
+#include "type.h"
 #include "DbObject.h"
-#include "Member.h"
-#include "Person.h"
+#include "MemberInfo.h"
 #include "LoanType.h"
 
 namespace kpk {
@@ -32,7 +30,8 @@ enum class LoanState
  * \brief Займ
  */
 #pragma db object
-class DATASHARED_EXPORT Loan : public DbObject
+class DATASHARED_EXPORT Loan :
+        public DbObject, public MemberInfo
 {
 public:
     Loan();
@@ -49,7 +48,7 @@ public:
      */
     Loan(MemberPtr member, LoanTypePtr loanType,
          QDate openDate, QDate closeDate,
-         long limit, long rate, long length);
+         const Number &limit, const Number &rate, int length);
 
     /*!
      * \brief Получить идентификатор
@@ -67,7 +66,7 @@ public:
      * \brief Установить дату открытия
      * \param openDate - дата открытия
      */
-    void openDate(QDate& openDate);
+    void openDate(const QDate &openDate);
 
     /*!
      * \brief Получить дату завершения
@@ -79,17 +78,17 @@ public:
      * \brief Установить дату завершения
      * \param closeDate - дата завершения
      */
-    void closeDate(QDate& closeDate);    
+    void closeDate(const QDate &closeDate);
 
     /*!
-     * \brief Закрыт ли займ
-     * \return Признак закрытия
+     * \brief Получить состояние
+     * \return Состояние
      */
     LoanState state() const;
 
     /*!
-     * \brief Установить признак закрытия
-     * \param isClosed - признак закрытия
+     * \brief Установить состояние
+     * \param state - состояние
      */
     void state(LoanState state);
 
@@ -97,13 +96,13 @@ public:
      * \brief Получить процентную ставку
      * \return Процентная ставка
      */
-    long rate() const;
+    Number rate() const;
 
     /*!
      * \brief Установить процентную ставку
      * \param rate - процентная ставка
      */
-    void rate(long rate);
+    void rate(const Number &rate);
 
     /*!
      * \brief Получить лимит кредитования
@@ -111,7 +110,7 @@ public:
      * Максимальная сумма займа
      * \return Лимит кредитования
      */
-    long limit() const;
+    Number limit() const;
 
     /*!
      * \brief Установить лимит кредитования
@@ -119,73 +118,55 @@ public:
      * Максимальная сумма займа
      * \param limit - Лимит кредитования
      */
-    void limit(long limit);
+    void limit(const  Number &limit);
 
     /*!
      * \brief Получить срок займа
      * \return Срок займа
      */
-    long length() const;
+    int length() const;
 
     /*!
      * \brief Установить срок займа
      * \param length - срок займа
      */
-    void length(long length);
+    void length(int length);
 
     /*!
      * \brief Получить выданную сумма
      * \return Выданная сумма
      */
-    long sum() const;
+    Number sum() const;
 
     /*!
      * \brief Установить выданную сумму
      * \param sum - выданная сумма
      */
-    void sum(long sum);
+    void sum(const Number &sum);
 
     /*!
      * \brief Получить начисленную компенсация
      * \return Начисленная компенсация
      */
-    long prc() const;
+    Number prc() const;
 
     /*!
      * \brief Установить начисленную компенсация
      * \param prc - начисленная компенсация
      */
-    void prc(long prc);
+    void prc(const Number &prc);
 
     /*!
      * \brief Получить остаток займа
      * \return остаток займа
      */
-    long remains() const;
+    Number remains() const;
 
     /*!
      * \brief Установить остаток займа
      * \param remains - остаток займа
      */
-    void remains(long remains);
-
-    /*!
-     * \brief Получить пайщика
-     * \return Пайщик
-     */
-    MemberPtr member() const;
-
-    /*!
-     * \brief Установить пайщика
-     * \param member - пайщик
-     */
-    void member(const MemberPtr &member);
-
-    /*!
-     * \brief Получить личные данные
-     * \return личные данные
-     */
-    PersonPtr person() const;
+    void remains(const Number &remains);    
 
     /*!
      * \brief Получить вид займа
@@ -208,20 +189,12 @@ private:
     QDate _openDate;
     QDate _closeDate;
     LoanState _state = LoanState::inactive;
-    long _rate;
-    long _limit;
-    long _length;
-    long _sum = 0;
-    long _remains;
-    long _prc = 0;
-
-    #pragma db not_null
-    #pragma db column("idMember")
-    MemberPtr _member;
-
-    #pragma db not_null
-    #pragma db column("idPerson")
-    PersonPtr _person;
+    Number _rate;
+    Number _limit;
+    int _length;
+    Number _sum = 0;
+    Number _remains = 0;
+    Number _prc = 0;    
 
     #pragma db not_null
     #pragma db column("idLoanType")

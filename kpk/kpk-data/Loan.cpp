@@ -3,139 +3,146 @@
 namespace kpk {
 namespace data {
 
-Loan::Loan()
-{
+Loan::
+Loan()
+{}
 
-}
-
-Loan::Loan(MemberPtr member, LoanTypePtr loanType,
-           QDate openDate, QDate closeDate,
-           long limit, long rate, long length)
-    : _member(member), _person(member->person()), _openDate(openDate),
+Loan::
+Loan(MemberPtr member, LoanTypePtr loanType,
+     QDate openDate, QDate closeDate,
+     const Number &limit, const Number &rate, int length)
+    : MemberInfo(member), _openDate(openDate),
       _closeDate(closeDate), _limit(limit), _rate(rate), _length(length),
       _loanType(loanType)
 {}
 
-ulong Loan::id()
+ulong Loan::
+id()
 {
    return _id;
 }
 
-QDate Loan::openDate()
+QDate Loan::
+openDate()
 {
     return _openDate;
 }
 
-void Loan::openDate(QDate &val)
+void Loan::
+openDate(const QDate &val)
 {
     _openDate = val;
 }
 
-QDate Loan::closeDate()
+QDate Loan::
+closeDate()
 {
     return _closeDate;
 }
 
-void Loan::closeDate(QDate &closeDate)
+void Loan::
+closeDate(const QDate &closeDate)
 {
     _closeDate = closeDate;
 }
 
-MemberPtr Loan::member() const
-{
-    return _member;
-}
-
-void Loan::member(const MemberPtr &member)
-{
-    _member = member;
-    _person = member->person();
-}
-
-PersonPtr Loan::person() const
-{
-    return _person;
-}
-
-LoanTypePtr Loan::loanType() const
+LoanTypePtr Loan::
+loanType() const
 {
     return _loanType;
 }
 
-void Loan::loanType(const LoanTypePtr &loanType)
+void Loan::
+loanType(const LoanTypePtr &loanType)
 {
     _loanType = loanType;
 }
 
-LoanState Loan::state() const
+LoanState Loan::
+state() const
 {
     return _state;
 }
 
-void Loan::state(LoanState isClosed)
+void Loan::
+state(LoanState isClosed)
 {
     _state = isClosed;
 }
 
-long Loan::rate() const
+Number Loan::
+rate() const
 {
     return _rate;
 }
 
-void Loan::rate(long rate)
+void Loan::
+rate(const Number &rate)
 {
     _rate = rate;
 }
 
-long Loan::limit() const
+Number Loan::
+limit() const
 {
     return _limit;
 }
 
-void Loan::limit(long limit)
+void Loan::
+limit(const Number &limit)
 {
     _limit = limit;
 }
 
-long Loan::length() const
+int Loan::
+length() const
 {
     return _length;
 }
 
-void Loan::length(long length)
+void Loan::
+length(int length)
 {
     _length = length;
 }
 
-long Loan::sum() const
+Number Loan::
+sum() const
 {
     return _sum;
 }
 
-void Loan::sum(long sum)
+void Loan::
+sum(const Number &sum)
 {
     _sum = sum;
 }
 
-long Loan::prc() const
+Number Loan::
+prc() const
 {
     return _prc;
 }
 
-void Loan::prc(long prc)
+void Loan::
+prc(const Number &prc)
 {
     _prc = prc;
 }
 
-long Loan::remains() const
+Number Loan::
+remains() const
 {
     return _remains;
 }
 
-void Loan::remains(long remains)
+void Loan::
+remains(const Number &remains)
 {
     _remains = remains;
 }
+
+
 
 }
 }

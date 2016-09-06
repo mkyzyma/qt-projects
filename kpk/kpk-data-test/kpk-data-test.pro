@@ -19,6 +19,7 @@ TEMPLATE = app
 
 include("../../odb.pri")
 include("../kpk-data.pri")
+include("../../qdecimal.pri")
 
 SOURCES += tst_kpkDataTest.cpp
 DEFINES += SRCDIR=\\\"$$PWD/\\\"

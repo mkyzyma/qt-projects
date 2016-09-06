@@ -3,65 +3,78 @@
 namespace kpk{
 namespace data{
 
-Person::Person()
+Person::
+Person()
 {}
 
-ulong Person::id() const
+ulong Person::
+id() const
 {
     return _id;
 }
 
-Name &Person::name()
+Name &Person::
+name()
 {
     return _name;
 }
 
-Passport &Person::passport()
+Passport &Person::
+passport()
 {
     return _passport;
 }
 
-QString Person::inn() const
+QString Person::
+inn() const
 {
     return _inn;
 }
 
-void Person::inn(const QString &inn)
+void Person::
+inn(const QString &inn)
 {
     _inn = inn;
 }
 
-QString Person::snils() const
+QString Person::
+snils() const
 {
     return _snils;
 }
 
-void Person::snils(const QString &snils)
+void Person::
+snils(const QString &snils)
 {
     _snils = snils;
 }
 
-bool Person::isNew()
+bool Person::
+isNew()
 {
     return id() == 0;
 }
 
-std::weak_ptr<Member> Person::member() const
+//std::weak_ptr<Member> Person::
+MemberPtr Person::
+member() const
 {
-    return _member;
+    return _member.lock();
 }
 
-void Person::member(const std::weak_ptr<Member> &member)
+void Person::
+member(const std::weak_ptr<Member> &member)
 {
     _member = member;
 }
 
-bool Person::isMember()
+bool Person::
+isMember()
 {
     /*return !member().isNull() &&
             member()->exitReason() == ER_NONE;*/
 
-    if(auto m = member().lock()){
+    if(auto m = member()){
         return m->exitReason() == ExitReason::none;
     }
     return false;

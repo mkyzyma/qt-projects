@@ -57,7 +57,7 @@ namespace odb
     pgsql::int4_oid,
     pgsql::int8_oid,
     pgsql::int8_oid,
-    pgsql::int8_oid,
+    pgsql::int4_oid,
     pgsql::int8_oid,
     pgsql::int8_oid,
     pgsql::int8_oid,
@@ -85,7 +85,7 @@ namespace odb
     pgsql::int4_oid,
     pgsql::int8_oid,
     pgsql::int8_oid,
-    pgsql::int8_oid,
+    pgsql::int4_oid,
     pgsql::int8_oid,
     pgsql::int8_oid,
     pgsql::int8_oid,
@@ -297,7 +297,7 @@ namespace odb
 
     // _length
     //
-    b[n].type = pgsql::bind::bigint;
+    b[n].type = pgsql::bind::integer;
     b[n].buffer = &i._length_value;
     b[n].is_null = &i._length_null;
     n++;
@@ -417,12 +417,12 @@ namespace odb
     // _rate
     //
     {
-      long int const& v =
+      ::Number const& v =
         o._rate;
 
       bool is_null (false);
       pgsql::value_traits<
-          long int,
+          ::Number,
           pgsql::id_bigint >::set_image (
         i._rate_value, is_null, v);
       i._rate_null = is_null;
@@ -431,12 +431,12 @@ namespace odb
     // _limit
     //
     {
-      long int const& v =
+      ::Number const& v =
         o._limit;
 
       bool is_null (false);
       pgsql::value_traits<
-          long int,
+          ::Number,
           pgsql::id_bigint >::set_image (
         i._limit_value, is_null, v);
       i._limit_null = is_null;
@@ -445,13 +445,13 @@ namespace odb
     // _length
     //
     {
-      long int const& v =
+      int const& v =
         o._length;
 
       bool is_null (false);
       pgsql::value_traits<
-          long int,
-          pgsql::id_bigint >::set_image (
+          int,
+          pgsql::id_integer >::set_image (
         i._length_value, is_null, v);
       i._length_null = is_null;
     }
@@ -459,12 +459,12 @@ namespace odb
     // _sum
     //
     {
-      long int const& v =
+      ::Number const& v =
         o._sum;
 
       bool is_null (false);
       pgsql::value_traits<
-          long int,
+          ::Number,
           pgsql::id_bigint >::set_image (
         i._sum_value, is_null, v);
       i._sum_null = is_null;
@@ -473,12 +473,12 @@ namespace odb
     // _remains
     //
     {
-      long int const& v =
+      ::Number const& v =
         o._remains;
 
       bool is_null (false);
       pgsql::value_traits<
-          long int,
+          ::Number,
           pgsql::id_bigint >::set_image (
         i._remains_value, is_null, v);
       i._remains_null = is_null;
@@ -487,12 +487,12 @@ namespace odb
     // _prc
     //
     {
-      long int const& v =
+      ::Number const& v =
         o._prc;
 
       bool is_null (false);
       pgsql::value_traits<
-          long int,
+          ::Number,
           pgsql::id_bigint >::set_image (
         i._prc_value, is_null, v);
       i._prc_null = is_null;
@@ -648,11 +648,11 @@ namespace odb
     // _rate
     //
     {
-      long int& v =
+      ::Number& v =
         o._rate;
 
       pgsql::value_traits<
-          long int,
+          ::Number,
           pgsql::id_bigint >::set_value (
         v,
         i._rate_value,
@@ -662,11 +662,11 @@ namespace odb
     // _limit
     //
     {
-      long int& v =
+      ::Number& v =
         o._limit;
 
       pgsql::value_traits<
-          long int,
+          ::Number,
           pgsql::id_bigint >::set_value (
         v,
         i._limit_value,
@@ -676,12 +676,12 @@ namespace odb
     // _length
     //
     {
-      long int& v =
+      int& v =
         o._length;
 
       pgsql::value_traits<
-          long int,
-          pgsql::id_bigint >::set_value (
+          int,
+          pgsql::id_integer >::set_value (
         v,
         i._length_value,
         i._length_null);
@@ -690,11 +690,11 @@ namespace odb
     // _sum
     //
     {
-      long int& v =
+      ::Number& v =
         o._sum;
 
       pgsql::value_traits<
-          long int,
+          ::Number,
           pgsql::id_bigint >::set_value (
         v,
         i._sum_value,
@@ -704,11 +704,11 @@ namespace odb
     // _remains
     //
     {
-      long int& v =
+      ::Number& v =
         o._remains;
 
       pgsql::value_traits<
-          long int,
+          ::Number,
           pgsql::id_bigint >::set_value (
         v,
         i._remains_value,
@@ -718,11 +718,11 @@ namespace odb
     // _prc
     //
     {
-      long int& v =
+      ::Number& v =
         o._prc;
 
       pgsql::value_traits<
-          long int,
+          ::Number,
           pgsql::id_bigint >::set_value (
         v,
         i._prc_value,

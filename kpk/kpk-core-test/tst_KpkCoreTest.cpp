@@ -32,6 +32,7 @@ private Q_SLOTS:
     void canEnter();
     void canExit();
     void canEnterAgain();
+    void canOpenLoan();
 };
 
 KpkCoreTest::KpkCoreTest()
@@ -155,7 +156,7 @@ void KpkCoreTest::canExit()
         Core()->commit();
 
         QVERIFY2(!p->isMember(), "Must be not member, but stil a member");
-        QVERIFY2(p->member().lock()->exitReason() == ExitReason::exit, "Wrong exit reason");
+        QVERIFY2(p->member()->exitReason() == ExitReason::exit, "Wrong exit reason");
     }
 
     catch(const odb::pgsql::database_exception e){
@@ -177,7 +178,7 @@ void KpkCoreTest::canEnterAgain()
 
         QVERIFY2(p->isMember(), "Must be a member, but is not");
 
-        auto m = p->member().lock();
+        auto m = p->member();
         QVERIFY2(m->inDate() == QDate::currentDate(), "Wrong enter date");
         Core()->begin();
         auto r = Core()->person()->membership(p->id());
@@ -187,6 +188,32 @@ void KpkCoreTest::canEnterAgain()
 
         Core()->commit();
 
+    }
+
+    catch(const std::exception e){
+        Core()->rollback();
+        QVERIFY2(false, e.what());
+    }
+}
+
+void KpkCoreTest::canOpenLoan()
+{
+    try{
+        Core()->begin();
+
+        auto t = Core()->loan()->getLoanType(1);
+        auto date = Core()->date()->working();
+        auto l = Core()->loan()->open(_p->member(), t, date, "1000000", "20", 12);
+
+        Core()->commit();
+
+        Core()->begin();
+
+        l = Core()->loan()->get(l->id());
+
+        QVERIFY2(l->limit() == 1000000, "Wrong limit");
+
+        Core()->commit();
     }
 
     catch(const std::exception e){

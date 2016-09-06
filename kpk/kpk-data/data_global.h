@@ -2,6 +2,7 @@
 #define KPKDATA_GLOBAL_H
 
 #include <QtCore/qglobal.h>
+
 /*!
  * \file
  * \brief Необходимые директивы препроцессора
@@ -22,13 +23,14 @@
 
 #ifdef ODB_COMPILER
 #   pragma db model version(DB_BASE_VERSION, 1, open)
+#   include <QDecNumber.hh>
 #else
 #   pragma warning(disable : 4068)
 #endif
 
 #pragma db namespace() pointer(std::shared_ptr)
 #pragma db namespace() session
-
+#pragma db value(QDecNumber) type("BIGINT")
 
 
 #endif // KPKDATA_GLOBAL_H

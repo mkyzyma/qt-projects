@@ -4,7 +4,7 @@
 
 #include <odb/pre.hxx>
 
-#include "LoanOperValue-odb.hxx"
+#include "LoanPaymentValue-odb.hxx"
 
 #include <cassert>
 #include <cstring>  // std::memcpy
@@ -21,10 +21,10 @@
 
 namespace odb
 {
-  // LoanOperValue
+  // LoanPaymentValue
   //
 
-  bool access::composite_value_traits< ::kpk::data::LoanOperValue, id_pgsql >::
+  bool access::composite_value_traits< ::kpk::data::LoanPaymentValue, id_pgsql >::
   grow (image_type& i,
         bool* t)
   {
@@ -64,7 +64,7 @@ namespace odb
     return grew;
   }
 
-  void access::composite_value_traits< ::kpk::data::LoanOperValue, id_pgsql >::
+  void access::composite_value_traits< ::kpk::data::LoanPaymentValue, id_pgsql >::
   bind (pgsql::bind* b,
         image_type& i,
         pgsql::statement_kind sk)
@@ -128,7 +128,7 @@ namespace odb
     n++;
   }
 
-  bool access::composite_value_traits< ::kpk::data::LoanOperValue, id_pgsql >::
+  bool access::composite_value_traits< ::kpk::data::LoanPaymentValue, id_pgsql >::
   init (image_type& i,
         const value_type& o,
         pgsql::statement_kind sk)
@@ -158,12 +158,12 @@ namespace odb
     // _amount
     //
     {
-      long int const& v =
+      ::Number const& v =
         o._amount;
 
       bool is_null (false);
       pgsql::value_traits<
-          long int,
+          ::Number,
           pgsql::id_bigint >::set_image (
         i._amount_value, is_null, v);
       i._amount_null = is_null;
@@ -172,12 +172,12 @@ namespace odb
     // _loan
     //
     {
-      long int const& v =
+      ::Number const& v =
         o._loan;
 
       bool is_null (false);
       pgsql::value_traits<
-          long int,
+          ::Number,
           pgsql::id_bigint >::set_image (
         i._loan_value, is_null, v);
       i._loan_null = is_null;
@@ -186,12 +186,12 @@ namespace odb
     // _loanDept
     //
     {
-      long int const& v =
+      ::Number const& v =
         o._loanDept;
 
       bool is_null (false);
       pgsql::value_traits<
-          long int,
+          ::Number,
           pgsql::id_bigint >::set_image (
         i._loanDept_value, is_null, v);
       i._loanDept_null = is_null;
@@ -200,12 +200,12 @@ namespace odb
     // _prc
     //
     {
-      long int const& v =
+      ::Number const& v =
         o._prc;
 
       bool is_null (false);
       pgsql::value_traits<
-          long int,
+          ::Number,
           pgsql::id_bigint >::set_image (
         i._prc_value, is_null, v);
       i._prc_null = is_null;
@@ -214,12 +214,12 @@ namespace odb
     // _prcDept
     //
     {
-      long int const& v =
+      ::Number const& v =
         o._prcDept;
 
       bool is_null (false);
       pgsql::value_traits<
-          long int,
+          ::Number,
           pgsql::id_bigint >::set_image (
         i._prcDept_value, is_null, v);
       i._prcDept_null = is_null;
@@ -228,12 +228,12 @@ namespace odb
     // _peni
     //
     {
-      long int const& v =
+      ::Number const& v =
         o._peni;
 
       bool is_null (false);
       pgsql::value_traits<
-          long int,
+          ::Number,
           pgsql::id_bigint >::set_image (
         i._peni_value, is_null, v);
       i._peni_null = is_null;
@@ -242,7 +242,7 @@ namespace odb
     return grew;
   }
 
-  void access::composite_value_traits< ::kpk::data::LoanOperValue, id_pgsql >::
+  void access::composite_value_traits< ::kpk::data::LoanPaymentValue, id_pgsql >::
   init (value_type& o,
         const image_type&  i,
         database* db)
@@ -268,11 +268,11 @@ namespace odb
     // _amount
     //
     {
-      long int& v =
+      ::Number& v =
         o._amount;
 
       pgsql::value_traits<
-          long int,
+          ::Number,
           pgsql::id_bigint >::set_value (
         v,
         i._amount_value,
@@ -282,11 +282,11 @@ namespace odb
     // _loan
     //
     {
-      long int& v =
+      ::Number& v =
         o._loan;
 
       pgsql::value_traits<
-          long int,
+          ::Number,
           pgsql::id_bigint >::set_value (
         v,
         i._loan_value,
@@ -296,11 +296,11 @@ namespace odb
     // _loanDept
     //
     {
-      long int& v =
+      ::Number& v =
         o._loanDept;
 
       pgsql::value_traits<
-          long int,
+          ::Number,
           pgsql::id_bigint >::set_value (
         v,
         i._loanDept_value,
@@ -310,11 +310,11 @@ namespace odb
     // _prc
     //
     {
-      long int& v =
+      ::Number& v =
         o._prc;
 
       pgsql::value_traits<
-          long int,
+          ::Number,
           pgsql::id_bigint >::set_value (
         v,
         i._prc_value,
@@ -324,11 +324,11 @@ namespace odb
     // _prcDept
     //
     {
-      long int& v =
+      ::Number& v =
         o._prcDept;
 
       pgsql::value_traits<
-          long int,
+          ::Number,
           pgsql::id_bigint >::set_value (
         v,
         i._prcDept_value,
@@ -338,11 +338,11 @@ namespace odb
     // _peni
     //
     {
-      long int& v =
+      ::Number& v =
         o._peni;
 
       pgsql::value_traits<
-          long int,
+          ::Number,
           pgsql::id_bigint >::set_value (
         v,
         i._peni_value,

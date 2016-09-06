@@ -19,8 +19,8 @@
 #include "kpk-data/Loan.h"
 #include "kpk-data/Loan-odb.hxx"
 
-#include "kpk-data/LoanOper.h"
-#include "kpk-data/LoanOper-odb.hxx"
+#include "kpk-data/LoanPayment.h"
+#include "kpk-data/LoanPayment-odb.hxx"
 
 namespace kpk {
 namespace test {
@@ -257,7 +257,7 @@ void kpkDataTest::loanOperCanPersist()
 
        auto p (getPerson());
 
-       std::shared_ptr<LoanOper> o(new LoanOper);
+       std::shared_ptr<LoanPayment> o(new LoanPayment(QDate::currentDate()));
 
        o->fact().date(QDate::currentDate());
        o->plan().date(QDate::currentDate().addDays(10));      
@@ -277,8 +277,8 @@ void kpkDataTest::loanOperPersisted()
     try{
        odb::transaction t (_db->begin ());
 
-       odb::result<LoanOper>
-       r (_db->query<LoanOper> (odb::query<LoanOper>::loan == getLoan()->id()));
+       odb::result<LoanPayment>
+       r (_db->query<LoanPayment> (odb::query<LoanPayment>::loan == getLoan()->id()));
 
        auto o(r.begin().load());
 

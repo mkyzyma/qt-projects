@@ -17,6 +17,7 @@
 #include <odb/qt/date-time/pgsql/qdate-traits.hxx>
 #include <odb/qt/date-time/pgsql/qtime-traits.hxx>
 #include <odb/qt/date-time/pgsql/qdate-time-traits.hxx>
+#include "traits-pgsql.h"
 //
 // End prologue.
 

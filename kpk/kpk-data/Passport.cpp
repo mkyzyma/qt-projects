@@ -3,27 +3,69 @@ namespace kpk
 {
 namespace data
 {
-
-
-Passport::Passport()
+Passport::
+Passport()
 { }
 
-QString Passport::series() const { return _series; }
-void Passport::series(const QString &series){ _series = series; }
+QString Passport::
+series() const
+{
+    return _series;
+}
 
-QString Passport::number() const { return _number; }
-void Passport::number(const QString &number){ _number = number; }
+void Passport::
+series(const QString &series)
+{
+    _series = series;
+}
 
-QDate Passport::date() const { return _date; }
-void Passport::date(const QDate &date) { _date = date; }
+QString Passport::
+number() const
+{
+    return _number;
+}
 
-QString Passport::org() const { return _org; }
-void Passport::org(const QString &org) { _org = org; }
+void Passport::
+number(const QString &number)
+{
+    _number = number;
+}
 
-QString Passport::orgCode() const { return _orgCode; }
-void Passport::orgCode(const QString &orgCode) { _orgCode = orgCode; }
+QDate Passport::
+date() const
+{
+    return _date;
+}
+void Passport::
+date(const QDate &date)
+{
+    _date = date;
+}
 
-QString Passport::set(QString series, QString number, QDate date, QString org, QString orgCode)
+QString Passport::
+org() const
+{
+    return _org;
+}
+void Passport::
+org(const QString &org)
+{
+    _org = org;
+}
+
+QString Passport::
+orgCode() const
+{
+    return _orgCode;
+}
+void Passport::
+orgCode(const QString &orgCode)
+{
+    _orgCode = orgCode;
+}
+
+QString Passport::
+set(QString series, QString number, QDate date, QString org, QString orgCode)
 {
     this->series(series);
     this->number(number);
@@ -33,7 +75,8 @@ QString Passport::set(QString series, QString number, QDate date, QString org, Q
     return full();
 }
 
-QString Passport::full()
+QString Passport::
+full()
 {
     return QString("%1 %2 выдан %3 %4 код отд. %5")
             .arg(series())
@@ -43,7 +86,8 @@ QString Passport::full()
             .arg(orgCode());
 }
 
-QString Passport::toString()
+QString Passport::
+toString()
 {
    return full();
 }

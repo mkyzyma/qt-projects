@@ -66,11 +66,18 @@ public:
      */
     void rollback();
     /*!
+     * \brief Число из строки
+     * \param str - строка
+     * \return Число
+     */
+    long numberFormString(QString str);
+    /*!
      * \brief Получить экземпляр объекта
      * \return Экземпляр объекта
      */
-    static CoreClass* instance();
+    static CoreClass* instance();    
 protected:
+    enum constants{DEC_DIGITS = 4};
     CoreClass();
     virtual ~CoreClass();
 private:

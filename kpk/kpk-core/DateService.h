@@ -18,6 +18,7 @@ class CORESHARED_EXPORT DateService : public QObject
     Q_OBJECT
 public:
     explicit DateService(QObject *parent = 0);
+
     /*!
      * \brief Конструктор
      * \param working - рабочая дата

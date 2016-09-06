@@ -3,59 +3,75 @@
 namespace kpk{
 namespace core{
 
-CoreClass::CoreClass()   
-{    
-}
+CoreClass::
+CoreClass() {}
 
-CoreClass::~CoreClass()
-{}
+CoreClass::
+~CoreClass() {}
 
-std::shared_ptr<AuthService> CoreClass::auth() const
+std::shared_ptr<AuthService> CoreClass::
+auth() const
 {
     return _auth;
 }
 
-std::shared_ptr<DbService> CoreClass::dbService() const
+std::shared_ptr<DbService> CoreClass::
+dbService() const
 {
     return _dbService;
 }
 
-DbPtr CoreClass::db()
+DbPtr CoreClass::
+db()
 {
     return dbService()->get();
 }
 
-std::shared_ptr<DateService> CoreClass::date() const
+std::shared_ptr<DateService> CoreClass::
+date() const
 {
     return _date;
 }
 
-std::shared_ptr<PersonService> CoreClass::person() const
+std::shared_ptr<PersonService> CoreClass::
+person() const
 {
     return _person;
 }
 
-std::shared_ptr<LoanService> CoreClass::loan() const
+std::shared_ptr<LoanService> CoreClass::
+loan() const
 {
     return _loan;
 }
 
-void CoreClass::begin()
+void CoreClass::
+begin()
 {
     dbService()->begin();
 }
 
-void CoreClass::commit()
+void CoreClass::
+commit()
 {
     dbService()->commit();
 }
 
-void CoreClass::rollback()
+void CoreClass::
+rollback()
 {
     dbService()->rollback();
 }
 
-CoreClass *CoreClass::instance()
+long CoreClass::
+numberFormString(QString str)
+{
+    bool ok;
+    return str.toLong(&ok, 10);
+}
+
+CoreClass *CoreClass::
+instance()
 {
     static CoreClass instance;
     return &instance;
