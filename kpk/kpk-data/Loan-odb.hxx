@@ -35,6 +35,7 @@
 #include "IsDeleted-odb.hxx"
 #include "LoanType-odb.hxx"
 #include "Member-odb.hxx"
+#include "MemberInfo-odb.hxx"
 #include "Name-odb.hxx"
 #include "Passport-odb.hxx"
 #include "Person-odb.hxx"
@@ -121,11 +122,16 @@ namespace odb
   //
   template <typename A>
   struct pointer_query_columns< ::kpk::data::Loan, id_pgsql, A >:
-    pointer_query_columns< ::kpk::data::DbObject, id_pgsql, A >
+    pointer_query_columns< ::kpk::data::DbObject, id_pgsql, A >,
+    pointer_query_columns< ::kpk::data::MemberInfo, id_pgsql, A >
   {
     // DbObject
     //
     typedef pointer_query_columns< ::kpk::data::DbObject, id_pgsql, A > DbObject;
+
+    // MemberInfo
+    //
+    typedef pointer_query_columns< ::kpk::data::MemberInfo, id_pgsql, A > MemberInfo;
 
     // id
     //
@@ -163,17 +169,17 @@ namespace odb
 
     static const closeDate_type_ closeDate;
 
-    // state
+    // status
     //
     typedef
     pgsql::query_column<
       pgsql::value_traits<
-        ::kpk::data::LoanState,
+        ::kpk::data::LoanStatus,
         pgsql::id_integer >::query_type,
       pgsql::id_integer >
-    state_type_;
+    status_type_;
 
-    static const state_type_ state;
+    static const status_type_ status;
 
     // rate
     //
@@ -247,30 +253,6 @@ namespace odb
 
     static const prc_type_ prc;
 
-    // member
-    //
-    typedef
-    pgsql::query_column<
-      pgsql::value_traits<
-        ::ulong,
-        pgsql::id_bigint >::query_type,
-      pgsql::id_bigint >
-    member_type_;
-
-    static const member_type_ member;
-
-    // person
-    //
-    typedef
-    pgsql::query_column<
-      pgsql::value_traits<
-        ::ulong,
-        pgsql::id_bigint >::query_type,
-      pgsql::id_bigint >
-    person_type_;
-
-    static const person_type_ person;
-
     // loanType
     //
     typedef
@@ -282,6 +264,18 @@ namespace odb
     loanType_type_;
 
     static const loanType_type_ loanType;
+
+    // state
+    //
+    typedef
+    pgsql::query_column<
+      pgsql::value_traits<
+        ::ulong,
+        pgsql::id_bigint >::query_type,
+      pgsql::id_bigint >
+    state_type_;
+
+    static const state_type_ state;
   };
 
   template <typename A>
@@ -300,9 +294,9 @@ namespace odb
   closeDate (A::table_name, "\"closeDate\"", 0);
 
   template <typename A>
-  const typename pointer_query_columns< ::kpk::data::Loan, id_pgsql, A >::state_type_
+  const typename pointer_query_columns< ::kpk::data::Loan, id_pgsql, A >::status_type_
   pointer_query_columns< ::kpk::data::Loan, id_pgsql, A >::
-  state (A::table_name, "\"state\"", 0);
+  status (A::table_name, "\"status\"", 0);
 
   template <typename A>
   const typename pointer_query_columns< ::kpk::data::Loan, id_pgsql, A >::rate_type_
@@ -335,19 +329,14 @@ namespace odb
   prc (A::table_name, "\"prc\"", 0);
 
   template <typename A>
-  const typename pointer_query_columns< ::kpk::data::Loan, id_pgsql, A >::member_type_
-  pointer_query_columns< ::kpk::data::Loan, id_pgsql, A >::
-  member (A::table_name, "\"idMember\"", 0);
-
-  template <typename A>
-  const typename pointer_query_columns< ::kpk::data::Loan, id_pgsql, A >::person_type_
-  pointer_query_columns< ::kpk::data::Loan, id_pgsql, A >::
-  person (A::table_name, "\"idPerson\"", 0);
-
-  template <typename A>
   const typename pointer_query_columns< ::kpk::data::Loan, id_pgsql, A >::loanType_type_
   pointer_query_columns< ::kpk::data::Loan, id_pgsql, A >::
   loanType (A::table_name, "\"idLoanType\"", 0);
+
+  template <typename A>
+  const typename pointer_query_columns< ::kpk::data::Loan, id_pgsql, A >::state_type_
+  pointer_query_columns< ::kpk::data::Loan, id_pgsql, A >::
+  state (A::table_name, "\"idState\"", 0);
 
   template <>
   class access::object_traits_impl< ::kpk::data::Loan, id_pgsql >:
@@ -362,7 +351,8 @@ namespace odb
       std::size_t version;
     };
 
-    struct image_type: object_traits_impl< ::kpk::data::DbObject, id_pgsql >::image_type
+    struct image_type: object_traits_impl< ::kpk::data::DbObject, id_pgsql >::image_type,
+      object_traits_impl< ::kpk::data::MemberInfo, id_pgsql >::image_type
     {
       // _id
       //
@@ -379,10 +369,10 @@ namespace odb
       int _closeDate_value;
       bool _closeDate_null;
 
-      // _state
+      // _status
       //
-      int _state_value;
-      bool _state_null;
+      int _status_value;
+      bool _status_null;
 
       // _rate
       //
@@ -414,29 +404,23 @@ namespace odb
       long long _prc_value;
       bool _prc_null;
 
-      // _member
-      //
-      long long _member_value;
-      bool _member_null;
-
-      // _person
-      //
-      long long _person_value;
-      bool _person_null;
-
       // _loanType
       //
       long long _loanType_value;
       bool _loanType_null;
+
+      // _state
+      //
+      long long _state_value;
+      bool _state_null;
 
       std::size_t version;
     };
 
     struct extra_statement_cache_type;
 
-    struct member_tag;
-    struct person_tag;
     struct loanType_tag;
+    struct state_tag;
 
     using object_traits<object_type>::id;
 
@@ -475,7 +459,7 @@ namespace odb
 
     typedef pgsql::query_base query_base_type;
 
-    static const std::size_t column_count = 18UL;
+    static const std::size_t column_count = 19UL;
     static const std::size_t id_column_count = 1UL;
     static const std::size_t inverse_column_count = 0UL;
     static const std::size_t readonly_column_count = 0UL;
@@ -554,24 +538,6 @@ namespace odb
   //
   template <>
   struct alias_traits<
-    ::kpk::data::Member,
-    id_pgsql,
-    access::object_traits_impl< ::kpk::data::Loan, id_pgsql >::member_tag>
-  {
-    static const char table_name[];
-  };
-
-  template <>
-  struct alias_traits<
-    ::kpk::data::Person,
-    id_pgsql,
-    access::object_traits_impl< ::kpk::data::Loan, id_pgsql >::person_tag>
-  {
-    static const char table_name[];
-  };
-
-  template <>
-  struct alias_traits<
     ::kpk::data::LoanType,
     id_pgsql,
     access::object_traits_impl< ::kpk::data::Loan, id_pgsql >::loanType_tag>
@@ -580,26 +546,17 @@ namespace odb
   };
 
   template <>
+  struct alias_traits<
+    ::kpk::data::LoanState,
+    id_pgsql,
+    access::object_traits_impl< ::kpk::data::Loan, id_pgsql >::state_tag>
+  {
+    static const char table_name[];
+  };
+
+  template <>
   struct query_columns_base< ::kpk::data::Loan, id_pgsql >
   {
-    // member
-    //
-    typedef
-    odb::alias_traits<
-      ::kpk::data::Member,
-      id_pgsql,
-      access::object_traits_impl< ::kpk::data::Loan, id_pgsql >::member_tag>
-    member_alias_;
-
-    // person
-    //
-    typedef
-    odb::alias_traits<
-      ::kpk::data::Person,
-      id_pgsql,
-      access::object_traits_impl< ::kpk::data::Loan, id_pgsql >::person_tag>
-    person_alias_;
-
     // loanType
     //
     typedef
@@ -608,16 +565,30 @@ namespace odb
       id_pgsql,
       access::object_traits_impl< ::kpk::data::Loan, id_pgsql >::loanType_tag>
     loanType_alias_;
+
+    // state
+    //
+    typedef
+    odb::alias_traits<
+      ::kpk::data::LoanState,
+      id_pgsql,
+      access::object_traits_impl< ::kpk::data::Loan, id_pgsql >::state_tag>
+    state_alias_;
   };
 
   template <typename A>
   struct query_columns< ::kpk::data::Loan, id_pgsql, A >:
     query_columns_base< ::kpk::data::Loan, id_pgsql >,
-    query_columns< ::kpk::data::DbObject, id_pgsql, A >
+    query_columns< ::kpk::data::DbObject, id_pgsql, A >,
+    query_columns< ::kpk::data::MemberInfo, id_pgsql, A >
   {
     // DbObject
     //
     typedef query_columns< ::kpk::data::DbObject, id_pgsql, A > DbObject;
+
+    // MemberInfo
+    //
+    typedef query_columns< ::kpk::data::MemberInfo, id_pgsql, A > MemberInfo;
 
     // id
     //
@@ -655,17 +626,17 @@ namespace odb
 
     static const closeDate_type_ closeDate;
 
-    // state
+    // status
     //
     typedef
     pgsql::query_column<
       pgsql::value_traits<
-        ::kpk::data::LoanState,
+        ::kpk::data::LoanStatus,
         pgsql::id_integer >::query_type,
       pgsql::id_integer >
-    state_type_;
+    status_type_;
 
-    static const state_type_ state;
+    static const status_type_ status;
 
     // rate
     //
@@ -739,62 +710,6 @@ namespace odb
 
     static const prc_type_ prc;
 
-    // member
-    //
-    typedef
-    pgsql::query_column<
-      pgsql::value_traits<
-        ::ulong,
-        pgsql::id_bigint >::query_type,
-      pgsql::id_bigint >
-    member_column_type_;
-
-    typedef
-    odb::query_pointer<
-      odb::pointer_query_columns<
-        ::kpk::data::Member,
-        id_pgsql,
-        member_alias_ > >
-    member_pointer_type_;
-
-    struct member_type_: member_pointer_type_, member_column_type_
-    {
-      member_type_ (const char* t, const char* c, const char* conv)
-        : member_column_type_ (t, c, conv)
-      {
-      }
-    };
-
-    static const member_type_ member;
-
-    // person
-    //
-    typedef
-    pgsql::query_column<
-      pgsql::value_traits<
-        ::ulong,
-        pgsql::id_bigint >::query_type,
-      pgsql::id_bigint >
-    person_column_type_;
-
-    typedef
-    odb::query_pointer<
-      odb::pointer_query_columns<
-        ::kpk::data::Person,
-        id_pgsql,
-        person_alias_ > >
-    person_pointer_type_;
-
-    struct person_type_: person_pointer_type_, person_column_type_
-    {
-      person_type_ (const char* t, const char* c, const char* conv)
-        : person_column_type_ (t, c, conv)
-      {
-      }
-    };
-
-    static const person_type_ person;
-
     // loanType
     //
     typedef
@@ -822,6 +737,34 @@ namespace odb
     };
 
     static const loanType_type_ loanType;
+
+    // state
+    //
+    typedef
+    pgsql::query_column<
+      pgsql::value_traits<
+        ::ulong,
+        pgsql::id_bigint >::query_type,
+      pgsql::id_bigint >
+    state_column_type_;
+
+    typedef
+    odb::query_pointer<
+      odb::pointer_query_columns<
+        ::kpk::data::LoanState,
+        id_pgsql,
+        state_alias_ > >
+    state_pointer_type_;
+
+    struct state_type_: state_pointer_type_, state_column_type_
+    {
+      state_type_ (const char* t, const char* c, const char* conv)
+        : state_column_type_ (t, c, conv)
+      {
+      }
+    };
+
+    static const state_type_ state;
   };
 
   template <typename A>
@@ -840,9 +783,9 @@ namespace odb
   closeDate (A::table_name, "\"closeDate\"", 0);
 
   template <typename A>
-  const typename query_columns< ::kpk::data::Loan, id_pgsql, A >::state_type_
+  const typename query_columns< ::kpk::data::Loan, id_pgsql, A >::status_type_
   query_columns< ::kpk::data::Loan, id_pgsql, A >::
-  state (A::table_name, "\"state\"", 0);
+  status (A::table_name, "\"status\"", 0);
 
   template <typename A>
   const typename query_columns< ::kpk::data::Loan, id_pgsql, A >::rate_type_
@@ -875,19 +818,14 @@ namespace odb
   prc (A::table_name, "\"prc\"", 0);
 
   template <typename A>
-  const typename query_columns< ::kpk::data::Loan, id_pgsql, A >::member_type_
-  query_columns< ::kpk::data::Loan, id_pgsql, A >::
-  member (A::table_name, "\"idMember\"", 0);
-
-  template <typename A>
-  const typename query_columns< ::kpk::data::Loan, id_pgsql, A >::person_type_
-  query_columns< ::kpk::data::Loan, id_pgsql, A >::
-  person (A::table_name, "\"idPerson\"", 0);
-
-  template <typename A>
   const typename query_columns< ::kpk::data::Loan, id_pgsql, A >::loanType_type_
   query_columns< ::kpk::data::Loan, id_pgsql, A >::
   loanType (A::table_name, "\"idLoanType\"", 0);
+
+  template <typename A>
+  const typename query_columns< ::kpk::data::Loan, id_pgsql, A >::state_type_
+  query_columns< ::kpk::data::Loan, id_pgsql, A >::
+  state (A::table_name, "\"idState\"", 0);
 }
 
 #include "Loan-odb.ixx"

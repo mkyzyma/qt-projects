@@ -56,7 +56,7 @@ namespace odb
     //
     t[7UL] = 0;
 
-    // _paymentType
+    // _payType
     //
     t[8UL] = 0;
 
@@ -95,11 +95,11 @@ namespace odb
     b[n].is_null = &i._date_null;
     n++;
 
-    // _paymentType
+    // _payType
     //
     b[n].type = pgsql::bind::integer;
-    b[n].buffer = &i._paymentType_value;
-    b[n].is_null = &i._paymentType_null;
+    b[n].buffer = &i._payType_value;
+    b[n].is_null = &i._payType_null;
     n++;
 
     // _bank
@@ -147,18 +147,18 @@ namespace odb
       i._date_null = is_null;
     }
 
-    // _paymentType
+    // _payType
     //
     {
-      ::kpk::data::PaymentType const& v =
-        o.paymentType ();
+      ::kpk::data::PayType const& v =
+        o.payType ();
 
       bool is_null (false);
       pgsql::value_traits<
-          ::kpk::data::PaymentType,
+          ::kpk::data::PayType,
           pgsql::id_integer >::set_image (
-        i._paymentType_value, is_null, v);
-      i._paymentType_null = is_null;
+        i._payType_value, is_null, v);
+      i._payType_null = is_null;
     }
 
     // _bank
@@ -221,19 +221,19 @@ namespace odb
       o.date (v);
     }
 
-    // _paymentType
+    // _payType
     //
     {
-      ::kpk::data::PaymentType v;
+      ::kpk::data::PayType v;
 
       pgsql::value_traits<
-          ::kpk::data::PaymentType,
+          ::kpk::data::PayType,
           pgsql::id_integer >::set_value (
         v,
-        i._paymentType_value,
-        i._paymentType_null);
+        i._payType_value,
+        i._payType_null);
 
-      o.paymentType (v);
+      o.payType (v);
     }
 
     // _bank

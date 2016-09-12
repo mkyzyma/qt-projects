@@ -19,13 +19,16 @@ namespace data {
 /*!
  * \brief Состояние займа
  */
-enum class LoanState
+enum class LoanStatus
 {
     inactive,   ///<\brief В ожидании
     active,     ///<\brief Выдан
     closed,     ///<\brief Закрыт
     order       ///<\brief Исполнительный лист
 };
+
+
+class LoanState;
 /*!
  * \brief Займ
  */
@@ -84,13 +87,13 @@ public:
      * \brief Получить состояние
      * \return Состояние
      */
-    LoanState state() const;
+    LoanStatus status() const;
 
     /*!
      * \brief Установить состояние
      * \param state - состояние
      */
-    void state(LoanState state);
+    void status(LoanStatus status);
 
     /*!
      * \brief Получить процентную ставку
@@ -180,15 +183,18 @@ public:
      */
     void loanType(const LoanTypePtr &loanType);
 
+    std::shared_ptr<LoanState> state() const;
+    void state(const std::shared_ptr<LoanState> &state);
+
 private:
     friend class  odb::access;
 
-#pragma db id auto
+    #pragma db id auto
     ulong _id;
 
     QDate _openDate;
     QDate _closeDate;
-    LoanState _state = LoanState::inactive;
+    LoanStatus _status = LoanStatus::inactive;
     Number _rate;
     Number _limit;
     int _length;
@@ -199,6 +205,10 @@ private:
     #pragma db not_null
     #pragma db column("idLoanType")
     LoanTypePtr _loanType;
+
+    #pragma db null
+    #pragma db column("idState")
+    std::weak_ptr<LoanState> _state;
 };
 
 /*!
@@ -208,5 +218,7 @@ using LoanPtr = std::shared_ptr<Loan>;
 
 }
 }
+
+#include "LoanState.h"
 
 #endif // LOAN_H

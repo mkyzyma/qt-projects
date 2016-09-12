@@ -10,9 +10,8 @@
 #include "DbObject.h"
 #include "LoanPaymentValue.h"
 #include "Payment.h"
-#include "Person.h"
-#include "Member.h"
-#include "Loan.h"
+
+
 
 namespace kpk {
 namespace data {
@@ -26,6 +25,8 @@ enum class LoanPaymentType
     issuance, ///<\brief Выдача
 };
 
+class Loan;
+
 /*!
  * \brief Операция по займу
  *
@@ -36,7 +37,8 @@ class DATASHARED_EXPORT LoanPayment : public Payment
 {
 public:
     LoanPayment(const QDate &date,
-                const PaymentType &paymentType = PaymentType::cash,
+                const LoanPaymentType &type,
+                const PayType &payType = PayType::cash,
                 const BankPtr &bank = nullptr);
     /*!
      * \brief Получить оплату по плану
@@ -54,14 +56,19 @@ public:
      * \brief Получить займ
      * \return Займ
      */
-    LoanPtr loan() const;
+    std::shared_ptr<Loan> loan() const;
 
     /*!
      * \brief Установить займ
      * \param loan - займ
      */
-    void loan(const LoanPtr &loan);
+    void loan(const std::shared_ptr<Loan> &loan);
 
+    /*!
+     * \brief Вид операции
+     * \return Вид операции
+     */
+    LoanPaymentType type() const;
 private:
     LoanPayment();
     friend class odb::access;
@@ -71,10 +78,11 @@ private:
 
     LoanPaymentValue _plan;
     LoanPaymentValue _fact;
+    LoanPaymentType _type;
 
     #pragma db not_null
     #pragma db column("idLoan")
-    LoanPtr _loan;
+    std::shared_ptr<Loan> _loan;
 };
 
 /*!
@@ -84,4 +92,7 @@ using LoanPaymentPtr = std::shared_ptr<LoanPayment>;
 
 }
 }
+
+#include "Loan.h"
+
 #endif // LOANOPER_H

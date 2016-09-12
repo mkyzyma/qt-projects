@@ -8,9 +8,9 @@ Payment()
 
 Payment::
 Payment(const QDate &date,
-        const PaymentType &paymentType,
+        const PayType &paymentType,
         const BankPtr &bank)
-    :_date(date), _paymentType(paymentType), _bank(bank)
+    :_date(date), _payType(paymentType), _bank(bank)
 {}
 
 QDate Payment::
@@ -25,16 +25,16 @@ date(const QDate &date)
     _date = date;
 }
 
-PaymentType Payment::
-paymentType() const
+PayType Payment::
+payType() const
 {
-    return _paymentType;
+    return _payType;
 }
 
 void Payment::
-paymentType(const PaymentType &paymentType)
+payType(const PayType &paymentType)
 {
-    _paymentType = paymentType;
+    _payType = paymentType;
 }
 
 BankPtr Payment::

@@ -122,19 +122,20 @@
       <column name="deletedBy" type="BIGINT" null="true"/>
       <column name="createTime" type="TIMESTAMP" null="true"/>
       <column name="idUser" type="BIGINT" null="false"/>
+      <column name="idPerson" type="BIGINT" null="false"/>
+      <column name="idMember" type="BIGINT" null="false"/>
       <column name="id" type="BIGINT" null="false"/>
       <column name="openDate" type="DATE" null="true"/>
       <column name="closeDate" type="DATE" null="true"/>
-      <column name="state" type="INTEGER" null="false"/>
+      <column name="status" type="INTEGER" null="false"/>
       <column name="rate" type="BIGINT" null="false"/>
       <column name="limit" type="BIGINT" null="false"/>
       <column name="length" type="INTEGER" null="false"/>
       <column name="sum" type="BIGINT" null="false"/>
       <column name="remains" type="BIGINT" null="false"/>
       <column name="prc" type="BIGINT" null="false"/>
-      <column name="idMember" type="BIGINT" null="false"/>
-      <column name="idPerson" type="BIGINT" null="false"/>
       <column name="idLoanType" type="BIGINT" null="false"/>
+      <column name="idState" type="BIGINT" null="true"/>
       <primary-key auto="true">
         <column name="id"/>
       </primary-key>
@@ -147,6 +148,12 @@
       <foreign-key name="idUser_fk" deferrable="DEFERRED">
         <column name="idUser"/>
         <references table="User">
+          <column name="id"/>
+        </references>
+      </foreign-key>
+      <foreign-key name="idPerson_fk" deferrable="DEFERRED">
+        <column name="idPerson"/>
+        <references table="Person">
           <column name="id"/>
         </references>
       </foreign-key>
@@ -156,53 +163,15 @@
           <column name="id"/>
         </references>
       </foreign-key>
-      <foreign-key name="idPerson_fk" deferrable="DEFERRED">
-        <column name="idPerson"/>
-        <references table="Person">
-          <column name="id"/>
-        </references>
-      </foreign-key>
       <foreign-key name="idLoanType_fk" deferrable="DEFERRED">
         <column name="idLoanType"/>
         <references table="LoanType">
           <column name="id"/>
         </references>
       </foreign-key>
-    </table>
-    <table name="LoanGarantor" kind="object">
-      <column name="isDeleted" type="BOOLEAN" null="false"/>
-      <column name="deleteTime" type="TIMESTAMP" null="true"/>
-      <column name="deletedBy" type="BIGINT" null="true"/>
-      <column name="createTime" type="TIMESTAMP" null="true"/>
-      <column name="idUser" type="BIGINT" null="false"/>
-      <column name="id" type="BIGINT" null="false"/>
-      <column name="addDate" type="DATE" null="true"/>
-      <column name="idLoan" type="BIGINT" null="false"/>
-      <column name="idPerson" type="BIGINT" null="false"/>
-      <primary-key auto="true">
-        <column name="id"/>
-      </primary-key>
-      <foreign-key name="deletedBy_fk" deferrable="DEFERRED">
-        <column name="deletedBy"/>
-        <references table="User">
-          <column name="id"/>
-        </references>
-      </foreign-key>
-      <foreign-key name="idUser_fk" deferrable="DEFERRED">
-        <column name="idUser"/>
-        <references table="User">
-          <column name="id"/>
-        </references>
-      </foreign-key>
-      <foreign-key name="idLoan_fk" deferrable="DEFERRED">
-        <column name="idLoan"/>
-        <references table="Loan">
-          <column name="id"/>
-        </references>
-      </foreign-key>
-      <foreign-key name="idPerson_fk" deferrable="DEFERRED">
-        <column name="idPerson"/>
-        <references table="Person">
+      <foreign-key name="idState_fk" deferrable="DEFERRED">
+        <column name="idState"/>
+        <references table="LoanState">
           <column name="id"/>
         </references>
       </foreign-key>
@@ -242,7 +211,7 @@
       <column name="idPerson" type="BIGINT" null="false"/>
       <column name="idMember" type="BIGINT" null="false"/>
       <column name="date" type="DATE" null="true"/>
-      <column name="paymentType" type="INTEGER" null="false"/>
+      <column name="payType" type="INTEGER" null="false"/>
       <column name="bank" type="BIGINT" null="true"/>
       <column name="id" type="BIGINT" null="false"/>
       <column name="plan_date" type="DATE" null="true"/>
@@ -259,6 +228,7 @@
       <column name="fact_prc" type="BIGINT" null="false"/>
       <column name="fact_prcDept" type="BIGINT" null="false"/>
       <column name="fact_peni" type="BIGINT" null="false"/>
+      <column name="type" type="INTEGER" null="false"/>
       <column name="idLoan" type="BIGINT" null="false"/>
       <primary-key auto="true">
         <column name="id"/>
@@ -296,6 +266,89 @@
       <foreign-key name="idLoan_fk" deferrable="DEFERRED">
         <column name="idLoan"/>
         <references table="Loan">
+          <column name="id"/>
+        </references>
+      </foreign-key>
+    </table>
+    <table name="LoanState" kind="object">
+      <column name="isDeleted" type="BOOLEAN" null="false"/>
+      <column name="deleteTime" type="TIMESTAMP" null="true"/>
+      <column name="deletedBy" type="BIGINT" null="true"/>
+      <column name="createTime" type="TIMESTAMP" null="true"/>
+      <column name="idUser" type="BIGINT" null="false"/>
+      <column name="id" type="BIGINT" null="false"/>
+      <column name="startDate" type="DATE" null="true"/>
+      <column name="endDate" type="DATE" null="true"/>
+      <column name="rate" type="BIGINT" null="false"/>
+      <column name="remains" type="BIGINT" null="false"/>
+      <column name="sum" type="BIGINT" null="false"/>
+      <column name="length" type="INTEGER" null="false"/>
+      <column name="closeDate" type="DATE" null="true"/>
+      <column name="reason" type="INTEGER" null="false"/>
+      <column name="idLoan" type="BIGINT" null="false"/>
+      <column name="idLoanPayment" type="BIGINT" null="false"/>
+      <primary-key auto="true">
+        <column name="id"/>
+      </primary-key>
+      <foreign-key name="deletedBy_fk" deferrable="DEFERRED">
+        <column name="deletedBy"/>
+        <references table="User">
+          <column name="id"/>
+        </references>
+      </foreign-key>
+      <foreign-key name="idUser_fk" deferrable="DEFERRED">
+        <column name="idUser"/>
+        <references table="User">
+          <column name="id"/>
+        </references>
+      </foreign-key>
+      <foreign-key name="idLoan_fk" deferrable="DEFERRED">
+        <column name="idLoan"/>
+        <references table="Loan">
+          <column name="id"/>
+        </references>
+      </foreign-key>
+      <foreign-key name="idLoanPayment_fk" deferrable="DEFERRED">
+        <column name="idLoanPayment"/>
+        <references table="LoanPayment">
+          <column name="id"/>
+        </references>
+      </foreign-key>
+    </table>
+    <table name="LoanGarantor" kind="object">
+      <column name="isDeleted" type="BOOLEAN" null="false"/>
+      <column name="deleteTime" type="TIMESTAMP" null="true"/>
+      <column name="deletedBy" type="BIGINT" null="true"/>
+      <column name="createTime" type="TIMESTAMP" null="true"/>
+      <column name="idUser" type="BIGINT" null="false"/>
+      <column name="id" type="BIGINT" null="false"/>
+      <column name="addDate" type="DATE" null="true"/>
+      <column name="idLoan" type="BIGINT" null="false"/>
+      <column name="idPerson" type="BIGINT" null="false"/>
+      <primary-key auto="true">
+        <column name="id"/>
+      </primary-key>
+      <foreign-key name="deletedBy_fk" deferrable="DEFERRED">
+        <column name="deletedBy"/>
+        <references table="User">
+          <column name="id"/>
+        </references>
+      </foreign-key>
+      <foreign-key name="idUser_fk" deferrable="DEFERRED">
+        <column name="idUser"/>
+        <references table="User">
+          <column name="id"/>
+        </references>
+      </foreign-key>
+      <foreign-key name="idLoan_fk" deferrable="DEFERRED">
+        <column name="idLoan"/>
+        <references table="Loan">
+          <column name="id"/>
+        </references>
+      </foreign-key>
+      <foreign-key name="idPerson_fk" deferrable="DEFERRED">
+        <column name="idPerson"/>
+        <references table="Person">
           <column name="id"/>
         </references>
       </foreign-key>

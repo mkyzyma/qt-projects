@@ -253,20 +253,20 @@ void kpkDataTest::loanPersisted()
 void kpkDataTest::loanOperCanPersist()
 {
     try{
-       odb::transaction t (_db->begin ());
+//       odb::transaction t (_db->begin ());
 
-       auto p (getPerson());
+//       auto p (getPerson());
 
-       std::shared_ptr<LoanPayment> o(new LoanPayment(QDate::currentDate()));
+//       std::shared_ptr<LoanPayment> o(new LoanPayment(QDate::currentDate()));
 
-       o->fact().date(QDate::currentDate());
-       o->plan().date(QDate::currentDate().addDays(10));      
-       o->member(getMember());
-       o->loan(getLoan());
+//       o->fact().date(QDate::currentDate());
+//       o->plan().date(QDate::currentDate().addDays(10));
+//       o->member(getMember());
+//       o->loan(getLoan());
 
-       _db->persist(o);
+//       _db->persist(o);
 
-       t.commit();
+//       t.commit();
     }catch(const std::exception& e){
        QVERIFY2(false, e.what());
     }

@@ -33,6 +33,7 @@ private Q_SLOTS:
     void canExit();
     void canEnterAgain();
     void canOpenLoan();
+    void canIssueLoan();
 };
 
 KpkCoreTest::KpkCoreTest()
@@ -83,7 +84,6 @@ void KpkCoreTest::canCreateSchema()
     catch(const std::exception e){
         QVERIFY2(false, e.what());
     }
-
 
 }
 
@@ -202,7 +202,7 @@ void KpkCoreTest::canOpenLoan()
         Core()->begin();
 
         auto t = Core()->loan()->getLoanType(1);
-        auto date = Core()->date()->working();
+        auto date = Core()->date()->working().addYears(-1);
         auto l = Core()->loan()->open(_p->member(), t, date, "1000000", "20", 12);
 
         Core()->commit();
@@ -212,6 +212,56 @@ void KpkCoreTest::canOpenLoan()
         l = Core()->loan()->get(l->id());
 
         QVERIFY2(l->limit() == 1000000, "Wrong limit");
+
+        Core()->commit();
+    }
+
+    catch(const std::exception e){
+        Core()->rollback();
+        QVERIFY2(false, e.what());
+    }
+}
+
+void KpkCoreTest::canIssueLoan()
+{
+    try{
+        Core()->begin();
+
+        auto l = Core()->loan()->get(1);
+
+        auto dt = Core()->date()->working().addYears(-1);
+
+        Core()->loan()->issue(l, dt, 555000);
+
+        Core()->commit();
+
+        Core()->begin();
+
+         l = Core()->loan()->get(l->id());
+        qDebug() << l->sum().toString();
+        QVERIFY2(l->sum() == 555000, "Wrong loan sum");
+        QVERIFY2(l->state(), "State is null");
+        QVERIFY2(l->state()->sum() == 555000, "Wrong state sum");
+
+        Core()->commit();
+
+        Core()->begin();
+
+        l = Core()->loan()->get(1);
+
+        dt = Core()->date()->working().addMonths(-6);
+
+        Core()->loan()->issue(l, dt, 555000);
+
+        Core()->commit();
+
+        Core()->begin();
+
+         l = Core()->loan()->get(l->id());
+        qDebug() << l->sum().toString();
+        QVERIFY2(l->sum() == 2*555000, "Wrong loan sum");
+        QVERIFY2(l->state(), "State is null");
+        QVERIFY2(l->state()->sum() == 2*555000, "Wrong state sum");
 
         Core()->commit();
     }

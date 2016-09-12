@@ -7,13 +7,19 @@ LoanPayment::
 LoanPayment()
 {}
 
+LoanPaymentType LoanPayment::type() const
+{
+    return _type;
+}
+
 LoanPayment::
 LoanPayment(const QDate &date,
-            const PaymentType &paymentType,
+            const LoanPaymentType &type,
+            const PayType &paymentType,
             const BankPtr &bank)
-    : Payment(date, paymentType, bank)
+    : Payment(date, paymentType, bank), _type(type)
 {
-    _fact.date(date);
+    _fact.date(date);   
 }
 
 LoanPaymentValue& LoanPayment::

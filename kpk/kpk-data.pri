@@ -8,6 +8,7 @@ SOURCES += \
     ../kpk-data/Member-odb.cxx \
     ../kpk-data/MemberInfo-odb.cxx \
     ../kpk-data/LoanType-odb.cxx \
+    ../kpk-data/LoanState-odb.cxx \
     ../kpk-data/Loan-odb.cxx \
     ../kpk-data/Bank-odb.cxx \
     ../kpk-data/Payment-odb.cxx \
@@ -16,6 +17,7 @@ SOURCES += \
     ../kpk-data/LoanGarantor-odb.cxx \
     ../kpk-data/DecTest-odb.cxx \
     ../kpk-data/kpk-schema.cxx
+
 
 
 

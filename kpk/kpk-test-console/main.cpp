@@ -66,37 +66,15 @@ int main(int argc, char *argv[])
 
     Core()->dbService()->connect();
 //    Core()->dbService()->createShcema();
-    Core()->begin();
 
-    auto d(std::make_shared<DecTest>());
-
-    d->num(QDecNumber("12345.12345"));
-
-    Core()->db()->persist(d);
-//    auto r = (Core()->db()->query<Person>(odb::query<Person>::id == 1));
-
-//    PersonPtr p = r.begin().load();
-
-//    qDebug() << p->name().full();
-
-//    Core()->commit();
-
-
-//    Core()->begin();
-
-//    auto t = Core()->loan()->getLoanType(1);
-//    auto date = Core()->date()->working();
-//    auto m = p->member().lock();
-
-//    Core()->loan()->open(m, t, date, "1000000", "20", 12);
-
-    Core()->commit();
 
     Core()->begin();
 
-    d = Core()->db()->load<DecTest>(1);
+    auto l = Core()->loan()->get(1);
 
-    qDebug() << d->num().toString();
+    auto dt = Core()->date()->working();
+
+    Core()->loan()->issue(l, dt, 555000);
 
     Core()->commit();
     qDebug() << "\r\nOK";

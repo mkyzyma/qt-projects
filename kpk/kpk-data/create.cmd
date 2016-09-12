@@ -7,6 +7,7 @@ call createfile.cmd Person.h
 call createfile.cmd Member.h
 call createfile.cmd MemberInfo.h
 call createfile.cmd LoanType.h
+call createfile.cmd LoanState.h
 call createfile.cmd Loan.h
 call createfile.cmd LoanGarantor.h
 call createfile.cmd Bank.h
@@ -19,6 +20,6 @@ odb --database pgsql --generate-schema-only --profile qt/basic --profile qt/date
 --at-once --schema-format separate --input-name kpk -q --std c++14 ^
 --hxx-prologue "#include \"traits-pgsql.h\"" ^
 IsDeleted.h DbObject.h Name.h Passport.h Person.h User.h ^
-Member.h MemberInfo.h LoanType.h Loan.h LoanGarantor.h Bank.h Payment.h ^
+Member.h MemberInfo.h LoanType.h LoanState.h Loan.h LoanGarantor.h Bank.h Payment.h ^
 LoanPaymentValue.h LoanPayment.h DecTest.h
 

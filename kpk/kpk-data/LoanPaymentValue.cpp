@@ -5,7 +5,7 @@ namespace data
 {
 
 LoanPaymentValue::
-LoanPaymentValue()
+LoanPaymentValue()    
 {}
 
 QDate LoanPaymentValue::
@@ -91,8 +91,6 @@ peni(const Number &peni)
 {
     _peni = peni;
 }
-
-
 
 }
 }

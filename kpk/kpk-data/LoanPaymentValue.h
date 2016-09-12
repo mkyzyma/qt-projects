@@ -111,21 +111,19 @@ public:
      * \param peni - неустойка
      */
     void peni(const Number &peni);
-
-
 private:
     friend class odb::access;
 
     QDate _date;
-    Number _amount;
+    Number _amount = 0.0;
 
-    Number _loan;
-    Number _loanDept;
+    Number _loan = 0.0;
+    Number _loanDept = 0.0;
 
-    Number _prc;
-    Number _prcDept;
+    Number _prc = 0.0;
+    Number _prcDept = 0.0;
 
-    Number _peni;
+    Number _peni = 0.0;
 };
 
 }

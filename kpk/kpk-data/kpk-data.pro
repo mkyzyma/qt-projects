@@ -29,7 +29,8 @@ SOURCES += \
     Bank.cpp \
     LoanPaymentValue.cpp \
     LoanPayment.cpp \
-    MemberInfo.cpp
+    MemberInfo.cpp \
+    LoanState.cpp
 
 HEADERS += \
     data_global.h \
@@ -50,7 +51,8 @@ HEADERS += \
     Bank.h \
     LoanPaymentValue.h \
     LoanPayment.h \
-    MemberInfo.h
+    MemberInfo.h \
+    LoanState.h
 
 unix {
     target.path = /usr/lib

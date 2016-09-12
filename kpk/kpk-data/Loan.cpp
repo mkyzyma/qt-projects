@@ -46,28 +46,16 @@ closeDate(const QDate &closeDate)
     _closeDate = closeDate;
 }
 
-LoanTypePtr Loan::
-loanType() const
+LoanStatus Loan::
+status() const
 {
-    return _loanType;
+    return _status;
 }
 
 void Loan::
-loanType(const LoanTypePtr &loanType)
+status(LoanStatus isClosed)
 {
-    _loanType = loanType;
-}
-
-LoanState Loan::
-state() const
-{
-    return _state;
-}
-
-void Loan::
-state(LoanState isClosed)
-{
-    _state = isClosed;
+    _status = isClosed;
 }
 
 Number Loan::
@@ -142,7 +130,27 @@ remains(const Number &remains)
     _remains = remains;
 }
 
+LoanTypePtr Loan::
+loanType() const
+{
+    return _loanType;
+}
 
+void Loan::
+loanType(const LoanTypePtr &loanType)
+{
+    _loanType = loanType;
+}
+
+std::shared_ptr<LoanState> Loan::state() const
+{
+    return _state.lock();
+}
+
+void Loan::state(const std::shared_ptr<LoanState> &state)
+{
+    _state = state;
+}
 
 }
 }

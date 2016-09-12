@@ -17,7 +17,7 @@ namespace data {
 /*!
  * \brief Вид оплаты
  */
-enum class PaymentType{
+enum class PayType{
     cash, ///<\brief Наличные
     bank, ///<\brief Банк
     inner ///<\brief Внутренние
@@ -35,7 +35,7 @@ class DATASHARED_EXPORT Payment
 {
 public:
     Payment(const QDate &date,
-            const PaymentType &paymentType,
+            const PayType &payType,
             const BankPtr &bank = nullptr);
 
     /*!
@@ -54,13 +54,13 @@ public:
      * \brief Получить вид оплаты
      * \return Вид оплаты
      */
-    PaymentType paymentType() const;
+    PayType payType() const;
 
     /*!
      * \brief Установить вид оплаты
      * \param paymentType - вид оплаты
      */
-    void paymentType(const PaymentType &paymentType);
+    void payType(const PayType &payType);
 
     /*!
      * \brief Получить банк
@@ -77,7 +77,7 @@ protected:
     Payment();
 
     QDate _date;
-    PaymentType _paymentType;
+    PayType _payType;
 
     #pragma db null
     BankPtr _bank;
